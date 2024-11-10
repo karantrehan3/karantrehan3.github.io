@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no" />
   <title>Loading...</title>
-  <script type="module" crossorigin src="/assets/index-BPqnAbq6.js"></script>
+  <script type="module" crossorigin src="/assets/index-0smUzr64.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/react-BWtM72Fx.js">
   <link rel="modulepreload" crossorigin href="/assets/scheduler-CzFDRTuY.js">
   <link rel="modulepreload" crossorigin href="/assets/react-dom-ENHEuykK.js">
@@ -29,19 +29,6 @@
 
 <body>
   <div id="root"></div>
-  <script>
-    fetch('./config/default.json')
-      .then(response => response.json())
-      .then(data => {
-        document.title = data.TITLE.NAME;
-        const link = document.createElement('link');
-        link.rel = 'icon';
-        link.type = 'image/jpeg';
-        link.href = data.LINK.FAV_ICON_PATH;
-        document.head.appendChild(link);
-      })
-      .catch(error => console.error('Error loading config:', error));
-  </script>
 </body>
 
 </html>
