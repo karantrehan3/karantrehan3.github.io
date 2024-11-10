@@ -17,7 +17,13 @@
             "label": "Hand Gesture Recognition Based Interactive Gaming"
           }
         ]
-      }
+      },
+      { "link": "/contact", "label": "Contact" }
     ]
+  },
+  "CONTACT": {
+    "CALENDAR": {
+      "LINK": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3nBgl1MCdRSIhS0l8BpAAbKNbEFtK4lq-GABDCbFGxBieZeCoLzxTpZX34OiHnDyoJkO-ufkWv?gv=true"
+    }
   }
 }
