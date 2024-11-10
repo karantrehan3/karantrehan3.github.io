@@ -46,7 +46,7 @@ export function Header() {
         </Group>
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
         <Drawer opened={opened} onClose={close} hiddenFrom="xs" padding="md">
-          <Group direction="column" spacing="md">
+          <Group>
             {items}
             <ThemeToggle />
           </Group>
