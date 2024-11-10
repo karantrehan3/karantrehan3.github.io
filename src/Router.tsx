@@ -2,6 +2,7 @@ import { createHashRouter, RouterProvider, Navigate } from "react-router-dom";
 import { HomePage } from "./pages/Home/Home.page";
 import { ErrorPage } from "./pages/Error/Error.page";
 
+// TODO: Figure out moving the routes to default config
 const router = createHashRouter([
   {
     path: "/",

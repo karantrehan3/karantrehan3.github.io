@@ -1,14 +1,15 @@
+import { IconChevronDown } from "@tabler/icons-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Group, Burger, Drawer } from "@mantine/core";
+import { Container, Group, Burger, Drawer, Menu, Center } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
+import config from "@/utils/Config";
 import classes from "./Header.module.css";
 
 const links = [
   { link: "/home", label: "Home" },
-  { link: "/about", label: "About Me" },
-  { link: "/projects", label: "Projects" },
+  ...(config.get("HEADER.LINKS") || []),
 ];
 
 export function Header() {
@@ -16,22 +17,66 @@ export function Header() {
   const [active, setActive] = useState(links[0].link);
   const navigate = useNavigate();
 
-  const items = links.map((link) => (
-    <a
-      key={link.label}
-      href={link.link}
-      className={classes.link}
-      data-active={active === link.link || undefined}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-        navigate(link.link);
-        close();
-      }}
-    >
-      {link.label}
-    </a>
-  ));
+  const items = links.map((link) => {
+    if (!link.links?.length) {
+      return (
+        <a
+          key={link.label}
+          href={link.link}
+          className={classes.link}
+          data-active={active === link.link || undefined}
+          onClick={(event) => {
+            event.preventDefault();
+            setActive(link.link);
+            navigate(link.link);
+            close();
+          }}
+        >
+          {link.label}
+        </a>
+      );
+    }
+
+    return (
+      <Menu
+        key={link.label}
+        trigger="hover"
+        transitionProps={{ exitDuration: 0 }}
+        withinPortal
+      >
+        <Menu.Target>
+          <a
+            href={link.link}
+            className={classes.link}
+            onClick={(event) => {
+              event.preventDefault();
+              navigate(link.link);
+              close();
+            }}
+          >
+            <Center>
+              <span className={classes.linkLabel}>{link.label}</span>
+              <IconChevronDown size="0.9rem" stroke={1.5} />
+            </Center>
+          </a>
+        </Menu.Target>
+        <Menu.Dropdown>
+          {link.links.map((item) => (
+            <Menu.Item
+              key={item.link}
+              onClick={(event) => {
+                event.preventDefault();
+                window.open(item.link, "_blank");
+                close();
+              }}
+            >
+              {item.label}
+            </Menu.Item>
+          ))}
+        </Menu.Dropdown>
+      </Menu>
+    );
+  });
 
   return (
     <header className={classes.header}>

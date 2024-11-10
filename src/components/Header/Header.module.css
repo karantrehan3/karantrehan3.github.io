@@ -55,3 +55,7 @@
         color: var(--mantine-color-white);
     }
 }
+
+.linkLabel {
+    margin-right: rem(5px);
+}
