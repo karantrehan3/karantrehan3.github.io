@@ -1,0 +1,54 @@
+section {
+  width: 8em;
+  outline: 1px solid #4ec200;
+  outline-offset: 3px;
+  border-radius: 15em;
+  box-shadow: 0 0 1.5em -0.15em #66ff00;
+}
+
+.dot {
+  width: 1em;
+  height: 1em;
+  background: #66ff00;
+  border-radius: 20em;
+  filter: brightness(1.25);
+  animation: stretch 1s linear alternate infinite;
+}
+
+@keyframes stretch {
+  100% {
+    transform-origin: left;
+    transform: translateX(10em);
+  }
+
+  50% {
+    width: 3em;
+  }
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 600px) {
+  section {
+    width: 6em;
+    outline-offset: 2px;
+    border-radius: 10em;
+    box-shadow: 0 0 1em -0.1em #66ff00;
+  }
+
+  .dot {
+    width: 0.8em;
+    height: 0.8em;
+    animation: stretch-mobile 1s linear alternate infinite;
+  }
+
+  @keyframes stretch-mobile {
+    100% {
+      transform-origin: left;
+      transform: translateX(8em);
+    }
+
+    50% {
+      width: 2.4em;
+    }
+  }
+}

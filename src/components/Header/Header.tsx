@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Container, Group, Burger } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
+import { Container, Group, Burger, Drawer } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { ThemeToggle } from "../ThemeToggle/ThemeToggle";
+import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 import classes from "./Header.module.css";
 
 const links = [
@@ -11,8 +12,9 @@ const links = [
 ];
 
 export function Header() {
-  const [opened, { toggle }] = useDisclosure(false);
+  const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
+  const navigate = useNavigate();
 
   const items = links.map((link) => (
     <a
@@ -23,6 +25,8 @@ export function Header() {
       onClick={(event) => {
         event.preventDefault();
         setActive(link.link);
+        navigate(link.link);
+        close();
       }}
     >
       {link.label}
@@ -41,6 +45,12 @@ export function Header() {
           </Group>
         </Group>
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+        <Drawer opened={opened} onClose={close} hiddenFrom="xs" padding="md">
+          <Group direction="column" spacing="md">
+            {items}
+            <ThemeToggle />
+          </Group>
+        </Drawer>
       </Container>
     </header>
   );

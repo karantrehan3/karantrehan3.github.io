@@ -13,3 +13,16 @@
         font-size: rem(50px);
     }
 }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .root {
+        padding-top: 8rem;
+        padding-bottom: 4rem;
+    }
+
+    .title {
+        font-size: rem(40px);
+        letter-spacing: rem(-1px);
+    }
+}
