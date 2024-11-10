@@ -1,4 +1,5 @@
 import { Text, Title } from "@mantine/core";
+import config from "@/utils/Config";
 import classes from "./Welcome.module.css";
 
 export function Welcome() {
@@ -12,7 +13,7 @@ export function Welcome() {
           component="span"
           gradient={{ from: "yellow", to: "red" }}
         >
-          Karan Trehan
+          {config.get("TITLE.NAME")}
         </Text>
       </Title>
     </>

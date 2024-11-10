@@ -3,14 +3,26 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/jpeg" href="/src/assets/dp/KT.jpg" />
   <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no" />
-  <title>Karan Trehan</title>
+  <title>Loading...</title>
 </head>
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+  <script>
+    fetch('/config/default.json')
+      .then(response => response.json())
+      .then(data => {
+        document.title = data.TITLE.NAME;
+        const link = document.createElement('link');
+        link.rel = 'icon';
+        link.type = 'image/jpeg';
+        link.href = data.LINK.FAV_ICON_PATH;
+        document.head.appendChild(link);
+      })
+      .catch(error => console.error('Error loading config:', error));
+  </script>
 </body>
 
 </html>

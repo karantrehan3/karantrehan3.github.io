@@ -1,0 +1,23 @@
+{
+  "TITLE": { "NAME": "Karan Trehan" },
+  "LINK": { "FAV_ICON_PATH": "/src/assets/dp/KT.jpg" },
+  "HEADER": {
+    "LINKS": [
+      { "link": "/about", "label": "About Me" },
+      {
+        "link": "/projects",
+        "label": "Projects",
+        "links": [
+          {
+            "link": "https://karantrehan3.github.io/dm-sender-public/",
+            "label": "Slack DM Sender"
+          },
+          {
+            "link": "https://karantrehan3.github.io/Hand-Gesture-Recognition-Based-Interactive-Gaming/",
+            "label": "Hand Gesture Recognition Based Interactive Gaming"
+          }
+        ]
+      }
+    ]
+  }
+}
