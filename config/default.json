@@ -1,6 +1,6 @@
 {
   "TITLE": { "NAME": "Karan Trehan" },
-  "LINK": { "FAV_ICON_PATH": "/assets/dp/KT.jpg" },
+  "LINK": { "FAV_ICON_PATH": "./assets/dp/KT.jpg" },
   "HEADER": {
     "LINKS": [
       { "link": "/about", "label": "About Me" },
