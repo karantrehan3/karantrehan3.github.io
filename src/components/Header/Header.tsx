@@ -61,7 +61,7 @@ export function Header() {
           </a>
         </Menu.Target>
         <Menu.Dropdown>
-          {link.links.map((item) => (
+          {link.links.map((item: any) => (
             <Menu.Item
               key={item.link}
               onClick={(event) => {
