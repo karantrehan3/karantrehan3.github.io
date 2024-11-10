@@ -10,19 +10,6 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
-  <script>
-    fetch('./config/default.json')
-      .then(response => response.json())
-      .then(data => {
-        document.title = data.TITLE.NAME;
-        const link = document.createElement('link');
-        link.rel = 'icon';
-        link.type = 'image/jpeg';
-        link.href = data.LINK.FAV_ICON_PATH;
-        document.head.appendChild(link);
-      })
-      .catch(error => console.error('Error loading config:', error));
-  </script>
 </body>
 
 </html>
