@@ -20,7 +20,7 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@mantine/core": "7.13.5",
