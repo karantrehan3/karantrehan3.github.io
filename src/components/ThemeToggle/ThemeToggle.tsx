@@ -14,7 +14,7 @@ export function ThemeToggle() {
 
   useEffect(() => {
     const savedColorScheme = localStorage.getItem("mantine-color-scheme-value");
-    if (["light", "dark"].includes(savedColorScheme)) {
+    if (savedColorScheme && ["light", "dark"].includes(savedColorScheme)) {
       setColorScheme(savedColorScheme as MantineColorScheme);
     } else {
       const prefersDarkScheme = window.matchMedia(
