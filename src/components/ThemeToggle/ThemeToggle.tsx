@@ -3,6 +3,7 @@ import {
   useMantineColorScheme,
   useMantineTheme,
   ActionIcon,
+  MantineColorScheme,
 } from "@mantine/core";
 import { IconSun, IconMoon } from "@tabler/icons-react";
 
@@ -13,8 +14,8 @@ export function ThemeToggle() {
 
   useEffect(() => {
     const savedColorScheme = localStorage.getItem("mantine-color-scheme-value");
-    if (savedColorScheme) {
-      setColorScheme(savedColorScheme);
+    if (["light", "dark"].includes(savedColorScheme)) {
+      setColorScheme(savedColorScheme as MantineColorScheme);
     } else {
       const prefersDarkScheme = window.matchMedia(
         "(prefers-color-scheme: dark)"
