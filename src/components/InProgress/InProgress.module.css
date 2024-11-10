@@ -1,0 +1,13 @@
+.loader {
+  position: relative;
+  margin-top: 1rem;
+  left: calc(50% - 5em);
+  width: var(10em);
+}
+
+@media (max-width: 600px) {
+  .loader {
+    margin-top: 1rem;
+    left: calc(50% - 5em);
+  }
+}
