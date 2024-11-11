@@ -66,7 +66,7 @@ export function Header() {
               key={item.link}
               onClick={(event) => {
                 event.preventDefault();
-                window.open(item.link, "_blank");
+                window.open(item.link, "_self");
                 close();
               }}
             >
