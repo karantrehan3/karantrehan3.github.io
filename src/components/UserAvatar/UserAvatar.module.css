@@ -1,0 +1,22 @@
+@keyframes rotate-animation {
+    0% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(60deg);
+    }
+
+    100% {
+        transform: rotate(-10deg);
+    }
+}
+
+.label {
+    font-size: 70px;
+    animation: rotate-animation 1s infinite;
+}
+
+.transparent {
+    --indicator-color: transparent;
+}
