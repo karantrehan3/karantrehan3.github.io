@@ -7,18 +7,17 @@ export function Calendar() {
 
   return (
     <div>
-      {loading ? (
+      {loading && (
         <div className={classes.center}>
           <Loader className={classes.loader} type="dots" size="xl" />
         </div>
-      ) : (
-        <iframe
-          title="Connect on Calendar"
-          src={config.get("CONTACT.CALENDAR.LINK")}
-          className={classes.iframe}
-          onLoad={() => setLoading(false)}
-        />
       )}
+      <iframe
+        title="Connect on Calendar"
+        src={config.get("CONTACT.CALENDAR.LINK")}
+        className={loading ? classes.hidden : classes.iframe}
+        onLoad={() => setLoading(false)}
+      />
     </div>
   );
 }
