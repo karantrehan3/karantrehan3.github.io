@@ -14,7 +14,7 @@ export function UserAvatar() {
         withBorder={false}
         className={classes.transparent}
       >
-        <Avatar src={DP} size="350" />
+        <Avatar src={DP} className={classes.avatar} />
       </Indicator>
     </div>
   );

@@ -1,9 +1,12 @@
 .title {
   text-align: center;
   color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-  font-size: rem(100px);
+  font-size: clamp(2rem, 5vw + 1rem, 6rem);
   font-weight: 900;
-  letter-spacing: rem(-2px);
+  letter-spacing: clamp(-0.5rem, -1vw, -2rem);
+  transition: font-size 0.3s ease, letter-spacing 0.3s ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   @media (max-width: $mantine-breakpoint-md) {
     font-size: rem(50px);

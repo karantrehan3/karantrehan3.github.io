@@ -9,6 +9,7 @@
     justify-content: space-between;
     align-items: center;
     flex-grow: 1;
+    transition: all 0.5s ease;
 }
 
 .left {
@@ -21,4 +22,30 @@
     width: 50%;
     max-width: 50%;
     margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .left, .right {
+        max-width: 100%;
+        transition: all 0.5s ease;
+    }
+
+    .left {
+        width: 80%;
+        order: 1;
+        margin-top: 5%;
+    }
+
+    .right {
+        width: 90%;
+        order: 2;
+        margin-top: 5%;
+        margin-bottom: 0;
+    }
 }

@@ -26,3 +26,14 @@
     align-items: center;
     margin-right: 1%;
 }
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .left, .right {
+        width: 100%;
+    }
+}
