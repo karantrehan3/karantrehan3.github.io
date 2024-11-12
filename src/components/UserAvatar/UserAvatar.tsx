@@ -18,11 +18,18 @@ export function UserAvatar() {
         className={classes.transparent}
       >
         {loading && <Loader className={classes.loader} type="dots" size="xl" />}
-        <Avatar
-          src={DP}
-          className={loading ? classes.hidden : classes.avatar}
-          onLoad={() => setLoading(false)}
-        />
+        <div className={classes.avatarContainer}>
+          <Avatar
+            src={DP}
+            className={loading ? classes.hidden : classes.avatar}
+            onLoad={() => setLoading(false)}
+            onContextMenu={(event) => event.preventDefault()} // Prevent users from downloading image
+          />
+          <div
+            className={classes.avatarOverlay}
+            onContextMenu={(event) => event.preventDefault()} // Prevent users from downloading image
+          />
+        </div>
       </Indicator>
     </div>
   );
