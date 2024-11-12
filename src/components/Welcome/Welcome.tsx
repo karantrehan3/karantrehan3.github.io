@@ -4,8 +4,8 @@ import classes from "./Welcome.module.css";
 
 export function Welcome() {
   return (
-    <>
-      <Title className={classes.title} ta="center" mt={100}>
+    <div>
+      <Title className={classes.title}>
         Howdy! I am{" "}
         <Text
           inherit
@@ -16,6 +16,6 @@ export function Welcome() {
           {config.get("TITLE.NAME")}
         </Text>
       </Title>
-    </>
+    </div>
   );
 }

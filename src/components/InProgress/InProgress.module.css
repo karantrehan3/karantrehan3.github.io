@@ -5,6 +5,16 @@
   width: var(10em);
 }
 
+.text {
+  text-align: center;
+  font-size: var(--mantine-font-size-lg);
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: var(--mantine-spacing-xl);
+  color: light-dark(var(--mantine-color-dark-), var(--mantine-color-dark-0));
+}
+
 @media (max-width: 600px) {
   .loader {
     margin-top: 1rem;

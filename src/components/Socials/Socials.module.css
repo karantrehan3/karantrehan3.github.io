@@ -1,0 +1,35 @@
+.email_button {
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-red-8));
+    border: light-dark(2px solid var(--mantine-color-red-8), 0px);
+    color: light-dark(var(--mantine-color-red-8), var(--mantine-color-white));
+    font-size: var(--mantine-font-size-md);
+    font-weight: 500;
+}
+
+.email_icon {
+    color: light-dark(var(--mantine-color-red-8), var(--mantine-color-white)) !important;
+}
+
+.linkedin_button {
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-blue-8));
+    border: light-dark(2px solid var(--mantine-color-blue-8), 0px);
+    color: light-dark(var(--mantine-color-blue-8), var(--mantine-color-white));
+    font-size: var(--mantine-font-size-md);
+    font-weight: 500;
+}
+
+.linkedin_icon {
+    color: light-dark(var(--mantine-color-blue-8), var(--mantine-color-white)) !important;
+}
+
+.github_button {
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+    border: light-dark(2px solid var(--mantine-color-dark-8), 0px);
+    color: light-dark(var(--mantine-color-dark-8), var(--mantine-color-white));
+    font-size: var(--mantine-font-size-md);
+    font-weight: 500;
+}
+
+.github_icon {
+    color: light-dark(var(--mantine-color-dark-8), var(--mantine-color-white)) !important;
+}
