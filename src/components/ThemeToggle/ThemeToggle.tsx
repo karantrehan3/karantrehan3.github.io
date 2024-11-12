@@ -18,7 +18,7 @@ export function ThemeToggle() {
       setColorScheme(savedColorScheme as MantineColorScheme);
     } else {
       const prefersDarkScheme = window.matchMedia(
-        "(prefers-color-scheme: dark)"
+        "(prefers-color-scheme: dark)",
       ).matches;
       setColorScheme(prefersDarkScheme ? "dark" : "light");
     }
