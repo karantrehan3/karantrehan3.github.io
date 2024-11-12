@@ -21,6 +21,14 @@
     --indicator-color: transparent;
 }
 
+.loader {
+    --loader-color: var(--mantine-color-orange-filled);
+}
+
+.hidden {
+    display: none;
+}
+
 .avatar {
     width: 350px;
     height: 350px;
