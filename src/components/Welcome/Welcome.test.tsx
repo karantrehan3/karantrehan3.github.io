@@ -1,4 +1,4 @@
-import { render, screen } from "@test-utils";
+import { render, screen } from "@test/utils";
 import { Welcome } from "./Welcome";
 
 describe("Welcome component", () => {
@@ -6,7 +6,7 @@ describe("Welcome component", () => {
     render(<Welcome />);
     expect(screen.getByText("this guide")).toHaveAttribute(
       "href",
-      "https://mantine.dev/guides/vite/"
+      "https://mantine.dev/guides/vite/",
     );
   });
 });

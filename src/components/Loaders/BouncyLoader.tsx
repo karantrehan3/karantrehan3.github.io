@@ -11,5 +11,5 @@ export const BouncyLoader: MantineLoaderComponent = forwardRef(
       {...others}
       ref={ref}
     />
-  )
+  ),
 );
