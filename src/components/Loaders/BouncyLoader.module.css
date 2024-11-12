@@ -1,15 +1,15 @@
 section {
   width: 8em;
-  outline: 1px solid #4ec200;
+  outline: 2px solid orange;
   outline-offset: 3px;
   border-radius: 15em;
-  box-shadow: 0 0 1.5em -0.15em #66ff00;
+  box-shadow: 0 0 1.5em -0.15em linear-gradient(45deg, var(--mantine-color-yellow-filled) 0%, var(--mantine-color-red-filled) 100%);
 }
 
 .dot {
   width: 1em;
   height: 1em;
-  background: #66ff00;
+  background: linear-gradient(45deg, var(--mantine-color-yellow-filled) 0%, var(--mantine-color-red-filled) 100%);
   border-radius: 20em;
   filter: brightness(1.25);
   animation: stretch 1s linear alternate infinite;
@@ -32,12 +32,13 @@ section {
     width: 6em;
     outline-offset: 2px;
     border-radius: 10em;
-    box-shadow: 0 0 1em -0.1em #66ff00;
+    box-shadow: 0 0 1em -0.1em linear-gradient(45deg, red, #fab005);
   }
 
   .dot {
     width: 0.8em;
     height: 0.8em;
+    background: linear-gradient(45deg, var(--mantine-color-yellow-filled) 0%, var(--mantine-color-red-filled) 100%);
     animation: stretch-mobile 1s linear alternate infinite;
   }
 
