@@ -4,7 +4,7 @@ import {
   IconBrandGithub,
   IconBrandGmail,
 } from "@tabler/icons-react";
-import config from "@/utils/config";
+import config from "@/utils/Config";
 import classes from "./Socials.module.css";
 
 export function Socials() {
