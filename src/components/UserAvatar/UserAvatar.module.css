@@ -20,3 +20,25 @@
 .transparent {
     --indicator-color: transparent;
 }
+
+.avatar {
+    width: 350px;
+    height: 350px;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .avatar {
+        width: 200px;
+        height: 200px;
+        transition: width 0.3s ease, height 0.3s ease;
+    }
+}
+
+@media (max-width: 480px) {
+    .avatar {
+        width: 150px;
+        height: 150px;
+        transition: width 0.3s ease, height 0.3s ease;
+    }
+}
