@@ -1,0 +1,24 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.left {
+    width: 30%;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.right {
+    width: 50%;
+    max-width: 50%;
+    margin: 0 auto;
+}

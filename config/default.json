@@ -25,5 +25,10 @@
     "CALENDAR": {
       "LINK": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3nBgl1MCdRSIhS0l8BpAAbKNbEFtK4lq-GABDCbFGxBieZeCoLzxTpZX34OiHnDyoJkO-ufkWv?gv=true"
     }
+  },
+  "SOCIALS": {
+    "EMAIL": { "ID": "karantrehan3@gmail.com", "SUBJECT": "Let's Connect! 🚀" },
+    "LINKEDIN": "https://www.linkedin.com/in/karantrehan3/",
+    "GITHUB": "https://github.com/karantrehan3"
   }
 }

@@ -7,9 +7,9 @@ export function Error() {
   const navigate = useNavigate();
 
   return (
-    <>
-      <Container className={classes.root}>
-        <Title className={classes.title} ta="center" mt={100}>
+    <div>
+      <Container>
+        <Title className={classes.title} ta="center">
           Whoops{" "}
           <Text
             inherit
@@ -37,6 +37,6 @@ export function Error() {
           </Button>
         </Group>
       </Container>
-    </>
+    </div>
   );
 }

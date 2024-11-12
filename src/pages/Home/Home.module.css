@@ -1,0 +1,12 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
