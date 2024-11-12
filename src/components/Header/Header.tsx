@@ -1,6 +1,6 @@
 import { IconChevronDown } from "@tabler/icons-react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Container, Group, Burger, Drawer, Menu, Center } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
@@ -16,6 +16,15 @@ export function Header() {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const activeLink = links.find((link) => link.link === currentPath);
+    if (activeLink) {
+      setActive(activeLink.link);
+    }
+  }, [location]);
 
   const items = links.map((link) => {
     if (!link.links?.length) {
@@ -27,7 +36,6 @@ export function Header() {
           data-active={active === link.link || undefined}
           onClick={(event) => {
             event.preventDefault();
-            setActive(link.link);
             navigate(link.link);
             close();
           }}
@@ -48,6 +56,7 @@ export function Header() {
           <a
             href={link.link}
             className={classes.link}
+            data-active={active === link.link || undefined}
             onClick={(event) => {
               event.preventDefault();
               navigate(link.link);
