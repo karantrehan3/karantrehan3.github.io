@@ -33,6 +33,24 @@
     width: 350px;
     height: 350px;
     transition: width 0.3s ease, height 0.3s ease;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+
+.avatarContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.avatarOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
 }
 
 @media (max-width: 768px) {
