@@ -1,3 +1,14 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.loader {
+    --loader-color: var(--mantine-color-orange-filled);
+  }
+
 .iframe {
     border: 0;
     border-radius: 1.5%;
