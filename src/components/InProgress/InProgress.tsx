@@ -8,7 +8,6 @@ export function InProgress() {
       <Text className={classes.text}>
         This portfolio is a build in progress.
       </Text>
-      <br />
       <BouncyLoader className={classes.loader} />
     </div>
   );
