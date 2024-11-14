@@ -1,17 +1,14 @@
-import * as localhostConfigData from "../../config/localhost.json";
-import * as defaultConfigData from "../../config/default.json";
+import * as configData from "../../config/default.json";
 
 class Config {
-  get(key: string): any {
-    const value = this.getValue(key, localhostConfigData);
-    if (value !== undefined) {
-      return value;
-    }
-    return this.getValue(key, defaultConfigData);
+  private config: any;
+
+  constructor() {
+    this.config = configData;
   }
 
-  private getValue(key: string, config: Record<string, any>): any {
-    return key.split(".").reduce((o, i) => (o ? o[i] : undefined), config);
+  get(key: string): any {
+    return key.split(".").reduce((o, i) => (o ? o[i] : undefined), this.config);
   }
 }
 
