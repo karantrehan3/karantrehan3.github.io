@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Avatar, Indicator, Loader } from "@mantine/core";
 import classes from "./UserAvatar.module.css";
-import DP from "@/assets/dp/profile.jpg";
+import config from "@/utils/Config";
 
 export function UserAvatar() {
   const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ export function UserAvatar() {
         {loading && <Loader className={classes.loader} type="dots" size="xl" />}
         <div className={classes.avatarContainer}>
           <Avatar
-            src={DP}
+            src={config.get("AVATAR")}
             className={loading ? classes.hidden : classes.avatar}
             onLoad={() => setLoading(false)}
             onContextMenu={(event) => event.preventDefault()} // Prevent users from downloading image
