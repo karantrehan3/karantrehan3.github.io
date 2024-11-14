@@ -1,6 +1,5 @@
 {
   "TITLE": { "NAME": "Karan Trehan" },
-  "LINK": { "FAV_ICON_PATH": "./assets/dp/profile.jpg" },
   "HEADER": {
     "LINKS": [
       { "link": "/about", "label": "About Me" },
@@ -31,17 +30,17 @@
     "LINKEDIN": "https://www.linkedin.com/in/karantrehan3/",
     "GITHUB": "https://github.com/karantrehan3"
   },
-  "AVATAR": "https://github.com/karantrehan3/karantrehan3.github.io/src/assets/dp/profile.jpg",
+  "AVATAR": "/assets/dp/profile.jpg",
   "PROJECTS": {
     "CARDS": [
       {
-        "imageSource": "https://github.com/karantrehan3/karantrehan3.github.io/src/assets/projects/1.png",
+        "imageSource": "/assets/projects/1.png",
         "title": "Slack DM Sender",
         "link": "https://karantrehan3.github.io/dm-sender-public/",
         "description": "A Slack bot that allows you to send direct messages to users in your workspace, appearing as if sent by you. Ideal for automated communication."
       },
       {
-        "imageSource": "https://github.com/karantrehan3/karantrehan3.github.io/src/assets/projects/2.png",
+        "imageSource": "/assets/projects/2.png",
         "title": "Gesture-Controlled Interactive Gaming",
         "link": "https://karantrehan3.github.io/Hand-Gesture-Recognition-Based-Interactive-Gaming/",
         "description": "An innovative computer vision project enabling hand gestures to control a game. Map gestures to W, A, S, D keys for a dynamic, hands-free gaming experience."
