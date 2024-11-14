@@ -1,0 +1,28 @@
+/* Projects.module.css */
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.cardsContainer {
+    display: grid;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    justify-content: center;
+    transition: all 0.6s ease-in-out;
+}
+
+@media (min-width: 769px) {
+    .cardsContainer {
+        grid-template-columns: repeat(auto-fit, 400px);
+    }
+}
+
+@media (max-width: 768px) {
+    .cardsContainer {
+        grid-template-columns: 1fr;
+    }
+}
