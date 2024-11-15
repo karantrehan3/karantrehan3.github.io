@@ -12,6 +12,10 @@
             "label": "Slack DM Sender"
           },
           {
+            "link": "https://karantrehan3.github.io/docker-localstack/",
+            "label": "Run AWS Locally (Docker-Localstack)"
+          },
+          {
             "link": "https://karantrehan3.github.io/Hand-Gesture-Recognition-Based-Interactive-Gaming/",
             "label": "Gesture-Controlled Interactive Gaming"
           }
@@ -41,6 +45,12 @@
       },
       {
         "imageSource": "/assets/projects/2.png",
+        "title": "Run AWS Locally (Docker-Localstack)",
+        "link": "https://karantrehan3.github.io/docker-localstack/",
+        "description": "Simplify your local development by emulating AWS cloud services using Localstack within Docker. This setup enables seamless testing and development of AWS-dependent applications locally, supporting S3 and SQS as of now, and ensuring faster feedback loops without incurring cloud costs."
+      },
+      {
+        "imageSource": "/assets/projects/3.png",
         "title": "Gesture-Controlled Interactive Gaming",
         "link": "https://karantrehan3.github.io/Hand-Gesture-Recognition-Based-Interactive-Gaming/",
         "description": "An innovative computer vision project enabling hand gestures to control a game. Map gestures to W, A, S, D keys for a dynamic, hands-free gaming experience."

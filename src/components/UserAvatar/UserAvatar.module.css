@@ -17,8 +17,11 @@
     animation: rotate-animation 1s infinite;
 }
 
-.transparent {
+.indicator {
     --indicator-color: transparent;
+    --indicator-size: 100px;
+    --indicator-top: 50%;
+    --indicator-right: 40px !important;
 }
 
 .loader {
@@ -59,6 +62,11 @@
         height: 200px;
         transition: width 0.3s ease, height 0.3s ease;
     }
+
+    .indicator {
+        --indicator-size: 50px;
+        --indicator-right: 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -66,5 +74,10 @@
         width: 150px;
         height: 150px;
         transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    .indicator {
+        --indicator-size: 25px;
+        --indicator-right: 10px;
     }
 }
