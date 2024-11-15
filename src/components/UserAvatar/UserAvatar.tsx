@@ -11,11 +11,9 @@ export function UserAvatar() {
       <Indicator
         inline
         label={<span className={classes.label}>👋</span>}
-        size={100}
-        offset={60}
         position="bottom-end"
         withBorder={false}
-        className={classes.transparent}
+        className={classes.indicator}
       >
         {loading && <Loader className={classes.loader} type="dots" size="xl" />}
         <div className={classes.avatarContainer}>

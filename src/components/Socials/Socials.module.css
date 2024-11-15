@@ -4,6 +4,11 @@
     color: light-dark(var(--mantine-color-red-8), var(--mantine-color-white));
     font-size: var(--mantine-font-size-md);
     font-weight: 500;
+    transition: transform 0.3s;
+}
+
+.email_button:hover {
+    transform: scale(1.1);
 }
 
 .email_icon {
@@ -16,6 +21,11 @@
     color: light-dark(var(--mantine-color-blue-8), var(--mantine-color-white));
     font-size: var(--mantine-font-size-md);
     font-weight: 500;
+    transition: transform 0.3s;
+}
+
+.linkedin_button:hover {
+    transform: scale(1.1);
 }
 
 .linkedin_icon {
@@ -23,13 +33,18 @@
 }
 
 .github_button {
-    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
-    border: light-dark(2px solid var(--mantine-color-dark-8), 0px);
-    color: light-dark(var(--mantine-color-dark-8), var(--mantine-color-white));
+    background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-4));
+    border: light-dark(2px solid var(--mantine-color-dark-4), 0px);
+    color: light-dark(var(--mantine-color-dark-4), var(--mantine-color-white));
     font-size: var(--mantine-font-size-md);
     font-weight: 500;
+    transition: transform 0.3s;
+}
+
+.github_button:hover {
+    transform: scale(1.1);
 }
 
 .github_icon {
-    color: light-dark(var(--mantine-color-dark-8), var(--mantine-color-white)) !important;
+    color: light-dark(var(--mantine-color-dark-4), var(--mantine-color-white)) !important;
 }
