@@ -32,6 +32,7 @@ export function Error(): ReactElement {
             title="Home"
             onClick={() => navigate("/")}
             size="lg"
+            gradient={{ from: "yellow", to: "red" }}
           >
             <IconHome style={{ marginRight: 5 }} />
             Home
