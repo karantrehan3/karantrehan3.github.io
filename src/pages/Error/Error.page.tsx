@@ -1,12 +1,14 @@
+import { ReactElement } from "react";
+import { PageLayout } from "@/components/PageLayout/PageLayout";
 import { Error } from "@/components/Error/Error";
 import classes from "./Error.module.css";
 
-export function ErrorPage() {
+export function ErrorPage(): ReactElement {
   return (
-    <div className={classes.pageContainer}>
+    <PageLayout header={false}>
       <div className={classes.center}>
         <Error />
       </div>
-    </div>
+    </PageLayout>
   );
 }

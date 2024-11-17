@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { Button, Stack } from "@mantine/core";
 import {
   IconBrandLinkedin,
@@ -7,16 +8,16 @@ import {
 import config from "@/utils/Config";
 import classes from "./Socials.module.css";
 
-export function Socials() {
-  const handleEmailClick = () => {
+export function Socials(): ReactElement {
+  const handleEmailClick = (): void => {
     window.location.href = `mailto:${config.get("SOCIALS.EMAIL.ID")}?subject=${config.get("SOCIALS.EMAIL.SUBJECT")}`;
   };
 
-  const handleLinkedInClick = () => {
+  const handleLinkedInClick = (): void => {
     window.open(config.get("SOCIALS.LINKEDIN"), "_blank");
   };
 
-  const handleGithubClick = () => {
+  const handleGithubClick = (): void => {
     window.open(config.get("SOCIALS.GITHUB"), "_blank");
   };
 

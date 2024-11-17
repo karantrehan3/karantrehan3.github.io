@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, ReactElement } from "react";
 import { Loader } from "@mantine/core";
 import config from "@/utils/Config";
 import classes from "./Calendar.module.css";
-export function Calendar() {
-  const [loading, setLoading] = useState(true);
+
+export function Calendar(): ReactElement {
+  const [loading, setLoading] = useState<boolean>(true);
 
   return (
     <div>

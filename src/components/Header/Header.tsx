@@ -1,5 +1,5 @@
 import { IconChevronDown } from "@tabler/icons-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Container, Group, Burger, Drawer, Menu, Center } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -7,14 +7,20 @@ import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 import config from "@/utils/Config";
 import classes from "./Header.module.css";
 
-const links = [
+interface Link {
+  link: string;
+  label: string;
+  links?: { link: string; label: string }[];
+}
+
+const links: Link[] = [
   { link: "/home", label: "Home" },
   ...(config.get("HEADER.LINKS") || []),
 ];
 
-export function Header() {
+export function Header(): ReactElement {
   const [opened, { toggle, close }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  const [active, setActive] = useState<string>(links[0].link);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -70,7 +76,7 @@ export function Header() {
           </a>
         </Menu.Target>
         <Menu.Dropdown>
-          {link.links.map((item: any) => (
+          {link.links.map((item) => (
             <Menu.Item
               key={item.link}
               onClick={(event) => {

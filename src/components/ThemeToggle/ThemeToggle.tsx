@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, ReactElement } from "react";
 import {
   useMantineColorScheme,
   useMantineTheme,
@@ -7,7 +7,7 @@ import {
 } from "@mantine/core";
 import { IconSun, IconMoon } from "@tabler/icons-react";
 
-export function ThemeToggle() {
+export function ThemeToggle(): ReactElement {
   const theme = useMantineTheme();
   const { colorScheme, toggleColorScheme, setColorScheme } =
     useMantineColorScheme();

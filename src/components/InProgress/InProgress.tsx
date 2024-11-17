@@ -1,8 +1,9 @@
+import { ReactElement } from "react";
 import { Text } from "@mantine/core";
-import { BouncyLoader } from "../Loaders/BouncyLoader";
+import { BouncyLoader } from "@/components/Loaders/BouncyLoader";
 import classes from "./InProgress.module.css";
 
-export function InProgress() {
+export function InProgress(): ReactElement {
   return (
     <div>
       <Text className={classes.text}>
