@@ -1,8 +1,9 @@
+import { ReactElement } from "react";
 import { Text, Title } from "@mantine/core";
 import config from "@/utils/Config";
 import classes from "./Welcome.module.css";
 
-export function Welcome() {
+export function Welcome(): ReactElement {
   return (
     <div>
       <Title className={classes.title}>

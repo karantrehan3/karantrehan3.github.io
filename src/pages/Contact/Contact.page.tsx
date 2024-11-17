@@ -1,12 +1,12 @@
-import { Header } from "@/components/Header/Header";
+import { ReactElement } from "react";
+import { PageLayout } from "@/components/PageLayout/PageLayout";
 import { Calendar } from "@/components/Calendar/Calendar";
 import { Socials } from "@/components/Socials/Socials";
 import classes from "./Contact.module.css";
 
-export function ContactPage() {
+export function ContactPage(): ReactElement {
   return (
-    <div className={classes.pageContainer}>
-      <Header />
+    <PageLayout>
       <div className={classes.container}>
         <div className={classes.left}>
           <Socials />
@@ -15,6 +15,6 @@ export function ContactPage() {
           <Calendar />
         </div>
       </div>
-    </div>
+    </PageLayout>
   );
 }

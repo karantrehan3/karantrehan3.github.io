@@ -1,4 +1,5 @@
-import { Card as OgCard, Image, Text, Group } from "@mantine/core";
+import { useState, ReactElement } from "react";
+import { Card as OgCard, Image, Text, Group, Loader } from "@mantine/core";
 import classes from "./Card.module.css";
 
 interface CardProps {
@@ -15,11 +16,24 @@ export function Card({
   title,
   description,
   link,
-}: CardProps) {
+}: CardProps): ReactElement {
+  const [loading, setLoading] = useState<boolean>(true);
+
   return (
     <OgCard className={classes.card} onClick={() => window.open(link, "_self")}>
       <OgCard.Section>
-        <Image src={imageSource} alt={imageAlt} className={classes.img} />
+        {loading && (
+          <div className={classes.center}>
+            <Loader className={classes.loader} type="dots" size="xl" />
+          </div>
+        )}
+        <Image
+          src={imageSource}
+          alt={imageAlt}
+          className={loading ? classes.hidden : classes.img}
+          onLoad={() => setLoading(false)}
+          onError={() => setLoading(false)}
+        />
       </OgCard.Section>
 
       <Group className={classes.group}>

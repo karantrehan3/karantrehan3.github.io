@@ -1,0 +1,9 @@
+.footer {
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.copyright {
+    --text-fz: 14px;
+    color: light-dark(var(--mantine-color-dark-8), var(--mantine-color-dark-0))
+}

@@ -17,6 +17,21 @@
     object-fit: contain;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.loader {
+    --loader-color: var(--mantine-color-orange-filled);
+}
+
+.hidden {
+    display: none;
+}
+
 .group {
     display: flex;
     justify-content: center;

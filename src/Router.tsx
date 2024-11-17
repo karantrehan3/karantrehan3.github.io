@@ -1,3 +1,4 @@
+import { ReactElement } from "react";
 import { createHashRouter, RouterProvider, Navigate } from "react-router-dom";
 import { HomePage } from "./pages/Home/Home.page";
 import { ProjectsPage } from "./pages/Projects/Projects.page";
@@ -32,6 +33,6 @@ const router = createHashRouter([
   },
 ]);
 
-export function Router() {
+export function Router(): ReactElement {
   return <RouterProvider router={router} />;
 }

@@ -1,13 +1,13 @@
+import { ReactElement } from "react";
+import { PageLayout } from "@/components/PageLayout/PageLayout";
 import { Welcome } from "@/components/Welcome/Welcome";
-import { Header } from "@/components/Header/Header";
 import { InProgress } from "@/components/InProgress/InProgress";
 import { UserAvatar } from "@/components/UserAvatar/UserAvatar";
 import classes from "./Home.module.css";
 
-export function HomePage() {
+export function HomePage(): ReactElement {
   return (
-    <div className={classes.pageContainer}>
-      <Header />
+    <PageLayout>
       <div className={classes.content}>
         <div className={classes.left}>
           <UserAvatar />
@@ -17,6 +17,6 @@ export function HomePage() {
           <InProgress />
         </div>
       </div>
-    </div>
+    </PageLayout>
   );
 }
