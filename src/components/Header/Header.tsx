@@ -106,11 +106,11 @@ export function Header(): ReactElement {
         </Group>
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
         <Drawer opened={opened} onClose={close} hiddenFrom="xs" padding="md">
-          <Group>
-            {items}
-            <ThemeToggle />
-          </Group>
+          <Group className={classes.drawer}>{items}</Group>
         </Drawer>
+        <Group hiddenFrom="xs" className={classes.right}>
+          <ThemeToggle />
+        </Group>
       </Container>
     </header>
   );
