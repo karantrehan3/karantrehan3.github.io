@@ -58,3 +58,17 @@
 .linkLabel {
     margin-right: rem(5px);
 }
+
+@media (max-width: 768px) {
+    .drawer {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .drawer a {
+        width: 100%;
+        text-align: center;
+        font-size: var(--mantine-font-size-lg);
+    }
+}
