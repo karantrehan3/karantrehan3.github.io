@@ -64,20 +64,11 @@
     }
 
     .indicator {
-        --indicator-size: 50px;
+        --indicator-size: 65px;
         --indicator-right: 20px;
     }
-}
 
-@media (max-width: 480px) {
-    .avatar {
-        width: 150px;
-        height: 150px;
-        transition: width 0.3s ease, height 0.3s ease;
-    }
-
-    .indicator {
-        --indicator-size: 25px;
-        --indicator-right: 10px;
+    .label {
+        font-size: 50px;
     }
 }
