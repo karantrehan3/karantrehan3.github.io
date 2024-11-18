@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect } from "react";
+import { FC, ReactNode } from "react";
 import classes from "./Layout.module.css";
 
 interface LayoutProps {
@@ -6,18 +6,7 @@ interface LayoutProps {
 }
 
 const Layout: FC<LayoutProps> = ({ children }) => {
-  useEffect(() => {
-    const parentBackgroundColor =
-      window.parent.document.body.style.backgroundColor;
-    document.getElementById("layout")!.style.backgroundColor =
-      parentBackgroundColor;
-  }, []);
-
-  return (
-    <div id="layout" className={classes.layout}>
-      {children}
-    </div>
-  );
+  return <div className={classes.layout}>{children}</div>;
 };
 
 export default Layout;
