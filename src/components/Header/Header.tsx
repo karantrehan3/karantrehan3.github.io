@@ -10,7 +10,8 @@ import classes from "./Header.module.css";
 interface Link {
   link: string;
   label: string;
-  links?: { link: string; label: string }[];
+  hidden?: boolean;
+  links?: { link: string; label: string; hidden?: boolean }[];
 }
 
 const links: Link[] = [
@@ -32,34 +33,17 @@ export function Header(): ReactElement {
     }
   }, [location]);
 
-  const items = links.map((link) => {
-    if (!link.links?.length) {
-      return (
-        <a
-          key={link.label}
-          href={link.link}
-          className={classes.link}
-          data-active={active === link.link || undefined}
-          onClick={(event) => {
-            event.preventDefault();
-            navigate(link.link);
-            close();
-          }}
-        >
-          {link.label}
-        </a>
-      );
-    }
+  const items = links
+    .map((link) => {
+      if (link.hidden) {
+        // Hide link if the page is made hidden
+        return null;
+      }
 
-    return (
-      <Menu
-        key={link.label}
-        trigger="hover"
-        transitionProps={{ exitDuration: 0 }}
-        withinPortal
-      >
-        <Menu.Target>
+      if (!link.links?.length) {
+        return (
           <a
+            key={link.label}
             href={link.link}
             className={classes.link}
             data-active={active === link.link || undefined}
@@ -69,29 +53,61 @@ export function Header(): ReactElement {
               close();
             }}
           >
-            <Center>
-              <span className={classes.linkLabel}>{link.label}</span>
-              <IconChevronDown size="0.9rem" stroke={1.5} />
-            </Center>
+            {link.label}
           </a>
-        </Menu.Target>
-        <Menu.Dropdown>
-          {link.links.map((item) => (
-            <Menu.Item
-              key={item.link}
+        );
+      }
+
+      return (
+        <Menu
+          key={link.label}
+          trigger="hover"
+          transitionProps={{ exitDuration: 0 }}
+          withinPortal
+        >
+          <Menu.Target>
+            <a
+              href={link.link}
+              className={classes.link}
+              data-active={active === link.link || undefined}
               onClick={(event) => {
                 event.preventDefault();
-                window.open(item.link, "_self");
+                navigate(link.link);
                 close();
               }}
             >
-              {item.label}
-            </Menu.Item>
-          ))}
-        </Menu.Dropdown>
-      </Menu>
-    );
-  });
+              <Center>
+                <span className={classes.linkLabel}>{link.label}</span>
+                <IconChevronDown size="0.9rem" stroke={1.5} />
+              </Center>
+            </a>
+          </Menu.Target>
+          <Menu.Dropdown>
+            {link.links
+              .map((item) => {
+                if (item.hidden) {
+                  // Hide sub-link if the item is made hidden
+                  return null;
+                }
+                return (
+                  <Menu.Item
+                    key={item.link}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      window.open(item.link, "_self");
+                      close();
+                    }}
+                  >
+                    {item.label}
+                  </Menu.Item>
+                );
+              })
+              .filter(Boolean)}
+          </Menu.Dropdown>
+        </Menu>
+      );
+    })
+    .filter(Boolean);
 
   return (
     <header className={classes.header}>

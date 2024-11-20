@@ -17,7 +17,7 @@ const routes: RouteObject[] = [
   },
   {
     path: "/about",
-    element: <HomePage />,
+    element: <Navigate to="/home" />, // TODO: Temporarily redirect to home
   },
   {
     path: "/projects",
