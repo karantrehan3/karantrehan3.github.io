@@ -56,5 +56,26 @@
         "description": "An innovative computer vision project enabling hand gestures to control a game. Map gestures to W, A, S, D keys for a dynamic, hands-free gaming experience."
       }
     ]
+  },
+  "EXTERNAL": {
+    "HEADER": {
+      "BUTTONS": [
+        {
+          "name": "Back",
+          "tooltip": "Go to Previous Page",
+          "icon": "IconArrowBack",
+          "onClick": { "method": "goBack", "args": {} }
+        },
+        {
+          "name": "Home",
+          "tooltip": "Go to Portfolio's Home",
+          "icon": "IconHome",
+          "onClick": {
+            "method": "openUrlOnTop",
+            "args": { "url": "https://karantrehan3.github.io/" }
+          }
+        }
+      ]
+    }
   }
 }
