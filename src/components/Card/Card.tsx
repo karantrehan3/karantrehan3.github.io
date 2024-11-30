@@ -8,6 +8,7 @@ interface CardProps {
   title: string;
   description: string;
   link: string;
+  inProgress?: boolean;
 }
 
 export function Card({
@@ -16,6 +17,7 @@ export function Card({
   title,
   description,
   link,
+  inProgress = false,
 }: CardProps): ReactElement {
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -25,6 +27,11 @@ export function Card({
         {loading && (
           <div className={classes.center}>
             <Loader className={classes.loader} type="dots" size="xl" />
+          </div>
+        )}
+        {inProgress && (
+          <div className={classes.ribbon}>
+            <span>🛠️ In Progress</span>
           </div>
         )}
         <Image
