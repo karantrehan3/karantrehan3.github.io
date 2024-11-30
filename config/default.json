@@ -9,19 +9,23 @@
         "links": [
           {
             "link": "https://github.com/karantrehan3/cafe-safar/",
-            "label": "Cafe Safar"
+            "label": "Cafe Safar",
+            "iconSource": "/assets/icons/cafe.png"
           },
           {
             "link": "https://karantrehan3.github.io/dm-sender-public/",
-            "label": "Slack DM Sender"
+            "label": "Slack DM Sender",
+            "iconSource": "/assets/icons/slack.png"
           },
           {
             "link": "https://karantrehan3.github.io/docker-localstack/",
-            "label": "Run AWS Locally (Docker-Localstack)"
+            "label": "Run AWS Locally (Docker-Localstack)",
+            "iconSource": "/assets/icons/docker.png"
           },
           {
             "link": "https://karantrehan3.github.io/Hand-Gesture-Recognition-Based-Interactive-Gaming/",
-            "label": "Gesture-Controlled Interactive Gaming"
+            "label": "Gesture-Controlled Interactive Gaming",
+            "iconSource": "/assets/icons/camera-ai.png"
           }
         ]
       },

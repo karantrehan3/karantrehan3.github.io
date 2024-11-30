@@ -59,6 +59,16 @@
     margin-right: rem(5px);
 }
 
+.subLabel {
+    display: flex;
+    align-items: center
+}
+
+.icon {
+    margin-right: 0.5rem;
+    height: 1.5rem;
+}
+
 @media (max-width: 768px) {
     .drawer {
         flex-direction: column;

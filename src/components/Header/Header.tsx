@@ -1,7 +1,15 @@
 import { IconChevronDown } from "@tabler/icons-react";
 import { useState, useEffect, ReactElement } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Container, Group, Burger, Drawer, Menu, Center } from "@mantine/core";
+import {
+  Container,
+  Group,
+  Burger,
+  Drawer,
+  Menu,
+  Center,
+  Image,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 import config from "@/utils/Config";
@@ -11,7 +19,12 @@ interface Link {
   link: string;
   label: string;
   hidden?: boolean;
-  links?: { link: string; label: string; hidden?: boolean }[];
+  links?: {
+    link: string;
+    label: string;
+    hidden?: boolean;
+    iconSource?: string;
+  }[];
 }
 
 const links: Link[] = [
@@ -98,7 +111,12 @@ export function Header(): ReactElement {
                       close();
                     }}
                   >
-                    {item.label}
+                    <div className={classes.subLabel}>
+                      {item.iconSource && (
+                        <Image src={item.iconSource} className={classes.icon} />
+                      )}
+                      {item.label}
+                    </div>
                   </Menu.Item>
                 );
               })
