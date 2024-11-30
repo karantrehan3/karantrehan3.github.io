@@ -16,6 +16,24 @@
   color: light-dark(var(--mantine-color-dark-10), var(--mantine-color-dark-0));
 }
 
+.button {
+  background-color: var(--mantine-color-orange-filled);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.button:hover {
+  background-color: var(--mantine-color-orange-filled);
+  transition: transform 0.1s ease-in-out;
+  transform: scale(1.05);
+}
+
 @media (max-width: 600px) {
   .loader {
     margin-top: 1rem;
