@@ -70,11 +70,11 @@
     color: white;
     text-align: center;
     font-weight: bold;
-    top: 45px;
+    top: 46.5px;
     right: -50px;
     transform: rotate(45deg);
     box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
-    animation: growShrink 1.5s infinite alternate;
+    animation: growShrink 1s infinite alternate;
 }
 
 @keyframes growShrink {
@@ -83,7 +83,7 @@
     }
 
     50% {
-        transform: rotate(45deg) scale(1.1);
+        transform: rotate(45deg) scale(1.125);
     }
 
     100% {
