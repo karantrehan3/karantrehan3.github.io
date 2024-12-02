@@ -8,7 +8,7 @@
         "label": "Projects",
         "links": [
           {
-            "link": "https://karantrehan3.github.io/cafe-safar/",
+            "link": "https://cafe-safar-dev.onrender.com/",
             "label": "Cafe Safar",
             "iconSource": "/assets/icons/cafe.png"
           },
@@ -48,7 +48,7 @@
       {
         "imageSource": "/assets/projects/4.png",
         "title": "Cafe Safar",
-        "link": "https://karantrehan3.github.io/cafe-safar/",
+        "link": "https://cafe-safar-dev.onrender.com/",
         "description": "Cafe Safar is a comprehensive full stack application designed for order management at the restaurant 'Cafe-Safar'. It features distinct user and admin views. Users can place orders, review past orders and transactions, and manage their profiles. Admins have the ability to oversee orders, update the menu, monitor payments, and handle various administrative functions. The application is being built on the MERN stack and is currently a work in progress.",
         "inProgress": true
       },
