@@ -1,14 +1,14 @@
 import { ReactElement } from "react";
 import { Text, Button } from "@mantine/core";
 import { BouncyLoader } from "@/components/Loaders/BouncyLoader";
-import { useNavigate } from "react-router-dom";
 import classes from "./InProgress.module.css";
 
 export function InProgress(): ReactElement {
-  const navigate = useNavigate();
-
-  const handleButtonClick = () => {
-    navigate("/projects");
+  const handleButtonClick = (): void => {
+    const section = document.querySelector("#projects");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
