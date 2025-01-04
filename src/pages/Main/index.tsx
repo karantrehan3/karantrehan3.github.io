@@ -1,6 +1,7 @@
 import { ReactElement, lazy } from "react";
 import { PageLayout } from "../../components/PageLayout/PageLayout";
 import { Suspense } from "../../components/Suspense/Suspense";
+import ZigZag from "../../components/Dividers/ZigZag";
 import classes from "./index.module.css";
 
 const HomePage = lazy(() => import("../Home/Home.page"));
@@ -15,11 +16,13 @@ export function MainPage(): ReactElement {
           <HomePage />
         </Suspense>
       </div>
+      <ZigZag />
       <div className={classes.section} id="projects">
         <Suspense>
           <ProjectsPage />
         </Suspense>
       </div>
+      <ZigZag />
       <div className={classes.section} id="contact">
         <Suspense>
           <ContactPage />
