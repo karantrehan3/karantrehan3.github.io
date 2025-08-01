@@ -12,6 +12,38 @@
     box-shadow: 0 4px 8px light-dark(var(--mantine-color-dark-1), var(--mantine-color-dark-2));
 }
 
+.imageSection {
+    position: relative;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.overlay span {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}
+
 .img {
     width: 100%;
     object-fit: contain;
