@@ -1,5 +1,6 @@
 import { useState, ReactElement } from "react";
-import { Card as OgCard, Image, Text, Group, Loader } from "@mantine/core";
+import { Card as OgCard, Image, Text, Group, Loader, Container } from "@mantine/core";
+import ReactMarkdown from "react-markdown";
 import classes from "./Card.module.css";
 
 interface CardProps {
@@ -23,7 +24,7 @@ export function Card({
 
   return (
     <OgCard className={classes.card} onClick={() => window.open(link, "_self")}>
-      <OgCard.Section>
+      <OgCard.Section className={classes.imageSection}>
         {loading && (
           <div className={classes.center}>
             <Loader className={classes.loader} type="dots" size="xl" />
@@ -41,13 +42,18 @@ export function Card({
           onLoad={() => setLoading(false)}
           onError={() => setLoading(false)}
         />
+        <Container className={classes.overlay}>
+          <span>Click to check it out</span>
+        </Container>
       </OgCard.Section>
 
       <Group className={classes.group}>
         <Text className={classes.title}>{title}</Text>
       </Group>
 
-      <Text className={classes.description}>{description}</Text>
+      <Text className={classes.description}>
+        <ReactMarkdown>{description}</ReactMarkdown>
+      </Text>
     </OgCard>
   );
 }
