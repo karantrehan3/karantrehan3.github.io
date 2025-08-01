@@ -8,6 +8,11 @@
         "label": "Projects",
         "links": [
           {
+            "link": "https://karantrehan3.github.io/cause-list-checker/",
+            "label": "Cause List Checker",
+            "iconSource": "/assets/icons/law.png"
+          },
+          {
             "link": "https://cafe-safar-dev.onrender.com/",
             "label": "Cafe Safar",
             "iconSource": "/assets/icons/cafe.png"
@@ -45,6 +50,12 @@
   "AVATAR": "/assets/dp/profile.jpg",
   "PROJECTS": {
     "CARDS": [
+      {
+        "imageSource": "/assets/projects/5.png",
+        "title": "Cause List Checker",
+        "link": "https://karantrehan3.github.io/cause-list-checker/",
+        "description": "Cause List Checker is a FastAPI-based web application that automates searching through Punjab and Haryana High Court cause list PDFs for specific case details, fetches comprehensive case information from the court website, and sends automated email notifications with search results to legal professionals, built with Python, FastAPI, Docker, and Gmail SMTP integration."
+      },
       {
         "imageSource": "/assets/projects/4.png",
         "title": "Cafe Safar",
