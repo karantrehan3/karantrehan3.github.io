@@ -7,7 +7,7 @@ export function Welcome(): ReactElement {
   return (
     <div>
       <Title className={classes.title}>
-        Howdy! I am{" "}
+        Hi there! I'm{" "}
         <Text
           inherit
           variant="gradient"
@@ -17,6 +17,9 @@ export function Welcome(): ReactElement {
           {config.get("TITLE.NAME")}
         </Text>
       </Title>
+      <Text size="lg" className={classes.subtitle}>
+        Senior Software Engineer & AI Enthusiast
+      </Text>
     </div>
   );
 }

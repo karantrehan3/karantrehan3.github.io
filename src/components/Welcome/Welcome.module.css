@@ -7,10 +7,24 @@
   transition: font-size 0.3s ease, letter-spacing 0.3s ease;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  margin-bottom: 1rem;
 
   @media (max-width: $mantine-breakpoint-md) {
     font-size: rem(50px);
   }
+}
+
+.subtitle {
+  text-align: center;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.subtitle:hover {
+  opacity: 1;
 }
 
 /* Mobile styles */
@@ -18,5 +32,9 @@
   .title {
     font-size: rem(40px);
     letter-spacing: rem(-1px);
+  }
+  
+  .subtitle {
+    font-size: 1rem;
   }
 }

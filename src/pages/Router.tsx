@@ -7,10 +7,6 @@ import externalRoutes from "./External/Router";
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Navigate to="/main" />,
-  },
-  {
-    path: "/main",
     element: <MainPage />,
   },
   {
