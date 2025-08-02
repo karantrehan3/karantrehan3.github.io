@@ -2,7 +2,7 @@
   "TITLE": { "NAME": "Karan Trehan" },
   "HEADER": {
     "LINKS": [
-      { "link": "#about", "label": "About Me", "hidden": true },
+      { "link": "#about", "label": "About Me" },
       {
         "link": "#projects",
         "label": "Projects",
@@ -48,38 +48,284 @@
     "GITHUB": "https://github.com/karantrehan3"
   },
   "AVATAR": "/assets/dp/profile.jpg",
+  "ABOUT": {
+    "TITLE": "About Me",
+    "SUBTITLE": "Experience & Education",
+    "QUOTE": "Innovating AI-driven solutions that power seamless customer experiences.",
+    "INTRODUCTION": {
+      "TYPING_EFFECT": [
+        "Senior Software Engineer",
+        "Backend & AI Innovator",
+        "Python | FastAPI | GenAI | LLMs",
+        "Node.js | Express.js",
+        "React.js | UI Development",
+        "Always Evolving Beyond Boundaries"
+      ]
+    },
+    "EXPERIENCE_SUMMARY": {
+      "YEARS": "4+",
+      "DESCRIPTION": "years of software development experience in high-performance applications using NodeJS, Python, and AWS, specializing in AI-powered automation, microservices, and cloud-based architectures.",
+      "COMPANIES": [
+        {
+          "NAME": "Akmazo Akcelerator",
+          "URL": "https://www.akcelerator.io/",
+          "LOGO": "/assets/work/akmazo_akcelerator.jpeg",
+          "ROLES": [
+            {
+              "TITLE": "Senior Software Engineer",
+              "PERIOD": "May 2025 - Present",
+              "DESCRIPTION": "- Building **Generative AI** & **RAG** pipelines for Customer Support\n- Developing scalable **AI solutions** for enterprise clients\n- Leading technical architecture decisions for **AI-powered** features"
+            }
+          ]
+        },
+        {
+          "NAME": "Springworks",
+          "URL": "https://springworks.in/",
+          "LOGO": "/assets/work/springworks.jpeg",
+          "ROLES": [
+            {
+              "TITLE": "Software Development Engineer 2",
+              "PERIOD": "January 2024 - April 2025",
+              "DESCRIPTION": "- Led **AI integrations** for SpringVerify, implementing **AI-based calling** and increasing submission rate by **18%**\n- Automated operations using **GenAI** for text and vision, reducing manual effort\n- Developed **priority and non-priority queue-based architecture** for optimized async data processing\n- Integrated **Direct-Search** into **RAG** using **LLM function calls** for API-based data retrieval\n- Established unified **OAuth-based sign-in/sign-up flow** for Slack, Microsoft, Google, and email authentication\n- Fixed **502 errors** by addressing TCP connection expiry between load balancer and microservices\n- Developed internal tools via **Appsmith** to streamline operations"
+            },
+            {
+              "TITLE": "Software Development Engineer 1",
+              "PERIOD": "May 2022 - December 2023",
+              "DESCRIPTION": "- Promoted to **Team Lead** within 7 days of full-time conversion, leading **Trivia** product development\n- Integrated Microsoft's **Monetization platform**, increasing revenue by **$5.6K** and securing **$10K** in annual benefits\n- Resolved **Slack rate-limiting issues** using **Redis-backed caching layer**\n- Built scalable **DM system** for Slack & Microsoft Teams, delivering **100K+ DMs** for PMM team\n- Migrated services from **REST** to **SQS-based inter-service communication**, enhancing data processing efficiency\n- Developed **LLM-based query routing** for trained data vs. LLM responses\n- Integrated **Portkey** for **AI aggregation**, enabling dynamic model switching via disposable virtual keys"
+            },
+            {
+              "TITLE": "Software Engineering Intern",
+              "PERIOD": "May 2021 - May 2022",
+              "DESCRIPTION": "- Set up unit testing using **Chai**, **Sinon**, and **Mocha**, establishing team-wide testing conventions\n- Led **Trivia's refactor** into **three microservices**, optimizing Slack and Microsoft Teams integrations"
+            }
+          ],
+          "PROJECTS": [
+            {
+              "NAME": "Albus",
+              "CURRENT_NAME": "ChatAid",
+              "URL": "https://chataid.com/",
+              "STATUS": "Exited & Rebranded",
+              "ROLE": "Led development"
+            },
+            {
+              "NAME": "Trivia",
+              "URL": "https://trytrivia.co/",
+              "STATUS": "Exited",
+              "ROLE": "Led development"
+            },
+            {
+              "NAME": "SpringVerify",
+              "URL": "https://in.springverify.com/",
+              "STATUS": "Active",
+              "ROLE": "Contributed to development"
+            }
+          ]
+        }
+      ]
+    },
+    "FOCUS_AREAS": [
+      "AI-powered Automation",
+      "Microservices Architecture",
+      "Cloud-based Solutions",
+      "High-performance Applications",
+      "Backend Development"
+    ],
+    "PROFESSIONAL_QUOTE": "Innovating AI-driven solutions that power seamless customer experiences.",
+    "EDUCATION": {
+      "DEGREE": "B.E. Computer Science with Specialization in AI and ML",
+      "MARKS": "8.77 [CGPA]",
+      "UNIVERSITY": "Chandigarh University, Mohali, Punjab",
+      "GRADUATION_DATE": "July 2018 - June 2022",
+      "LOGO": "/assets/education/chandigarh_university.jpeg",
+      "ACHIEVEMENTS": ["Gold Medalist 🥇"]
+    },
+    "SKILLS": {
+      "GENERATIVE_AI": [
+        {
+          "name": "OpenAI",
+          "badge": "https://img.shields.io/badge/OpenAI-000000?logo=openai&logoColor=white"
+        },
+        {
+          "name": "Azure OpenAI",
+          "badge": "https://img.shields.io/badge/Azure%20OpenAI-0089D6?logo=microsoftazure&logoColor=white"
+        },
+        {
+          "name": "Portkey-AI",
+          "badge": "https://img.shields.io/badge/Portkey--AI-FB8122?logo=portkey&logoColor=white"
+        }
+      ],
+      "PROGRAMMING_LANGUAGES": [
+        {
+          "name": "Python",
+          "badge": "https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white"
+        },
+        {
+          "name": "JavaScript",
+          "badge": "https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black"
+        }
+      ],
+      "RUNTIME_ENVIRONMENTS": [
+        {
+          "name": "Node.js",
+          "badge": "https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white"
+        }
+      ],
+      "FRAMEWORKS_LIBRARIES": [
+        {
+          "name": "FastAPI",
+          "badge": "https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white"
+        },
+        {
+          "name": "Express.js",
+          "badge": "https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white"
+        },
+        {
+          "name": "React.js",
+          "badge": "https://img.shields.io/badge/React.js-20232A?logo=react&logoColor=61DAFB"
+        },
+        {
+          "name": "AppSmith",
+          "badge": "https://img.shields.io/badge/AppSmith-000000?logo=appsmith&logoColor=white"
+        }
+      ],
+      "DATABASES": [
+        {
+          "name": "MongoDB",
+          "badge": "https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white"
+        },
+        {
+          "name": "Redis",
+          "badge": "https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white"
+        },
+        {
+          "name": "MySQL",
+          "badge": "https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white"
+        },
+        {
+          "name": "PostgreSQL",
+          "badge": "https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white"
+        }
+      ],
+      "CLOUD_DEVOPS": [
+        {
+          "name": "AWS",
+          "badge": "https://img.shields.io/badge/AWS-232F3E?logo=amazon-aws&logoColor=white"
+        },
+        {
+          "name": "EC2",
+          "badge": "https://img.shields.io/badge/EC2-FF9900?logo=amazon-ec2&logoColor=white&color=FF9900"
+        },
+        {
+          "name": "ECR",
+          "badge": "https://img.shields.io/badge/ECR-AF52DE?logo=amazon-ecs&logoColor=white&color=AF52DE"
+        },
+        {
+          "name": "ECS",
+          "badge": "https://img.shields.io/badge/ECS-00BFFF?logo=amazon-ecs&logoColor=white&color=00BFFF"
+        },
+        {
+          "name": "S3",
+          "badge": "https://img.shields.io/badge/S3-146EB4?logo=amazon-aws&logoColor=white&color=146EB4"
+        },
+        {
+          "name": "RDS",
+          "badge": "https://img.shields.io/badge/RDS-FF9900?logo=amazon-rds&logoColor=white&color=FF9900"
+        },
+        {
+          "name": "SQS",
+          "badge": "https://img.shields.io/badge/SQS-AF52DE?logo=amazon-sqs&logoColor=white&color=AF52DE"
+        },
+        {
+          "name": "API Gateway",
+          "badge": "https://img.shields.io/badge/API%20Gateway-00BFFF?logo=amazonapigateway&logoColor=white&color=00BFFF"
+        },
+        {
+          "name": "Lambda",
+          "badge": "https://img.shields.io/badge/Lambda-146EB4?logo=awslambda&logoColor=white&color=146EB4"
+        },
+        {
+          "name": "SES",
+          "badge": "https://img.shields.io/badge/SES-FF9900?logo=amazonses&logoColor=white&color=FF9900"
+        },
+        {
+          "name": "CloudWatch",
+          "badge": "https://img.shields.io/badge/CloudWatch-AF52DE?logo=amazoncloudwatch&logoColor=white&color=AF52DE"
+        },
+        {
+          "name": "ElastiCache Redis",
+          "badge": "https://img.shields.io/badge/ElastiCache-00BFFF?logo=redis&logoColor=white&color=00BFFF"
+        },
+        {
+          "name": "Secrets Manager",
+          "badge": "https://img.shields.io/badge/Secrets%20Manager-146EB4?logo=amazonsecretsmanager&logoColor=white&color=146EB4"
+        },
+        {
+          "name": "Docker",
+          "badge": "https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white"
+        }
+      ],
+      "PROJECT_MANAGEMENT": [
+        {
+          "name": "Jira",
+          "badge": "https://img.shields.io/badge/Jira-0052CC?logo=jira&logoColor=white"
+        },
+        {
+          "name": "Azure DevOps",
+          "badge": "https://img.shields.io/badge/Azure%20DevOps-0078D4?logo=azuredevops&logoColor=white"
+        },
+        {
+          "name": "CI/CD",
+          "badge": "https://img.shields.io/badge/CI%2FCD-0052CC?logo=azuredevops&logoColor=white"
+        }
+      ],
+      "TESTING": [
+        {
+          "name": "Mocha",
+          "badge": "https://img.shields.io/badge/Mocha-8D6748?logo=mocha&logoColor=white"
+        },
+        {
+          "name": "Chai",
+          "badge": "https://img.shields.io/badge/Chai-A30701?logo=chai&logoColor=white"
+        },
+        {
+          "name": "Sinon",
+          "badge": "https://img.shields.io/badge/Sinon-0A0A0A?logo=sinon-dot-js&logoColor=white"
+        }
+      ]
+    }
+  },
   "PROJECTS": {
     "CARDS": [
       {
         "imageSource": "/assets/projects/5.png",
         "title": "Cause List Checker",
         "link": "https://karantrehan3.github.io/cause-list-checker/",
-        "description": "**Cause List Checker** is a FastAPI-based web application that automates searching through Punjab and Haryana High Court cause list PDFs for specific case details, fetches comprehensive case information from the court website, and sends automated email notifications with search results to legal professionals.\n\n**Tech Stack:**\n\n- Python\n- FastAPI\n- Docker\n- Gmail SMTP"
+        "description": "**Cause List Checker** is a FastAPI-based web application that automates searching through Punjab and Haryana High Court cause list PDFs for specific case details, fetches comprehensive case information from the court website, and sends automated email notifications with search results to legal professionals.\n\n**Tech Stack:**\n- Python\n- FastAPI\n- Docker\n- Gmail SMTP"
       },
       {
         "imageSource": "/assets/projects/4.png",
         "title": "Cafe Safar",
         "link": "https://cafe-safar-dev.onrender.com/",
-        "description": "**Cafe Safar** is a comprehensive full stack application designed for order management at the restaurant 'Cafe-Safar'. It features distinct user and admin views. Users can place orders, review past orders and transactions, and manage their profiles. Admins have the ability to oversee orders, update the menu, monitor payments, and handle various administrative functions.\n\n**Tech Stack:**\n\n- MongoDB\n- Express.js\n- React\n- Node.js",
+        "description": "**Cafe Safar** is a comprehensive full stack application designed for order management at the restaurant 'Cafe-Safar'. It features distinct user and admin views. Users can place orders, review past orders and transactions, and manage their profiles. Admins have the ability to oversee orders, update the menu, monitor payments, and handle various administrative functions.\n\n**Tech Stack:**\n- MongoDB\n- Express.js\n- React\n- Node.js",
         "inProgress": true
       },
       {
         "imageSource": "/assets/projects/3.png",
         "title": "Slack DM Sender",
         "link": "https://karantrehan3.github.io/dm-sender-public/",
-        "description": "**Slack DM Sender** is a Slack bot that allows you to send direct messages to users in your workspace, appearing as if sent by you. Ideal for automated communication.\n\n**Tech Stack:**\n\n- Node.js\n- Slack API\n- Express.js\n- Bull Queue"
+        "description": "**Slack DM Sender** is a Slack bot that allows you to send direct messages to users in your workspace, appearing as if sent by you. Ideal for automated communication.\n\n**Tech Stack:**\n- Node.js\n- Slack API\n- Express.js\n- Bull Queue"
       },
       {
         "imageSource": "/assets/projects/2.png",
         "title": "Run AWS Locally (Docker-Localstack)",
         "link": "https://karantrehan3.github.io/docker-localstack/",
-        "description": "**Run AWS Locally (Docker-Localstack)** is a project that simplifies your local development by emulating AWS cloud services using Localstack within Docker. This setup enables seamless testing and development of AWS-dependent applications locally, supporting S3 and SQS as of now, and ensuring faster feedback loops without incurring cloud costs.\n\n**Tech Stack:**\n\n- Docker\n- LocalStack\n- AWS S3\n- AWS SQS"
+        "description": "**Run AWS Locally (Docker-Localstack)** is a project that simplifies your local development by emulating AWS cloud services using Localstack within Docker. This setup enables seamless testing and development of AWS-dependent applications locally, supporting S3 and SQS as of now, and ensuring faster feedback loops without incurring cloud costs.\n\n**Tech Stack:**\n- Docker\n- LocalStack\n- AWS S3\n- AWS SQS"
       },
       {
         "imageSource": "/assets/projects/1.png",
         "title": "Gesture-Controlled Interactive Gaming",
         "link": "https://karantrehan3.github.io/Hand-Gesture-Recognition-Based-Interactive-Gaming/",
-        "description": "**Gesture-Controlled Interactive Gaming** is an innovative computer vision project enabling hand gestures to control a game. Map gestures to W, A, S, D keys for a dynamic, hands-free gaming experience.\n\n**Tech Stack:**\n\n- Python\n- OpenCV\n- MediaPipe\n- Computer Vision"
+        "description": "**Gesture-Controlled Interactive Gaming** is an innovative computer vision project enabling hand gestures to control a game. Map gestures to W, A, S, D keys for a dynamic, hands-free gaming experience.\n\n**Tech Stack:**\n- Python\n- OpenCV\n- MediaPipe\n- Computer Vision"
       }
     ]
   },
