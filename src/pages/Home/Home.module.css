@@ -23,7 +23,7 @@
     padding: 2rem 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .content {
         flex-direction: column;
         justify-content: center;
