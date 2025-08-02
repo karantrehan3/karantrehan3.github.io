@@ -1,7 +1,7 @@
 .content {
     display: flex;
     flex-grow: 1;
-    min-height: 100vh;
+    height: 100%; /* Fill available space in flex container */
 }
 
 .left {
@@ -28,7 +28,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
+        height: 100%;
         padding: 1rem;
     }
 

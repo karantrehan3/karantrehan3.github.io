@@ -7,7 +7,7 @@ export function Welcome(): ReactElement {
   return (
     <div>
       <Title className={classes.title}>
-        Hi there! I'm{" "}
+        Howdy! I'm{" "}
         <Text
           inherit
           variant="gradient"
