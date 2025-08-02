@@ -1,6 +1,6 @@
 import { IconChevronDown } from "@tabler/icons-react";
 import { useState, useEffect, ReactElement } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   Container,
   Group,
@@ -28,14 +28,13 @@ interface Link {
 }
 
 const links: Link[] = [
-  { link: "/home", label: "Home" },
+  { link: "#home", label: "Home" },
   ...(config.get("HEADER.LINKS") || []),
 ];
 
 export function Header(): ReactElement {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState<string>(links[0].link);
-  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -45,6 +44,15 @@ export function Header(): ReactElement {
       setActive(activeLink.link);
     }
   }, [location]);
+
+  const handleHeaderClick = (event: any, link: string): void => {
+    event.preventDefault();
+    const section = document.querySelector(link);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+    close();
+  };
 
   const items = links
     .map((link) => {
@@ -60,11 +68,7 @@ export function Header(): ReactElement {
             href={link.link}
             className={classes.link}
             data-active={active === link.link || undefined}
-            onClick={(event) => {
-              event.preventDefault();
-              navigate(link.link);
-              close();
-            }}
+            onClick={(event): void => handleHeaderClick(event, link.link)}
           >
             {link.label}
           </a>
@@ -83,11 +87,7 @@ export function Header(): ReactElement {
               href={link.link}
               className={classes.link}
               data-active={active === link.link || undefined}
-              onClick={(event) => {
-                event.preventDefault();
-                navigate(link.link);
-                close();
-              }}
+              onClick={(event): void => handleHeaderClick(event, link.link)}
             >
               <Center>
                 <span className={classes.linkLabel}>{link.label}</span>

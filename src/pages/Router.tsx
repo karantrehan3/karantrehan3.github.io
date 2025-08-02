@@ -1,31 +1,17 @@
 import { RouteObject, Navigate } from "react-router-dom";
-import { HomePage } from "./Home/Home.page";
-import { ProjectsPage } from "./Projects/Projects.page";
-import { ContactPage } from "./Contact/Contact.page";
 import { ErrorPage } from "./Error/Error.page";
+import { MainPage } from "./Main";
 import externalRoutes from "./External/Router";
 
 // TODO: Figure out moving the routes to default config
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <Navigate to="/home" />,
+    element: <Navigate to="/main" />,
   },
   {
-    path: "/home",
-    element: <HomePage />,
-  },
-  {
-    path: "/about",
-    element: <Navigate to="/home" />, // TODO: Temporarily redirect to home
-  },
-  {
-    path: "/projects",
-    element: <ProjectsPage />,
-  },
-  {
-    path: "/contact",
-    element: <ContactPage />,
+    path: "/main",
+    element: <MainPage />,
   },
   {
     path: "*",

@@ -1,0 +1,7 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+    padding: 5px;
+    min-height: 100vh;
+}

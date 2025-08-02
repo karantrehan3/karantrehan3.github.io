@@ -2,9 +2,9 @@
   "TITLE": { "NAME": "Karan Trehan" },
   "HEADER": {
     "LINKS": [
-      { "link": "/about", "label": "About Me", "hidden": true },
+      { "link": "#about", "label": "About Me", "hidden": true },
       {
-        "link": "/projects",
+        "link": "#projects",
         "label": "Projects",
         "links": [
           {
@@ -34,7 +34,7 @@
           }
         ]
       },
-      { "link": "/contact", "label": "Contact" }
+      { "link": "#contact", "label": "Contact" }
     ]
   },
   "CONTACT": {
