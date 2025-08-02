@@ -1,0 +1,61 @@
+/* Global Theme Transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Smooth transitions for specific elements */
+body {
+  transition: background-color 0.4s ease;
+}
+
+/* Header transitions */
+header {
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Card and component transitions */
+[data-mantine-color-scheme] {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Button and interactive element transitions */
+button, a, [role="button"] {
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Form element transitions */
+input, textarea, select {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Badge and chip transitions */
+[data-mantine-color-scheme] .mantine-Badge-root {
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* Paper and container transitions */
+[data-mantine-color-scheme] .mantine-Paper-root {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Theme toggle specific transitions */
+.mantine-ActionIcon-root {
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.mantine-ActionIcon-root:hover {
+  transform: scale(1.05);
+}
+
+/* Disable transitions for performance-critical elements */
+.mantine-Loader-root,
+.mantine-Skeleton-root {
+  transition: none !important;
+}
+
+/* Optimize transitions for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+} 

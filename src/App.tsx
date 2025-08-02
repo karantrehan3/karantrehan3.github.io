@@ -1,4 +1,5 @@
 import "@mantine/core/styles.css";
+import "./global.css";
 
 import { ReactElement } from "react";
 import { MantineProvider } from "@mantine/core";
