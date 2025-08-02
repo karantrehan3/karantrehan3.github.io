@@ -1,0 +1,129 @@
+.projectItem {
+  padding: 1.25rem;
+  background: var(--mantine-color-dark-5);
+  border-radius: var(--mantine-radius-md);
+  border: 1px solid var(--mantine-color-dark-4);
+  transition: background-color 0.2s ease;
+  margin-bottom: 1rem;
+  border-left: 3px solid var(--mantine-color-orange-5);
+}
+
+.projectItem:hover {
+  background: var(--mantine-color-dark-4);
+}
+
+.projectLink {
+  color: var(--mantine-color-blue-4);
+  text-decoration: none;
+  font-weight: 550;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.projectLink:hover {
+  color: var(--mantine-color-blue-3);
+}
+
+.projectStatus {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+}
+
+.projectRole {
+  margin-top: 0.75rem;
+  font-style: italic;
+  color: var(--mantine-color-orange-4);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.projectDescription {
+  margin-top: 1rem;
+  line-height: 1.6;
+  color: var(--mantine-color-gray-3);
+  font-size: 0.95rem;
+}
+
+/* Project Logo Styles */
+.projectLogoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.projectLogo {
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Special overlapping design for logo/currentLogo */
+.logoOverlap {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+.currentLogo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+.logoOverlap:hover .logo {
+  transform: translate(-2px, -2px);
+}
+
+.logoOverlap:hover .currentLogo {
+  transform: translate(2px, 2px);
+}
+
+/* Light Theme Styles */
+[data-mantine-color-scheme="light"] .projectItem {
+  background: var(--mantine-color-gray-0);
+  border: 1px solid var(--mantine-color-gray-2);
+}
+
+[data-mantine-color-scheme="light"] .projectItem:hover {
+  background: var(--mantine-color-gray-1);
+}
+
+[data-mantine-color-scheme="light"] .projectRole {
+  color: var(--mantine-color-orange-6);
+}
+
+[data-mantine-color-scheme="light"] .projectDescription {
+  color: var(--mantine-color-dark-6);
+}
+
+[data-mantine-color-scheme="light"] .projectLogo,
+[data-mantine-color-scheme="light"] .logo,
+[data-mantine-color-scheme="light"] .currentLogo {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+} 

@@ -1,0 +1,130 @@
+.educationSection {
+  background: var(--mantine-color-dark-6);
+  border: 1px solid var(--mantine-color-dark-4);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.educationSection:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.sectionTitle {
+  color: var(--mantine-color-white);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.educationContent {
+  margin-top: 1rem;
+}
+
+.universityHeader {
+  margin-bottom: 0.5rem;
+}
+
+.universityLogo {
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.degreeTitle {
+  color: var(--mantine-color-white);
+  margin-bottom: 0;
+}
+
+.educationDetails {
+  margin-bottom: 1rem;
+}
+
+.universityInfo {
+  color: var(--mantine-color-gray-4);
+}
+
+.graduationBadge {
+  background: var(--mantine-color-orange-6);
+  color: white;
+  font-weight: 600;
+  font-size: 0.7rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(255, 123, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.graduationBadge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 123, 0, 0.4);
+}
+
+.marksInfo {
+  color: var(--mantine-color-white);
+}
+
+.achievementsList {
+  margin-top: 0.5rem;
+}
+
+.achievementBadge {
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .educationDetails {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Light Theme Styles */
+[data-mantine-color-scheme="light"] .educationSection {
+  background: var(--mantine-color-white);
+  border: 1px solid var(--mantine-color-gray-2);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-mantine-color-scheme="light"] .educationSection:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+[data-mantine-color-scheme="light"] .sectionTitle {
+  color: var(--mantine-color-dark-9);
+}
+
+[data-mantine-color-scheme="light"] .degreeTitle {
+  color: var(--mantine-color-dark-8);
+}
+
+[data-mantine-color-scheme="light"] .universityInfo {
+  color: var(--mantine-color-dark-6);
+}
+
+[data-mantine-color-scheme="light"] .degreeTitle {
+  color: var(--mantine-color-dark-8);
+}
+
+[data-mantine-color-scheme="light"] .marksInfo {
+  color: var(--mantine-color-dark-8);
+}
+
+[data-mantine-color-scheme="light"] .graduationBadge {
+  background: var(--mantine-color-orange-6);
+  color: white;
+}
+
+[data-mantine-color-scheme="light"] .achievementBadge {
+  background: var(--mantine-color-yellow-6);
+  color: var(--mantine-color-dark-8);
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
+}
+
+[data-mantine-color-scheme="light"] .universityLogo {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+} 

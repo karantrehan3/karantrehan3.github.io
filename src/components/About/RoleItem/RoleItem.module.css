@@ -1,0 +1,83 @@
+.roleItem {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--mantine-color-dark-6);
+  border-radius: var(--mantine-radius-sm);
+  border-left: 3px solid var(--mantine-color-orange-5);
+}
+
+.roleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.roleTitle {
+  color: var(--mantine-color-white);
+  font-size: 1rem;
+}
+
+.rolePeriod {
+  background: var(--mantine-color-orange-6);
+  color: white;
+  font-weight: 600;
+  font-size: 0.7rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(255, 123, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rolePeriod:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 123, 0, 0.4);
+}
+
+.roleDescription {
+  color: var(--mantine-color-gray-3);
+  line-height: 1.6;
+}
+
+.roleDescription ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.roleDescription li {
+  margin-bottom: 0.25rem;
+  color: var(--mantine-color-gray-3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .roleHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .roleItem {
+    padding: 0.75rem;
+  }
+}
+
+/* Light Theme Styles */
+[data-mantine-color-scheme="light"] .roleItem {
+  background: var(--mantine-color-gray-0);
+  border-left: 3px solid var(--mantine-color-orange-5);
+}
+
+[data-mantine-color-scheme="light"] .roleTitle {
+  color: var(--mantine-color-dark-9);
+}
+
+[data-mantine-color-scheme="light"] .roleDescription {
+  color: var(--mantine-color-dark-7);
+}
+
+[data-mantine-color-scheme="light"] .roleDescription li {
+  color: var(--mantine-color-dark-7);
+} 

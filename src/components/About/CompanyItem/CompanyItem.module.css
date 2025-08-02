@@ -1,0 +1,106 @@
+.companyItem {
+  padding: 1.5rem;
+  background: var(--mantine-color-dark-5);
+  border-radius: var(--mantine-radius-md);
+  border: 1px solid var(--mantine-color-dark-4);
+  transition: background-color 0.2s ease;
+}
+
+.companyItem:hover {
+  background: var(--mantine-color-dark-4);
+}
+
+.companyHeader {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--mantine-color-dark-4);
+}
+
+.companyInfo {
+  display: flex;
+  align-items: center;
+}
+
+.companyLogo {
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.companyLink {
+  color: var(--mantine-color-blue-4);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.companyLink:hover {
+  color: var(--mantine-color-blue-3);
+}
+
+.rolesTimeline {
+  margin-bottom: 1.5rem;
+}
+
+.projectsSection {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--mantine-color-dark-4);
+}
+
+.projectsTitle {
+  color: var(--mantine-color-white);
+  margin-bottom: 0.75rem;
+}
+
+.projectsList {
+  margin-top: 0.5rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .companyItem {
+    padding: 1rem;
+  }
+
+  .companyHeader {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Light Theme Styles */
+[data-mantine-color-scheme="light"] .companyItem {
+  background: var(--mantine-color-gray-0);
+  border: 1px solid var(--mantine-color-gray-2);
+}
+
+[data-mantine-color-scheme="light"] .companyItem:hover {
+  background: var(--mantine-color-gray-1);
+}
+
+[data-mantine-color-scheme="light"] .companyHeader {
+  border-bottom: 1px solid var(--mantine-color-gray-2);
+}
+
+[data-mantine-color-scheme="light"] .companyLink {
+  color: var(--mantine-color-blue-7);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+[data-mantine-color-scheme="light"] .companyLink:hover {
+  color: var(--mantine-color-blue-6);
+}
+
+[data-mantine-color-scheme="light"] .projectsSection {
+  border-top: 1px solid var(--mantine-color-gray-2);
+}
+
+[data-mantine-color-scheme="light"] .projectsTitle {
+  color: var(--mantine-color-dark-9);
+}
+
+[data-mantine-color-scheme="light"] .companyLogo {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+} 
