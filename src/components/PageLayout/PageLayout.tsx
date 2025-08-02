@@ -16,8 +16,14 @@ export const PageLayout: FC<PageLayoutProps> = ({
 }) => {
   return (
     <div className={classes.pageContainer}>
-      {header && <Header />}
-      {children}
+      {header ? (
+        <>
+          <Header />
+          <div className={classes.content}>{children}</div>
+        </>
+      ) : (
+        children
+      )}
       {footer && <Footer />}
     </div>
   );
