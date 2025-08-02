@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { Container, Title, Text, Stack } from "@mantine/core";
 import { Card } from "@/components/Card/Card";
 import config from "@/utils/Config";
 import classes from "./Projects.module.css";
@@ -13,12 +14,30 @@ interface ProjectCardInfo {
 
 export default function ProjectsPage(): ReactElement {
   const projectCards: ProjectCardInfo[] = config.get("PROJECTS.CARDS");
+  const sectionData = config.get("PROJECTS.SECTION");
 
   return (
-    <div className={classes.cardsContainer}>
-      {projectCards.map((info, index) => (
-        <Card {...info} key={index} />
-      ))}
-    </div>
+    <Container size="xl" py="xl">
+      <Stack gap="xl">
+        {/* Section Header */}
+        <div className={classes.headerSection}>
+          <div className={classes.header}>
+            <Title order={1} className={classes.mainTitle}>
+              {sectionData.TITLE}
+            </Title>
+            <Text size="lg" className={classes.subtitle}>
+              {sectionData.DESCRIPTION}
+            </Text>
+          </div>
+        </div>
+
+        {/* Projects Grid */}
+        <div className={classes.cardsContainer}>
+          {projectCards.map((info, index) => (
+            <Card {...info} key={index} />
+          ))}
+        </div>
+      </Stack>
+    </Container>
   );
 }

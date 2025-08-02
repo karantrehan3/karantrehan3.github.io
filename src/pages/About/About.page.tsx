@@ -10,6 +10,7 @@ import {
   Image,
   Anchor,
   Blockquote,
+  Box,
 } from "@mantine/core";
 import {
   IconBriefcase,
@@ -39,8 +40,10 @@ interface Project {
   NAME: string;
   CURRENT_NAME?: string;
   URL: string;
-  STATUS: string;
   ROLE: string;
+  LOGO?: string;
+  CURRENT_LOGO?: string;
+  DESCRIPTION: string;
 }
 
 interface Company {
@@ -126,7 +129,7 @@ export default function AboutPage(): ReactElement {
           <Title order={1} className={classes.mainTitle}>
             {aboutData.TITLE}
           </Title>
-          <Text size="lg" c="dimmed" className={classes.subtitle}>
+          <Text size="lg" className={classes.subtitle}>
             {aboutData.SUBTITLE}
           </Text>
         </div>
@@ -176,8 +179,8 @@ export default function AboutPage(): ReactElement {
                         src={company.LOGO}
                         alt={`${company.NAME} logo`}
                         className={classes.companyLogo}
-                        width={32}
-                        height={32}
+                        width={40}
+                        height={40}
                         fit="contain"
                       />
                     )}
@@ -229,28 +232,62 @@ export default function AboutPage(): ReactElement {
                             className={classes.projectItem}
                           >
                             <Group gap="xs" align="center">
+                              {/* Project Logo */}
+                              <div className={classes.projectLogoContainer}>
+                                {!!project.CURRENT_LOGO ? (
+                                  // Special overlapping design for logo/currentLogo
+                                  <div className={classes.logoOverlap}>
+                                    <Image
+                                      src={project.LOGO}
+                                      alt="Logo"
+                                      className={classes.logo}
+                                      width={40}
+                                      height={40}
+                                      fit="contain"
+                                    />
+                                    <Image
+                                      src={project.CURRENT_LOGO}
+                                      alt="Current logo"
+                                      className={classes.currentLogo}
+                                      width={40}
+                                      height={40}
+                                      fit="contain"
+                                    />
+                                  </div>
+                                ) : project.LOGO ? (
+                                  <Image
+                                    src={project.LOGO}
+                                    alt={`${project.NAME} logo`}
+                                    className={classes.projectLogo}
+                                    width={40}
+                                    height={40}
+                                    fit="contain"
+                                  />
+                                ) : null}
+                              </div>
+
                               <Anchor
                                 href={project.URL}
                                 target="_blank"
                                 className={classes.projectLink}
                               >
-                                {project.CURRENT_NAME || project.NAME}
+                                {project.CURRENT_NAME
+                                  ? `${project.NAME} (now ${project.CURRENT_NAME})`
+                                  : project.NAME}
                               </Anchor>
                               <IconExternalLink size={14} />
-                              <Badge
-                                size="xs"
-                                variant="outline"
-                                className={classes.projectStatus}
-                              >
-                                {project.STATUS}
-                              </Badge>
                             </Group>
                             <Text
                               size="xs"
-                              c="dimmed"
                               className={classes.projectRole}
                             >
                               {project.ROLE}
+                            </Text>
+                            <Text
+                              size="sm"
+                              className={classes.projectDescription}
+                            >
+                              {project.DESCRIPTION}
                             </Text>
                           </div>
                         )
@@ -307,8 +344,8 @@ export default function AboutPage(): ReactElement {
                 src={education.LOGO}
                 alt={`${education.UNIVERSITY} logo`}
                 className={classes.universityLogo}
-                width={32}
-                height={32}
+                width={40}
+                height={40}
                 fit="contain"
               />
             )}
@@ -322,7 +359,7 @@ export default function AboutPage(): ReactElement {
             justify="space-between"
             className={classes.educationDetails}
           >
-            <Text size="md" c="dimmed" className={classes.universityInfo}>
+            <Text size="md"  className={classes.universityInfo}>
               {education.UNIVERSITY}
             </Text>
             <Stack gap="xs" align="flex-end">

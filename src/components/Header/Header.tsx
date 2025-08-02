@@ -12,6 +12,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
+import { useScrollSpy } from "@/hooks/useScrollSpy";
 import config from "@/utils/Config";
 import classes from "./Header.module.css";
 
@@ -34,16 +35,35 @@ const links: Link[] = [
 
 export function Header(): ReactElement {
   const [opened, { toggle, close }] = useDisclosure(false);
-  const [active, setActive] = useState<string>(links[0].link);
   const location = useLocation();
 
+  // Get section IDs from navigation links (include main sections even if they have dropdowns)
+  const sectionIds = links
+    .filter((link) => !link.hidden)
+    .map((link) => link.link.replace("#", ""));
+
+  // Use scroll spy hook for automatic navigation highlighting
+  const activeSection = useScrollSpy({
+    sectionIds,
+    offset: 80, // Reduced offset for better detection
+    threshold: 0.1,
+  });
+
+  // Set active link based on scroll position or location
+  const [active, setActive] = useState<string>(links[0].link);
+
   useEffect(() => {
-    const currentPath = location.pathname;
-    const activeLink = links.find((link) => link.link === currentPath);
-    if (activeLink) {
-      setActive(activeLink.link);
+    if (activeSection) {
+      setActive(`#${activeSection}`);
+    } else {
+      // Fallback to location-based active state
+      const currentPath = location.pathname;
+      const activeLink = links.find((link) => link.link === currentPath);
+      if (activeLink) {
+        setActive(activeLink.link);
+      }
     }
-  }, [location]);
+  }, [activeSection, location]);
 
   const handleHeaderClick = (event: any, link: string): void => {
     event.preventDefault();

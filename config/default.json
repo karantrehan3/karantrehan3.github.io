@@ -38,6 +38,10 @@
     ]
   },
   "CONTACT": {
+    "SECTION": {
+      "TITLE": "Let's Connect",
+      "DESCRIPTION": "Ready to collaborate? Schedule a meeting or reach out through your preferred platform."
+    },
     "CALENDAR": {
       "LINK": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3nBgl1MCdRSIhS0l8BpAAbKNbEFtK4lq-GABDCbFGxBieZeCoLzxTpZX34OiHnDyoJkO-ufkWv?gv=true"
     }
@@ -101,23 +105,27 @@
           ],
           "PROJECTS": [
             {
+              "NAME": "Trivia",
+              "URL": "https://trytrivia.co/",
+              "ROLE": "Team Lead & Backend Developer",
+              "LOGO": "/assets/work/projects/trivia.png",
+              "DESCRIPTION": "A virtual team-building app for Slack and Microsoft Teams that enables organizations to run real-time games, quizzes, puzzles, and polls to foster engagement among remote and hybrid teams."
+            },
+            {
               "NAME": "Albus",
               "CURRENT_NAME": "ChatAid",
               "URL": "https://chataid.com/",
-              "STATUS": "Exited & Rebranded",
-              "ROLE": "Led development"
-            },
-            {
-              "NAME": "Trivia",
-              "URL": "https://trytrivia.co/",
-              "STATUS": "Exited",
-              "ROLE": "Led development"
+              "ROLE": "Team Lead & AI Integration Specialist",
+              "LOGO": "/assets/work/projects/albus.png",
+              "CURRENT_LOGO": "/assets/work/projects/chataid.png",
+              "DESCRIPTION": "An AI-powered workplace assistant that integrates with various company apps (Slack, Teams, Google Drive, etc.) to deliver instant, secure, context-aware answers to employee queries by searching and synthesizing internal knowledge sources."
             },
             {
               "NAME": "SpringVerify",
               "URL": "https://in.springverify.com/",
-              "STATUS": "Active",
-              "ROLE": "Contributed to development"
+              "ROLE": "Backend Developer & AI Solutions Engineer",
+              "LOGO": "/assets/work/projects/springverify.jpeg",
+              "DESCRIPTION": "A background verification platform designed for businesses to automate and streamline employment, education, credit, and KYC checks, supporting bulk uploads, API integrations, and rapid digital onboarding."
             }
           ]
         }
@@ -295,6 +303,10 @@
     }
   },
   "PROJECTS": {
+    "SECTION": {
+      "TITLE": "Featured Projects",
+      "DESCRIPTION": "A collection of my recent work showcasing full-stack development, AI integrations, and innovative solutions."
+    },
     "CARDS": [
       {
         "imageSource": "/assets/projects/5.png",
