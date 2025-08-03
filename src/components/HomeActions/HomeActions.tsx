@@ -1,6 +1,9 @@
 import { ReactElement } from "react";
-import { Text, Button, Group, Stack } from "@mantine/core";
-import { IconUser, IconFolder } from "@tabler/icons-react";
+import { Button, Group, Text } from "@mantine/core";
+import { IconFolder, IconUser } from "@tabler/icons-react";
+
+import config from "@/utils/Config";
+
 import classes from "./HomeActions.module.css";
 
 export function HomeActions(): ReactElement {
@@ -20,7 +23,9 @@ export function HomeActions(): ReactElement {
 
   return (
     <div className={classes.container}>
-      <Text className={classes.text}>Let's explore what I can do for you.</Text>
+      <Text className={classes.text}>
+        {config.get("HOME.ACTIONS.LET_S_EXPLORE")}
+      </Text>
 
       <Group className={classes.buttonGroup} gap="md">
         <Button
@@ -28,7 +33,7 @@ export function HomeActions(): ReactElement {
           onClick={handleAboutClick}
           leftSection={<IconUser size={16} />}
         >
-          Learn About Me
+          {config.get("HOME.ACTIONS.LEARN_ABOUT_ME")}
         </Button>
         <Button
           className={classes.secondaryButton}
@@ -36,7 +41,7 @@ export function HomeActions(): ReactElement {
           leftSection={<IconFolder size={16} />}
           variant="outline"
         >
-          View Projects
+          {config.get("HOME.ACTIONS.VIEW_PROJECTS")}
         </Button>
       </Group>
     </div>

@@ -1,5 +1,16 @@
 {
-  "TITLE": { "NAME": "Karan Trehan" },
+  "HOME": {
+    "TITLE": {
+      "GREETING": "Howdy! I'm",
+      "NAME": "Karan Trehan",
+      "SUBTITLE": "Senior Software Engineer & AI Enthusiast"
+    },
+    "ACTIONS": {
+      "LET_S_EXPLORE": "Let's explore what I can do for you.",
+      "LEARN_ABOUT_ME": "Learn About Me",
+      "VIEW_PROJECTS": "View Projects"
+    }
+  },
   "HEADER": {
     "LINKS": [
       { "link": "#about", "label": "About Me" },
@@ -132,11 +143,11 @@
       ]
     },
     "FOCUS_AREAS": [
-      "AI-powered Automation",
+      "AI-powered Solutions",
+      "Full-Stack Development",
       "Microservices Architecture",
       "Cloud-based Solutions",
-      "High-performance Applications",
-      "Backend Development"
+      "High-performance Applications"
     ],
     "PROFESSIONAL_QUOTE": "Innovating AI-driven solutions that power seamless customer experiences.",
     "EDUCATION": {
@@ -148,156 +159,282 @@
       "ACHIEVEMENTS": ["Gold Medalist 🥇"]
     },
     "SKILLS": {
+      "STYLING": {
+        "CATEGORY_ICONS": {
+          "GENERATIVE_AI": "IconBrain",
+          "PROGRAMMING_LANGUAGES": "IconCode",
+          "RUNTIME_ENVIRONMENTS": "IconCode",
+          "FRAMEWORKS_LIBRARIES": "IconCode",
+          "DATABASES": "IconDatabase",
+          "CLOUD_DEVOPS": "IconCloud",
+          "PROJECT_MANAGEMENT": "IconTools",
+          "TESTING": "IconTestPipe"
+        },
+        "CATEGORY_NAMES": {
+          "GENERATIVE_AI": "Generative AI",
+          "PROGRAMMING_LANGUAGES": "Programming Languages",
+          "RUNTIME_ENVIRONMENTS": "Runtime Environments",
+          "FRAMEWORKS_LIBRARIES": "Frameworks & Libraries",
+          "DATABASES": "Databases",
+          "CLOUD_DEVOPS": "Cloud & DevOps",
+          "PROJECT_MANAGEMENT": "Project Management",
+          "TESTING": "Testing"
+        }
+      },
       "GENERATIVE_AI": [
         {
           "name": "OpenAI",
-          "badge": "https://img.shields.io/badge/OpenAI-000000?logo=openai&logoColor=white"
+          "icon": "IconBrandOpenai",
+          "color": "#000000",
+          "backgroundColor": "#000000",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "Azure OpenAI",
-          "badge": "https://img.shields.io/badge/Azure%20OpenAI-0089D6?logo=microsoftazure&logoColor=white"
+          "icon": "IconBrandAzure",
+          "color": "#0089D6",
+          "backgroundColor": "#0089D6",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "Portkey-AI",
-          "badge": "https://img.shields.io/badge/Portkey--AI-FB8122?logo=portkey&logoColor=white"
+          "icon": "IconBrain",
+          "color": "linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #EF4444 100%)",
+          "backgroundColor": "linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #EF4444 100%)",
+          "textColor": "#FFFFFF"
         }
       ],
       "PROGRAMMING_LANGUAGES": [
         {
           "name": "Python",
-          "badge": "https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white"
+          "icon": "IconBrandPython",
+          "color": "#3776AB",
+          "backgroundColor": "#3776AB",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "JavaScript",
-          "badge": "https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black"
+          "icon": "IconBrandJavascript",
+          "color": "#F7DF1E",
+          "backgroundColor": "#F7DF1E",
+          "textColor": "#000000"
         }
       ],
       "RUNTIME_ENVIRONMENTS": [
         {
           "name": "Node.js",
-          "badge": "https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white"
+          "icon": "IconBrandNodejs",
+          "color": "#339933",
+          "backgroundColor": "#339933",
+          "textColor": "#FFFFFF"
         }
       ],
       "FRAMEWORKS_LIBRARIES": [
         {
           "name": "FastAPI",
-          "badge": "https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white"
+          "icon": "IconApi",
+          "color": "#009688",
+          "backgroundColor": "#009688",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "Express.js",
-          "badge": "https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white"
+          "icon": "IconServer",
+          "color": "#000000",
+          "backgroundColor": "#000000",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "React.js",
-          "badge": "https://img.shields.io/badge/React.js-20232A?logo=react&logoColor=61DAFB"
+          "icon": "IconBrandReact",
+          "color": "#61DAFB",
+          "backgroundColor": "#20232A",
+          "textColor": "#61DAFB"
         },
         {
           "name": "AppSmith",
-          "badge": "https://img.shields.io/badge/AppSmith-000000?logo=appsmith&logoColor=white"
+          "icon": "IconBrandX",
+          "color": "#000000",
+          "backgroundColor": "#000000",
+          "textColor": "#FFFFFF"
         }
       ],
       "DATABASES": [
         {
           "name": "MongoDB",
-          "badge": "https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white"
+          "icon": "IconBrandMongodb",
+          "color": "#47A248",
+          "backgroundColor": "#47A248",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "Redis",
-          "badge": "https://img.shields.io/badge/Redis-DC382D?logo=redis&logoColor=white"
+          "icon": "IconDatabase",
+          "color": "#DC382D",
+          "backgroundColor": "#DC382D",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "MySQL",
-          "badge": "https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white"
+          "icon": "IconBrandMysql",
+          "color": "#4479A1",
+          "backgroundColor": "#4479A1",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "PostgreSQL",
-          "badge": "https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white"
+          "icon": "IconDatabase",
+          "color": "#316192",
+          "backgroundColor": "#316192",
+          "textColor": "#FFFFFF"
         }
       ],
       "CLOUD_DEVOPS": [
         {
           "name": "AWS",
-          "badge": "https://img.shields.io/badge/AWS-232F3E?logo=amazon-aws&logoColor=white"
-        },
-        {
-          "name": "EC2",
-          "badge": "https://img.shields.io/badge/EC2-FF9900?logo=amazon-ec2&logoColor=white&color=FF9900"
-        },
-        {
-          "name": "ECR",
-          "badge": "https://img.shields.io/badge/ECR-AF52DE?logo=amazon-ecs&logoColor=white&color=AF52DE"
-        },
-        {
-          "name": "ECS",
-          "badge": "https://img.shields.io/badge/ECS-00BFFF?logo=amazon-ecs&logoColor=white&color=00BFFF"
-        },
-        {
-          "name": "S3",
-          "badge": "https://img.shields.io/badge/S3-146EB4?logo=amazon-aws&logoColor=white&color=146EB4"
-        },
-        {
-          "name": "RDS",
-          "badge": "https://img.shields.io/badge/RDS-FF9900?logo=amazon-rds&logoColor=white&color=FF9900"
-        },
-        {
-          "name": "SQS",
-          "badge": "https://img.shields.io/badge/SQS-AF52DE?logo=amazon-sqs&logoColor=white&color=AF52DE"
-        },
-        {
-          "name": "API Gateway",
-          "badge": "https://img.shields.io/badge/API%20Gateway-00BFFF?logo=amazonapigateway&logoColor=white&color=00BFFF"
-        },
-        {
-          "name": "Lambda",
-          "badge": "https://img.shields.io/badge/Lambda-146EB4?logo=awslambda&logoColor=white&color=146EB4"
-        },
-        {
-          "name": "SES",
-          "badge": "https://img.shields.io/badge/SES-FF9900?logo=amazonses&logoColor=white&color=FF9900"
-        },
-        {
-          "name": "CloudWatch",
-          "badge": "https://img.shields.io/badge/CloudWatch-AF52DE?logo=amazoncloudwatch&logoColor=white&color=AF52DE"
-        },
-        {
-          "name": "ElastiCache Redis",
-          "badge": "https://img.shields.io/badge/ElastiCache-00BFFF?logo=redis&logoColor=white&color=00BFFF"
-        },
-        {
-          "name": "Secrets Manager",
-          "badge": "https://img.shields.io/badge/Secrets%20Manager-146EB4?logo=amazonsecretsmanager&logoColor=white&color=146EB4"
+          "icon": "IconBrandAws",
+          "color": "#FF9900",
+          "backgroundColor": "#232F3E",
+          "textColor": "#FF9900",
+          "subSkills": [
+            {
+              "name": "EC2",
+              "icon": "IconServer",
+              "color": "#FF9900",
+              "backgroundColor": "#FF9900",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "ECR",
+              "icon": "IconBrandDocker",
+              "color": "#AF52DE",
+              "backgroundColor": "#AF52DE",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "ECS",
+              "icon": "IconServer",
+              "color": "#00BFFF",
+              "backgroundColor": "#00BFFF",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "S3",
+              "icon": "IconCloud",
+              "color": "#146EB4",
+              "backgroundColor": "#146EB4",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "RDS",
+              "icon": "IconDatabase",
+              "color": "#FF9900",
+              "backgroundColor": "#FF9900",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "SQS",
+              "icon": "IconApi",
+              "color": "#AF52DE",
+              "backgroundColor": "#AF52DE",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "API Gateway",
+              "icon": "IconApi",
+              "color": "#00BFFF",
+              "backgroundColor": "#00BFFF",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "Lambda",
+              "icon": "IconCode",
+              "color": "#146EB4",
+              "backgroundColor": "#146EB4",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "SES",
+              "icon": "IconBrandX",
+              "color": "#FF9900",
+              "backgroundColor": "#FF9900",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "CloudWatch",
+              "icon": "IconTools",
+              "color": "#AF52DE",
+              "backgroundColor": "#AF52DE",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "ElastiCache Redis",
+              "icon": "IconDatabase",
+              "color": "#00BFFF",
+              "backgroundColor": "#00BFFF",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "Secrets Manager",
+              "icon": "IconTools",
+              "color": "#146EB4",
+              "backgroundColor": "#146EB4",
+              "textColor": "#FFFFFF"
+            }
+          ]
         },
         {
           "name": "Docker",
-          "badge": "https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white"
+          "icon": "IconBrandDocker",
+          "color": "#2496ED",
+          "backgroundColor": "#2496ED",
+          "textColor": "#FFFFFF"
         }
       ],
       "PROJECT_MANAGEMENT": [
         {
           "name": "Jira",
-          "badge": "https://img.shields.io/badge/Jira-0052CC?logo=jira&logoColor=white"
+          "icon": "IconTools",
+          "color": "#0052CC",
+          "backgroundColor": "#0052CC",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "Azure DevOps",
-          "badge": "https://img.shields.io/badge/Azure%20DevOps-0078D4?logo=azuredevops&logoColor=white"
+          "icon": "IconBrandAzure",
+          "color": "#0078D4",
+          "backgroundColor": "#0078D4",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "CI/CD",
-          "badge": "https://img.shields.io/badge/CI%2FCD-0052CC?logo=azuredevops&logoColor=white"
+          "icon": "IconTools",
+          "color": "#0052CC",
+          "backgroundColor": "#0052CC",
+          "textColor": "#FFFFFF"
         }
       ],
       "TESTING": [
         {
           "name": "Mocha",
-          "badge": "https://img.shields.io/badge/Mocha-8D6748?logo=mocha&logoColor=white"
+          "icon": "IconTestPipe",
+          "color": "#8D6748",
+          "backgroundColor": "#8D6748",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "Chai",
-          "badge": "https://img.shields.io/badge/Chai-A30701?logo=chai&logoColor=white"
+          "icon": "IconTestPipe",
+          "color": "#A30701",
+          "backgroundColor": "#A30701",
+          "textColor": "#FFFFFF"
         },
         {
           "name": "Sinon",
-          "badge": "https://img.shields.io/badge/Sinon-0A0A0A?logo=sinon-dot-js&logoColor=white"
+          "icon": "IconTestPipe",
+          "color": "#0A0A0A",
+          "backgroundColor": "#0A0A0A",
+          "textColor": "#FFFFFF"
         }
       ]
     }

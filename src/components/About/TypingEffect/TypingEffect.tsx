@@ -1,5 +1,6 @@
-import { ReactElement, useState, useEffect } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Paper, Text } from "@mantine/core";
+
 import classes from "./TypingEffect.module.css";
 
 interface TypingEffectProps {
@@ -11,8 +12,8 @@ interface TypingEffectProps {
 
 export function TypingEffect({
   texts,
-  typingSpeed = 100,
-  deletingSpeed = 50,
+  typingSpeed = 60,
+  deletingSpeed = 30,
   pauseTime = 2000,
 }: TypingEffectProps): ReactElement {
   const [currentTypingIndex, setCurrentTypingIndex] = useState(0);
@@ -34,19 +35,20 @@ export function TypingEffect({
             setIsDeleting(true);
           }, pauseTime);
         }
+      } else if (currentText.length > 0) {
+        setTimeout(() => {
+          setCurrentText(currentText.slice(0, -1));
+        }, deletingSpeed);
       } else {
-        if (currentText.length > 0) {
-          setTimeout(() => {
-            setCurrentText(currentText.slice(0, -1));
-          }, deletingSpeed);
-        } else {
-          setIsDeleting(false);
-          setCurrentTypingIndex((prev) => (prev + 1) % texts.length);
-        }
+        setIsDeleting(false);
+        setCurrentTypingIndex((prev) => (prev + 1) % texts.length);
       }
     };
 
-    const timer = setTimeout(typeText, isDeleting ? 50 : 100);
+    const timer = setTimeout(
+      typeText,
+      isDeleting ? deletingSpeed : typingSpeed
+    );
     return () => clearTimeout(timer);
   }, [
     currentText,

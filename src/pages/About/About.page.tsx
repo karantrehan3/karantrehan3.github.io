@@ -1,15 +1,17 @@
 import { ReactElement } from "react";
 import { Container } from "@mantine/core";
+
 import {
   AboutHeader,
-  ProfessionalQuote,
-  TypingEffect,
+  EducationSection,
   ExperienceSection,
   FocusAreas,
+  ProfessionalQuote,
   SkillsSection,
-  EducationSection,
+  TypingEffect,
 } from "@/components/About";
 import config from "@/utils/Config";
+
 import classes from "./About.module.css";
 
 export default function AboutPage(): ReactElement {
@@ -20,6 +22,20 @@ export default function AboutPage(): ReactElement {
   const professionalQuote = aboutData.QUOTE;
   const education = aboutData.EDUCATION;
   const skills = aboutData.SKILLS;
+
+  // Extract skills data and configuration
+  const skillsConfig = {
+    LAYOUT: skills.LAYOUT,
+    STYLING: skills.STYLING,
+  };
+
+  // Extract actual skills data (excluding config)
+  const skillsData = Object.keys(skills).reduce((acc, key) => {
+    if (key !== "LAYOUT" && key !== "STYLING") {
+      acc[key] = skills[key];
+    }
+    return acc;
+  }, {} as any);
 
   return (
     <Container size="xl" className={classes.container}>
@@ -39,7 +55,7 @@ export default function AboutPage(): ReactElement {
       <FocusAreas areas={focusAreas} />
 
       {/* Skills Section */}
-      <SkillsSection skills={skills} />
+      <SkillsSection skills={skillsData} config={skillsConfig} />
 
       {/* Education Section */}
       <EducationSection

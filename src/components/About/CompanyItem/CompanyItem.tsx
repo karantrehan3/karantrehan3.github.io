@@ -1,8 +1,9 @@
 import { ReactElement } from "react";
-import { Group, Image, Anchor, Stack, Text } from "@mantine/core";
+import { Anchor, Group, Image, Text } from "@mantine/core";
 import { IconExternalLink } from "@tabler/icons-react";
-import { RoleItem } from "../RoleItem";
+
 import { ProjectItem } from "../ProjectItem";
+import { RoleItem } from "../RoleItem";
 import classes from "./CompanyItem.module.css";
 
 interface Role {
@@ -50,11 +51,7 @@ export function CompanyItem({
               fit="contain"
             />
           )}
-          <Anchor
-            href={url}
-            target="_blank"
-            className={classes.companyLink}
-          >
+          <Anchor href={url} target="_blank" className={classes.companyLink}>
             {name}
           </Anchor>
           <IconExternalLink size={16} />
@@ -79,7 +76,7 @@ export function CompanyItem({
           <Text fw={600} size="sm" className={classes.projectsTitle}>
             Key Projects:
           </Text>
-          <Stack gap="sm" className={classes.projectsList}>
+          <div className={classes.projectsGrid}>
             {projects.map((project: Project, projectIndex: number) => (
               <ProjectItem
                 key={projectIndex}
@@ -92,9 +89,9 @@ export function CompanyItem({
                 currentLogo={project.CURRENT_LOGO}
               />
             ))}
-          </Stack>
+          </div>
         </div>
       )}
     </div>
   );
-} 
+}

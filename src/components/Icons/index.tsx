@@ -1,22 +1,24 @@
-import { ForwardRefExoticComponent, forwardRef, RefAttributes } from "react";
+import { forwardRef, ForwardRefExoticComponent, RefAttributes } from "react";
 import * as TablerIcons from "@tabler/icons-react";
+import { IconProps } from "@tabler/icons-react";
 
-type IconProps = {
+type CustomIconProps = {
   name: keyof typeof TablerIcons;
   // other props
-};
+} & IconProps &
+  RefAttributes<SVGElement>;
 
-const IconComponent: ForwardRefExoticComponent<
-  IconProps & RefAttributes<SVGElement>
-> = forwardRef((props, ref) => {
-  const { name, ...rest } = props;
-  const Icon = TablerIcons[name] as ForwardRefExoticComponent<
-    RefAttributes<SVGElement>
-  >;
-  if (!Icon) {
-    return null;
+const Icon: ForwardRefExoticComponent<CustomIconProps> = forwardRef(
+  (props, ref) => {
+    const { name, ...rest } = props;
+    const Icon = TablerIcons[name] as ForwardRefExoticComponent<
+      RefAttributes<SVGElement>
+    >;
+    if (!Icon) {
+      return null;
+    }
+    return <Icon ref={ref} {...rest} />;
   }
-  return <Icon ref={ref} {...rest} />;
-});
+);
 
-export default IconComponent;
+export default Icon;
