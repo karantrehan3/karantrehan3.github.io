@@ -1,7 +1,9 @@
 import { ReactElement } from "react";
-import { Container, Title, Text, Stack } from "@mantine/core";
+import { Container, Stack, Text, Title } from "@mantine/core";
+
 import { Card } from "@/components/Card/Card";
 import config from "@/utils/Config";
+
 import classes from "./Projects.module.css";
 
 interface ProjectCardInfo {

@@ -1,8 +1,10 @@
 import { ReactElement } from "react";
-import { Title, Text } from "@mantine/core";
+import { Text, Title } from "@mantine/core";
+
 import { Calendar } from "@/components/Calendar/Calendar";
 import { Socials } from "@/components/Socials/Socials";
 import config from "@/utils/Config";
+
 import classes from "./Contact.module.css";
 
 export default function ContactPage(): ReactElement {

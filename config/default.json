@@ -8,7 +8,25 @@
     "ACTIONS": {
       "LET_S_EXPLORE": "Let's explore what I can do for you.",
       "LEARN_ABOUT_ME": "Learn About Me",
-      "VIEW_PROJECTS": "View Projects"
+      "VIEW_PROJECTS": "View Projects",
+      "CONTACT_ME": "Contact Me"
+    }
+  },
+  "CTAS": {
+    "ABOUT": {
+      "TITLE": "Want to Know More About Me?",
+      "DESCRIPTION": "Discover my journey, experience, and the skills that drive my passion for technology and innovation.",
+      "BUTTON_TEXT": "Learn About Me"
+    },
+    "PROJECTS": {
+      "TITLE": "Explore My Work",
+      "DESCRIPTION": "Take a look at my latest projects and see how I bring ideas to life through code and creativity.",
+      "BUTTON_TEXT": "View Projects"
+    },
+    "CONTACT": {
+      "TITLE": "Let's Start a Conversation",
+      "DESCRIPTION": "Have a project in mind or just want to chat? I'm always open to new opportunities and interesting discussions.",
+      "BUTTON_TEXT": "Reach Out"
     }
   },
   "HEADER": {
@@ -65,7 +83,7 @@
   "AVATAR": "/assets/dp/profile.jpg",
   "ABOUT": {
     "TITLE": "About Me",
-    "SUBTITLE": "Experience & Education",
+    "SUBTITLE": "Journey, Skills & Expertise",
     "QUOTE": "Innovating AI-driven solutions that power seamless customer experiences.",
     "INTRODUCTION": {
       "TYPING_EFFECT": [
@@ -444,6 +462,7 @@
       "TITLE": "Featured Projects",
       "DESCRIPTION": "A collection of my recent work showcasing full-stack development, AI integrations, and innovative solutions."
     },
+
     "CARDS": [
       {
         "imageSource": "/assets/projects/5.png",

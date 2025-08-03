@@ -20,7 +20,11 @@
 .mainTitle {
   font-size: 3rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--mantine-color-orange-6), var(--mantine-color-red-6));
+  background: linear-gradient(
+    135deg,
+    var(--mantine-color-orange-6),
+    var(--mantine-color-red-6)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -34,11 +38,11 @@
 
 /* Contact Content - Preserve Original Layout */
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-grow: 1;
-    transition: all 0.5s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  transition: all 0.5s ease;
 }
 
 /* Animation */
@@ -55,7 +59,11 @@
 
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .mainTitle {
-  background: linear-gradient(135deg, var(--mantine-color-orange-7), var(--mantine-color-red-7));
+  background: linear-gradient(
+    135deg,
+    var(--mantine-color-orange-7),
+    var(--mantine-color-red-7)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -66,11 +74,11 @@
   .headerSection {
     margin-bottom: 2rem;
   }
-  
+
   .mainTitle {
     font-size: 2.5rem;
   }
-  
+
   .subtitle {
     font-size: 1rem;
     padding: 0 1rem;
@@ -84,39 +92,40 @@
 }
 
 .left {
-    width: 30%;
-    max-width: 50%;
-    margin: 0 auto;
+  width: 30%;
+  max-width: 50%;
+  margin: 0 auto;
 }
 
 .right {
-    width: 50%;
-    max-width: 50%;
-    margin: 0 auto;
+  width: 50%;
+  max-width: 50%;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 10px;
-    }
+  .container {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+  }
 
-    .left, .right {
-        max-width: 100%;
-        transition: all 0.5s ease;
-    }
+  .left,
+  .right {
+    max-width: 100%;
+    transition: all 0.5s ease;
+  }
 
-    .left {
-        width: 80%;
-        order: 1;
-        margin-top: 5%;
-    }
+  .left {
+    width: 80%;
+    order: 1;
+    margin-top: 5%;
+  }
 
-    .right {
-        width: 90%;
-        order: 2;
-        margin-top: 5%;
-        margin-bottom: 0;
-    }
+  .right {
+    width: 90%;
+    order: 2;
+    margin-top: 5%;
+    margin-bottom: 0;
+  }
 }
