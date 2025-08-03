@@ -78,7 +78,7 @@
             {
               "TITLE": "Senior Software Engineer",
               "PERIOD": "May 2025 - Present",
-              "DESCRIPTION": "- Building **Generative AI** & **RAG** pipelines for Customer Support\n- Developing scalable **AI solutions** for enterprise clients\n- Leading technical architecture decisions for **AI-powered** features"
+              "DESCRIPTION": "- Building **Generative AI** & **RAG** pipelines for Customer Support\n- Researching and implementing **AI-powered** Voice-to-Voice Chatbots\n- Developing Full-Stack Applications using **FastAPI** & **React**"
             }
           ]
         },
@@ -90,17 +90,17 @@
             {
               "TITLE": "Software Development Engineer 2",
               "PERIOD": "January 2024 - April 2025",
-              "DESCRIPTION": "- Led **AI integrations** for SpringVerify, implementing **AI-based calling** and increasing submission rate by **18%**\n- Automated operations using **GenAI** for text and vision, reducing manual effort\n- Developed **priority and non-priority queue-based architecture** for optimized async data processing\n- Integrated **Direct-Search** into **RAG** using **LLM function calls** for API-based data retrieval\n- Established unified **OAuth-based sign-in/sign-up flow** for Slack, Microsoft, Google, and email authentication\n- Fixed **502 errors** by addressing TCP connection expiry between load balancer and microservices\n- Developed internal tools via **Appsmith** to streamline operations"
+              "DESCRIPTION": "- Led **AI-based calling** integration increasing submission rates **18%**\n- Built **GenAI** pipelines for automated text/vision processing\n- Designed priority-based queue architecture for async processing\n- Implemented **RAG** with **Direct-Search** via **LLM function calls**\n- Created unified **OAuth** flow for multiple providers\n- Optimized load balancer TCP connections to fix **502** errors\n- Built operational tools with **Appsmith**"
             },
             {
               "TITLE": "Software Development Engineer 1",
               "PERIOD": "May 2022 - December 2023",
-              "DESCRIPTION": "- Promoted to **Team Lead** within 7 days of full-time conversion, leading **Trivia** product development\n- Integrated Microsoft's **Monetization platform**, increasing revenue by **$5.6K** and securing **$10K** in annual benefits\n- Resolved **Slack rate-limiting issues** using **Redis-backed caching layer**\n- Built scalable **DM system** for Slack & Microsoft Teams, delivering **100K+ DMs** for PMM team\n- Migrated services from **REST** to **SQS-based inter-service communication**, enhancing data processing efficiency\n- Developed **LLM-based query routing** for trained data vs. LLM responses\n- Integrated **Portkey** for **AI aggregation**, enabling dynamic model switching via disposable virtual keys"
+              "DESCRIPTION": "- Fast-tracked to **Team Lead** for **Trivia** product\n- Drove **$15.6K** revenue via Microsoft Monetization platform\n- Implemented **Redis** caching for Slack rate limits\n- Built **DM system** handling **100K+** messages\n- Migrated to **SQS** from REST for improved processing\n- Created **LLM** routing system for query handling\n- Integrated **Portkey** for flexible AI model management"
             },
             {
               "TITLE": "Software Engineering Intern",
               "PERIOD": "May 2021 - May 2022",
-              "DESCRIPTION": "- Set up unit testing using **Chai**, **Sinon**, and **Mocha**, establishing team-wide testing conventions\n- Led **Trivia's refactor** into **three microservices**, optimizing Slack and Microsoft Teams integrations"
+              "DESCRIPTION": "- Established testing standards with **Chai**, **Sinon**, and **Mocha**\n- Refactored **Trivia** into optimized microservices"
             }
           ],
           "PROJECTS": [
