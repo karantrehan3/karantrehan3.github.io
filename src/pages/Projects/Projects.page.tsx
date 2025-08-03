@@ -12,6 +12,8 @@ interface ProjectCardInfo {
   title: string;
   description: string;
   link: string;
+  techStack?: string[];
+  inProgress?: boolean;
 }
 
 export default function ProjectsPage(): ReactElement {
