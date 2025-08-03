@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface UseScrollSpyOptions {
   sectionIds: string[];
@@ -16,12 +16,14 @@ export const useScrollSpy = ({
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
     const sectionElements: Element[] = [];
-    const sectionIntersections: Map<string, number> = new Map();
+    const sectionIntersections: Map<string, number> = new Map<string, number>();
 
     // Create intersection observer for each section
     sectionIds.forEach((sectionId) => {
       const element = document.getElementById(sectionId);
-      if (!element) return;
+      if (!element) {
+        return;
+      }
 
       sectionElements.push(element);
 

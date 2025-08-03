@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+
 import classes from "./index.module.css";
 
 const ZigZag = (): ReactElement => {

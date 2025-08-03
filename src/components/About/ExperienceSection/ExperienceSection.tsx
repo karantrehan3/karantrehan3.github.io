@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
-import { Paper, Title, Text, Stack } from "@mantine/core";
+import { Paper, Stack, Text, Title } from "@mantine/core";
+
 import { CompanyItem } from "../CompanyItem";
 import classes from "./ExperienceSection.module.css";
 

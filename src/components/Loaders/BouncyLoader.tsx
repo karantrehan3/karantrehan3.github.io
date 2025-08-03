@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
-import cx from "clsx";
 import { Box, MantineLoaderComponent } from "@mantine/core";
+import cx from "clsx";
+
 import classes from "./BouncyLoader.module.css";
 
 export const BouncyLoader: MantineLoaderComponent = forwardRef<

@@ -3,6 +3,7 @@ import "./global.css";
 
 import { ReactElement } from "react";
 import { MantineProvider } from "@mantine/core";
+
 import { Router } from "./Router";
 import { theme } from "./theme";
 

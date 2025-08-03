@@ -1,7 +1,9 @@
 import { ReactElement } from "react";
-import { Text, Button, Stack, Badge, Group } from "@mantine/core";
+import { Badge, Button, Stack, Text } from "@mantine/core";
 import { IconArrowRight } from "@tabler/icons-react";
+
 import config from "@/utils/Config";
+
 import classes from "./HomeIntro.module.css";
 
 export function HomeIntro(): ReactElement {

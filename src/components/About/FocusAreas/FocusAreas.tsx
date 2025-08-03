@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
-import { Paper, Title, Group, Badge } from "@mantine/core";
+import { Badge, Group, Paper, Title } from "@mantine/core";
+
 import classes from "./FocusAreas.module.css";
 
 interface FocusAreasProps {

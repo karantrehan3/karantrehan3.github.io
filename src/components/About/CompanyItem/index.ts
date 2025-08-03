@@ -1,1 +1,1 @@
-export { CompanyItem } from "./CompanyItem"; 
+export { CompanyItem } from "./CompanyItem";

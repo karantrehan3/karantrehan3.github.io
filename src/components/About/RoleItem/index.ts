@@ -1,1 +1,1 @@
-export { RoleItem } from "./RoleItem"; 
+export { RoleItem } from "./RoleItem";

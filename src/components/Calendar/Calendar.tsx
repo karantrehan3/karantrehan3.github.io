@@ -1,6 +1,8 @@
-import { useState, ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { Loader } from "@mantine/core";
+
 import config from "@/utils/Config";
+
 import classes from "./Calendar.module.css";
 
 export function Calendar(): ReactElement {

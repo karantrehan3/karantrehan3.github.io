@@ -1,5 +1,6 @@
-import { Suspense as Sus, FC, ReactNode } from "react";
+import { FC, ReactNode, Suspense as Sus } from "react";
 import { Loader } from "@mantine/core";
+
 import classes from "./Suspense.module.css";
 
 interface SuspenseProps {

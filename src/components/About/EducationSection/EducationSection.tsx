@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
-import { Paper, Title, Group, Image, Text, Badge, Stack } from "@mantine/core";
+import { Badge, Group, Image, Paper, Stack, Text, Title } from "@mantine/core";
+
 import classes from "./EducationSection.module.css";
 
 interface EducationSectionProps {

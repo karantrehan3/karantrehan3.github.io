@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
-import { Paper, Blockquote } from "@mantine/core";
+import { Blockquote, Paper } from "@mantine/core";
+
 import classes from "./ProfessionalQuote.module.css";
 
 interface ProfessionalQuoteProps {

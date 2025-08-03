@@ -1,11 +1,11 @@
-import { useEffect, ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
 import {
-  useMantineColorScheme,
-  useMantineTheme,
   ActionIcon,
   MantineColorScheme,
+  useMantineColorScheme,
+  useMantineTheme,
 } from "@mantine/core";
-import { IconSun, IconMoon } from "@tabler/icons-react";
+import { IconMoon, IconSun } from "@tabler/icons-react";
 
 export function ThemeToggle(): ReactElement {
   const theme = useMantineTheme();
@@ -18,7 +18,7 @@ export function ThemeToggle(): ReactElement {
       setColorScheme(savedColorScheme as MantineColorScheme);
     } else {
       const prefersDarkScheme = window.matchMedia(
-        "(prefers-color-scheme: dark)",
+        "(prefers-color-scheme: dark)"
       ).matches;
       setColorScheme(prefersDarkScheme ? "dark" : "light");
     }

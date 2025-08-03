@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
-import { Group, Text, Image, Anchor } from "@mantine/core";
+import { Anchor, Group, Image, Text } from "@mantine/core";
 import { IconExternalLink } from "@tabler/icons-react";
+
 import classes from "./ProjectItem.module.css";
 
 interface ProjectItemProps {
@@ -27,7 +28,7 @@ export function ProjectItem({
       <Group gap="xs" align="center">
         {/* Project Logo */}
         <div className={classes.projectLogoContainer}>
-          {!!currentLogo ? (
+          {currentLogo ? (
             // Special overlapping design for logo/currentLogo
             <div className={classes.logoOverlap}>
               <Image

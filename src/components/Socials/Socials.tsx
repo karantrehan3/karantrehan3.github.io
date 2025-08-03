@@ -1,11 +1,13 @@
 import { ReactElement } from "react";
 import { Button, Stack } from "@mantine/core";
 import {
-  IconBrandLinkedin,
   IconBrandGithub,
   IconBrandGmail,
+  IconBrandLinkedin,
 } from "@tabler/icons-react";
+
 import config from "@/utils/Config";
+
 import classes from "./Socials.module.css";
 
 export function Socials(): ReactElement {

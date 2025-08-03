@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
-import { Text, Badge } from "@mantine/core";
+import { Badge, Text } from "@mantine/core";
 import ReactMarkdown from "react-markdown";
+
 import classes from "./RoleItem.module.css";
 
 interface RoleItemProps {

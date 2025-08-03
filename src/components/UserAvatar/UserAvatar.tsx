@@ -1,7 +1,9 @@
-import { useState, ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { Avatar, Indicator, Loader } from "@mantine/core";
-import classes from "./UserAvatar.module.css";
+
 import config from "@/utils/Config";
+
+import classes from "./UserAvatar.module.css";
 
 export function UserAvatar(): ReactElement {
   const [loading, setLoading] = useState<boolean>(true);

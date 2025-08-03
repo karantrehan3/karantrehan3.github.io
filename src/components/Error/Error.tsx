@@ -1,7 +1,8 @@
 import { ReactElement } from "react";
-import { Container, Text, Title, Group, Button } from "@mantine/core";
+import { Button, Container, Group, Text, Title } from "@mantine/core";
 import { IconHome } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
+
 import classes from "./Error.module.css";
 
 export function Error(): ReactElement {

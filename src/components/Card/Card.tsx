@@ -1,6 +1,14 @@
-import { useState, ReactElement } from "react";
-import { Card as OgCard, Image, Text, Group, Loader, Container } from "@mantine/core";
+import { ReactElement, useState } from "react";
+import {
+  Container,
+  Group,
+  Image,
+  Loader,
+  Card as OgCard,
+  Text,
+} from "@mantine/core";
 import ReactMarkdown from "react-markdown";
+
 import classes from "./Card.module.css";
 
 interface CardProps {

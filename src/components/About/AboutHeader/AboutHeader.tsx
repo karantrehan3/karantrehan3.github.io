@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
-import { Title, Text } from "@mantine/core";
+import { Text, Title } from "@mantine/core";
+
 import classes from "./AboutHeader.module.css";
 
 interface AboutHeaderProps {

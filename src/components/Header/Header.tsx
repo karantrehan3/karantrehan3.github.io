@@ -1,19 +1,21 @@
-import { IconChevronDown } from "@tabler/icons-react";
-import { useState, useEffect, ReactElement } from "react";
-import { useLocation } from "react-router-dom";
+import { ReactElement, useEffect, useState } from "react";
 import {
-  Container,
-  Group,
   Burger,
-  Drawer,
-  Menu,
   Center,
+  Container,
+  Drawer,
+  Group,
   Image,
+  Menu,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { IconChevronDown } from "@tabler/icons-react";
+import { useLocation } from "react-router-dom";
+
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import config from "@/utils/Config";
+
 import classes from "./Header.module.css";
 
 interface Link {

@@ -1,7 +1,8 @@
-import { ReactElement, lazy } from "react";
+import { lazy, ReactElement } from "react";
+
+import ZigZag from "../../components/Dividers/ZigZag";
 import { PageLayout } from "../../components/PageLayout/PageLayout";
 import { Suspense } from "../../components/Suspense/Suspense";
-import ZigZag from "../../components/Dividers/ZigZag";
 import classes from "./index.module.css";
 
 const HomePage = lazy(() => import("../Home/Home.page"));
