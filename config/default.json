@@ -30,6 +30,10 @@
     }
   },
   "HEADER": {
+    "LOGO": {
+      "LIGHT": "/assets/dp/logo_white.png",
+      "DARK": "/assets/dp/logo_black.png"
+    },
     "LINKS": [
       { "link": "#about", "label": "About Me" },
       {

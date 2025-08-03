@@ -7,6 +7,7 @@ import {
   Group,
   Image,
   Menu,
+  useMantineColorScheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
@@ -38,6 +39,7 @@ const links: Link[] = [
 export function Header(): ReactElement {
   const [opened, { toggle, close }] = useDisclosure(false);
   const location = useLocation();
+  const { colorScheme } = useMantineColorScheme();
 
   // Get section IDs from navigation links (include main sections even if they have dropdowns)
   const sectionIds = links
@@ -153,6 +155,23 @@ export function Header(): ReactElement {
     <header className={classes.header}>
       <Container size="xxl" className={classes.inner}>
         <Group visibleFrom="xs" className={classes.wrapper}>
+          {/* Logo on the left */}
+          <Group className={classes.logo}>
+            <Image
+              src={config.get(
+                `HEADER.LOGO.${colorScheme === "dark" ? "DARK" : "LIGHT"}`
+              )}
+              alt="Karan Trehan Logo"
+              className={classes.logoImage}
+              onClick={() => {
+                const homeSection = document.querySelector("#home");
+                if (homeSection) {
+                  homeSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            />
+          </Group>
+
           <Group gap={5} visibleFrom="xs" className={classes.center}>
             {items}
           </Group>
@@ -160,13 +179,37 @@ export function Header(): ReactElement {
             <ThemeToggle />
           </Group>
         </Group>
-        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+        {/* Mobile: Burger left, Logo center, Theme Toggle right */}
+        <Group hiddenFrom="xs" className={classes.mobileWrapper}>
+          <Burger
+            opened={opened}
+            onClick={toggle}
+            size="sm"
+            className={classes.mobileBurger}
+          />
+          <div className={classes.mobileLogo}>
+            <Image
+              src={config.get(
+                `HEADER.LOGO.${colorScheme === "dark" ? "DARK" : "LIGHT"}`
+              )}
+              alt="Karan Trehan Logo"
+              className={classes.logoImage}
+              onClick={() => {
+                const homeSection = document.querySelector("#home");
+                if (homeSection) {
+                  homeSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            />
+          </div>
+          <div className={classes.mobileThemeToggle}>
+            <ThemeToggle />
+          </div>
+        </Group>
+
         <Drawer opened={opened} onClose={close} hiddenFrom="xs" padding="md">
           <Group className={classes.drawer}>{items}</Group>
         </Drawer>
-        <Group hiddenFrom="xs" className={classes.right}>
-          <ThemeToggle />
-        </Group>
       </Container>
     </header>
   );
