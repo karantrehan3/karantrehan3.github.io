@@ -64,9 +64,9 @@ export function Card({
             <Text className={classes.title}>{title}</Text>
           </Group>
 
-          <Text className={classes.description}>
+          <div className={classes.description}>
             <ReactMarkdown>{description}</ReactMarkdown>
-          </Text>
+          </div>
         </div>
 
         {techStack.length > 0 && (
