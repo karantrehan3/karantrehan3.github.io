@@ -39,7 +39,9 @@ const links: Link[] = [
 export function Header(): ReactElement {
   const [opened, { toggle, close }] = useDisclosure(false);
   const location = useLocation();
-  const { colorScheme } = useMantineColorScheme();
+  const { colorScheme } = useMantineColorScheme({
+    keepTransitions: true,
+  });
 
   // Get section IDs from navigation links (include main sections even if they have dropdowns)
   const sectionIds = links

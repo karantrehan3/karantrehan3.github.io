@@ -1,61 +1,98 @@
-/* Global Theme Transitions */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
+/* Global Theme Transitions - Performance Optimized */
+/* Only animate GPU-accelerated properties for smooth 60fps */
 
-/* Smooth transitions for specific elements */
+/* Base transitions for theme changes - only essential properties */
+html,
 body {
-  transition: background-color 0.4s ease;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Header transitions */
+/* Header transitions - minimal properties */
 header {
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Card and component transitions */
+/* Mantine components - selective transitions */
 [data-mantine-color-scheme] {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Button and interactive element transitions */
-button, a, [role="button"] {
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+/* Interactive elements - minimal transitions */
+button,
+a,
+[role="button"] {
+  transition:
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Form element transitions */
-input, textarea, select {
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+/* Form elements - essential only */
+input,
+textarea,
+select {
+  transition:
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Badge and chip transitions */
-[data-mantine-color-scheme] .mantine-Badge-root {
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+/* Mantine specific components - targeted transitions */
+.mantine-Badge-root {
+  transition:
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Paper and container transitions */
-[data-mantine-color-scheme] .mantine-Paper-root {
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+.mantine-Paper-root {
+  transition:
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Theme toggle specific transitions */
+/* Theme toggle specific - smooth interaction */
 .mantine-ActionIcon-root {
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mantine-ActionIcon-root:hover {
   transform: scale(1.05);
+  transition:
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Disable transitions for performance-critical elements */
+/* Performance-critical elements - no transitions */
 .mantine-Loader-root,
-.mantine-Skeleton-root {
+.mantine-Skeleton-root,
+.mantine-Image-root,
+.mantine-Avatar-root {
   transition: none !important;
 }
 
-/* Optimize transitions for reduced motion preference */
+/* Optimize for reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
   }
-} 
+}
+
+/* GPU acceleration for smooth animations */
+.mantine-Text-root,
+.mantine-Title-root,
+.mantine-Stack-root,
+.mantine-Group-root,
+.mantine-Container-root {
+  will-change: auto;
+  transform: translateZ(0); /* Force GPU acceleration */
+}
+
+/* Smooth image transitions */
+img,
+svg {
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: auto;
+}
