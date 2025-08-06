@@ -31,8 +31,8 @@
   },
   "HEADER": {
     "LOGO": {
-      "LIGHT": "/assets/dp/logo_white.png",
-      "DARK": "/assets/dp/logo_black.png"
+      "LIGHT": "/assets/dp/logo_white.webp",
+      "DARK": "/assets/dp/logo_black.webp"
     },
     "LINKS": [
       { "link": "#about", "label": "About Me" },
@@ -43,27 +43,27 @@
           {
             "link": "https://karantrehan3.github.io/cause-list-checker/",
             "label": "Cause List Checker",
-            "iconSource": "/assets/icons/law.png"
+            "iconSource": "/assets/icons/law.webp"
           },
           {
             "link": "https://cafe-safar-dev.onrender.com/",
             "label": "Cafe Safar",
-            "iconSource": "/assets/icons/cafe.png"
+            "iconSource": "/assets/icons/cafe.webp"
           },
           {
             "link": "https://karantrehan3.github.io/dm-sender-public/",
             "label": "Slack DM Sender",
-            "iconSource": "/assets/icons/slack.png"
+            "iconSource": "/assets/icons/slack.webp"
           },
           {
             "link": "https://karantrehan3.github.io/docker-localstack/",
             "label": "Run AWS Locally (Docker-Localstack)",
-            "iconSource": "/assets/icons/docker.png"
+            "iconSource": "/assets/icons/docker.webp"
           },
           {
             "link": "https://karantrehan3.github.io/Hand-Gesture-Recognition-Based-Interactive-Gaming/",
             "label": "Gesture-Controlled Interactive Gaming",
-            "iconSource": "/assets/icons/camera-ai.png"
+            "iconSource": "/assets/icons/camera-ai.webp"
           }
         ]
       },
@@ -84,7 +84,7 @@
     "LINKEDIN": "https://www.linkedin.com/in/karantrehan3/",
     "GITHUB": "https://github.com/karantrehan3"
   },
-  "AVATAR": "/assets/dp/profile.jpg",
+  "AVATAR": "/assets/dp/profile.webp",
   "ABOUT": {
     "TITLE": "About Me",
     "SUBTITLE": "Journey, Skills & Expertise",
@@ -106,7 +106,7 @@
         {
           "NAME": "Akmazo Akcelerator",
           "URL": "https://www.akcelerator.io/",
-          "LOGO": "/assets/work/akmazo_akcelerator.jpeg",
+          "LOGO": "/assets/work/akmazo_akcelerator.webp",
           "ROLES": [
             {
               "TITLE": "Senior Software Engineer",
@@ -118,7 +118,7 @@
         {
           "NAME": "Springworks",
           "URL": "https://springworks.in/",
-          "LOGO": "/assets/work/springworks.jpeg",
+          "LOGO": "/assets/work/springworks.webp",
           "ROLES": [
             {
               "TITLE": "Software Development Engineer 2",
@@ -141,7 +141,7 @@
               "NAME": "Trivia",
               "URL": "https://trytrivia.co/",
               "ROLE": "Team Lead & Backend Developer",
-              "LOGO": "/assets/work/projects/trivia.png",
+              "LOGO": "/assets/work/projects/trivia.webp",
               "DESCRIPTION": "A virtual team-building app for Slack and Microsoft Teams that enables organizations to run real-time games, quizzes, puzzles, and polls to foster engagement among remote and hybrid teams."
             },
             {
@@ -149,15 +149,15 @@
               "CURRENT_NAME": "ChatAid",
               "URL": "https://chataid.com/",
               "ROLE": "Team Lead & AI Integration Specialist",
-              "LOGO": "/assets/work/projects/albus.png",
-              "CURRENT_LOGO": "/assets/work/projects/chataid.png",
+              "LOGO": "/assets/work/projects/albus.webp",
+              "CURRENT_LOGO": "/assets/work/projects/chataid.webp",
               "DESCRIPTION": "An AI-powered workplace assistant that integrates with various company apps (Slack, Teams, Google Drive, etc.) to deliver instant, secure, context-aware answers to employee queries by searching and synthesizing internal knowledge sources."
             },
             {
               "NAME": "SpringVerify",
               "URL": "https://in.springverify.com/",
               "ROLE": "Backend Developer & AI Solutions Engineer",
-              "LOGO": "/assets/work/projects/springverify.jpeg",
+              "LOGO": "/assets/work/projects/springverify.webp",
               "DESCRIPTION": "A background verification platform designed for businesses to automate and streamline employment, education, credit, and KYC checks, supporting bulk uploads, API integrations, and rapid digital onboarding."
             }
           ]
@@ -177,7 +177,7 @@
       "MARKS": "8.77 [CGPA]",
       "UNIVERSITY": "Chandigarh University, Mohali, Punjab",
       "GRADUATION_DATE": "July 2018 - June 2022",
-      "LOGO": "/assets/education/chandigarh_university.jpeg",
+      "LOGO": "/assets/education/chandigarh_university.webp",
       "ACHIEVEMENTS": ["Gold Medalist 🥇"]
     },
     "SKILLS": {
@@ -469,14 +469,14 @@
 
     "CARDS": [
       {
-        "imageSource": "/assets/projects/5.png",
+        "imageSource": "/assets/projects/5.webp",
         "title": "Cause List Checker",
         "link": "https://karantrehan3.github.io/cause-list-checker/",
         "description": "**Cause List Checker** is a FastAPI-based web application that automates searching through Punjab and Haryana High Court cause list PDFs for specific case details, fetches comprehensive case information from the court website, and sends automated email notifications with search results to legal professionals.",
         "techStack": ["Python", "FastAPI", "Docker", "Gmail SMTP"]
       },
       {
-        "imageSource": "/assets/projects/4.png",
+        "imageSource": "/assets/projects/4.webp",
         "title": "Cafe Safar",
         "link": "https://cafe-safar-dev.onrender.com/",
         "description": "**Cafe Safar** is a comprehensive full stack application designed for order management at the restaurant 'Cafe-Safar'. It features distinct user and admin views. Users can place orders, review past orders and transactions, and manage their profiles. Admins have the ability to oversee orders, update the menu, monitor payments, and handle various administrative functions.",
@@ -484,21 +484,21 @@
         "inProgress": true
       },
       {
-        "imageSource": "/assets/projects/3.png",
+        "imageSource": "/assets/projects/3.webp",
         "title": "Slack DM Sender",
         "link": "https://karantrehan3.github.io/dm-sender-public/",
         "description": "**Slack DM Sender** is a Slack bot that allows you to send direct messages to users in your workspace, appearing as if sent by you. Ideal for automated communication.",
         "techStack": ["Node.js", "Slack API", "Express.js", "Bull Queue"]
       },
       {
-        "imageSource": "/assets/projects/2.png",
+        "imageSource": "/assets/projects/2.webp",
         "title": "Run AWS Locally (Docker-Localstack)",
         "link": "https://karantrehan3.github.io/docker-localstack/",
         "description": "**Run AWS Locally (Docker-Localstack)** is a project that simplifies your local development by emulating AWS cloud services using Localstack within Docker. This setup enables seamless testing and development of AWS-dependent applications locally, supporting S3 and SQS as of now, and ensuring faster feedback loops without incurring cloud costs.",
         "techStack": ["Docker", "LocalStack", "AWS S3", "AWS SQS"]
       },
       {
-        "imageSource": "/assets/projects/1.png",
+        "imageSource": "/assets/projects/1.webp",
         "title": "Gesture-Controlled Interactive Gaming",
         "link": "https://karantrehan3.github.io/Hand-Gesture-Recognition-Based-Interactive-Gaming/",
         "description": "**Gesture-Controlled Interactive Gaming** is an innovative computer vision project enabling hand gestures to control a game. Map gestures to W, A, S, D keys for a dynamic, hands-free gaming experience.",
