@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { Anchor, Group, Image, Text } from "@mantine/core";
-import { IconExternalLink } from "@tabler/icons-react";
+
+import Icon from "@/components/Icons";
 
 import { ProjectItem } from "../ProjectItem";
 import { RoleItem } from "../RoleItem";
@@ -54,7 +55,7 @@ export function CompanyItem({
           <Anchor href={url} target="_blank" className={classes.companyLink}>
             {name}
           </Anchor>
-          <IconExternalLink size={16} />
+          <Icon name="IconExternalLink" size={16} />
         </Group>
       </Group>
 

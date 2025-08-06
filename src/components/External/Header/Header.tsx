@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { Button, Group, Tooltip } from "@mantine/core";
-import * as TablerIcons from "@tabler/icons-react";
 
 import Layout from "@/components/External/Layout/Layout";
 import Icon from "@/components/Icons";
@@ -12,7 +11,7 @@ import classes from "./Header.module.css";
 interface ButtonConfig {
   name: string;
   tooltip: string;
-  icon: keyof typeof TablerIcons;
+  icon: string; // Changed from keyof typeof TablerIcons to string
   onClick: {
     method: keyof typeof helpers;
     args: { url?: string };
@@ -31,7 +30,7 @@ const Header: FC = () => {
               onClick={() =>
                 helpers[button.onClick.method](button.onClick.args)
               }
-              leftSection={<Icon name={button.icon} />}
+              leftSection={<Icon name={button.icon as any} />}
               className={classes.custom_button}
             >
               {button.name}

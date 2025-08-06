@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { Badge, Text } from "@mantine/core";
-import ReactMarkdown from "react-markdown";
+
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 
 import classes from "./RoleItem.module.css";
 
@@ -26,7 +27,7 @@ export function RoleItem({
         </Badge>
       </div>
       <div className={classes.roleDescription}>
-        <ReactMarkdown>{description}</ReactMarkdown>
+        <MarkdownRenderer content={description} />
       </div>
     </div>
   );

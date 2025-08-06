@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { Anchor, Group, Image, Text } from "@mantine/core";
-import { IconExternalLink } from "@tabler/icons-react";
+
+import Icon from "@/components/Icons";
 
 import classes from "./ProjectItem.module.css";
 
@@ -63,7 +64,7 @@ export function ProjectItem({
         <Anchor href={url} target="_blank" className={classes.projectLink}>
           {currentName ? `${name} (now ${currentName})` : name}
         </Anchor>
-        <IconExternalLink size={14} />
+        <Icon name="IconExternalLink" size={14} />
       </Group>
       <Text size="xs" className={classes.projectRole}>
         {role}

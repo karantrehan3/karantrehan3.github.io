@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { Button, Tooltip } from "@mantine/core";
-import { IconUser } from "@tabler/icons-react";
 
+import Icon from "@/components/Icons";
 import config from "@/utils/Config";
 
 import classes from "./AboutMeCTA.module.css";
@@ -24,7 +24,7 @@ export function AboutMeCTA(): ReactElement {
       <Button
         className={classes.primaryButton}
         onClick={handleAboutClick}
-        leftSection={<IconUser size={16} />}
+        leftSection={<Icon name="IconUser" size={16} />}
       >
         {config.get("HOME.ACTIONS.LEARN_ABOUT_ME")}
       </Button>

@@ -10,9 +10,9 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconChevronDown } from "@tabler/icons-react";
 import { useLocation } from "react-router-dom";
 
+import Icon from "@/components/Icons";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import config from "@/utils/Config";
@@ -117,7 +117,7 @@ export function Header(): ReactElement {
             >
               <Center>
                 <span className={classes.linkLabel}>{link.label}</span>
-                <IconChevronDown size="0.9rem" stroke={1.5} />
+                <Icon name="IconChevronDown" size="0.9rem" stroke={1.5} />
               </Center>
             </a>
           </Menu.Target>

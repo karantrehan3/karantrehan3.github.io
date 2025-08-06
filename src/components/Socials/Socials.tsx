@@ -1,11 +1,7 @@
 import { ReactElement } from "react";
 import { Button, Stack } from "@mantine/core";
-import {
-  IconBrandGithub,
-  IconBrandGmail,
-  IconBrandLinkedin,
-} from "@tabler/icons-react";
 
+import Icon from "@/components/Icons";
 import config from "@/utils/Config";
 
 import classes from "./Socials.module.css";
@@ -30,7 +26,11 @@ export function Socials(): ReactElement {
           variant="default"
           size="md"
           leftSection={
-            <IconBrandGmail size={25} className={classes.email_icon} />
+            <Icon
+              name="IconBrandGmail"
+              size={25}
+              className={classes.email_icon}
+            />
           }
           className={classes.email_button}
           onClick={handleEmailClick}
@@ -41,7 +41,11 @@ export function Socials(): ReactElement {
           variant="default"
           size="md"
           leftSection={
-            <IconBrandLinkedin size={25} className={classes.linkedin_icon} />
+            <Icon
+              name="IconBrandLinkedin"
+              size={25}
+              className={classes.linkedin_icon}
+            />
           }
           className={classes.linkedin_button}
           onClick={handleLinkedInClick}
@@ -52,7 +56,11 @@ export function Socials(): ReactElement {
           variant="default"
           size="md"
           leftSection={
-            <IconBrandGithub size={25} className={classes.github_icon} />
+            <Icon
+              name="IconBrandGithub"
+              size={25}
+              className={classes.github_icon}
+            />
           }
           className={classes.github_button}
           onClick={handleGithubClick}

@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { Badge, Button, Stack, Text } from "@mantine/core";
-import { IconArrowRight } from "@tabler/icons-react";
 
+import Icon from "@/components/Icons";
 import config from "@/utils/Config";
 
 import classes from "./HomeIntro.module.css";
@@ -38,7 +38,7 @@ export function HomeIntro(): ReactElement {
       <Button
         className={classes.button}
         onClick={handleButtonClick}
-        rightSection={<IconArrowRight size={16} />}
+        rightSection={<Icon name="IconArrowRight" size={16} />}
         size="lg"
       >
         {homeData.CALL_TO_ACTION}

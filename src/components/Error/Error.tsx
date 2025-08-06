@@ -1,7 +1,8 @@
 import { ReactElement } from "react";
 import { Button, Container, Group, Text, Title } from "@mantine/core";
-import { IconHome } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
+
+import Icon from "@/components/Icons";
 
 import classes from "./Error.module.css";
 
@@ -35,7 +36,7 @@ export function Error(): ReactElement {
             size="lg"
             gradient={{ from: "yellow", to: "red" }}
           >
-            <IconHome style={{ marginRight: 5 }} />
+            <Icon name="IconHome" style={{ marginRight: 5 }} />
             Home
           </Button>
         </Group>

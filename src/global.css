@@ -87,7 +87,6 @@ select {
 .mantine-Group-root,
 .mantine-Container-root {
   will-change: auto;
-  transform: translateZ(0); /* Force GPU acceleration */
 }
 
 /* Smooth image transitions */

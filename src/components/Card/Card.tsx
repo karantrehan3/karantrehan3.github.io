@@ -8,7 +8,8 @@ import {
   Card as OgCard,
   Text,
 } from "@mantine/core";
-import ReactMarkdown from "react-markdown";
+
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 
 import classes from "./Card.module.css";
 
@@ -65,7 +66,7 @@ export function Card({
           </Group>
 
           <div className={classes.description}>
-            <ReactMarkdown>{description}</ReactMarkdown>
+            <MarkdownRenderer content={description} />
           </div>
         </div>
 

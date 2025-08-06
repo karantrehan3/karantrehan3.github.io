@@ -1,0 +1,151 @@
+/* Markdown content styling */
+.markdown {
+  line-height: 1.6;
+  color: inherit;
+}
+
+/* Headers */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.markdown h1 {
+  font-size: 1.5em;
+}
+
+.markdown h2 {
+  font-size: 1.3em;
+}
+
+.markdown h3 {
+  font-size: 1.1em;
+}
+
+/* Paragraphs */
+.markdown p {
+  margin-bottom: 1em;
+}
+
+/* Links */
+.markdown a {
+  color: var(--mantine-color-blue-6);
+  text-decoration: none;
+}
+
+.markdown a:hover {
+  text-decoration: underline;
+}
+
+/* Lists */
+.markdown ul,
+.markdown ol {
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+}
+
+.markdown li {
+  margin-bottom: 0.25em;
+}
+
+.markdown ul {
+  list-style-type: disc;
+}
+
+.markdown ol {
+  list-style-type: decimal;
+}
+
+/* Code */
+.markdown code {
+  background-color: var(--mantine-color-gray-1);
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  font-size: 0.875em;
+}
+
+.markdown pre {
+  background-color: var(--mantine-color-gray-1);
+  padding: 1em;
+  border-radius: 0.5em;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+
+.markdown pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Blockquotes */
+.markdown blockquote {
+  border-left: 4px solid var(--mantine-color-gray-4);
+  padding-left: 1em;
+  margin: 1em 0;
+  font-style: italic;
+  color: var(--mantine-color-gray-6);
+}
+
+/* Tables */
+.markdown table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid var(--mantine-color-gray-4);
+  padding: 0.5em;
+  text-align: left;
+}
+
+.markdown th {
+  background-color: var(--mantine-color-gray-1);
+  font-weight: 600;
+}
+
+/* Horizontal rules */
+.markdown hr {
+  border: none;
+  border-top: 1px solid var(--mantine-color-gray-4);
+  margin: 2em 0;
+}
+
+/* Images */
+.markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5em;
+}
+
+/* Strong and emphasis */
+.markdown strong {
+  font-weight: 600;
+}
+
+.markdown em {
+  font-style: italic;
+}
+
+/* Strikethrough */
+.markdown del {
+  text-decoration: line-through;
+}
+
+/* Inline code */
+.markdown :not(pre) > code {
+  background-color: var(--mantine-color-gray-1);
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+  font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+  font-size: 0.875em;
+}

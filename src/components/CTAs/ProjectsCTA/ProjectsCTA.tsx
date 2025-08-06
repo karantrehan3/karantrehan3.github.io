@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { Button, Tooltip } from "@mantine/core";
-import { IconFolder } from "@tabler/icons-react";
 
+import Icon from "@/components/Icons";
 import config from "@/utils/Config";
 
 import classes from "./ProjectsCTA.module.css";
@@ -24,7 +24,7 @@ export function ProjectsCTA(): ReactElement {
       <Button
         className={classes.secondaryButton}
         onClick={handleProjectsClick}
-        leftSection={<IconFolder size={16} />}
+        leftSection={<Icon name="IconFolder" size={16} />}
         variant="outline"
       >
         {config.get("HOME.ACTIONS.VIEW_PROJECTS")}

@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { Button, Tooltip } from "@mantine/core";
-import { IconMail } from "@tabler/icons-react";
 
+import Icon from "@/components/Icons";
 import config from "@/utils/Config";
 
 import classes from "./ContactCTA.module.css";
@@ -24,7 +24,7 @@ export function ContactCTA(): ReactElement {
       <Button
         className={classes.tertiaryButton}
         onClick={handleContactClick}
-        leftSection={<IconMail size={16} />}
+        leftSection={<Icon name="IconMail" size={16} />}
         variant="light"
       >
         {config.get("HOME.ACTIONS.CONTACT_ME")}
