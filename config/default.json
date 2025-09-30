@@ -491,7 +491,7 @@
         "link": "https://cafe-safar-dev.onrender.com/",
         "description": "**Cafe Safar** is a comprehensive full stack application designed for order management at the restaurant 'Cafe-Safar'. It features distinct user and admin views. Users can place orders, review past orders and transactions, and manage their profiles. Admins have the ability to oversee orders, update the menu, monitor payments, and handle various administrative functions.",
         "techStack": ["MongoDB", "Express.js", "React", "Node.js"],
-        "inProgress": true
+        "inProgress": false
       },
       {
         "imageSource": "/assets/projects/3.webp",
