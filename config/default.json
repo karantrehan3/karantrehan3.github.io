@@ -113,6 +113,16 @@
               "PERIOD": "May 2025 - Present",
               "DESCRIPTION": "- Building **Generative AI** & **RAG** pipelines for Customer Support\n- Researching and implementing **AI-powered** Voice-to-Voice Chatbots\n- Developing Full-Stack Applications using **FastAPI** & **React**"
             }
+          ],
+          "PROJECTS": [
+            {
+              "NAME": "jrni",
+              "URL": "https://www.jrni.com/",
+              "LOGO": "/assets/work/jrni.webp",
+              "ROLE": "Senior Software Engineer",
+              "PERIOD": "May 2025 - Present",
+              "DESCRIPTION": "- Building **Generative AI** & **RAG** pipelines for Customer Support\n- Researching and implementing **AI-powered** Voice-to-Voice Chatbots\n- Developing Full-Stack Applications using **FastAPI** & **React**"
+            }
           ]
         },
         {

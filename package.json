@@ -1,5 +1,5 @@
 {
-  "name": "mantine-vite-template",
+  "name": "karantrehan-portfolio",
   "private": true,
   "type": "module",
   "version": "0.0.0",
@@ -84,5 +84,12 @@
       "eslint --cache --fix"
     ]
   },
-  "packageManager": "yarn@4.5.1"
+  "packageManager": "npm@10.0.0",
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
+  },
+  "volta": {
+    "node": "22.20.0"
+  }
 }
