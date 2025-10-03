@@ -28,6 +28,7 @@ interface Link {
     label: string;
     hidden?: boolean;
     iconSource?: string;
+    iconAlt?: string;
   }[];
 }
 
@@ -139,7 +140,11 @@ export function Header(): ReactElement {
                   >
                     <div className={classes.subLabel}>
                       {item.iconSource && (
-                        <Image src={item.iconSource} className={classes.icon} />
+                        <Image
+                          src={item.iconSource}
+                          alt={item.iconAlt || `${item.label} icon`}
+                          className={classes.icon}
+                        />
                       )}
                       {item.label}
                     </div>
@@ -163,7 +168,9 @@ export function Header(): ReactElement {
               src={config.get(
                 `HEADER.LOGO.${colorScheme === "dark" ? "DARK" : "LIGHT"}`
               )}
-              alt="Karan Trehan Logo"
+              alt={config.get(
+                `HEADER.LOGO_ALT.${colorScheme === "dark" ? "DARK" : "LIGHT"}`
+              )}
               className={classes.logoImage}
               onClick={() => {
                 const homeSection = document.querySelector("#home");
@@ -194,7 +201,9 @@ export function Header(): ReactElement {
               src={config.get(
                 `HEADER.LOGO.${colorScheme === "dark" ? "DARK" : "LIGHT"}`
               )}
-              alt="Karan Trehan Logo"
+              alt={config.get(
+                `HEADER.LOGO_ALT.${colorScheme === "dark" ? "DARK" : "LIGHT"}`
+              )}
               className={classes.logoImage}
               onClick={() => {
                 const homeSection = document.querySelector("#home");

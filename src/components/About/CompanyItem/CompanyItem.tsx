@@ -19,7 +19,9 @@ interface Project {
   URL: string;
   ROLE: string;
   LOGO?: string;
+  LOGO_ALT?: string;
   CURRENT_LOGO?: string;
+  CURRENT_LOGO_ALT?: string;
   DESCRIPTION: string;
 }
 
@@ -27,6 +29,7 @@ interface CompanyItemProps {
   name: string;
   url: string;
   logo?: string;
+  logoAlt?: string;
   roles: Role[];
   projects?: Project[];
 }
@@ -35,6 +38,7 @@ export function CompanyItem({
   name,
   url,
   logo,
+  logoAlt,
   roles,
   projects,
 }: CompanyItemProps): ReactElement {
@@ -45,7 +49,7 @@ export function CompanyItem({
           {logo && (
             <Image
               src={logo}
-              alt={`${name} logo`}
+              alt={logoAlt || `${name} logo`}
               className={classes.companyLogo}
               width={40}
               height={40}
@@ -87,7 +91,9 @@ export function CompanyItem({
                 role={project.ROLE}
                 description={project.DESCRIPTION}
                 logo={project.LOGO}
+                logoAlt={project.LOGO_ALT}
                 currentLogo={project.CURRENT_LOGO}
+                currentLogoAlt={project.CURRENT_LOGO_ALT}
               />
             ))}
           </div>

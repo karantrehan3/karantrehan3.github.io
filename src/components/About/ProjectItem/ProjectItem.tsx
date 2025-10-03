@@ -12,7 +12,9 @@ interface ProjectItemProps {
   role: string;
   description: string;
   logo?: string;
+  logoAlt?: string;
   currentLogo?: string;
+  currentLogoAlt?: string;
 }
 
 export function ProjectItem({
@@ -22,7 +24,9 @@ export function ProjectItem({
   role,
   description,
   logo,
+  logoAlt,
   currentLogo,
+  currentLogoAlt,
 }: ProjectItemProps): ReactElement {
   return (
     <div className={classes.projectItem}>
@@ -34,7 +38,7 @@ export function ProjectItem({
             <div className={classes.logoOverlap}>
               <Image
                 src={logo}
-                alt="Logo"
+                alt={logoAlt || `${name} original logo`}
                 className={classes.logo}
                 width={40}
                 height={40}
@@ -42,7 +46,7 @@ export function ProjectItem({
               />
               <Image
                 src={currentLogo}
-                alt="Current logo"
+                alt={currentLogoAlt || `${currentName || name} current logo`}
                 className={classes.currentLogo}
                 width={40}
                 height={40}
@@ -52,7 +56,7 @@ export function ProjectItem({
           ) : logo ? (
             <Image
               src={logo}
-              alt={`${name} logo`}
+              alt={logoAlt || `${name} logo`}
               className={classes.projectLogo}
               width={40}
               height={40}

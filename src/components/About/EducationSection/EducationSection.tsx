@@ -9,6 +9,7 @@ interface EducationSectionProps {
   graduationDate: string;
   marks: string;
   logo?: string;
+  logoAlt?: string;
   achievements?: string[];
 }
 
@@ -18,6 +19,7 @@ export function EducationSection({
   graduationDate,
   marks,
   logo,
+  logoAlt,
   achievements,
 }: EducationSectionProps): ReactElement {
   return (
@@ -30,7 +32,7 @@ export function EducationSection({
           {logo && (
             <Image
               src={logo}
-              alt={`${university} logo`}
+              alt={logoAlt || `${university} logo`}
               className={classes.universityLogo}
               width={40}
               height={40}

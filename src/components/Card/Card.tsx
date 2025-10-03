@@ -25,7 +25,7 @@ interface CardProps {
 
 export function Card({
   imageSource,
-  imageAlt = "none",
+  imageAlt,
   title,
   description,
   link,
@@ -49,7 +49,7 @@ export function Card({
         )}
         <Image
           src={imageSource}
-          alt={imageAlt}
+          alt={imageAlt || `${title} project screenshot`}
           className={loading ? classes.hidden : classes.img}
           onLoad={() => setLoading(false)}
           onError={() => setLoading(false)}

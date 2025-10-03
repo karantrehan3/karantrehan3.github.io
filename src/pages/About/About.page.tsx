@@ -64,6 +64,7 @@ export default function AboutPage(): ReactElement {
         graduationDate={education.GRADUATION_DATE}
         marks={education.MARKS}
         logo={education.LOGO}
+        logoAlt={education.LOGO_ALT}
         achievements={education.ACHIEVEMENTS}
       />
     </Container>

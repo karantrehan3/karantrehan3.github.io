@@ -16,7 +16,9 @@ interface Project {
   URL: string;
   ROLE: string;
   LOGO?: string;
+  LOGO_ALT?: string;
   CURRENT_LOGO?: string;
+  CURRENT_LOGO_ALT?: string;
   DESCRIPTION: string;
 }
 
@@ -24,6 +26,7 @@ interface Company {
   NAME: string;
   URL: string;
   LOGO?: string;
+  LOGO_ALT?: string;
   ROLES: Role[];
   PROJECTS?: Project[];
 }
@@ -58,6 +61,7 @@ export function ExperienceSection({
             name={company.NAME}
             url={company.URL}
             logo={company.LOGO}
+            logoAlt={company.LOGO_ALT}
             roles={company.ROLES}
             projects={company.PROJECTS}
           />

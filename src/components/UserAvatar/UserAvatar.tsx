@@ -21,6 +21,7 @@ export function UserAvatar(): ReactElement {
         <div className={classes.avatarContainer}>
           <Avatar
             src={config.get("AVATAR")}
+            alt={config.get("AVATAR_ALT")}
             className={loading ? classes.hidden : classes.avatar}
             onLoad={() => setLoading(false)}
             onContextMenu={(event) => event.preventDefault()} // Prevent users from downloading image
