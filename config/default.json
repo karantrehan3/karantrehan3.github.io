@@ -117,9 +117,9 @@
           "NAME": "Akmazo Akcelerator",
           "URL": "https://www.akcelerator.io/",
           "LOGO": "/assets/work/akmazo_akcelerator.webp",
-          "LOGO_ALT": "Akmazo Akcelerator logo",
+          "LOGO_ALT": "Akmazo Akcelerator",
           "ADDITIONAL_LOGO": "/assets/work/jrni.webp",
-          "ADDITIONAL_LOGO_ALT": "JRNI logo",
+          "ADDITIONAL_LOGO_ALT": "JRNI",
           "SUBTITLE": "Working primarily with [JRNI](https://jrni.com/), a portfolio company of [Akmazo Akcelerator](https://www.akcelerator.io/).",
           "ROLES": [
             {
@@ -139,7 +139,7 @@
               "URL": "https://support-copilot.akmazo.ai/",
               "ROLE": "Lead Developer",
               "LOGO": "/assets/work/projects/jrni-support-copilot.webp",
-              "LOGO_ALT": "Support Co-Pilot logo",
+              "LOGO_ALT": "Support Co-Pilot",
               "DESCRIPTION": "An **Agentic RAG-powered** customer support assistant that leverages internal docs, help articles, API docs, and Zendesk data to provide intelligent, context-aware responses."
             },
             {
@@ -147,7 +147,7 @@
               "URL": "https://kiosk-development.jrni-mumbai.com/branches/demo/",
               "ROLE": "Lead Developer",
               "LOGO": "/assets/work/projects/jrni-kiosk.webp",
-              "LOGO_ALT": "Kiosk logo",
+              "LOGO_ALT": "Kiosk",
               "DESCRIPTION": "A modernized **Progressive Web App (PWA)** check-in system for JRNI's **Staff-Portal** built with **ReactJs + TypeScript + Vite** architecture, featuring revamped QR-code and code-based check-in flows, major performance improvements, and a scalable component foundation with CI/CD integration."
             }
           ]
@@ -156,7 +156,7 @@
           "NAME": "Springworks",
           "URL": "https://springworks.in/",
           "LOGO": "/assets/work/springworks.webp",
-          "LOGO_ALT": "Springworks logo",
+          "LOGO_ALT": "Springworks",
           "ROLES": [
             {
               "TITLE": "Software Development Engineer 2",
@@ -180,7 +180,7 @@
               "URL": "https://trytrivia.co/",
               "ROLE": "Team Lead & Backend Developer",
               "LOGO": "/assets/work/projects/trivia.webp",
-              "LOGO_ALT": "Trivia logo",
+              "LOGO_ALT": "Trivia",
               "DESCRIPTION": "A virtual team-building app for Slack and Microsoft Teams that enables organizations to run real-time games, quizzes, puzzles, and polls to foster engagement among remote and hybrid teams."
             },
             {
@@ -189,9 +189,9 @@
               "URL": "https://chataid.com/",
               "ROLE": "Team Lead & AI Integration Specialist",
               "LOGO": "/assets/work/projects/albus.webp",
-              "LOGO_ALT": "Albus logo",
+              "LOGO_ALT": "Albus",
               "CURRENT_LOGO": "/assets/work/projects/chataid.webp",
-              "CURRENT_LOGO_ALT": "ChatAid logo",
+              "CURRENT_LOGO_ALT": "ChatAid",
               "DESCRIPTION": "An AI-powered workplace assistant that integrates with various company apps (Slack, Teams, Google Drive, etc.) to deliver instant, secure, context-aware answers to employee queries by searching and synthesizing internal knowledge sources."
             },
             {
@@ -199,7 +199,7 @@
               "URL": "https://in.springverify.com/",
               "ROLE": "Backend Developer & AI Solutions Engineer",
               "LOGO": "/assets/work/projects/springverify.webp",
-              "LOGO_ALT": "SpringVerify logo",
+              "LOGO_ALT": "SpringVerify",
               "DESCRIPTION": "A background verification platform designed for businesses to automate and streamline employment, education, credit, and KYC checks, supporting bulk uploads, API integrations, and rapid digital onboarding."
             }
           ]
@@ -220,7 +220,7 @@
       "UNIVERSITY": "Chandigarh University, Mohali, Punjab",
       "GRADUATION_DATE": "July 2018 - June 2022",
       "LOGO": "/assets/education/chandigarh_university.webp",
-      "LOGO_ALT": "Chandigarh University logo",
+      "LOGO_ALT": "Chandigarh University",
       "ACHIEVEMENTS": ["Gold Medalist 🥇"]
     },
     "SKILLS": {

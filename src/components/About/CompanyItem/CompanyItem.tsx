@@ -1,9 +1,10 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { Anchor, Group, Image, Text } from "@mantine/core";
 
 import Icon from "@/components/Icons";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 
+import { ImagePreviewModal } from "../ImagePreviewModal";
 import { ProjectItem } from "../ProjectItem";
 import { RoleItem } from "../RoleItem";
 import classes from "./CompanyItem.module.css";
@@ -49,12 +50,51 @@ export function CompanyItem({
   roles,
   projects,
 }: CompanyItemProps): ReactElement {
+  const [previewOpened, setPreviewOpened] = useState(false);
+
+  const handleImageClick = () => {
+    setPreviewOpened(true);
+  };
+
+  const getPreviewImages = () => {
+    const images = [];
+    if (logo) {
+      images.push({
+        src: logo,
+        alt: logoAlt || `${name} logo`,
+      });
+    }
+    if (additionalLogo) {
+      images.push({
+        src: additionalLogo,
+        alt: additionalLogoAlt || `${name} additional logo`,
+      });
+    }
+    return images;
+  };
+
   return (
     <div className={classes.companyItem}>
+      <ImagePreviewModal
+        opened={previewOpened}
+        onClose={() => setPreviewOpened(false)}
+        images={getPreviewImages()}
+      />
       <Group gap="xs" align="center" className={classes.companyHeader}>
         <Group gap="xs" align="center" className={classes.companyInfo}>
           {logo && (
-            <div className={classes.companyLogoContainer}>
+            <div
+              className={classes.companyLogoContainer}
+              onClick={handleImageClick}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleImageClick();
+                }
+              }}
+            >
               {additionalLogo ? (
                 // Special overlapping design for logo/additionalLogo
                 <div className={classes.logoOverlap}>

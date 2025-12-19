@@ -28,6 +28,23 @@
   width: 60px;
   height: 60px;
   flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  outline: none;
+  user-select: none;
+}
+
+.companyLogoContainer:hover {
+  transform: scale(1.05);
+}
+
+.companyLogoContainer:active {
+  transform: scale(0.95);
+}
+
+.companyLogoContainer:focus,
+.companyLogoContainer:focus-visible {
+  outline: none;
 }
 
 .companyLogoContainer:has(.logoOverlap) {
@@ -246,4 +263,5 @@
 [data-mantine-color-scheme="light"] .logo,
 [data-mantine-color-scheme="light"] .additionalLogo {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--mantine-color-gray-4);
 }
