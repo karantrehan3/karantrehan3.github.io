@@ -130,10 +130,27 @@
             {
               "TITLE": "Senior Software Engineer",
               "PERIOD": "May 2025 - November 2025",
-              "DESCRIPTION": "- Designed and delivered an **Agentic RAG pipeline** for the Customer Support team leveraging internal docs, help docs, API docs and Zendesk input which reduced average TAT by nearly **15 minutes per ticket** (around **20 percent improvement**).\n- Contributed and Developed a standalone microservice for **Security Controls** (Rate-Limiting, Whitelisting). It operates inline like a proxy or can be invoked selectively by other services whilst maintaining **low double-digit millisecond latency** using **Fastify** and **Redis**.\n- Led the overhaul of the entire **JRNI Kiosk app** by moving from a legacy JS and Webpack setup to a modern **TypeScript + Vite** architecture with revamped QR and code check-in flows, **Progressive Web App (PWA)** support, major performance boosts and a scalable component and CI/CD foundation that modernizes the product for future growth."
+              "DESCRIPTION": "- Designed and delivered an **Agentic RAG pipeline** for the Customer Support team leveraging internal docs, help docs, API docs and Zendesk input which reduced average TAT by nearly **15 minutes per ticket** (around **20 percent improvement**).\n- Contributed and Developed a standalone microservice for **Security Controls** (Rate-Limiting, Whitelisting). It operates inline like a proxy or can be invoked selectively by other services whilst maintaining **low double-digit millisecond latency** using **Fastify** and **Redis**.\n- Led the overhaul of the entire **JRNI Kiosk app** by moving from a legacy JS and Webpack setup to a modern **ReactJs + TypeScript + Vite** architecture with revamped QR and code check-in flows, **Progressive Web App (PWA)** support, major performance boosts and a scalable component and CI/CD foundation that modernizes the product for future growth."
             }
           ],
-          "PROJECTS": []
+          "PROJECTS": [
+            {
+              "NAME": "Support Co-Pilot",
+              "URL": "https://support-copilot.akmazo.ai/",
+              "ROLE": "Lead Developer",
+              "LOGO": "/assets/work/projects/jrni-support-copilot.webp",
+              "LOGO_ALT": "Support Co-Pilot logo",
+              "DESCRIPTION": "An **Agentic RAG-powered** customer support assistant that leverages internal docs, help articles, API docs, and Zendesk data to provide intelligent, context-aware responses."
+            },
+            {
+              "NAME": "Kiosk",
+              "URL": "https://kiosk-development.jrni-mumbai.com/branches/demo/",
+              "ROLE": "Lead Developer",
+              "LOGO": "/assets/work/projects/jrni-kiosk.webp",
+              "LOGO_ALT": "Kiosk logo",
+              "DESCRIPTION": "A modernized **Progressive Web App (PWA)** check-in system for JRNI's **Staff-Portal** built with **ReactJs + TypeScript + Vite** architecture, featuring revamped QR-code and code-based check-in flows, major performance improvements, and a scalable component foundation with CI/CD integration."
+            }
+          ]
         },
         {
           "NAME": "Springworks",

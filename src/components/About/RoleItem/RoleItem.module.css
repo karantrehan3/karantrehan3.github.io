@@ -28,7 +28,9 @@
   padding: 0.4rem 0.8rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 8px rgba(255, 123, 0, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .rolePeriod:hover {
@@ -47,7 +49,7 @@
 }
 
 .roleDescription li {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
   color: var(--mantine-color-gray-3);
 }
 
@@ -80,4 +82,4 @@
 
 [data-mantine-color-scheme="light"] .roleDescription li {
   color: var(--mantine-color-dark-7);
-} 
+}

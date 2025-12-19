@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { Anchor, Group, Image, Text } from "@mantine/core";
 
 import Icon from "@/components/Icons";
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 
 import classes from "./ProjectItem.module.css";
 
@@ -74,7 +75,7 @@ export function ProjectItem({
         {role}
       </Text>
       <Text size="sm" className={classes.projectDescription}>
-        {description}
+        <MarkdownRenderer content={description} />
       </Text>
     </div>
   );
