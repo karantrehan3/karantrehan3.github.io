@@ -32,7 +32,7 @@ interface Company {
 }
 
 interface ExperienceSummary {
-  YEARS: string;
+  START_DATE: string;
   DESCRIPTION: string;
   COMPANIES: Company[];
 }
@@ -41,17 +41,34 @@ interface ExperienceSectionProps {
   experienceSummary: ExperienceSummary;
 }
 
+function calculateExperience(startDate: string): string {
+  const [day, month, year] = startDate.split("-").map(Number);
+  const start = new Date(year, month - 1, day);
+  const current = new Date();
+
+  const totalMonths =
+    (current.getFullYear() - start.getFullYear()) * 12 +
+    current.getMonth() -
+    start.getMonth() -
+    (current.getDate() < start.getDate() ? 1 : 0);
+
+  const roundedYears = Math.round((totalMonths / 12) * 10) / 10;
+
+  return `${roundedYears}+ ${roundedYears === 1 ? "year" : "years"}`;
+}
+
 export function ExperienceSection({
   experienceSummary,
 }: ExperienceSectionProps): ReactElement {
+  const experienceText = calculateExperience(experienceSummary.START_DATE);
+
   return (
     <Paper className={classes.experienceSection} p="xl" radius="md">
       <Title order={3} className={classes.sectionTitle}>
         Experience
       </Title>
       <Text className={classes.experienceText}>
-        <strong>{experienceSummary.YEARS}</strong>{" "}
-        {experienceSummary.DESCRIPTION}
+        <strong>{experienceText}</strong> {experienceSummary.DESCRIPTION}
       </Text>
 
       <Stack gap="xl" className={classes.companiesList}>

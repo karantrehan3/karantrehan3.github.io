@@ -110,8 +110,8 @@
       ]
     },
     "EXPERIENCE_SUMMARY": {
-      "YEARS": "4+",
-      "DESCRIPTION": "years of software development experience in high-performance applications using NodeJS, Python, and AWS, specializing in AI-powered automation, microservices, and cloud-based architectures.",
+      "START_DATE": "03-05-2021",
+      "DESCRIPTION": "of software development experience in high-performance applications using NodeJS, Python, and AWS, specializing in AI-powered automation, microservices, and cloud-based architectures.",
       "COMPANIES": [
         {
           "NAME": "Akmazo Akcelerator",
