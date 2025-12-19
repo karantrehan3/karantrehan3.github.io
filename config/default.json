@@ -118,6 +118,9 @@
           "URL": "https://www.akcelerator.io/",
           "LOGO": "/assets/work/akmazo_akcelerator.webp",
           "LOGO_ALT": "Akmazo Akcelerator logo",
+          "ADDITIONAL_LOGO": "/assets/work/jrni.webp",
+          "ADDITIONAL_LOGO_ALT": "JRNI logo",
+          "SUBTITLE": "Working primarily with [JRNI](https://jrni.com/), a portfolio company of [Akmazo Akcelerator](https://www.akcelerator.io/).",
           "ROLES": [
             {
               "TITLE": "Lead Software Engineer",

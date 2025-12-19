@@ -21,10 +21,81 @@
   align-items: center;
 }
 
+.companyLogoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.companyLogoContainer:has(.logoOverlap) {
+  width: 80px;
+  height: 80px;
+}
+
 .companyLogo {
   border-radius: 6px;
   object-fit: contain;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Special overlapping design for logo/additionalLogo */
+.logoOverlap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  transition: transform 0.2s ease;
+}
+
+.additionalLogo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+.logoOverlap:hover .logo {
+  transform: translate(12px, 12px);
+}
+
+.logoOverlap:hover .additionalLogo {
+  transform: translate(-12px, -12px);
+}
+
+.companyLinkContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  transition: transform 0.2s ease;
+}
+
+.companyLinkContainer > :first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .companyLink {
@@ -37,6 +108,42 @@
 
 .companyLink:hover {
   color: var(--mantine-color-blue-3);
+}
+
+.companySubtitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--mantine-color-gray-5);
+  margin-top: -1rem;
+  margin-bottom: 0;
+}
+
+.companySubtitle :global(.markdown) {
+  color: var(--mantine-color-gray-5);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.companySubtitle :global(.markdown p) {
+  margin: 0;
+  padding: 0;
+}
+
+.companySubtitle :global(.markdown a) {
+  color: var(--mantine-color-blue-4);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.companySubtitle :global(.markdown a:hover) {
+  color: var(--mantine-color-blue-3);
+  text-decoration: underline;
+}
+
+.companyInfo:has(.logoOverlap:hover) .companyLinkContainer {
+  transform: translateX(16px);
 }
 
 .rolesTimeline {
@@ -109,6 +216,24 @@
   color: var(--mantine-color-blue-6);
 }
 
+[data-mantine-color-scheme="light"] .companySubtitle {
+  color: var(--mantine-color-gray-6);
+}
+
+[data-mantine-color-scheme="light"] .companySubtitle :global(.markdown) {
+  color: var(--mantine-color-gray-6);
+}
+
+[data-mantine-color-scheme="light"] .companySubtitle :global(.markdown a) {
+  color: var(--mantine-color-blue-7);
+}
+
+[data-mantine-color-scheme="light"]
+  .companySubtitle
+  :global(.markdown a:hover) {
+  color: var(--mantine-color-blue-6);
+}
+
 [data-mantine-color-scheme="light"] .projectsSection {
   border-top: 1px solid var(--mantine-color-gray-2);
 }
@@ -117,6 +242,8 @@
   color: var(--mantine-color-dark-9);
 }
 
-[data-mantine-color-scheme="light"] .companyLogo {
+[data-mantine-color-scheme="light"] .companyLogo,
+[data-mantine-color-scheme="light"] .logo,
+[data-mantine-color-scheme="light"] .additionalLogo {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }

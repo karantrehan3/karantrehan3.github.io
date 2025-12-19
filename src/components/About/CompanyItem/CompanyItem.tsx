@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { Anchor, Group, Image, Text } from "@mantine/core";
 
 import Icon from "@/components/Icons";
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 
 import { ProjectItem } from "../ProjectItem";
 import { RoleItem } from "../RoleItem";
@@ -30,6 +31,9 @@ interface CompanyItemProps {
   url: string;
   logo?: string;
   logoAlt?: string;
+  additionalLogo?: string;
+  additionalLogoAlt?: string;
+  subtitle?: string;
   roles: Role[];
   projects?: Project[];
 }
@@ -39,6 +43,9 @@ export function CompanyItem({
   url,
   logo,
   logoAlt,
+  additionalLogo,
+  additionalLogoAlt,
+  subtitle,
   roles,
   projects,
 }: CompanyItemProps): ReactElement {
@@ -47,19 +54,56 @@ export function CompanyItem({
       <Group gap="xs" align="center" className={classes.companyHeader}>
         <Group gap="xs" align="center" className={classes.companyInfo}>
           {logo && (
-            <Image
-              src={logo}
-              alt={logoAlt || `${name} logo`}
-              className={classes.companyLogo}
-              width={40}
-              height={40}
-              fit="contain"
-            />
+            <div className={classes.companyLogoContainer}>
+              {additionalLogo ? (
+                // Special overlapping design for logo/additionalLogo
+                <div className={classes.logoOverlap}>
+                  <Image
+                    src={logo}
+                    alt={logoAlt || `${name} original logo`}
+                    className={classes.logo}
+                    width={60}
+                    height={60}
+                    fit="contain"
+                  />
+                  <Image
+                    src={additionalLogo}
+                    alt={additionalLogoAlt || `${name} additional logo`}
+                    className={classes.additionalLogo}
+                    width={60}
+                    height={60}
+                    fit="contain"
+                  />
+                </div>
+              ) : (
+                <Image
+                  src={logo}
+                  alt={logoAlt || `${name} logo`}
+                  className={classes.companyLogo}
+                  width={60}
+                  height={60}
+                  fit="contain"
+                />
+              )}
+            </div>
           )}
-          <Anchor href={url} target="_blank" className={classes.companyLink}>
-            {name}
-          </Anchor>
-          <Icon name="IconExternalLink" size={16} />
+          <div className={classes.companyLinkContainer}>
+            <div>
+              <Anchor
+                href={url}
+                target="_blank"
+                className={classes.companyLink}
+              >
+                {name}
+              </Anchor>
+              <Icon name="IconExternalLink" size={16} />
+            </div>
+            {subtitle && (
+              <div className={classes.companySubtitle}>
+                <MarkdownRenderer content={subtitle} />
+              </div>
+            )}
+          </div>
         </Group>
       </Group>
 

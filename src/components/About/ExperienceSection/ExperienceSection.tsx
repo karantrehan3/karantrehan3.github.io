@@ -27,6 +27,9 @@ interface Company {
   URL: string;
   LOGO?: string;
   LOGO_ALT?: string;
+  ADDITIONAL_LOGO?: string;
+  ADDITIONAL_LOGO_ALT?: string;
+  SUBTITLE?: string;
   ROLES: Role[];
   PROJECTS?: Project[];
 }
@@ -79,6 +82,9 @@ export function ExperienceSection({
             url={company.URL}
             logo={company.LOGO}
             logoAlt={company.LOGO_ALT}
+            additionalLogo={company.ADDITIONAL_LOGO}
+            additionalLogoAlt={company.ADDITIONAL_LOGO_ALT}
+            subtitle={company.SUBTITLE}
             roles={company.ROLES}
             projects={company.PROJECTS}
           />

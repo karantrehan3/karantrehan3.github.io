@@ -5,8 +5,8 @@ import {
   AboutHeader,
   EducationSection,
   ExperienceSection,
-  FocusAreas,
-  ProfessionalQuote,
+  // FocusAreas,
+  // ProfessionalQuote,
   SkillsSection,
   TypingEffect,
 } from "@/components/About";
@@ -18,8 +18,8 @@ export default function AboutPage(): ReactElement {
   const aboutData = config.get("ABOUT");
   const typingTexts = aboutData.INTRODUCTION.TYPING_EFFECT;
   const experienceSummary = aboutData.EXPERIENCE_SUMMARY;
-  const focusAreas = aboutData.FOCUS_AREAS;
-  const professionalQuote = aboutData.QUOTE;
+  // const focusAreas = aboutData.FOCUS_AREAS;
+  // const professionalQuote = aboutData.QUOTE;
   const education = aboutData.EDUCATION;
   const skills = aboutData.SKILLS;
 
@@ -43,7 +43,8 @@ export default function AboutPage(): ReactElement {
       <AboutHeader title={aboutData.TITLE} subtitle={aboutData.SUBTITLE} />
 
       {/* Professional Quote - Full Width */}
-      <ProfessionalQuote quote={professionalQuote} author="Karan Trehan" />
+      {/* TODO: Review if this section is needed */}
+      {/* <ProfessionalQuote quote={professionalQuote} author="Karan Trehan" /> */}
 
       {/* Typing Effect Section - Full Width */}
       <TypingEffect texts={typingTexts} />
@@ -52,7 +53,8 @@ export default function AboutPage(): ReactElement {
       <ExperienceSection experienceSummary={experienceSummary} />
 
       {/* Focus Areas */}
-      <FocusAreas areas={focusAreas} />
+      {/* TODO: Review if this section is needed */}
+      {/* <FocusAreas areas={focusAreas} /> */}
 
       {/* Skills Section */}
       <SkillsSection skills={skillsData} config={skillsConfig} />
