@@ -1,1 +1,0 @@
-export { ProfessionalQuote } from "./ProfessionalQuote";

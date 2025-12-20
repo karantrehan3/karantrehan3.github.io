@@ -101,11 +101,10 @@
     "QUOTE": "Innovating AI-driven solutions that power seamless customer experiences.",
     "INTRODUCTION": {
       "TYPING_EFFECT": [
-        "Senior Software Engineer",
-        "Backend & AI Innovator",
+        "Full-Stack Developer | AI Innovator",
         "Python | FastAPI | GenAI | LLMs",
-        "Node.js | Express.js",
-        "React.js | UI Development",
+        "Node.js | Express.js | Fastify",
+        "React.js | TypeScript | Vite | UI Development",
         "Always Evolving Beyond Boundaries"
       ]
     },
@@ -206,14 +205,6 @@
         }
       ]
     },
-    "FOCUS_AREAS": [
-      "AI-powered Solutions",
-      "Full-Stack Development",
-      "Microservices Architecture",
-      "Cloud-based Solutions",
-      "High-performance Applications"
-    ],
-    "PROFESSIONAL_QUOTE": "Innovating AI-driven solutions that power seamless customer experiences.",
     "EDUCATION": {
       "DEGREE": "B.E. Computer Science with Specialization in AI and ML",
       "MARKS": "8.77 [CGPA]",
