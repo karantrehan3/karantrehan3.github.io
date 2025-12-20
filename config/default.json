@@ -274,6 +274,13 @@
           "color": "#F7DF1E",
           "backgroundColor": "#F7DF1E",
           "textColor": "#000000"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "IconBrandTypescript",
+          "color": "#3178C6",
+          "backgroundColor": "#3178C6",
+          "textColor": "#FFFFFF"
         }
       ],
       "RUNTIME_ENVIRONMENTS": [
@@ -298,6 +305,13 @@
           "icon": "IconServer",
           "color": "#000000",
           "backgroundColor": "#000000",
+          "textColor": "#FFFFFF"
+        },
+        {
+          "name": "Fastify",
+          "icon": "IconApi",
+          "color": "#00B3A6",
+          "backgroundColor": "#00B3A6",
           "textColor": "#FFFFFF"
         },
         {
@@ -445,6 +459,20 @@
           "color": "#2496ED",
           "backgroundColor": "#2496ED",
           "textColor": "#FFFFFF"
+        },
+        {
+          "name": "Git",
+          "icon": "IconBrandGit",
+          "color": "#F05032",
+          "backgroundColor": "#F05032",
+          "textColor": "#FFFFFF"
+        },
+        {
+          "name": "Github",
+          "icon": "IconBrandGithub",
+          "color": "#181717",
+          "backgroundColor": "#181717",
+          "textColor": "#FFFFFF"
         }
       ],
       "PROJECT_MANAGEMENT": [
@@ -490,6 +518,13 @@
           "icon": "IconTestPipe",
           "color": "#0A0A0A",
           "backgroundColor": "#0A0A0A",
+          "textColor": "#FFFFFF"
+        },
+        {
+          "name": "Jest",
+          "icon": "IconTestPipe",
+          "color": "#C21325",
+          "backgroundColor": "#C21325",
           "textColor": "#FFFFFF"
         }
       ]
