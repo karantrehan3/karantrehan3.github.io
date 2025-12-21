@@ -1,0 +1,386 @@
+---
+description: DRY (Don't Repeat Yourself) Principles - Code Reusability Guidelines
+globs: src/**/*
+alwaysApply: true
+---
+
+# DRY (Don't Repeat Yourself) Principles
+
+## Core Principle
+
+**Never repeat code, logic, or data.** Always extract reusable patterns, functions, components, and constants.
+
+## Code Duplication Detection
+
+Before writing code, check if:
+
+1. Similar logic exists elsewhere in the codebase
+2. The same pattern is used multiple times
+3. Constants or configuration values are hardcoded
+4. UI components share common structure
+5. Utility functions are duplicated
+
+## Extraction Rules
+
+### 1. Functions and Utilities
+
+**Extract when:**
+
+- Same logic appears in 2+ places
+- Function can be reused across components
+- Complex calculations or transformations are repeated
+
+**Location:** `src/utils/` directory
+
+**Example:**
+
+```typescript
+// ❌ Bad - Duplicated logic
+// ComponentA.tsx
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+// ComponentB.tsx
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+// ✅ Good - Extracted utility
+// src/utils/dateHelpers.ts
+export const formatDate = (date: Date) => {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+```
+
+### 2. React Components
+
+**Extract when:**
+
+- Same JSX structure appears in multiple components
+- Component can be parameterized for reuse
+- UI pattern is repeated across pages
+
+**Location:** `src/components/` directory
+
+**Example:**
+
+```tsx
+// ❌ Bad - Duplicated card structure
+// Projects.tsx
+<div className={styles.card}>
+  <img src={project.image} />
+  <h3>{project.title}</h3>
+  <p>{project.description}</p>
+</div>
+
+// About.tsx
+<div className={styles.card}>
+  <img src={item.image} />
+  <h3>{item.title}</h3>
+  <p>{item.description}</p>
+</div>
+
+// ✅ Good - Reusable component
+// src/components/Card/Card.tsx
+export const Card = ({ image, title, description }) => {
+  return (
+    <div className={styles.card}>
+      <img src={image} />
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </div>
+  );
+};
+```
+
+### 3. Constants and Configuration
+
+**Extract when:**
+
+- Magic numbers or strings appear multiple times
+- Configuration values are hardcoded
+- API endpoints, routes, or keys are duplicated
+- Text content appears in multiple places
+
+**Location:** `config/default.json` or `src/utils/Config.ts`
+
+**Example:**
+
+```typescript
+// ❌ Bad - Hardcoded values
+const API_URL = 'https://api.example.com';
+const MAX_RETRIES = 3;
+const TIMEOUT = 5000;
+
+// ✅ Good - Centralized config
+// config/default.json
+{
+  "api": {
+    "baseUrl": "https://api.example.com",
+    "maxRetries": 3,
+    "timeout": 5000
+  }
+}
+
+// src/utils/Config.ts
+import config from '../../config/default.json';
+export const API_BASE_URL = config.api.baseUrl;
+export const MAX_RETRIES = config.api.maxRetries;
+export const TIMEOUT = config.api.timeout;
+```
+
+### 4. Type Definitions
+
+**Extract when:**
+
+- Same TypeScript interfaces/types are used in multiple files
+- Type definitions are duplicated across components
+
+**Location:** Shared type files (e.g., `src/types/` or component-level `*.types.ts`)
+
+**Example:**
+
+```typescript
+// ❌ Bad - Duplicated types
+// ComponentA.tsx
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+// ComponentB.tsx
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+
+// ✅ Good - Shared types
+// src/types/user.ts
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+}
+```
+
+### 5. Custom Hooks
+
+**Extract when:**
+
+- Same hook logic is used in multiple components
+- State management pattern is repeated
+- Side effects are duplicated
+
+**Location:** `src/hooks/` directory
+
+**Example:**
+
+```typescript
+// ❌ Bad - Duplicated hook logic
+// ComponentA.tsx
+const [isOpen, setIsOpen] = useState(false);
+const toggle = () => setIsOpen(!isOpen);
+const close = () => setIsOpen(false);
+
+// ComponentB.tsx
+const [isOpen, setIsOpen] = useState(false);
+const toggle = () => setIsOpen(!isOpen);
+const close = () => setIsOpen(false);
+
+// ✅ Good - Reusable hook
+// src/hooks/useToggle.ts
+export const useToggle = (initial = false) => {
+  const [isOpen, setIsOpen] = useState(initial);
+  const toggle = () => setIsOpen(!isOpen);
+  const close = () => setIsOpen(false);
+  const open = () => setIsOpen(true);
+  return { isOpen, toggle, close, open };
+};
+```
+
+### 6. CSS Styles
+
+**Extract when:**
+
+- Same styles are duplicated across CSS files
+- Common patterns (flexbox, grid, spacing) are repeated
+- Theme values are hardcoded
+
+**Location:**
+
+- Shared styles: `src/global.css` or component-level CSS Modules
+- Use CSS variables for repeated values
+
+**Example:**
+
+```css
+/* ❌ Bad - Duplicated styles */
+/* ComponentA.module.css */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ComponentB.module.css */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ✅ Good - Shared utility or CSS variables */
+/* src/global.css */
+:root {
+  --spacing-md: 1rem;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+```
+
+### 7. API Calls and Data Fetching
+
+**Extract when:**
+
+- Same API endpoints are called from multiple places
+- Data transformation logic is duplicated
+- Error handling patterns are repeated
+
+**Location:** `src/utils/` or dedicated API service files
+
+**Example:**
+
+```typescript
+// ❌ Bad - Duplicated API calls
+// ComponentA.tsx
+const fetchUser = async (id: string) => {
+  const response = await fetch(`/api/users/${id}`);
+  return response.json();
+};
+
+// ComponentB.tsx
+const fetchUser = async (id: string) => {
+  const response = await fetch(`/api/users/${id}`);
+  return response.json();
+};
+
+// ✅ Good - Centralized API service
+// src/utils/api.ts
+export const userService = {
+  getUser: async (id: string) => {
+    const response = await fetch(`/api/users/${id}`);
+    return response.json();
+  },
+};
+```
+
+## Refactoring Guidelines
+
+### When to Refactor
+
+1. **Code appears 3+ times** - Must be extracted
+2. **Code appears 2 times** - Should be extracted if it's likely to be reused
+3. **Similar patterns** - Extract common abstractions
+4. **Configuration changes** - Centralize for easier updates
+
+### Refactoring Process
+
+1. **Identify duplication** - Search codebase for similar patterns
+2. **Extract commonality** - Create reusable abstraction
+3. **Update all usages** - Replace duplicated code with extracted version
+4. **Test thoroughly** - Ensure behavior remains consistent
+5. **Document** - Add comments/docs for extracted code
+
+## File Organization
+
+### Shared Utilities
+
+- `src/utils/` - General utility functions
+- `src/utils/Config.ts` - Configuration access
+- `src/utils/Helpers.ts` - Helper functions
+
+### Shared Components
+
+- `src/components/` - Reusable UI components
+- Component-specific utilities in component folder
+
+### Shared Hooks
+
+- `src/hooks/` - Custom React hooks
+
+### Shared Types
+
+- Component-level: `ComponentName.types.ts`
+- Global: `src/types/` directory
+
+### Configuration
+
+- `config/default.json` - All configuration values
+- Text content, paths, and constants should be in config
+
+## Anti-Patterns to Avoid
+
+### ❌ Don't Do This
+
+1. **Copy-paste code** - Always extract instead
+2. **Hardcode values** - Use config or constants
+3. **Duplicate components** - Create reusable components
+4. **Repeat logic** - Extract to functions/hooks
+5. **Inline complex logic** - Extract to utilities
+6. **Duplicate type definitions** - Use shared types
+7. **Repeat API calls** - Centralize in services
+
+### ✅ Do This Instead
+
+1. **Extract to utilities** - Create reusable functions
+2. **Use configuration** - Centralize in config files
+3. **Create components** - Build reusable UI components
+4. **Use hooks** - Extract stateful logic
+5. **Share types** - Define once, import everywhere
+6. **Create services** - Centralize API calls
+7. **Use CSS variables** - Share common styles
+
+## Code Review Checklist
+
+When reviewing code, check for:
+
+- [ ] Duplicated functions or logic
+- [ ] Hardcoded values that should be in config
+- [ ] Repeated component structures
+- [ ] Duplicate type definitions
+- [ ] Repeated API calls or data fetching
+- [ ] Duplicated CSS styles
+- [ ] Similar state management patterns
+- [ ] Repeated error handling logic
+
+## Enforcement Rules
+
+1. **Always search** for existing similar code before writing new code
+2. **Extract immediately** when duplication is detected
+3. **Refactor proactively** - don't wait for 3+ occurrences
+4. **Use existing utilities** - check `src/utils/` first
+5. **Leverage shared components** - check `src/components/` before creating new ones
+6. **Centralize configuration** - use `config/default.json` for all config values
+7. **Document extracted code** - add JSDoc comments for reusable functions/components

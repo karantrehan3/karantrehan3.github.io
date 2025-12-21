@@ -1,0 +1,214 @@
+---
+description: CSS Guidelines - BEM Naming Convention
+globs: src/**/*.css, src/**/*.module.css, src/**/*.scss
+alwaysApply: true
+---
+
+# CSS Guidelines - BEM Naming Convention
+
+## BEM Naming Convention Rules
+
+When working with CSS in this project, you MUST follow the BEM (Block Element Modifier) methodology:
+
+### Block Naming Rules
+
+- Use lowercase letters with hyphens for word separation
+- Examples: `.card`, `.header`, `.home-page`
+- Block names should be semantic and reflect the component's purpose
+- Blocks are standalone and meaningful on their own
+
+### Element Naming Rules
+
+- Format: `block-name__element-name` (double underscore `__`)
+- Elements are parts of blocks that have no standalone meaning
+- Examples: `.card__content`, `.header__logo`, `.home-page__title`, `.card__header__title`
+- Elements are always part of a block and use double underscore separator
+
+### Modifier Naming Rules
+
+- Format: `block-name--modifier-name` or `block-name__element-name--modifier-name` (double dash `--`)
+- Modifiers change appearance, behavior, or state
+- Examples: `.card--disabled`, `.button--primary`, `.loader--fullscreen`, `.card__button--active`
+- Multiple modifiers can be chained: `.button--primary--large`
+
+## File Structure Requirements
+
+### Component Styles (CSS Modules)
+
+- **Location**: `src/components/ComponentName/ComponentName.module.css`
+- **Main block**: Use component name (e.g., `.card` for Card component)
+- **Flat structure**: Write classes flat, not nested (CSS Modules doesn't require nesting)
+
+### Page Styles (CSS Modules)
+
+- **Location**: `src/pages/PageName/PageName.module.css` or `PageName.page.module.css`
+- **Main block**: Use page name (e.g., `.about`, `.home`, `.contact`)
+- **Flat structure**: Write classes flat, not nested
+
+### Global Styles
+
+- **Location**: `src/global.css`
+- Use for global resets, theme transitions, and base styles
+- Avoid BEM for global utility classes
+
+## Code Structure Requirements
+
+### CSS Modules Pattern (Flat Structure)
+
+```css
+/* Card.module.css */
+.card {
+  /* Block styles */
+}
+
+.card--featured {
+  /* Block modifier styles */
+}
+
+.card__header {
+  /* Element styles */
+}
+
+.card__header--large {
+  /* Element modifier styles */
+}
+
+.card__content {
+  /* Element styles */
+}
+
+.card__button {
+  /* Element styles */
+}
+
+.card__button--primary {
+  /* Element modifier styles */
+}
+```
+
+### SCSS Nesting Pattern (if using SCSS)
+
+```scss
+.block-name {
+  // Block styles
+
+  &--modifier {
+    // Modifier styles
+  }
+
+  &__element {
+    // Element styles
+
+    &--modifier {
+      // Element modifier styles
+    }
+  }
+}
+```
+
+### TypeScript/React Usage with CSS Modules
+
+```tsx
+import styles from './Card.module.css';
+
+<div className={styles.card}>
+  <div className={styles.card__header}>Header</div>
+  <div className={styles.card__content}>Content</div>
+  <button className={styles.card__button}>Click</button>
+  <button className={`${styles.card__button} ${styles.card__button--primary}`}>
+    Primary
+  </button>
+</div>
+```
+
+## Required Practices
+
+1. **Always use BEM methodology** for new components and when modifying existing ones
+2. **Use semantic naming** that reflects purpose, not appearance
+3. **Keep component styles modular** in their respective component folders
+4. **Use flat CSS structure** for CSS Modules (no nesting required)
+5. **Limit nesting to 2-3 levels maximum** if using SCSS
+6. **Avoid `!important`** unless absolutely necessary
+7. **Use double underscore `__`** for elements, never single underscore
+8. **Use double dash `--`** for modifiers, never single dash
+9. **Never use camelCase** for class names (e.g., `.cardContent` is wrong, use `.card__content`)
+
+## State Modifiers
+
+For interactive states, use modifiers:
+
+```css
+.button {
+}
+.button--hover {
+}
+.button--active {
+}
+.button--disabled {
+}
+.button--loading {
+}
+```
+
+## Responsive Modifiers
+
+For responsive variants:
+
+```css
+.card {
+}
+.card--mobile {
+}
+.card--tablet {
+}
+.card--desktop {
+}
+```
+
+## Common Patterns
+
+### Component Structure
+
+```css
+.component-name {
+}
+.component-name__header {
+}
+.component-name__body {
+}
+.component-name__footer {
+}
+.component-name--featured {
+}
+.component-name__button {
+}
+.component-name__button--primary {
+}
+```
+
+### Page Structure
+
+```css
+.page-name {
+}
+.page-name__header {
+}
+.page-name__content {
+}
+.page-name__section {
+}
+.page-name__section--highlighted {
+}
+```
+
+## Enforcement Rules
+
+When editing CSS files:
+
+1. **Maintain BEM structure** - don't break existing BEM patterns
+2. **Follow naming conventions** - use the established patterns
+3. **Use proper separators** - `__` for elements, `--` for modifiers
+4. **Keep specificity low** - avoid deep nesting and complex selectors
+5. **Use flat structure** for CSS Modules - no nesting needed
+6. **Never use camelCase** - always use kebab-case with BEM separators
+7. **Ensure block independence** - blocks should be reusable and independent
