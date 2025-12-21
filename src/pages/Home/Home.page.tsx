@@ -1,8 +1,6 @@
 import { ReactElement } from "react";
 
-import { HomeActions } from "@/components/HomeActions/HomeActions";
-import { UserAvatar } from "@/components/UserAvatar/UserAvatar";
-import { Welcome } from "@/components/Welcome/Welcome";
+import { HomeActions, UserAvatar, Welcome } from "@/components/Home";
 
 import classes from "./Home.module.css";
 

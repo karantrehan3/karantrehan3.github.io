@@ -4,8 +4,8 @@ import "./global.css";
 import { ReactElement } from "react";
 import { MantineProvider } from "@mantine/core";
 
-import { Router } from "./Router";
-import { theme } from "./theme";
+import { Router } from "@/Router";
+import { theme } from "@/theme";
 
 export default function App(): ReactElement {
   return (

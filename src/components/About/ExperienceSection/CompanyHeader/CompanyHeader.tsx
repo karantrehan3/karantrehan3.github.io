@@ -1,12 +1,12 @@
 import { ReactElement } from "react";
 import { Anchor, Group, Image } from "@mantine/core";
 
-import Icon from "@/components/Icons";
-import { MarkdownRenderer } from "@/components/MarkdownRenderer";
+import Icon from "@/components/Common/Icons";
+import { MarkdownRenderer } from "@/components/Common/MarkdownRenderer";
 import {
   createKeyboardActionHandler,
   createStopPropagationHandler,
-} from "@/utils/eventHandlers";
+} from "@/utils/EventHandlers";
 
 import classes from "./CompanyHeader.module.css";
 

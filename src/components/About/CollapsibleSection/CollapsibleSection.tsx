@@ -3,7 +3,7 @@ import { ActionIcon, Collapse, Group, Paper, Title } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 import clsx from "clsx";
 
-import Icon from "@/components/Icons";
+import Icon from "@/components/Common/Icons";
 import { useSectionVisibility } from "@/hooks/useSectionVisibility";
 
 import classes from "./CollapsibleSection.module.css";

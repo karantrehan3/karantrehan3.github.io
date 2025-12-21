@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { Button, Container, Group, Text, Title } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 
-import Icon from "@/components/Icons";
+import Icon from "@/components/Common/Icons";
 
 import classes from "./Error.module.css";
 

@@ -2,10 +2,10 @@ import { ReactElement, useMemo } from "react";
 import { Anchor, Group, Image, Text } from "@mantine/core";
 
 import { ImagePreviewModal } from "@/components/About/ImagePreviewModal";
-import Icon from "@/components/Icons";
-import { MarkdownRenderer } from "@/components/MarkdownRenderer";
+import Icon from "@/components/Common/Icons";
+import { MarkdownRenderer } from "@/components/Common/MarkdownRenderer";
 import { useImagePreview } from "@/hooks/useImagePreview";
-import { createKeyboardActionHandler } from "@/utils/eventHandlers";
+import { createKeyboardActionHandler } from "@/utils/EventHandlers";
 
 import classes from "./ProjectItem.module.css";
 

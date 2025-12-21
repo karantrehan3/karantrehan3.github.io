@@ -1,14 +1,13 @@
 import { lazy, ReactElement } from "react";
 
-import ZigZag from "../../components/Dividers/ZigZag";
-import { PageLayout } from "../../components/PageLayout/PageLayout";
-import { Suspense } from "../../components/Suspense/Suspense";
+import { PageLayout, Suspense, ZigZag } from "@/components/Common";
+
 import classes from "./index.module.css";
 
-const HomePage = lazy(() => import("../Home/Home.page"));
-const AboutPage = lazy(() => import("../About/About.page"));
-const ProjectsPage = lazy(() => import("../Projects/Projects.page"));
-const ContactPage = lazy(() => import("../Contact/Contact.page"));
+const HomePage = lazy(() => import("@/pages/Home/Home.page"));
+const AboutPage = lazy(() => import("@/pages/About/About.page"));
+const ProjectsPage = lazy(() => import("@/pages/Projects/Projects.page"));
+const ContactPage = lazy(() => import("@/pages/Contact/Contact.page"));
 
 export function MainPage(): ReactElement {
   return (

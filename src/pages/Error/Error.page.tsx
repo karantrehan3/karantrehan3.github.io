@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
-import { Error } from "@/components/Error/Error";
-import { PageLayout } from "@/components/PageLayout/PageLayout";
+import { PageLayout } from "@/components/Common";
+import { Error } from "@/components/Error";
 
 import classes from "./Error.module.css";
 

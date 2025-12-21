@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Button, Group, Tooltip } from "@mantine/core";
 
+import Icon from "@/components/Common/Icons";
 import Layout from "@/components/External/Layout/Layout";
-import Icon from "@/components/Icons";
 import config from "@/utils/Config";
 import helpers from "@/utils/Helpers";
 

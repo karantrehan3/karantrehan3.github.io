@@ -1,8 +1,7 @@
 import { ReactElement } from "react";
 import { Text, Title } from "@mantine/core";
 
-import { Calendar } from "@/components/Calendar/Calendar";
-import { Socials } from "@/components/Socials/Socials";
+import { Calendar, Socials } from "@/components/Contact";
 import config from "@/utils/Config";
 
 import classes from "./Contact.module.css";

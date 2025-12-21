@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { Badge, Text } from "@mantine/core";
 
-import { MarkdownRenderer } from "@/components/MarkdownRenderer";
+import { MarkdownRenderer } from "@/components/Common/MarkdownRenderer";
 
 import classes from "./RoleItem.module.css";
 

@@ -1,9 +1,9 @@
 import { lazy } from "react";
 import { RouteObject } from "react-router-dom";
 
-import { Suspense } from "@/components/Suspense/Suspense";
+import { Suspense } from "@/components/Common";
 
-const Header = lazy(() => import("./Header/Header.page"));
+const Header = lazy(() => import("@/pages/External/Header/Header.page"));
 
 const routes: RouteObject[] = [
   {

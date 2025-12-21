@@ -2,7 +2,8 @@ import { memo, ReactElement, useState } from "react";
 import { Card, Group, Paper, Table, Text, Tooltip } from "@mantine/core";
 import clsx from "clsx";
 
-import Icon from "../../Icons";
+import Icon from "@/components/Common/Icons";
+
 import classes from "./SkillsSection.module.css";
 
 interface Skill {
