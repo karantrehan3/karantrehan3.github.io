@@ -1,3 +1,4 @@
+import path from "path";
 import react from "@vitejs/plugin-react";
 import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite";
@@ -11,13 +12,33 @@ export default defineConfig(({ mode }) => ({
     visualizer(),
     mode === "analyze" && analyzer(),
   ].filter(Boolean),
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+      "@test": path.resolve(__dirname, "./test"),
+    },
+    dedupe: ["react", "react-dom"],
+  },
+  css: {
+    postcss: "./postcss.config.cjs",
+  },
   test: {
     globals: true,
     environment: "jsdom",
     setupFiles: "./vitest.setup.mjs",
   },
   build: {
-    chunkSizeWarningLimit: 500,
+    target: "es2020",
+    chunkSizeWarningLimit: 512,
+    minify: "esbuild",
+    sourcemap: mode !== "production",
+    assetsInlineLimit: 4096,
+    cssCodeSplit: true,
+    emptyOutDir: true,
+    reportCompressedSize: true,
+    modulePreload: {
+      polyfill: false,
+    },
     rollupOptions: {
       output: {
         manualChunks: {
@@ -28,18 +49,17 @@ export default defineConfig(({ mode }) => ({
           // Keep tabler icons separate since they're large
           "tabler-icons": ["@tabler/icons-react"],
         },
+        chunkFileNames: "assets/[name]-[hash].js",
+        entryFileNames: "assets/[name]-[hash].js",
+        assetFileNames: "assets/[name]-[hash].[ext]",
       },
-    },
-    // Enable minification
-    minify: "terser",
-    terserOptions: {
-      compress: {
-        drop_console: true, // Remove console.log in production
-        drop_debugger: true,
+      treeshake: {
+        // CSS imports are handled separately by Vite, so this is safe
+        propertyReadSideEffects: false,
+        tryCatchDeoptimization: false,
       },
     },
   },
-  // Optimize dependencies
   optimizeDeps: {
     include: ["react", "react-dom", "@mantine/core", "@mantine/hooks"],
   },
