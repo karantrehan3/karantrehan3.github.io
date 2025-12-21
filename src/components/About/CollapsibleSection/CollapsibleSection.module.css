@@ -13,7 +13,8 @@
 }
 
 /* Only remove bottom border radius when expanded */
-.collapsibleSection.expanded .sectionHeader {
+/* Use direct child selector to avoid affecting nested collapsible sections */
+.collapsibleSection.expanded > .sectionHeader {
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
