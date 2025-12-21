@@ -1,0 +1,1 @@
+class p{goBack(){window.history.back()}openUrlOnTop({url:e}){return window.open(e,"_top")}calculateYearsOfExperience(e,a=!1){const[o,s,c]=e.split("-").map(Number),t=new Date(c,s-1,o),n=new Date,l=(n.getFullYear()-t.getFullYear())*12+n.getMonth()-t.getMonth()-(n.getDate()<t.getDate()?1:0),r=Math.round(l/12*10)/10;return a?`${r}+ ${r===1?"year":"years"}`:r}}const h=new p;export{h};
