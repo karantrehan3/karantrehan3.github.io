@@ -8,6 +8,7 @@ import {
   Card as OgCard,
   Text,
 } from "@mantine/core";
+import clsx from "clsx";
 
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 
@@ -50,7 +51,9 @@ function CardComponent({
         <Image
           src={imageSource}
           alt={imageAlt || `${title} project screenshot`}
-          className={loading ? classes.hidden : classes.img}
+          className={clsx(classes.img, {
+            [classes.hidden]: loading,
+          })}
           onLoad={() => setLoading(false)}
           onError={() => setLoading(false)}
         />

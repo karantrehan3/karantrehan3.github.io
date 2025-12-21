@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import clsx from "clsx";
 import { marked } from "marked";
 
 import classes from "./MarkdownRenderer.module.css";
@@ -37,7 +38,7 @@ export function MarkdownRenderer({
 
   return (
     <div
-      className={`${classes.markdown} ${className || ""}`}
+      className={clsx(classes.markdown, className)}
       dangerouslySetInnerHTML={{ __html: htmlContent }}
     />
   );

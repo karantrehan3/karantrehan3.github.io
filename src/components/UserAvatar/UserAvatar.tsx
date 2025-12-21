@@ -1,5 +1,6 @@
 import { ReactElement, useState } from "react";
 import { Avatar, Indicator, Loader } from "@mantine/core";
+import clsx from "clsx";
 
 import config from "@/utils/Config";
 
@@ -22,7 +23,9 @@ export function UserAvatar(): ReactElement {
           <Avatar
             src={config.get("AVATAR")}
             alt={config.get("AVATAR_ALT")}
-            className={loading ? classes.hidden : classes.avatar}
+            className={clsx(classes.avatar, {
+              [classes.hidden]: loading,
+            })}
             onLoad={() => setLoading(false)}
             onContextMenu={(event) => event.preventDefault()} // Prevent users from downloading image
           />

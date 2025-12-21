@@ -1,5 +1,6 @@
 import { ReactElement, useState } from "react";
 import { Loader } from "@mantine/core";
+import clsx from "clsx";
 
 import config from "@/utils/Config";
 
@@ -19,7 +20,9 @@ export function Calendar(): ReactElement {
         id="calendar-iframe"
         title="Connect on Calendar"
         src={config.get("CONTACT.CALENDAR.LINK")}
-        className={loading ? classes.hidden : classes.iframe}
+        className={clsx(classes.iframe, {
+          [classes.hidden]: loading,
+        })}
         onLoad={() => setLoading(false)}
       />
     </div>

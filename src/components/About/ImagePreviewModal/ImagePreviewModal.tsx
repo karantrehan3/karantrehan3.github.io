@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { Group, Image, Modal } from "@mantine/core";
+import clsx from "clsx";
 
 import classes from "./ImagePreviewModal.module.css";
 
@@ -40,18 +41,18 @@ export function ImagePreviewModal({
         gap="md"
         align="center"
         justify="center"
-        className={
-          hasMultipleImages ? classes.imageGroup : classes.singleImageGroup
-        }
+        className={clsx({
+          [classes.imageGroup]: hasMultipleImages,
+          [classes.singleImageGroup]: !hasMultipleImages,
+        })}
       >
         {images.map((image, index) => (
           <div
             key={index}
-            className={
-              hasMultipleImages
-                ? classes.imageWrapper
-                : classes.singleImageWrapper
-            }
+            className={clsx({
+              [classes.imageWrapper]: hasMultipleImages,
+              [classes.singleImageWrapper]: !hasMultipleImages,
+            })}
           >
             <Image
               src={image.src}
