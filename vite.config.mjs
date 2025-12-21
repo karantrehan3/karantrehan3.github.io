@@ -5,10 +5,13 @@ import { defineConfig } from "vite";
 import { analyzer } from "vite-bundle-analyzer";
 import tsconfigPaths from "vite-tsconfig-paths";
 
+import { metaTagsPlugin } from "./vite/plugins/meta-tags.mjs";
+
 export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     tsconfigPaths(),
+    metaTagsPlugin(),
     visualizer(),
     mode === "analyze" && analyzer(),
   ].filter(Boolean),
