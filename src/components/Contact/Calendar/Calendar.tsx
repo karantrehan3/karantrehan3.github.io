@@ -18,7 +18,7 @@ export function Calendar(): ReactElement {
       )}
       <iframe
         id="calendar-iframe"
-        title="Connect on Calendar"
+        title={config.get("CONTACT.CALENDAR.TITLE")}
         src={config.get("CONTACT.CALENDAR.LINK")}
         className={clsx(classes.iframe, {
           [classes.hidden]: loading,

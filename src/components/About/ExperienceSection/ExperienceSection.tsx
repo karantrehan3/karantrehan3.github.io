@@ -3,6 +3,7 @@ import { Paper, Stack, Text } from "@mantine/core";
 
 import { Company } from "@/components/About/ExperienceSection/Company";
 import type { Company as CompanyType } from "@/components/About/ExperienceSection/types";
+import helpers from "@/utils/Helpers";
 
 import classes from "./ExperienceSection.module.css";
 
@@ -16,26 +17,13 @@ interface ExperienceSectionProps {
   experienceSummary: ExperienceSummary;
 }
 
-function calculateExperience(startDate: string): string {
-  const [day, month, year] = startDate.split("-").map(Number);
-  const start = new Date(year, month - 1, day);
-  const current = new Date();
-
-  const totalMonths =
-    (current.getFullYear() - start.getFullYear()) * 12 +
-    current.getMonth() -
-    start.getMonth() -
-    (current.getDate() < start.getDate() ? 1 : 0);
-
-  const roundedYears = Math.round((totalMonths / 12) * 10) / 10;
-
-  return `${roundedYears}+ ${roundedYears === 1 ? "year" : "years"}`;
-}
-
 export function ExperienceSection({
   experienceSummary,
 }: ExperienceSectionProps): ReactElement {
-  const experienceText = calculateExperience(experienceSummary.START_DATE);
+  const experienceText = helpers.calculateYearsOfExperience(
+    experienceSummary.START_DATE,
+    true
+  ) as string;
 
   return (
     <Paper className={classes.experienceSection} p="xl" radius="md">

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import { Button, Group, Tooltip } from "@mantine/core";
 
 import Icon from "@/components/Common/Icons";
@@ -21,6 +21,22 @@ interface ButtonConfig {
 const Header: FC = () => {
   const buttons: ButtonConfig[] = config.get("EXTERNAL.HEADER.BUTTONS");
 
+  const handleButtonClick = useCallback(
+    (method: keyof typeof helpers, args: { url?: string }) => {
+      switch (method) {
+        case "goBack":
+          helpers.goBack();
+          break;
+        case "openUrlOnTop":
+          helpers.openUrlOnTop(args);
+          break;
+        default:
+          console.warn(`Unknown method: ${method}`);
+      }
+    },
+    [helpers]
+  );
+
   return (
     <Layout>
       <Group className={classes.iframe_container}>
@@ -28,7 +44,7 @@ const Header: FC = () => {
           <Tooltip key={button.name} label={button.tooltip} withArrow>
             <Button
               onClick={() =>
-                helpers[button.onClick.method](button.onClick.args)
+                handleButtonClick(button.onClick.method, button.onClick.args)
               }
               leftSection={<Icon name={button.icon as any} />}
               className={classes.custom_button}

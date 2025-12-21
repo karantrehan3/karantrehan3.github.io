@@ -35,7 +35,7 @@ export function Socials(): ReactElement {
           className={classes.email_button}
           onClick={handleEmailClick}
         >
-          Email
+          {config.get("SOCIALS.EMAIL.LABEL")}
         </Button>
         <Button
           variant="default"
@@ -50,7 +50,7 @@ export function Socials(): ReactElement {
           className={classes.linkedin_button}
           onClick={handleLinkedInClick}
         >
-          LinkedIn
+          {config.get("SOCIALS.LINKEDIN_LABEL")}
         </Button>
         <Button
           variant="default"
@@ -65,7 +65,7 @@ export function Socials(): ReactElement {
           className={classes.github_button}
           onClick={handleGithubClick}
         >
-          GitHub
+          {config.get("SOCIALS.GITHUB_LABEL")}
         </Button>
       </Stack>
     </div>

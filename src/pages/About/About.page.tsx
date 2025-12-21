@@ -44,7 +44,7 @@ export default function AboutPage(): ReactElement {
       {/* Experience Summary */}
       <CollapsibleSection
         id="experience-section"
-        title="Experience"
+        title={config.get("ABOUT.SECTION_TITLES.EXPERIENCE")}
         icon="IconUser"
         defaultExpanded
       >
@@ -54,7 +54,7 @@ export default function AboutPage(): ReactElement {
       {/* Skills Section */}
       <CollapsibleSection
         id="skills-section"
-        title="Skills & Technologies"
+        title={config.get("ABOUT.SECTION_TITLES.SKILLS")}
         icon="IconTools"
       >
         <SkillsSection skills={skillsData} config={skillsConfig} />
@@ -63,7 +63,7 @@ export default function AboutPage(): ReactElement {
       {/* Education Section */}
       <CollapsibleSection
         id="education-section"
-        title="Education"
+        title={config.get("ABOUT.SECTION_TITLES.EDUCATION")}
         icon="IconBrain"
       >
         <EducationSection

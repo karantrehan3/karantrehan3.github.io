@@ -85,13 +85,20 @@
       "DESCRIPTION": "Ready to collaborate? Schedule a meeting or reach out through your preferred platform."
     },
     "CALENDAR": {
-      "LINK": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3nBgl1MCdRSIhS0l8BpAAbKNbEFtK4lq-GABDCbFGxBieZeCoLzxTpZX34OiHnDyoJkO-ufkWv?gv=true"
+      "LINK": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3nBgl1MCdRSIhS0l8BpAAbKNbEFtK4lq-GABDCbFGxBieZeCoLzxTpZX34OiHnDyoJkO-ufkWv?gv=true",
+      "TITLE": "Connect on Calendar"
     }
   },
   "SOCIALS": {
-    "EMAIL": { "ID": "karantrehan3@gmail.com", "SUBJECT": "Let's Connect! 🚀" },
+    "EMAIL": {
+      "ID": "karantrehan3@gmail.com",
+      "SUBJECT": "Let's Connect! 🚀",
+      "LABEL": "Email"
+    },
     "LINKEDIN": "https://www.linkedin.com/in/karantrehan3/",
-    "GITHUB": "https://github.com/karantrehan3"
+    "LINKEDIN_LABEL": "LinkedIn",
+    "GITHUB": "https://github.com/karantrehan3",
+    "GITHUB_LABEL": "GitHub"
   },
   "AVATAR": "/assets/dp/profile.webp",
   "AVATAR_ALT": "Karan Trehan profile picture",
@@ -213,6 +220,11 @@
       "LOGO": "/assets/education/chandigarh_university.webp",
       "LOGO_ALT": "Chandigarh University",
       "ACHIEVEMENTS": ["Gold Medalist 🥇"]
+    },
+    "SECTION_TITLES": {
+      "EXPERIENCE": "Experience",
+      "SKILLS": "Skills & Technologies",
+      "EDUCATION": "Education"
     },
     "SKILLS": {
       "STYLING": {
@@ -600,5 +612,9 @@
         }
       ]
     }
+  },
+  "META": {
+    "TITLE": "Karan Trehan",
+    "DESCRIPTION_TEMPLATE": "Karan Trehan - Lead Software Engineer & Full Stack Developer | AI Enthusiast. {YEARS}+ years of experience in full-stack development, AI-powered solutions, and cloud-based architectures. Specializing in Python, FastAPI, Node.js, React.js, and AWS."
   }
 }
