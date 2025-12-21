@@ -84,12 +84,14 @@ export function CompanyHeader({
           </div>
         )}
         <div className={classes.companyLinkContainer}>
-          <div
-            onClick={(e) => e.stopPropagation()}
-            onKeyDown={createStopPropagationHandler()}
-            role="presentation"
-          >
-            <Anchor href={url} target="_blank" className={classes.companyLink}>
+          <div className={classes.companyLinkWrapper}>
+            <Anchor
+              href={url}
+              target="_blank"
+              className={classes.companyLink}
+              onClick={(e) => e.stopPropagation()}
+              onKeyDown={createStopPropagationHandler()}
+            >
               {name}
             </Anchor>
             <Icon name="IconExternalLink" size={16} />

@@ -97,7 +97,7 @@
   transition: transform 0.2s ease;
 }
 
-.companyLinkContainer > :first-child {
+.companyLinkWrapper {
   display: flex;
   align-items: center;
   gap: 0.25rem;
