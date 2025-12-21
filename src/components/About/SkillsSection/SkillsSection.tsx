@@ -1,5 +1,6 @@
 import { memo, ReactElement, useState } from "react";
-import { Card, Group, Paper, Table, Text, Title, Tooltip } from "@mantine/core";
+import { Card, Group, Paper, Table, Text, Tooltip } from "@mantine/core";
+import clsx from "clsx";
 
 import Icon from "../../Icons";
 import classes from "./SkillsSection.module.css";
@@ -91,71 +92,69 @@ const SkillCard = memo(({ skill }: { skill: Skill }) => {
 });
 
 // Parent Skill Card with layered sub-skills underneath
-const ParentSkillCard = memo(
-  ({ skill }: { skill: Skill; childrenCount: number }) => {
-    const firstTwoSubSkills = skill.subSkills?.slice(0, 2) || [];
+const ParentSkillCard = memo(({ skill }: { skill: Skill }) => {
+  const firstTwoSubSkills = skill.subSkills?.slice(0, 2) || [];
 
-    return (
-      <div className={classes.parentSkillWrapper}>
-        {/* Layered sub-skills underneath */}
-        {firstTwoSubSkills.map((subSkill, index) => (
-          <Card
-            key={`${skill.name}-${subSkill.name}-${index}`}
-            className={`${classes.skillCard} ${classes.layeredSubSkill}`}
-            style={{
-              [subSkill.backgroundColor.includes("gradient")
-                ? "background"
-                : "backgroundColor"]: subSkill.backgroundColor,
-              color: subSkill.color,
-              zIndex: 1 - index, // Stack them with decreasing z-index
-              transform: `translate(${(index + 1) * 2}px, ${(index + 1) * 2}px)`, // Offset diagonally
-            }}
-          >
-            <div
-              className={classes.skillIcon}
-              style={{ color: subSkill.textColor }}
-            >
-              <SkillIcon skill={subSkill} />
-            </div>
-            <Text
-              size="xs"
-              fw={600}
-              className={classes.skillName}
-              style={{ color: subSkill.textColor }}
-            >
-              {subSkill.name}
-            </Text>
-          </Card>
-        ))}
-
-        {/* Main parent card on top */}
+  return (
+    <div className={classes.parentSkillWrapper}>
+      {/* Layered sub-skills underneath */}
+      {firstTwoSubSkills.map((subSkill, index) => (
         <Card
-          key={skill.name}
-          className={`${classes.skillCard} ${classes.parentSkillCard}`}
+          key={`${skill.name}-${subSkill.name}-${index}`}
+          className={clsx(classes.skillCard, classes.layeredSubSkill)}
           style={{
-            [skill.backgroundColor.includes("gradient")
+            [subSkill.backgroundColor.includes("gradient")
               ? "background"
-              : "backgroundColor"]: skill.backgroundColor,
-            color: skill.color,
-            zIndex: 10,
+              : "backgroundColor"]: subSkill.backgroundColor,
+            color: subSkill.color,
+            zIndex: 1 - index, // Stack them with decreasing z-index
+            transform: `translate(${(index + 1) * 2}px, ${(index + 1) * 2}px)`, // Offset diagonally
           }}
         >
-          <div className={classes.skillIcon} style={{ color: skill.textColor }}>
-            <SkillIcon skill={skill} />
+          <div
+            className={classes.skillIcon}
+            style={{ color: subSkill.textColor }}
+          >
+            <SkillIcon skill={subSkill} />
           </div>
           <Text
             size="xs"
             fw={600}
             className={classes.skillName}
-            style={{ color: skill.textColor }}
+            style={{ color: subSkill.textColor }}
           >
-            {skill.name}
+            {subSkill.name}
           </Text>
         </Card>
-      </div>
-    );
-  }
-);
+      ))}
+
+      {/* Main parent card on top */}
+      <Card
+        key={skill.name}
+        className={clsx(classes.skillCard, classes.parentSkillCard)}
+        style={{
+          [skill.backgroundColor.includes("gradient")
+            ? "background"
+            : "backgroundColor"]: skill.backgroundColor,
+          color: skill.color,
+          zIndex: 10,
+        }}
+      >
+        <div className={classes.skillIcon} style={{ color: skill.textColor }}>
+          <SkillIcon skill={skill} />
+        </div>
+        <Text
+          size="xs"
+          fw={600}
+          className={classes.skillName}
+          style={{ color: skill.textColor }}
+        >
+          {skill.name}
+        </Text>
+      </Card>
+    </div>
+  );
+});
 
 // Grouped Skills Component
 const GroupedSkills = memo(({ skills }: { skills: Skill[] }) => {
@@ -179,10 +178,7 @@ const GroupedSkills = memo(({ skills }: { skills: Skill[] }) => {
                   position="top"
                 >
                   <div>
-                    <ParentSkillCard
-                      skill={skill}
-                      childrenCount={skill.subSkills!.length}
-                    />
+                    <ParentSkillCard skill={skill} />
                   </div>
                 </Tooltip>
               ) : (
@@ -193,9 +189,9 @@ const GroupedSkills = memo(({ skills }: { skills: Skill[] }) => {
             {/* Expanded Sub-Skills beneath parent */}
             {hasSubSkills && (
               <div
-                className={`${classes.expandedSubSkills} ${
-                  expandedParent === skill.name ? classes.expanded : ""
-                }`}
+                className={clsx(classes.expandedSubSkills, {
+                  [classes.expanded]: expandedParent === skill.name,
+                })}
               >
                 <Group className={classes.subSkillsGroup} wrap="wrap">
                   {skill.subSkills!.map((subSkill) => (
@@ -246,10 +242,6 @@ export function SkillsSection({
 }: SkillsSectionProps): ReactElement {
   return (
     <Paper className={classes.skillsSection} p="xl" radius="md">
-      <Title order={3} className={classes.sectionTitle}>
-        Skills & Technologies
-      </Title>
-
       <Table className={classes.skillsTable}>
         <Table.Thead>
           <Table.Tr>

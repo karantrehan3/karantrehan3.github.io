@@ -210,7 +210,7 @@
 
 /* Light theme for expanded sub-skills */
 [data-mantine-color-scheme="light"] .expandedSubSkills {
-  background: var(--mantine-color-white);
+  background: var(--mantine-color-gray-0);
   border: 1px solid var(--mantine-color-gray-2);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
@@ -483,7 +483,7 @@
 
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .skillsSection {
-  background: var(--mantine-color-white);
+  background: var(--mantine-color-gray-0);
   border: 1px solid var(--mantine-color-gray-2);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
@@ -502,7 +502,7 @@
 }
 
 [data-mantine-color-scheme="light"] .skillsTable tr:hover {
-  background: var(--mantine-color-gray-0);
+  background: var(--mantine-color-gray-2);
 }
 
 [data-mantine-color-scheme="light"] .skillsTable tr {

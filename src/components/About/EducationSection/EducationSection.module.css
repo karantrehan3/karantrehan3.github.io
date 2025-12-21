@@ -3,7 +3,9 @@
   border: 1px solid var(--mantine-color-dark-4);
   margin-top: 2rem;
   margin-bottom: 2rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .educationSection:hover {
@@ -52,7 +54,9 @@
   padding: 0.4rem 0.8rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 8px rgba(255, 123, 0, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .graduationBadge:hover {
@@ -85,7 +89,7 @@
 
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .educationSection {
-  background: var(--mantine-color-white);
+  background: var(--mantine-color-gray-0);
   border: 1px solid var(--mantine-color-gray-2);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
@@ -106,10 +110,6 @@
   color: var(--mantine-color-dark-6);
 }
 
-[data-mantine-color-scheme="light"] .degreeTitle {
-  color: var(--mantine-color-dark-8);
-}
-
 [data-mantine-color-scheme="light"] .marksInfo {
   color: var(--mantine-color-dark-8);
 }
@@ -127,4 +127,4 @@
 
 [data-mantine-color-scheme="light"] .universityLogo {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-} 
+}

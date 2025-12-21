@@ -1,6 +1,7 @@
 .container {
   padding: 2rem 0;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -10,8 +11,3 @@
     padding: 1rem 0;
   }
 }
-
-/* Light Theme Styles */
-[data-mantine-color-scheme="light"] .container {
-  background: var(--mantine-color-gray-0);
-} 

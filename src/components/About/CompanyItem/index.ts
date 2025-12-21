@@ -1,1 +1,6 @@
-export { CompanyItem } from "./CompanyItem";
+export {
+  CompanyItem,
+  CompanyHeader,
+  CompanyCollapsibleSection,
+} from "./CompanyItem";
+export type { Company } from "./CompanyItem";

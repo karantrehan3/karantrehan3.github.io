@@ -1,38 +1,8 @@
 import { ReactElement } from "react";
-import { Paper, Stack, Text, Title } from "@mantine/core";
+import { Paper, Stack, Text } from "@mantine/core";
 
-import { CompanyItem } from "../CompanyItem";
+import { Company, CompanyCollapsibleSection } from "../CompanyItem";
 import classes from "./ExperienceSection.module.css";
-
-interface Role {
-  TITLE: string;
-  PERIOD: string;
-  DESCRIPTION: string;
-}
-
-interface Project {
-  NAME: string;
-  CURRENT_NAME?: string;
-  URL: string;
-  ROLE: string;
-  LOGO?: string;
-  LOGO_ALT?: string;
-  CURRENT_LOGO?: string;
-  CURRENT_LOGO_ALT?: string;
-  DESCRIPTION: string;
-}
-
-interface Company {
-  NAME: string;
-  URL: string;
-  LOGO?: string;
-  LOGO_ALT?: string;
-  ADDITIONAL_LOGO?: string;
-  ADDITIONAL_LOGO_ALT?: string;
-  SUBTITLE?: string;
-  ROLES: Role[];
-  PROJECTS?: Project[];
-}
 
 interface ExperienceSummary {
   START_DATE: string;
@@ -67,26 +37,16 @@ export function ExperienceSection({
 
   return (
     <Paper className={classes.experienceSection} p="xl" radius="md">
-      <Title order={3} className={classes.sectionTitle}>
-        Experience
-      </Title>
       <Text className={classes.experienceText}>
         <strong>{experienceText}</strong> {experienceSummary.DESCRIPTION}
       </Text>
 
       <Stack gap="xl" className={classes.companiesList}>
         {experienceSummary.COMPANIES.map((company: Company, index: number) => (
-          <CompanyItem
+          <CompanyCollapsibleSection
             key={index}
-            name={company.NAME}
-            url={company.URL}
-            logo={company.LOGO}
-            logoAlt={company.LOGO_ALT}
-            additionalLogo={company.ADDITIONAL_LOGO}
-            additionalLogoAlt={company.ADDITIONAL_LOGO_ALT}
-            subtitle={company.SUBTITLE}
-            roles={company.ROLES}
-            projects={company.PROJECTS}
+            company={company}
+            index={index}
           />
         ))}
       </Stack>

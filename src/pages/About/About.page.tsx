@@ -3,6 +3,7 @@ import { Container } from "@mantine/core";
 
 import {
   AboutHeader,
+  CollapsibleSection,
   EducationSection,
   ExperienceSection,
   SkillsSection,
@@ -21,13 +22,12 @@ export default function AboutPage(): ReactElement {
 
   // Extract skills data and configuration
   const skillsConfig = {
-    LAYOUT: skills.LAYOUT,
     STYLING: skills.STYLING,
   };
 
   // Extract actual skills data (excluding config)
   const skillsData = Object.keys(skills).reduce((acc, key) => {
-    if (key !== "LAYOUT" && key !== "STYLING") {
+    if (key !== "STYLING") {
       acc[key] = skills[key];
     }
     return acc;
@@ -42,21 +42,40 @@ export default function AboutPage(): ReactElement {
       <TypingEffect texts={typingTexts} />
 
       {/* Experience Summary */}
-      <ExperienceSection experienceSummary={experienceSummary} />
+      <CollapsibleSection
+        id="experience-section"
+        title="Experience"
+        icon="IconUser"
+        defaultExpanded
+      >
+        <ExperienceSection experienceSummary={experienceSummary} />
+      </CollapsibleSection>
 
       {/* Skills Section */}
-      <SkillsSection skills={skillsData} config={skillsConfig} />
+      <CollapsibleSection
+        id="skills-section"
+        title="Skills & Technologies"
+        icon="IconTools"
+      >
+        <SkillsSection skills={skillsData} config={skillsConfig} />
+      </CollapsibleSection>
 
       {/* Education Section */}
-      <EducationSection
-        degree={education.DEGREE}
-        university={education.UNIVERSITY}
-        graduationDate={education.GRADUATION_DATE}
-        marks={education.MARKS}
-        logo={education.LOGO}
-        logoAlt={education.LOGO_ALT}
-        achievements={education.ACHIEVEMENTS}
-      />
+      <CollapsibleSection
+        id="education-section"
+        title="Education"
+        icon="IconBrain"
+      >
+        <EducationSection
+          degree={education.DEGREE}
+          university={education.UNIVERSITY}
+          graduationDate={education.GRADUATION_DATE}
+          marks={education.MARKS}
+          logo={education.LOGO}
+          logoAlt={education.LOGO_ALT}
+          achievements={education.ACHIEVEMENTS}
+        />
+      </CollapsibleSection>
     </Container>
   );
 }

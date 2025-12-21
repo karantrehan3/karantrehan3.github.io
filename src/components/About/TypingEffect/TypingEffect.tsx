@@ -12,8 +12,8 @@ interface TypingEffectProps {
 
 export function TypingEffect({
   texts,
-  typingSpeed = 60,
-  deletingSpeed = 30,
+  typingSpeed = 50,
+  deletingSpeed = 20,
   pauseTime = 2000,
 }: TypingEffectProps): ReactElement {
   const [currentTypingIndex, setCurrentTypingIndex] = useState(0);

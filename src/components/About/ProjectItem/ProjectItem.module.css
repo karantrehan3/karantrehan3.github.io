@@ -1,15 +1,11 @@
 .projectItem {
   padding: 1.25rem;
-  background: var(--mantine-color-dark-5);
+  background: var(--mantine-color-dark-6);
   border-radius: var(--mantine-radius-md);
   border: 1px solid var(--mantine-color-dark-4);
   transition: background-color 0.2s ease;
   margin-bottom: 1rem;
-  border-left: 3px solid var(--mantine-color-orange-5);
-}
-
-.projectItem:hover {
-  background: var(--mantine-color-dark-4);
+  border-left: 2px solid var(--mantine-color-orange-5);
 }
 
 .projectLink {
@@ -123,12 +119,9 @@
 
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .projectItem {
-  background: var(--mantine-color-gray-0);
+  background: var(--mantine-color-white);
   border: 1px solid var(--mantine-color-gray-2);
-}
-
-[data-mantine-color-scheme="light"] .projectItem:hover {
-  background: var(--mantine-color-gray-1);
+  border-left: 2px solid var(--mantine-color-orange-5);
 }
 
 [data-mantine-color-scheme="light"] .projectRole {

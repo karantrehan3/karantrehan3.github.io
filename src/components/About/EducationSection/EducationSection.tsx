@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Badge, Group, Image, Paper, Stack, Text, Title } from "@mantine/core";
+import { Badge, Group, Image, Paper, Stack, Text } from "@mantine/core";
 
 import classes from "./EducationSection.module.css";
 
@@ -24,9 +24,6 @@ export function EducationSection({
 }: EducationSectionProps): ReactElement {
   return (
     <Paper className={classes.educationSection} p="xl" radius="md">
-      <Title order={3} className={classes.sectionTitle}>
-        Education
-      </Title>
       <div className={classes.educationContent}>
         <Group gap="xs" align="center" className={classes.universityHeader}>
           {logo && (

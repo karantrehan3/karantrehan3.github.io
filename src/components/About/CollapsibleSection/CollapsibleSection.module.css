@@ -1,0 +1,187 @@
+.collapsibleSection {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.sectionHeader {
+  background: var(--mantine-color-dark-6) !important;
+  border: 1px solid var(--mantine-color-dark-4) !important;
+  transition: all 0.3s ease;
+  user-select: none;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+/* Only remove bottom border radius when expanded */
+.collapsibleSection.expanded .sectionHeader {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.headerGroup {
+  width: 100%;
+}
+
+.sectionHeader:hover {
+  background: var(--mantine-color-dark-5);
+  border-color: var(--mantine-color-dark-3);
+}
+
+.sectionTitle {
+  color: var(--mantine-color-white);
+  margin: 0;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+@keyframes pulseBackgroundDark {
+  0% {
+    background-color: var(--mantine-color-dark-4);
+    transform: scale(1);
+  }
+  33.33% {
+    background-color: var(--mantine-color-dark-3);
+    transform: scale(1.2);
+  }
+  66.66% {
+    background-color: var(--mantine-color-dark-4);
+    transform: scale(1);
+  }
+  100% {
+    background-color: var(--mantine-color-dark-4);
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseBackgroundLight {
+  0% {
+    background-color: var(--mantine-color-gray-3);
+    transform: scale(1);
+  }
+  33.33% {
+    background-color: var(--mantine-color-gray-4);
+    transform: scale(1.2);
+  }
+  66.66% {
+    background-color: var(--mantine-color-gray-3);
+    transform: scale(1);
+  }
+  100% {
+    background-color: var(--mantine-color-gray-3);
+    transform: scale(1);
+  }
+}
+
+.toggleIcon {
+  color: var(--mantine-color-gray-4);
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease;
+  border-radius: 50% !important;
+}
+
+.toggleIcon:not(.expanded) {
+  background-color: var(--mantine-color-dark-4) !important;
+  animation: pulseBackgroundDark 0.9s ease-in-out infinite;
+}
+
+.toggleIcon:hover {
+  color: var(--mantine-color-white);
+  background: var(--mantine-color-dark-4) !important;
+  animation: none !important;
+}
+
+.toggleIcon.expanded {
+  transform: rotate(180deg);
+  animation: none !important;
+  background-color: transparent !important;
+}
+
+/* Make section Paper containers connect seamlessly with header */
+/* Only target the direct Paper containers of sections, not nested Cards */
+.sectionContent > :global([class*="experienceSection"]),
+.sectionContent > :global([class*="skillsSection"]),
+.sectionContent > :global([class*="educationSection"]) {
+  border-top: none !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* Style company CollapsibleSections inside ExperienceSection */
+.sectionContent
+  > :global([class*="experienceSection"])
+  > :global([class*="collapsibleSection"]) {
+  margin-bottom: 1.5rem;
+}
+
+.sectionContent
+  > :global([class*="experienceSection"])
+  > :global([class*="collapsibleSection"]):last-child {
+  margin-bottom: 0;
+}
+
+/* Ensure seamless background connection in light theme */
+[data-mantine-color-scheme="light"]
+  .sectionContent
+  > :global([class*="experienceSection"]),
+[data-mantine-color-scheme="light"]
+  .sectionContent
+  > :global([class*="skillsSection"]),
+[data-mantine-color-scheme="light"]
+  .sectionContent
+  > :global([class*="educationSection"]) {
+  box-shadow: none !important;
+}
+
+/* Light Theme Styles */
+[data-mantine-color-scheme="light"] .sectionHeader {
+  background: var(--mantine-color-white) !important;
+  border: 1px solid var(--mantine-color-gray-2) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+[data-mantine-color-scheme="light"] .sectionHeader:hover {
+  background: var(--mantine-color-gray-0) !important;
+  border-color: var(--mantine-color-gray-3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-mantine-color-scheme="light"] .sectionTitle {
+  color: var(--mantine-color-dark-9);
+}
+
+[data-mantine-color-scheme="light"] .toggleIcon {
+  color: var(--mantine-color-gray-6);
+}
+
+[data-mantine-color-scheme="light"] .toggleIcon:not(.expanded) {
+  background-color: var(--mantine-color-gray-3) !important;
+  animation: pulseBackgroundLight 0.9s ease-in-out infinite;
+}
+
+[data-mantine-color-scheme="light"] .toggleIcon:hover {
+  color: var(--mantine-color-dark-9);
+  background: var(--mantine-color-gray-1) !important;
+  animation: none !important;
+}
+
+[data-mantine-color-scheme="light"] .toggleIcon.expanded {
+  animation: none !important;
+  background-color: transparent !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .sectionHeader {
+    padding: 0.875rem 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.25rem;
+  }
+}

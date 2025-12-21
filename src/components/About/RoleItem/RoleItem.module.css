@@ -68,7 +68,7 @@
 
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .roleItem {
-  background: var(--mantine-color-gray-0);
+  background: var(--mantine-color-white);
   border-left: 3px solid var(--mantine-color-orange-5);
 }
 

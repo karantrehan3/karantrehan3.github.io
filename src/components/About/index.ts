@@ -6,3 +6,4 @@ export { RoleItem } from "./RoleItem";
 export { ProjectItem } from "./ProjectItem";
 export { SkillsSection } from "./SkillsSection";
 export { EducationSection } from "./EducationSection";
+export { CollapsibleSection } from "./CollapsibleSection";
