@@ -125,7 +125,7 @@ export function ProjectItem({
       <Text size="xs" className={classes.projectRole}>
         {role}
       </Text>
-      <Text size="sm" className={classes.projectDescription}>
+      <Text size="sm" component="div" className={classes.projectDescription}>
         <MarkdownRenderer content={description} />
       </Text>
     </div>

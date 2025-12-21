@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { memo, ReactElement, useState } from "react";
 import {
   Badge,
   Container,
@@ -23,7 +23,7 @@ interface CardProps {
   inProgress?: boolean;
 }
 
-export function Card({
+function CardComponent({
   imageSource,
   imageAlt,
   title,
@@ -90,3 +90,5 @@ export function Card({
     </OgCard>
   );
 }
+
+export const Card = memo(CardComponent);

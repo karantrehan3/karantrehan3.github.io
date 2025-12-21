@@ -1,18 +1,18 @@
-import { ReactElement, useMemo } from "react";
+import { memo, ReactElement, useMemo } from "react";
 
 import { CollapsibleSection } from "@/components/About/CollapsibleSection";
 import { CompanyContent } from "@/components/About/ExperienceSection/CompanyContent";
 import { CompanyHeader } from "@/components/About/ExperienceSection/CompanyHeader";
-import type { Company } from "@/components/About/ExperienceSection/types";
+import type { Company as CompanyType } from "@/components/About/ExperienceSection/types";
 import { ImagePreviewModal } from "@/components/About/ImagePreviewModal";
 import { useImagePreview } from "@/hooks/useImagePreview";
 
 interface CompanyProps {
-  company: Company;
+  company: CompanyType;
   index: number;
 }
 
-export function Company({ company, index }: CompanyProps): ReactElement {
+function CompanyComponent({ company, index }: CompanyProps): ReactElement {
   const previewImages = useMemo(() => {
     const images = [];
     if (company.LOGO) {
@@ -73,3 +73,5 @@ export function Company({ company, index }: CompanyProps): ReactElement {
     </>
   );
 }
+
+export const Company = memo(CompanyComponent);
