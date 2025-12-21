@@ -5,7 +5,7 @@
 
 .sectionHeader {
   background: var(--mantine-color-dark-6) !important;
-  border: 1px solid var(--mantine-color-dark-4) !important;
+  border: 0.0625rem solid var(--mantine-color-dark-4) !important;
   transition: all 0.3s ease;
   user-select: none;
   cursor: pointer;
@@ -142,14 +142,14 @@
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .sectionHeader {
   background: var(--mantine-color-white) !important;
-  border: 1px solid var(--mantine-color-gray-2) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 0.0625rem solid var(--mantine-color-gray-2) !important;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
 }
 
 [data-mantine-color-scheme="light"] .sectionHeader:hover {
   background: var(--mantine-color-gray-0) !important;
   border-color: var(--mantine-color-gray-3) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
 }
 
 [data-mantine-color-scheme="light"] .sectionTitle {

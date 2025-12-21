@@ -87,7 +87,7 @@
 
 /* Blockquotes */
 .markdown blockquote {
-  border-left: 4px solid var(--mantine-color-gray-4);
+  border-left: 0.25rem solid var(--mantine-color-gray-4);
   padding-left: 1em;
   margin: 1em 0;
   font-style: italic;
@@ -103,7 +103,7 @@
 
 .markdown th,
 .markdown td {
-  border: 1px solid var(--mantine-color-gray-4);
+  border: 0.0625rem solid var(--mantine-color-gray-4);
   padding: 0.5em;
   text-align: left;
 }
@@ -116,7 +116,7 @@
 /* Horizontal rules */
 .markdown hr {
   border: none;
-  border-top: 1px solid var(--mantine-color-gray-4);
+  border-top: 0.0625rem solid var(--mantine-color-gray-4);
   margin: 2em 0;
 }
 

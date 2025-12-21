@@ -15,7 +15,11 @@
 .mainTitle {
   font-size: 3rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--mantine-color-orange-6), var(--mantine-color-red-6));
+  background: linear-gradient(
+    135deg,
+    var(--mantine-color-orange-6),
+    var(--mantine-color-red-6)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -29,21 +33,21 @@
 
 /* Projects Grid */
 .cardsContainer {
-    display: grid;
-    gap: 20px;
-    width: 100%;
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 20px;
-    justify-content: center;
-    transition: all 0.6s ease-in-out;
+  display: grid;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 93.75rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+  justify-content: center;
+  transition: all 0.6s ease-in-out;
 }
 
 /* Animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(1.875rem);
   }
   to {
     opacity: 1;
@@ -53,7 +57,11 @@
 
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .mainTitle {
-  background: linear-gradient(135deg, var(--mantine-color-orange-7), var(--mantine-color-red-7));
+  background: linear-gradient(
+    135deg,
+    var(--mantine-color-orange-7),
+    var(--mantine-color-red-7)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -64,11 +72,11 @@
   .headerSection {
     margin-bottom: 2rem;
   }
-  
+
   .mainTitle {
     font-size: 2.5rem;
   }
-  
+
   .subtitle {
     font-size: 1rem;
     padding: 0 1rem;
@@ -83,34 +91,34 @@
 
 /* Desktop - Large screens */
 @media (min-width: 1200px) {
-    .cardsContainer {
-        grid-template-columns: repeat(4, 1fr);
-    }
+  .cardsContainer {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* Desktop - Medium screens */
 @media (min-width: 769px) and (max-width: 1199px) {
-    .cardsContainer {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 28px;
-        padding: 24px;
-    }
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+    padding: 1.5rem;
+  }
 }
 
 /* Tablet */
 @media (min-width: 481px) and (max-width: 768px) {
-    .cardsContainer {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        padding: 16px;
-    }
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    padding: 1rem;
+  }
 }
 
 /* Mobile */
 @media (max-width: 480px) {
-    .cardsContainer {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding: 12px;
-    }
+  .cardsContainer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.75rem;
+  }
 }

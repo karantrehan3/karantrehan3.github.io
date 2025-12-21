@@ -1,6 +1,6 @@
 .skillsSection {
   background: var(--mantine-color-dark-6);
-  border: 1px solid var(--mantine-color-dark-4);
+  border: 0.0625rem solid var(--mantine-color-dark-4);
 }
 
 .sectionTitle {
@@ -20,13 +20,13 @@
   font-weight: 600;
   font-size: 1rem;
   padding: 1rem 0.75rem;
-  border-bottom: 2px solid var(--mantine-color-orange-5);
+  border-bottom: 0.125rem solid var(--mantine-color-orange-5);
 }
 
 .skillsTable td {
   padding: 1rem 0.75rem;
   vertical-align: top;
-  border-bottom: 1px solid var(--mantine-color-dark-4);
+  border-bottom: 0.0625rem solid var(--mantine-color-dark-4);
 }
 
 .skillsTable tr:hover {
@@ -36,9 +36,9 @@
 
 /* Column sizing */
 .categoryColumn {
-  width: 230px;
-  min-width: 200px;
-  max-width: 250px;
+  width: 14.375rem;
+  min-width: 12.5rem;
+  max-width: 15.625rem;
 }
 
 .technologiesColumn {
@@ -56,17 +56,17 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 90px;
-  height: 70px;
-  border-radius: 12px;
-  padding: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  width: 5.625rem;
+  height: 4.375rem;
+  border-radius: 0.75rem;
+  padding: 0.3125rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
 
 .skillCard:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  transform: translateY(-2px);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.25);
+  transform: translateY(-0.125rem);
 }
 
 .skillCard::before {
@@ -115,7 +115,7 @@
   bottom: 0;
   opacity: 0.7;
   pointer-events: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.2);
 }
 
 /* Parent Skill Card Styles */
@@ -138,17 +138,17 @@
 
 .iconOverlay {
   position: absolute;
-  top: -4px;
-  right: -4px;
+  top: -0.25rem;
+  right: -0.25rem;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 50%;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #666;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.2);
 }
 
 /* Skill Group Styles */
@@ -165,17 +165,17 @@
   z-index: 3;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px);
+  transform: translateY(-0.625rem);
   transition: all 0.3s ease;
   pointer-events: none;
   background: var(--mantine-color-dark-6);
-  border: 1px solid var(--mantine-color-dark-4);
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  min-width: 300px;
-  max-width: 500px;
-  margin-top: 8px;
+  border: 0.0625rem solid var(--mantine-color-dark-4);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3);
+  min-width: 18.75rem;
+  max-width: 31.25rem;
+  margin-top: 0.5rem;
 }
 
 .expandedSubSkills.expanded {
@@ -186,22 +186,22 @@
 }
 
 .subSkillsGroup {
-  gap: 8px;
+  gap: 0.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-  grid-gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(4.375rem, 1fr));
+  grid-gap: 0.5rem;
   width: 100%;
 }
 
 .expandedSubSkills .skillCard {
-  width: 70px;
-  height: 55px;
+  width: 4.375rem;
+  height: 3.4375rem;
   margin: 0;
 }
 
 .expandedSubSkills .skillIcon svg {
-  width: 14px;
-  height: 14px;
+  width: 0.875rem;
+  height: 0.875rem;
 }
 
 .expandedSubSkills .skillName {
@@ -211,8 +211,8 @@
 /* Light theme for expanded sub-skills */
 [data-mantine-color-scheme="light"] .expandedSubSkills {
   background: var(--mantine-color-gray-0);
-  border: 1px solid var(--mantine-color-gray-2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 0.0625rem solid var(--mantine-color-gray-2);
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
 }
 
 .skillIcon {
@@ -230,7 +230,7 @@
 }
 
 .technologiesGroup {
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 /* Tablet Responsive */
@@ -241,7 +241,7 @@
 
   .categoryColumn {
     width: auto;
-    min-width: 150px;
+    min-width: 9.375rem;
     max-width: none;
   }
 
@@ -251,14 +251,14 @@
   }
 
   .skillCard {
-    width: 110px !important;
-    height: 75px !important;
-    padding: 10px !important;
+    width: 6.875rem !important;
+    height: 4.6875rem !important;
+    padding: 0.625rem !important;
   }
 
   .skillIcon svg {
-    width: 22px;
-    height: 22px;
+    width: 1.375rem;
+    height: 1.375rem;
   }
 
   .skillName {
@@ -267,31 +267,31 @@
 
   /* Sub-Skills Tablet Styles */
   .expandedSubSkills {
-    min-width: 280px;
-    max-width: 400px;
-    padding: 12px;
+    min-width: 17.5rem;
+    max-width: 25rem;
+    padding: 0.75rem;
   }
 
   .expandedSubSkills .skillCard {
-    width: 65px;
-    height: 50px;
+    width: 4.0625rem;
+    height: 3.125rem;
   }
 
   .subSkillsGroup {
-    grid-template-columns: repeat(auto-fit, minmax(65px, 1fr));
-    grid-gap: 6px;
+    grid-template-columns: repeat(auto-fit, minmax(4.0625rem, 1fr));
+    grid-gap: 0.375rem;
   }
 
   .iconOverlay {
-    top: -3px;
-    right: -3px;
-    width: 14px;
-    height: 14px;
+    top: -0.1875rem;
+    right: -0.1875rem;
+    width: 0.875rem;
+    height: 0.875rem;
   }
 
   .iconOverlay svg {
-    width: 8px;
-    height: 8px;
+    width: 0.5rem;
+    height: 0.5rem;
   }
 
   .layeredSubSkill {
@@ -317,7 +317,7 @@
 
   .categoryColumn {
     width: auto;
-    min-width: 120px;
+    min-width: 7.5rem;
     max-width: none;
   }
 
@@ -331,10 +331,10 @@
   }
 
   .skillCard {
-    width: 90px !important;
-    height: 65px !important;
-    padding: 6px !important;
-    border-radius: 8px !important;
+    width: 5.625rem !important;
+    height: 4.0625rem !important;
+    padding: 0.375rem !important;
+    border-radius: 0.5rem !important;
   }
 
   .skillIcon {
@@ -342,8 +342,8 @@
   }
 
   .skillIcon svg {
-    width: 18px;
-    height: 18px;
+    width: 1.125rem;
+    height: 1.125rem;
   }
 
   .skillName {
@@ -369,25 +369,25 @@
   }
 
   .expandedSubSkills .skillCard {
-    width: 75px;
-    height: 55px;
+    width: 4.6875rem;
+    height: 3.4375rem;
   }
 
   .subSkillsGroup {
-    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
-    grid-gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(4.6875rem, 1fr));
+    grid-gap: 0.5rem;
   }
 
   .iconOverlay {
-    top: -2px;
-    right: -2px;
-    width: 12px;
-    height: 12px;
+    top: -0.125rem;
+    right: -0.125rem;
+    width: 0.75rem;
+    height: 0.75rem;
   }
 
   .iconOverlay svg {
-    width: 6px;
-    height: 6px;
+    width: 0.375rem;
+    height: 0.375rem;
   }
 
   .layeredSubSkill {
@@ -406,8 +406,8 @@
   .skillsTable tr {
     display: block;
     margin-bottom: 1.5rem;
-    border: 1px solid var(--mantine-color-dark-4);
-    border-radius: 8px;
+    border: 0.0625rem solid var(--mantine-color-dark-4);
+    border-radius: 0.5rem;
     padding: 1rem;
   }
 
@@ -418,7 +418,7 @@
   }
 
   .categoryColumn {
-    border-bottom: 1px solid var(--mantine-color-dark-4);
+    border-bottom: 0.0625rem solid var(--mantine-color-dark-4);
     margin-bottom: 1rem;
     padding-bottom: 0.75rem !important;
   }
@@ -431,14 +431,14 @@
 /* Very Small Mobile */
 @media (max-width: 480px) {
   .skillCard {
-    width: 80px !important;
-    height: 60px !important;
-    padding: 4px !important;
+    width: 5rem !important;
+    height: 3.75rem !important;
+    padding: 0.25rem !important;
   }
 
   .skillIcon svg {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
   }
 
   .skillName {
@@ -451,17 +451,17 @@
 
   /* Sub-Skills Very Small Mobile Styles */
   .expandedSubSkills {
-    padding: 8px;
+    padding: 0.5rem;
   }
 
   .expandedSubSkills .skillCard {
-    width: 65px;
-    height: 50px;
+    width: 4.0625rem;
+    height: 3.125rem;
   }
 
   .expandedSubSkills .skillIcon svg {
-    width: 12px;
-    height: 12px;
+    width: 0.75rem;
+    height: 0.75rem;
   }
 
   .expandedSubSkills .skillName {
@@ -469,23 +469,23 @@
   }
 
   .iconOverlay {
-    top: -1px;
-    right: -1px;
-    width: 10px;
-    height: 10px;
+    top: -0.0625rem;
+    right: -0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
   }
 
   .iconOverlay svg {
-    width: 5px;
-    height: 5px;
+    width: 0.3125rem;
+    height: 0.3125rem;
   }
 }
 
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .skillsSection {
   background: var(--mantine-color-gray-0);
-  border: 1px solid var(--mantine-color-gray-2);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 0.0625rem solid var(--mantine-color-gray-2);
+  box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.08);
 }
 
 [data-mantine-color-scheme="light"] .sectionTitle {

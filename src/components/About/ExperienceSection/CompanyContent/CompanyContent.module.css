@@ -2,7 +2,7 @@
   padding: 1.5rem;
   background: var(--mantine-color-dark-5);
   border-radius: 0 var(--mantine-radius-md);
-  border: 1px solid var(--mantine-color-dark-4);
+  border: 0.0625rem solid var(--mantine-color-dark-4);
   transition: background-color 0.2s ease;
 }
 
@@ -13,7 +13,7 @@
 .projectsSection {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--mantine-color-dark-4);
+  border-top: 0.0625rem solid var(--mantine-color-dark-4);
 }
 
 .projectsTitle {
@@ -32,7 +32,7 @@
 @media (min-width: 769px) {
   .projectsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
     gap: 1rem;
   }
 }
@@ -47,11 +47,11 @@
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .companyContent {
   background: var(--mantine-color-gray-2);
-  border: 1px solid var(--mantine-color-gray-2);
+  border: 0.0625rem solid var(--mantine-color-gray-2);
 }
 
 [data-mantine-color-scheme="light"] .projectsSection {
-  border-top: 1px solid var(--mantine-color-gray-2);
+  border-top: 0.0625rem solid var(--mantine-color-gray-2);
 }
 
 [data-mantine-color-scheme="light"] .projectsTitle {

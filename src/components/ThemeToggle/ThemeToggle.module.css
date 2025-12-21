@@ -1,5 +1,5 @@
 .themeSwitch {
-  --toggle-size: 15px;
+  --toggle-size: 0.9375rem;
   /* the size is adjusted using font-size,
      this is not transform scale,
      so you can choose any size */
@@ -270,6 +270,6 @@
 /* Mobile styles */
 @media (max-width: 768px) {
   .themeSwitch {
-    --toggle-size: 12.5px;
+    --toggle-size: 0.78125rem;
   }
 }

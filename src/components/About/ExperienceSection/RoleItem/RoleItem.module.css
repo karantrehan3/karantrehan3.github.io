@@ -3,7 +3,7 @@
   padding: 1rem;
   background: var(--mantine-color-dark-6);
   border-radius: var(--mantine-radius-sm);
-  border-left: 3px solid var(--mantine-color-orange-5);
+  border-left: 0.1875rem solid var(--mantine-color-orange-5);
 }
 
 .roleHeader {
@@ -27,7 +27,7 @@
   font-size: 0.7rem;
   padding: 0.4rem 0.8rem;
   border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(255, 123, 0, 0.3);
+  box-shadow: 0 0.125rem 0.5rem rgba(255, 123, 0, 0.3);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -35,7 +35,7 @@
 
 .rolePeriod:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(255, 123, 0, 0.4);
+  box-shadow: 0 0.25rem 0.75rem rgba(255, 123, 0, 0.4);
 }
 
 .roleDescription {
@@ -69,7 +69,7 @@
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .roleItem {
   background: var(--mantine-color-white);
-  border-left: 3px solid var(--mantine-color-orange-5);
+  border-left: 0.1875rem solid var(--mantine-color-orange-5);
 }
 
 [data-mantine-color-scheme="light"] .roleTitle {

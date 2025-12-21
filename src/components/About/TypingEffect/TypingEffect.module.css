@@ -4,7 +4,7 @@
     var(--mantine-color-dark-6),
     var(--mantine-color-dark-7)
   );
-  border: 1px solid var(--mantine-color-dark-4);
+  border: 0.0625rem solid var(--mantine-color-dark-4);
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -63,7 +63,7 @@
     var(--mantine-color-gray-0),
     var(--mantine-color-gray-1)
   );
-  border: 1px solid var(--mantine-color-gray-2);
+  border: 0.0625rem solid var(--mantine-color-gray-2);
 }
 
 [data-mantine-color-scheme="light"] .typingText {

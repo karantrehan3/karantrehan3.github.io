@@ -49,7 +49,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(1.875rem);
   }
   to {
     opacity: 1;
@@ -107,7 +107,7 @@
   .container {
     flex-direction: column;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 0.625rem;
   }
 
   .left,

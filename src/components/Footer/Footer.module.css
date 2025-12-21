@@ -1,9 +1,9 @@
 .footer {
-    margin: 0 auto;
-    margin-bottom: 10px;
+  margin: 0 auto;
+  margin-bottom: 0.625rem;
 }
 
 .copyright {
-    --text-fz: 14px;
-    color: light-dark(var(--mantine-color-dark-8), var(--mantine-color-dark-0))
+  --text-fz: 0.875rem;
+  color: light-dark(var(--mantine-color-dark-8), var(--mantine-color-dark-0));
 }

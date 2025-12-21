@@ -1,15 +1,24 @@
 section {
   width: 8em;
-  outline: 2px solid orange;
-  outline-offset: 3px;
+  outline: 0.125rem solid orange;
+  outline-offset: 0.1875rem;
   border-radius: 15em;
-  box-shadow: 0 0 1.5em -0.15em linear-gradient(45deg, var(--mantine-color-yellow-filled) 0%, var(--mantine-color-red-filled) 100%);
+  box-shadow: 0 0 1.5em -0.15em
+    linear-gradient(
+      45deg,
+      var(--mantine-color-yellow-filled) 0%,
+      var(--mantine-color-red-filled) 100%
+    );
 }
 
 .dot {
   width: 1em;
   height: 1em;
-  background: linear-gradient(45deg, var(--mantine-color-yellow-filled) 0%, var(--mantine-color-red-filled) 100%);
+  background: linear-gradient(
+    45deg,
+    var(--mantine-color-yellow-filled) 0%,
+    var(--mantine-color-red-filled) 100%
+  );
   border-radius: 20em;
   filter: brightness(1.25);
   animation: stretch 1s linear alternate infinite;
@@ -30,7 +39,7 @@ section {
 @media (max-width: 600px) {
   section {
     width: 6em;
-    outline-offset: 2px;
+    outline-offset: 0.125rem;
     border-radius: 10em;
     box-shadow: 0 0 1em -0.1em linear-gradient(45deg, red, #fab005);
   }
@@ -38,7 +47,11 @@ section {
   .dot {
     width: 0.8em;
     height: 0.8em;
-    background: linear-gradient(45deg, var(--mantine-color-yellow-filled) 0%, var(--mantine-color-red-filled) 100%);
+    background: linear-gradient(
+      45deg,
+      var(--mantine-color-yellow-filled) 0%,
+      var(--mantine-color-red-filled) 100%
+    );
     animation: stretch-mobile 1s linear alternate infinite;
   }
 

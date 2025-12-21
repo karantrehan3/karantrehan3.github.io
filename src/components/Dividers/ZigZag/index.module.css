@@ -1,10 +1,10 @@
 .zigzag {
   width: 100%;
-  height: 20px;
+  height: 1.25rem;
   fill: none;
   stroke: var(--mantine-color-gray-4);
   stroke-width: 0.5;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.1));
   transition: all 0.3s ease;
   animation: zigzagFloat 3s ease-in-out infinite;
 }
@@ -12,38 +12,42 @@
 .zigzag:hover {
   stroke: var(--mantine-color-blue-6);
   stroke-width: 1;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 0.25rem 0.5rem rgba(0, 0, 0, 0.2));
   transform: scaleY(1.2);
 }
 
 .zigzag::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(255, 255, 255, 0.1) 25%, 
-    rgba(255, 255, 255, 0.2) 50%, 
-    rgba(255, 255, 255, 0.1) 75%, 
-    transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 75%,
+    transparent 100%
+  );
   animation: shimmer 2s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes zigzagFloat {
-  0%, 100% {
-    transform: translateY(5px);
+  0%,
+  100% {
+    transform: translateY(0.3125rem);
   }
   50% {
-    transform: translateY(-2px);
+    transform: translateY(-0.125rem);
   }
 }
 
 @keyframes shimmer {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0;
     transform: translateX(-100%);
   }
@@ -56,19 +60,21 @@
 /* Dark theme adjustments */
 [data-mantine-color-scheme="dark"] .zigzag {
   stroke: var(--mantine-color-gray-6);
-  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.1));
+  filter: drop-shadow(0 0.125rem 0.25rem rgba(255, 255, 255, 0.1));
 }
 
 [data-mantine-color-scheme="dark"] .zigzag:hover {
   stroke: var(--mantine-color-blue-4);
-  filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.2));
+  filter: drop-shadow(0 0.25rem 0.5rem rgba(255, 255, 255, 0.2));
 }
 
 [data-mantine-color-scheme="dark"] .zigzag::before {
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(255, 255, 255, 0.05) 25%, 
-    rgba(255, 255, 255, 0.1) 50%, 
-    rgba(255, 255, 255, 0.05) 75%, 
-    transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%,
+    transparent 100%
+  );
 }
