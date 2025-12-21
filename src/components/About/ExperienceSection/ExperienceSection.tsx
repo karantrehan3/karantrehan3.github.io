@@ -1,13 +1,15 @@
 import { ReactElement } from "react";
 import { Paper, Stack, Text } from "@mantine/core";
 
-import { Company, CompanyCollapsibleSection } from "../CompanyItem";
+import { Company } from "@/components/About/ExperienceSection/Company";
+import type { Company as CompanyType } from "@/components/About/ExperienceSection/types";
+
 import classes from "./ExperienceSection.module.css";
 
 interface ExperienceSummary {
   START_DATE: string;
   DESCRIPTION: string;
-  COMPANIES: Company[];
+  COMPANIES: CompanyType[];
 }
 
 interface ExperienceSectionProps {
@@ -42,13 +44,11 @@ export function ExperienceSection({
       </Text>
 
       <Stack gap="xl" className={classes.companiesList}>
-        {experienceSummary.COMPANIES.map((company: Company, index: number) => (
-          <CompanyCollapsibleSection
-            key={index}
-            company={company}
-            index={index}
-          />
-        ))}
+        {experienceSummary.COMPANIES.map(
+          (company: CompanyType, index: number) => (
+            <Company key={index} company={company} index={index} />
+          )
+        )}
       </Stack>
     </Paper>
   );

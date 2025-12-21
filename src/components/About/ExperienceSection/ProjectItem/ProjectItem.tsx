@@ -1,10 +1,12 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useMemo } from "react";
 import { Anchor, Group, Image, Text } from "@mantine/core";
 
+import { ImagePreviewModal } from "@/components/About/ImagePreviewModal";
 import Icon from "@/components/Icons";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
+import { useImagePreview } from "@/hooks/useImagePreview";
+import { createKeyboardActionHandler } from "@/utils/eventHandlers";
 
-import { ImagePreviewModal } from "../ImagePreviewModal";
 import classes from "./ProjectItem.module.css";
 
 interface ProjectItemProps {
@@ -30,13 +32,9 @@ export function ProjectItem({
   currentLogo,
   currentLogoAlt,
 }: ProjectItemProps): ReactElement {
-  const [previewOpened, setPreviewOpened] = useState(false);
+  const hasImages = logo || currentLogo;
 
-  const handleImageClick = () => {
-    setPreviewOpened(true);
-  };
-
-  const getPreviewImages = () => {
+  const previewImages = useMemo(() => {
     const images = [];
     if (logo) {
       images.push({
@@ -51,31 +49,31 @@ export function ProjectItem({
       });
     }
     return images;
-  };
+  }, [logo, logoAlt, currentLogo, currentLogoAlt, currentName, name]);
 
-  const hasImages = logo || currentLogo;
+  const {
+    previewOpened,
+    openPreview,
+    closePreview,
+    previewImages: images,
+  } = useImagePreview({ images: previewImages });
 
   return (
     <div className={classes.projectItem}>
       <ImagePreviewModal
         opened={previewOpened}
-        onClose={() => setPreviewOpened(false)}
-        images={getPreviewImages()}
+        onClose={closePreview}
+        images={images}
       />
       <Group gap="xs" align="center">
         {/* Project Logo */}
         {hasImages && (
           <div
             className={classes.projectLogoContainer}
-            onClick={handleImageClick}
+            onClick={openPreview}
             role="button"
             tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                handleImageClick();
-              }
-            }}
+            onKeyDown={createKeyboardActionHandler(openPreview)}
           >
             {currentLogo && logo ? (
               // Special overlapping design for logo/currentLogo

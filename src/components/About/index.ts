@@ -1,9 +1,8 @@
 export { AboutHeader } from "./AboutHeader";
 export { TypingEffect } from "./TypingEffect";
 export { ExperienceSection } from "./ExperienceSection";
-export { CompanyItem } from "./CompanyItem";
-export { RoleItem } from "./RoleItem";
-export { ProjectItem } from "./ProjectItem";
+export { CompanyContent, RoleItem } from "./ExperienceSection";
+export { ProjectItem } from "./ExperienceSection/ProjectItem";
 export { SkillsSection } from "./SkillsSection";
 export { EducationSection } from "./EducationSection";
 export { CollapsibleSection } from "./CollapsibleSection";
