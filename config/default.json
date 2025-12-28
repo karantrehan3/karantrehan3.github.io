@@ -620,7 +620,7 @@
   "ANALYTICS": {
     "GA4_MEASUREMENT_ID": "G-47SPLJ8M8L",
     "CONSENT_KEY": "analytics-consent",
-    "CONSENT_VERSION": "1",
+    "CONSENT_VERSION": "2",
     "COOKIE_CONSENT": {
       "TITLE": "Cookie Notice",
       "DESCRIPTION": "This site uses cookies for analytics to understand how visitors interact with the site.",
@@ -645,7 +645,7 @@
       },
       {
         "title": "Information We Collect",
-        "content": "This website uses **Google Analytics 4 (GA4)** to understand how visitors interact with the site. **We only enable analytics after you provide explicit consent** by clicking \"Accept\" on the cookie banner.\n\nWhen you consent, Google Analytics collects anonymized information such as:\n\n- Pages visited and time spent on pages\n- Navigation paths and interactions with site elements\n- Browser type, operating system, and device category\n- Approximate location at country or city level, IP addresses are anonymized\n\n**Purpose**: This data helps us understand website usage patterns and improve the user experience. We do not use this data for marketing, advertising, or profiling."
+        "content": "This website uses **Google Analytics 4 (GA4)** to understand how visitors interact with the site. **We only enable analytics after you provide explicit consent** by clicking \"Accept\" on the cookie banner.\n\n### URL Parameters (UTM Parameters)\n\nWhen you visit this website, we automatically capture UTM parameters from the URL (such as `utm_source`, `utm_medium`, `utm_campaign`) if they are present in the link you used to access the site. These parameters are stored temporarily in your browser's sessionStorage (not cookies) and are used for analytics attribution purposes. **These parameters are only sent to Google Analytics after you provide consent.** SessionStorage data is automatically cleared when you close your browser tab or window.\n\n### Analytics Data (After Consent)\n\nWhen you consent, Google Analytics collects anonymized information such as:\n\n- Pages visited and time spent on pages\n- Navigation paths and interactions with site elements\n- Browser type, operating system, and device category\n- Approximate location at country or city level, IP addresses are anonymized\n- UTM parameters for understanding traffic sources\n\n**Purpose**: This data helps us understand website usage patterns and improve the user experience. We do not use this data for marketing, advertising, or profiling."
       },
       {
         "title": "What We Don't Collect",
@@ -653,7 +653,7 @@
       },
       {
         "title": "Cookies and Tracking",
-        "content": "This site enables cookies only after you provide consent:\n\n### Analytics Cookies (Google Analytics 4)\n\nThese cookies are set and processed by Google only if you click \"Accept\" on the cookie banner:\n\n- **_ga**: Distinguishes users\n- **_ga_<MEASUREMENT_ID>**: Persists session state\n- **_gid**: Distinguishes users\n- **_gat**: Throttles request rate\n\n### Consent Cookie\n\n- **analytics-consent**: Stores your consent preference in your browser or local storage so we do not ask again\n\n### Managing Cookies\n\nYou can control cookies through:\n- The cookie banner\n- Browser settings\n- The \"Change Cookie Preferences\" button on this page\n\nDisabling cookies will stop analytics tracking but will not affect basic website functionality."
+        "content": "This site enables cookies and browser storage only after you provide consent:\n\n### Analytics Cookies (Google Analytics 4)\n\nThese cookies are set and processed by Google only if you click \"Accept\" on the cookie banner:\n\n- **_ga**: Distinguishes users\n- **_ga_<MEASUREMENT_ID>**: Persists session state\n- **_gid**: Distinguishes users\n- **_gat**: Throttles request rate\n\n### Browser Storage\n\n- **analytics-consent**: Stores your consent preference in localStorage so we do not ask again\n- **utm_params**: Temporarily stores UTM parameters from URLs in sessionStorage for analytics attribution. This data is automatically cleared when you close your browser tab or window. **UTM parameters are only sent to Google Analytics after you provide consent.**\n\n### Managing Cookies and Storage\n\nYou can control cookies and browser storage through:\n- The cookie banner\n- Browser settings (to clear cookies and storage)\n- The \"Change Cookie Preferences\" button on this page\n\nDisabling cookies or clearing browser storage will stop analytics tracking but will not affect basic website functionality."
       },
       {
         "title": "Third-Party Services",
