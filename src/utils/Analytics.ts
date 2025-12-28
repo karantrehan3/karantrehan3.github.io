@@ -10,6 +10,7 @@
 
 import config from "@/utils/Config";
 import Constants from "@/utils/Constants";
+import helpers from "@/utils/Helpers";
 
 declare global {
   interface Window {
@@ -35,8 +36,12 @@ class Analytics {
    * This enables the GA4 tracking that was loaded at build time
    */
   initialize(): void {
-    if (this.initialized || !this.measurementId) {return;}
-    if (typeof window === "undefined") {return;}
+    if (this.initialized || !this.measurementId) {
+      return;
+    }
+    if (typeof window === "undefined") {
+      return;
+    }
 
     // GA4 script is already loaded by vite plugin, just enable it
     if (window.gtag) {
@@ -80,10 +85,23 @@ class Analytics {
    * @param title - Optional page title
    */
   trackPageView(path?: string, title?: string): void {
+    // Get stored UTM parameters from sessionStorage
+    const utmParams = helpers.getStoredUtmParams();
+
+    // If no UTM parameters exist, use defaults for direct traffic
+    const trackingParams: Record<string, string> = {
+      utm_source: utmParams.utm_source || "direct",
+      utm_medium: utmParams.utm_medium || "none",
+      ...(utmParams.utm_campaign && { utm_campaign: utmParams.utm_campaign }),
+      ...(utmParams.utm_term && { utm_term: utmParams.utm_term }),
+      ...(utmParams.utm_content && { utm_content: utmParams.utm_content }),
+    };
+
     this.trackEvent(Constants.GA4_EVENTS.PAGE_VIEW, {
       page_path: path || window.location.pathname + window.location.hash,
       page_title: title || document.title,
       page_location: window.location.href,
+      ...trackingParams, // Include UTM parameters (with defaults if missing)
     });
   }
 

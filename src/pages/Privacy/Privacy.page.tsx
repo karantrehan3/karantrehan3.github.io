@@ -81,7 +81,8 @@ function PrivacyPageComponent(): ReactElement {
   const handleResetConsent = useCallback((): void => {
     localStorage.removeItem(Constants.CONSENT_KEY);
     // Set flag to show banner immediately after reload
-    localStorage.setItem(Constants.SHOW_COOKIE_BANNER_FLAG, "true");
+    // Using sessionStorage since this is a temporary flag for the current session
+    sessionStorage.setItem(Constants.SHOW_COOKIE_BANNER_FLAG, "true");
     setConsentStatus(Constants.CONSENT_STATUS_PENDING);
     // Clear section hash to prevent unwanted scroll on reload
     window.history.replaceState(null, "", "#/privacy");

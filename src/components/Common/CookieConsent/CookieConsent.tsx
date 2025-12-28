@@ -58,11 +58,11 @@ function CookieConsentComponent(): ReactElement | null {
     const status = getConsentStatus();
     if (status === Constants.CONSENT_STATUS_PENDING) {
       // Check if banner should appear immediately (e.g., after resetting consent)
-      const showImmediately = localStorage.getItem(
+      const showImmediately = sessionStorage.getItem(
         Constants.SHOW_COOKIE_BANNER_FLAG
       );
       if (showImmediately === "true") {
-        localStorage.removeItem(Constants.SHOW_COOKIE_BANNER_FLAG);
+        sessionStorage.removeItem(Constants.SHOW_COOKIE_BANNER_FLAG);
         setVisible(true);
       } else {
         // Small delay for better UX on initial page load
