@@ -65,7 +65,11 @@
 
 /* Code */
 .markdown code {
-  background-color: var(--mantine-color-gray-1);
+  background-color: light-dark(
+    var(--mantine-color-gray-1),
+    var(--mantine-color-dark-2)
+  );
+  color: light-dark(var(--mantine-color-dark-7), var(--mantine-color-gray-0));
   padding: 0.125em 0.25em;
   border-radius: 0.25em;
   font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
@@ -73,7 +77,10 @@
 }
 
 .markdown pre {
-  background-color: var(--mantine-color-gray-1);
+  background-color: light-dark(
+    var(--mantine-color-gray-1),
+    var(--mantine-color-dark-6)
+  );
   padding: 1em;
   border-radius: 0.5em;
   overflow-x: auto;
@@ -82,6 +89,7 @@
 
 .markdown pre code {
   background-color: transparent;
+  color: inherit;
   padding: 0;
 }
 
@@ -109,7 +117,10 @@
 }
 
 .markdown th {
-  background-color: var(--mantine-color-gray-1);
+  background-color: light-dark(
+    var(--mantine-color-gray-1),
+    var(--mantine-color-dark-6)
+  );
   font-weight: 600;
 }
 
@@ -143,7 +154,11 @@
 
 /* Inline code */
 .markdown :not(pre) > code {
-  background-color: var(--mantine-color-gray-1);
+  background-color: light-dark(
+    var(--mantine-color-gray-1),
+    var(--mantine-color-dark-6)
+  );
+  color: light-dark(var(--mantine-color-dark-7), var(--mantine-color-gray-0));
   padding: 0.125em 0.25em;
   border-radius: 0.25em;
   font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
