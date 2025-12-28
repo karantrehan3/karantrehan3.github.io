@@ -1,28 +1,28 @@
 import { memo, ReactElement } from "react";
 import { Stack, Text, Title } from "@mantine/core";
 
-import classes from "./PageHeader.module.css";
+import classes from "./ContentHeader.module.css";
 
-interface PageHeaderProps {
+interface ContentHeaderProps {
   title: string;
   effectiveDate?: string;
   lastUpdated?: string;
 }
 
-function PageHeaderComponent({
+function ContentHeaderComponent({
   title,
   effectiveDate,
   lastUpdated,
-}: PageHeaderProps): ReactElement {
+}: ContentHeaderProps): ReactElement {
   const showLastUpdated =
     lastUpdated && (!effectiveDate || effectiveDate !== lastUpdated);
 
   return (
-    <header className={classes["page-header"]}>
-      <Title order={1} className={classes["page-header__title"]}>
+    <header className={classes["content-header"]}>
+      <Title order={1} className={classes["content-header__title"]}>
         {title}
       </Title>
-      <Stack gap="xs" className={classes["page-header__dates"]}>
+      <Stack gap="xs" className={classes["content-header__dates"]}>
         {effectiveDate && (
           <Text size="sm" c="dimmed" aria-label="Effective date">
             Effective: {effectiveDate}
@@ -43,4 +43,4 @@ function PageHeaderComponent({
   );
 }
 
-export const PageHeader = memo(PageHeaderComponent);
+export const ContentHeader = memo(ContentHeaderComponent);

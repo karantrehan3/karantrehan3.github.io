@@ -1,25 +1,13 @@
 // Privacy page components
-export { Navigation } from "./Navigation";
+export { Header } from "./Header";
 export { TableOfContents } from "./TableOfContents";
-export { Sidebar } from "./Sidebar";
+export { TocSidebar } from "./TocSidebar";
 export { TocDrawer } from "./TocDrawer";
-export { PageHeader } from "./PageHeader";
+export { ContentHeader } from "./ContentHeader";
 export { ScrollToTopButton } from "./ScrollToTopButton";
 
 // Section components
-export {
-  SimpleSection,
-  SimpleListSection,
-  LabeledListSection,
-  ConsentManagementSection,
-  ContactSection,
-  SectionTitle,
-  getConsentStatus,
-} from "./Sections";
+export { UnifiedSection } from "./UnifiedSection";
 
 // Types
-export type {
-  ListItemWithLabel,
-  SectionConfig,
-  TableOfContentsItem,
-} from "./types";
+export type { PrivacySection, TableOfContentsItem } from "./types";

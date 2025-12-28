@@ -9,21 +9,19 @@ import {
 import { Anchor, Box, Container, Divider } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
-import { ConsentStatus } from "@/components/Common/CookieConsent";
 import {
-  ConsentManagementSection,
-  ContactSection,
+  ConsentStatus,
   getConsentStatus,
-  LabeledListSection,
-  Navigation,
-  PageHeader,
+} from "@/components/Common/CookieConsent";
+import {
+  ContentHeader,
+  Header,
+  PrivacySection,
   ScrollToTopButton,
-  SectionConfig,
-  Sidebar,
-  SimpleListSection,
-  SimpleSection,
   TableOfContentsItem,
   TocDrawer,
+  TocSidebar,
+  UnifiedSection,
 } from "@/components/Privacy";
 import config from "@/utils/Config";
 import Constants from "@/utils/Constants";
@@ -58,8 +56,7 @@ function PrivacyPageComponent(): ReactElement {
         DENIED: string;
         PENDING: string;
       },
-      sectionOrder: config.get("PRIVACY.SECTION_ORDER") as string[],
-      sections: config.get("PRIVACY.SECTIONS") as Record<string, SectionConfig>,
+      sections: config.get("PRIVACY.SECTIONS") as PrivacySection[],
     }),
     []
   );
@@ -171,14 +168,14 @@ function PrivacyPageComponent(): ReactElement {
     };
   }, [handleScrollToSection, configValues.hashNavigationTimeout]);
 
-  // Memoize table of contents generation
+  // Memoize table of contents generation from array index
   const tableOfContents: TableOfContentsItem[] = useMemo(
     () =>
-      configValues.sectionOrder.map((key) => ({
-        title: configValues.sections[key].TITLE,
-        id: getSectionId(configValues.sections[key].TITLE),
+      configValues.sections.map((section) => ({
+        title: section.title,
+        id: getSectionId(section.title),
       })),
-    [configValues.sectionOrder, configValues.sections, getSectionId]
+    [configValues.sections, getSectionId]
   );
 
   return (
@@ -192,7 +189,7 @@ function PrivacyPageComponent(): ReactElement {
       </Anchor>
 
       {/* Header with back button and theme toggle */}
-      <Navigation
+      <Header
         backButtonText={configValues.backButton}
         tocOpened={tocOpened}
         onTocOpen={openToc}
@@ -200,7 +197,7 @@ function PrivacyPageComponent(): ReactElement {
 
       <Box className={classes.privacy__contentWrapper}>
         {/* Desktop Table of Contents Sidebar */}
-        <Sidebar
+        <TocSidebar
           items={tableOfContents}
           activeSection={activeSection}
           onSectionClick={handleScrollToSection}
@@ -208,97 +205,31 @@ function PrivacyPageComponent(): ReactElement {
 
         <Container size="md" className={classes.privacy__container}>
           <main id="privacy-main-content" className={classes.privacy__card}>
-            <PageHeader
+            <ContentHeader
               title={configValues.pageTitle}
               effectiveDate={configValues.effectiveDate}
               lastUpdated={configValues.lastUpdated}
             />
 
-            <SimpleSection
-              section={configValues.sections.INTRODUCTION}
-              getSectionId={getSectionId}
-              onSectionClick={handleScrollToSection}
-              replacePlaceholders={replacePlaceholders}
-            />
-
-            <Divider my="lg" className={classes.privacy__divider} />
-
-            <LabeledListSection
-              section={configValues.sections.INFORMATION_COLLECTED}
-              getSectionId={getSectionId}
-              onSectionClick={handleScrollToSection}
-            />
-
-            <Divider my="lg" className={classes.privacy__divider} />
-
-            <SimpleListSection
-              section={configValues.sections.NOT_COLLECTED}
-              getSectionId={getSectionId}
-              onSectionClick={handleScrollToSection}
-            />
-
-            <Divider my="lg" className={classes.privacy__divider} />
-
-            <LabeledListSection
-              section={configValues.sections.COOKIES}
-              getSectionId={getSectionId}
-              onSectionClick={handleScrollToSection}
-            />
-
-            <Divider my="lg" className={classes.privacy__divider} />
-
-            <SimpleSection
-              section={configValues.sections.DATA_RETENTION}
-              getSectionId={getSectionId}
-              onSectionClick={handleScrollToSection}
-              replacePlaceholders={replacePlaceholders}
-            />
-
-            <Divider my="lg" className={classes.privacy__divider} />
-
-            <LabeledListSection
-              section={configValues.sections.THIRD_PARTY}
-              getSectionId={getSectionId}
-              onSectionClick={handleScrollToSection}
-            />
-
-            <Divider my="lg" className={classes.privacy__divider} />
-
-            <LabeledListSection
-              section={configValues.sections.YOUR_RIGHTS}
-              getSectionId={getSectionId}
-              onSectionClick={handleScrollToSection}
-            />
-
-            <Divider my="lg" className={classes.privacy__divider} />
-
-            <ConsentManagementSection
-              section={configValues.sections.COOKIE_PREFERENCES}
-              getSectionId={getSectionId}
-              onSectionClick={handleScrollToSection}
-              consentStatus={consentStatus}
-              consentStatusLabels={configValues.consentStatusLabels}
-              onResetConsent={handleResetConsent}
-            />
-
-            <Divider my="lg" className={classes.privacy__divider} />
-
-            <SimpleSection
-              section={configValues.sections.POLICY_CHANGES}
-              getSectionId={getSectionId}
-              onSectionClick={handleScrollToSection}
-              replacePlaceholders={replacePlaceholders}
-            />
-
-            <Divider my="lg" className={classes.privacy__divider} />
-
-            <ContactSection
-              section={configValues.sections.CONTACT}
-              getSectionId={getSectionId}
-              onSectionClick={handleScrollToSection}
-              ownerEmail={configValues.ownerEmail}
-              replacePlaceholders={replacePlaceholders}
-            />
+            {configValues.sections.map((section, index) => (
+              <div key={getSectionId(section.title)}>
+                <UnifiedSection
+                  section={section}
+                  getSectionId={getSectionId}
+                  onSectionClick={handleScrollToSection}
+                  replacePlaceholders={replacePlaceholders}
+                  consentStatus={consentStatus}
+                  consentStatusLabels={configValues.consentStatusLabels}
+                  buttonHandlers={{
+                    resetConsent: handleResetConsent,
+                  }}
+                  ownerEmail={configValues.ownerEmail}
+                />
+                {index < configValues.sections.length - 1 && (
+                  <Divider my="lg" className={classes.privacy__divider} />
+                )}
+              </div>
+            ))}
           </main>
         </Container>
       </Box>

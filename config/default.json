@@ -643,120 +643,51 @@
       "DENIED": "Declined",
       "PENDING": "Not set"
     },
-    "SECTION_ORDER": [
-      "INTRODUCTION",
-      "INFORMATION_COLLECTED",
-      "NOT_COLLECTED",
-      "COOKIES",
-      "DATA_RETENTION",
-      "THIRD_PARTY",
-      "YOUR_RIGHTS",
-      "COOKIE_PREFERENCES",
-      "POLICY_CHANGES",
-      "CONTACT"
-    ],
-    "SECTIONS": {
-      "INTRODUCTION": {
-        "TITLE": "Introduction",
-        "CONTENT": "This Privacy Policy explains how {OWNER_NAME}'s portfolio website collects, uses, and protects your information when you visit this site."
+    "SECTIONS": [
+      {
+        "title": "Introduction",
+        "content": "This Privacy Policy explains how {OWNER_NAME}'s portfolio website collects, uses, and protects your information when you visit this site."
       },
-      "INFORMATION_COLLECTED": {
-        "TITLE": "Information We Collect",
-        "INTRO": "This website uses Google Analytics 4 (GA4) to understand how visitors interact with the site. When you consent to analytics, we collect:",
-        "ITEMS": [
-          {
-            "LABEL": "Usage Data",
-            "DESCRIPTION": "Pages visited, time spent on pages, navigation paths, and interactions with site elements"
-          },
-          {
-            "LABEL": "Device Information",
-            "DESCRIPTION": "Browser type, operating system, screen resolution, and device category"
-          },
-          {
-            "LABEL": "Approximate Location",
-            "DESCRIPTION": "Country and city level (IP addresses are anonymized)"
-          }
-        ]
+      {
+        "title": "Information We Collect",
+        "content": "This website uses Google Analytics 4 (GA4) to understand how visitors interact with the site. When you consent to analytics, we collect:\n\n- **Usage Data**: Pages visited, time spent on pages, navigation paths, and interactions with site elements\n- **Device Information**: Browser type, operating system, screen resolution, and device category\n- **Approximate Location**: Country and city level (IP addresses are anonymized)"
       },
-      "NOT_COLLECTED": {
-        "TITLE": "What We Don't Collect",
-        "INTRO": "We do not collect any personally identifiable information (PII):",
-        "ITEMS": [
-          "No names or email addresses",
-          "No login credentials",
-          "No payment information",
-          "No precise location data",
-          "No tracking across other websites (first-party only)"
-        ]
+      {
+        "title": "What We Don't Collect",
+        "content": "We do not collect any personally identifiable information (PII):\n\n- No names or email addresses\n- No login credentials\n- No payment information\n- No precise location data\n- No tracking across other websites (first-party only)"
       },
-      "COOKIES": {
-        "TITLE": "Cookies",
-        "INTRO": "This site uses cookies only after you provide consent:",
-        "ITEMS": [
-          {
-            "LABEL": "Analytics Cookies",
-            "DESCRIPTION": "Set by Google Analytics to distinguish users and sessions. These cookies are only set if you click \"Accept\" on the cookie banner."
-          },
-          {
-            "LABEL": "Consent Cookie",
-            "DESCRIPTION": "A first-party cookie that stores your consent preference so we don't ask you again."
-          }
-        ]
+      {
+        "title": "Cookies",
+        "content": "This site uses cookies only after you provide consent:\n\n- **Analytics Cookies**: Set by Google Analytics to distinguish users and sessions. These cookies are only set if you click \"Accept\" on the cookie banner.\n- **Consent Cookie**: A first-party cookie that stores your consent preference so we don't ask you again."
       },
-      "COOKIE_PREFERENCES": {
-        "TITLE": "Manage Cookie Preferences",
-        "INTRO": "You can change your cookie consent preferences at any time.",
-        "BUTTON_TEXT": "Change Cookie Preferences",
-        "BUTTON_DESCRIPTION": "Clicking this button will reset your cookie preferences and show the cookie consent banner again, allowing you to make a new choice."
+      {
+        "title": "Data Retention",
+        "content": "Analytics data is retained for 14 months in Google Analytics, after which it is automatically deleted. We do not export or store this data elsewhere."
       },
-      "YOUR_RIGHTS": {
-        "TITLE": "Your Rights",
-        "INTRO": "You have the right to:",
-        "ITEMS": [
-          {
-            "LABEL": "Decline tracking",
-            "DESCRIPTION": "Click \"Decline\" on the cookie banner to opt out of analytics entirely"
-          },
-          {
-            "LABEL": "Withdraw consent",
-            "DESCRIPTION": "Clear your browser cookies to reset your consent preference"
-          },
-          {
-            "LABEL": "Use browser controls",
-            "DESCRIPTION": "Enable \"Do Not Track\" or use private browsing mode"
-          }
-        ]
+      {
+        "title": "Third-Party Services",
+        "content": "This site uses the following third-party services:\n\n- **Google Analytics 4**: For website analytics. Google Analytics may have its own GDPR compliance measures. Please refer to their [privacy policy](https://policies.google.com/privacy) for details.\n- **GitHub Pages**: For website hosting. GitHub may have its own GDPR compliance measures. Please refer to their [privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement) for details."
       },
-      "DATA_RETENTION": {
-        "TITLE": "Data Retention",
-        "CONTENT": "Analytics data is retained for 14 months in Google Analytics, after which it is automatically deleted. We do not export or store this data elsewhere."
+      {
+        "title": "Your Rights",
+        "content": "You have the right to:\n\n- **Decline tracking**: Click \"Decline\" on the cookie banner to opt out of analytics entirely\n- **Withdraw consent**: Clear your browser cookies to reset your consent preference\n- **Use browser controls**: Enable \"Do Not Track\" or use private browsing mode"
       },
-      "THIRD_PARTY": {
-        "TITLE": "Third-Party Services",
-        "INTRO": "This site uses the following third-party services:",
-        "ITEMS": [
-          {
-            "LABEL": "Google Analytics 4",
-            "DESCRIPTION": "For website analytics. Google Analytics may have its own GDPR compliance measures. Please refer to their privacy policy for details.",
-            "LINK": "https://policies.google.com/privacy",
-            "LINK_TEXT": "Google Privacy Policy"
-          },
-          {
-            "LABEL": "GitHub Pages",
-            "DESCRIPTION": "For website hosting. GitHub may have its own GDPR compliance measures. Please refer to their privacy statement for details.",
-            "LINK": "https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement",
-            "LINK_TEXT": "GitHub Privacy Statement"
-          }
-        ]
+      {
+        "title": "Manage Cookie Preferences",
+        "content": "You can change your cookie consent preferences at any time. Your current preference is: {CURRENT_PREFERENCE}",
+        "buttonIcon": "IconCookie",
+        "buttonText": "Change Cookie Preferences",
+        "buttonMethod": "resetConsent",
+        "subtitle": "Clicking this button will reset your cookie preferences and show the cookie consent banner again, allowing you to make a new choice."
       },
-      "POLICY_CHANGES": {
-        "TITLE": "Changes to This Privacy Policy",
-        "CONTENT": "We may update this Privacy Policy from time to time. When we make changes, we will update the \"Last updated\" date at the top of this page. We encourage you to review this Privacy Policy periodically to stay informed about how we collect, use, and protect your information. Your continued use of this website after any changes to this Privacy Policy constitutes your acceptance of the updated policy."
+      {
+        "title": "Changes to This Privacy Policy",
+        "content": "We may update this Privacy Policy from time to time. When we make changes, we will update the \"Last updated\" date at the top of this page. We encourage you to review this Privacy Policy periodically to stay informed about how we collect, use, and protect your information. Your continued use of this website after any changes to this Privacy Policy constitutes your acceptance of the updated policy."
       },
-      "CONTACT": {
-        "TITLE": "Contact",
-        "CONTENT": "If you have any questions about this Privacy Policy, please contact me at {OWNER_EMAIL}."
+      {
+        "title": "Contact",
+        "content": "If you have any questions about this Privacy Policy, please contact me at {OWNER_EMAIL}."
       }
-    }
+    ]
   }
 }

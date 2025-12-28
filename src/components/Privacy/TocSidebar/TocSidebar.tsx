@@ -3,19 +3,19 @@ import { Title } from "@mantine/core";
 
 import { TableOfContents } from "../TableOfContents";
 import { TableOfContentsItem } from "../types";
-import classes from "./Sidebar.module.css";
+import classes from "./TocSidebar.module.css";
 
-interface SidebarProps {
+interface TocSidebarProps {
   items: TableOfContentsItem[];
   activeSection: string;
   onSectionClick: (id: string) => void;
 }
 
-function SidebarComponent({
+function TocSidebarComponent({
   items,
   activeSection,
   onSectionClick,
-}: SidebarProps): ReactElement {
+}: TocSidebarProps): ReactElement {
   return (
     <aside className={classes.sidebar} aria-label="Table of contents">
       <nav className={classes.sidebar__nav}>
@@ -32,4 +32,4 @@ function SidebarComponent({
   );
 }
 
-export const Sidebar = memo(SidebarComponent);
+export const TocSidebar = memo(TocSidebarComponent);
