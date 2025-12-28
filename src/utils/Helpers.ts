@@ -181,14 +181,36 @@ class Helpers {
    * @returns Promise that resolves to true if successful, false otherwise
    */
   async copyToClipboard(text: string): Promise<boolean> {
-    if (typeof window === "undefined" || !navigator.clipboard) {
+    if (typeof window === "undefined") {
       return false;
     }
 
+    // Try modern clipboard API first
+    if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (error) {
+        // Fall through to fallback method
+        // eslint-disable-next-line no-console
+        console.warn("Failed to copy to clipboard:", error);
+      }
+    }
+
+    // Fallback for older browsers or when clipboard API fails
     try {
-      await navigator.clipboard.writeText(text);
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.opacity = "0";
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
       return true;
-    } catch {
+    } catch (fallbackError) {
+      // eslint-disable-next-line no-console
+      console.error("Fallback copy failed:", fallbackError);
       return false;
     }
   }

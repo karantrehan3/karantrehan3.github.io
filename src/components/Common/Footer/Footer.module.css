@@ -16,6 +16,9 @@
   --text-fz: 0.75rem;
   color: light-dark(var(--mantine-color-dark-8), var(--mantine-color-dark-0));
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .footer__link:hover {

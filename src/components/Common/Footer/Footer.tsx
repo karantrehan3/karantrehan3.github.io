@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import { Anchor, Group, Text } from "@mantine/core";
 
-import { ShareDialog } from "@/components";
+import { Icon, ShareDialog } from "@/components";
 import config from "@/utils/Config";
 
 import classes from "./Footer.module.css";
@@ -29,10 +29,12 @@ export function Footer(): ReactElement {
               handleShareClick();
             }}
           >
+            <Icon name="IconShare" size={16} />
             {config.get("CTAS.SHARE.BUTTON_TEXT")}
           </Anchor>
           <Text className={classes.footer__separator}>•</Text>
           <Anchor href="#/privacy" className={classes.footer__link}>
+            <Icon name="IconShieldCheck" size={16} />
             Privacy Policy
           </Anchor>
         </Group>

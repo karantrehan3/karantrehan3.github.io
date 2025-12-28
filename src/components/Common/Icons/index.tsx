@@ -41,6 +41,7 @@ import {
   IconProps,
   IconServer,
   IconShare,
+  IconShieldCheck,
   IconTestPipe,
   IconTools,
   IconUser,
@@ -91,6 +92,7 @@ const iconMap = {
   IconTestPipe,
   IconTools,
   IconUser,
+  IconShieldCheck,
 } as const;
 
 type CustomIconProps = {

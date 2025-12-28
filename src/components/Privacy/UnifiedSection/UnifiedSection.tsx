@@ -3,6 +3,7 @@ import { Anchor, Box, Button, Text, Title } from "@mantine/core";
 
 import { ConsentStatus, Icon, MarkdownRenderer } from "@/components";
 import Constants from "@/utils/Constants";
+import helpers from "@/utils/Helpers";
 
 import { PrivacySection } from "../types";
 import classes from "./UnifiedSection.module.css";
@@ -75,41 +76,22 @@ function UnifiedSectionComponent({
 
   const copyUrlToClipboard = useCallback(
     async (sectionId: string): Promise<void> => {
-      try {
-        // Construct the URL with the section hash
-        const currentHash = window.location.hash;
-        let urlWithHash: string;
+      // Construct the URL with the section hash
+      const currentHash = window.location.hash;
+      let urlWithHash: string;
 
-        if (currentHash.includes("#/privacy")) {
-          urlWithHash = `${window.location.origin}${window.location.pathname}#/privacy#${sectionId}`;
-        } else if (currentHash.startsWith("#/")) {
-          urlWithHash = `${window.location.origin}${window.location.pathname}${currentHash}#${sectionId}`;
-        } else {
-          urlWithHash = `${window.location.origin}${window.location.pathname}#/privacy#${sectionId}`;
-        }
+      if (currentHash.includes("#/privacy")) {
+        urlWithHash = `${window.location.origin}${window.location.pathname}#/privacy#${sectionId}`;
+      } else if (currentHash.startsWith("#/")) {
+        urlWithHash = `${window.location.origin}${window.location.pathname}${currentHash}#${sectionId}`;
+      } else {
+        urlWithHash = `${window.location.origin}${window.location.pathname}#/privacy#${sectionId}`;
+      }
 
-        await navigator.clipboard.writeText(urlWithHash);
+      const success = await helpers.copyToClipboard(urlWithHash);
+      if (success) {
         setShowToast(true);
         setTimeout(() => setShowToast(false), 2000);
-      } catch (error) {
-        // Fallback for older browsers
-        // eslint-disable-next-line no-console
-        console.warn("Failed to copy to clipboard:", error);
-        try {
-          const textArea = document.createElement("textarea");
-          textArea.value = `${window.location.origin}${window.location.pathname}#/privacy#${sectionId}`;
-          textArea.style.position = "fixed";
-          textArea.style.opacity = "0";
-          document.body.appendChild(textArea);
-          textArea.select();
-          document.execCommand("copy");
-          document.body.removeChild(textArea);
-          setShowToast(true);
-          setTimeout(() => setShowToast(false), 2000);
-        } catch (fallbackError) {
-          // eslint-disable-next-line no-console
-          console.error("Fallback copy failed:", fallbackError);
-        }
       }
     },
     []
