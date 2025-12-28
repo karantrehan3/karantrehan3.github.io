@@ -1,0 +1,1 @@
+export { SimpleSection } from "./SimpleSection";

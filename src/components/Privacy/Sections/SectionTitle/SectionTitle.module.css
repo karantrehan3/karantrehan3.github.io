@@ -1,0 +1,44 @@
+.section-title {
+  margin-bottom: 0.75rem;
+  color: var(--mantine-color-text);
+  position: relative;
+}
+
+.section-title__wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.section-title__link {
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+  color: var(--mantine-color-orange-6);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.section-title:hover .section-title__link,
+.section-title__link:focus {
+  opacity: 1;
+}
+
+.section-title__link:hover {
+  color: var(--mantine-color-orange-7);
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .section-title__link {
+    opacity: 1; /* Always visible on mobile for better UX */
+  }
+}

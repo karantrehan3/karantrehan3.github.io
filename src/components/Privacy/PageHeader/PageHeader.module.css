@@ -1,0 +1,23 @@
+.page-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 0.0625rem solid var(--mantine-color-default-border);
+}
+
+.page-header__title {
+  margin-bottom: 0.5rem;
+  color: var(--mantine-color-text);
+}
+
+.page-header__dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .page-header {
+    margin-bottom: 1.5rem;
+  }
+}
