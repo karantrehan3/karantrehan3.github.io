@@ -27,6 +27,32 @@
       "TITLE": "Let's Start a Conversation",
       "DESCRIPTION": "Have a project in mind or just want to chat? I'm always open to new opportunities and interesting discussions.",
       "BUTTON_TEXT": "Reach Out"
+    },
+    "SHARE": {
+      "BUTTON_TEXT": "Share Profile",
+      "DIALOG": {
+        "TITLE": "Share Profile",
+        "DESCRIPTION": "Choose a platform to share my portfolio:",
+        "COPY_LINK": "Copy Link",
+        "LINK_COPIED": "Link copied to clipboard!",
+        "PLATFORMS": {
+          "LINKEDIN": {
+            "LABEL": "Share on LinkedIn"
+          },
+          "TWITTER": {
+            "LABEL": "Share on Twitter"
+          },
+          "FACEBOOK": {
+            "LABEL": "Share on Facebook"
+          },
+          "WHATSAPP": {
+            "LABEL": "Share on WhatsApp"
+          },
+          "EMAIL": {
+            "LABEL": "Share via Email"
+          }
+        }
+      }
     }
   },
   "HEADER": {

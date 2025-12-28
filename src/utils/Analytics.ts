@@ -168,6 +168,18 @@ class Analytics {
       theme,
     });
   }
+
+  /**
+   * Track profile share
+   * @param platform - The platform where the profile was shared
+   * @param shareUrl - The URL that was shared
+   */
+  trackShareClick(platform: string, shareUrl: string): void {
+    this.trackEvent(Constants.GA4_EVENTS.SHARE_CLICK, {
+      platform,
+      share_url: shareUrl,
+    });
+  }
 }
 
 export default new Analytics();

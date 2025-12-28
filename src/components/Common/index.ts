@@ -6,6 +6,7 @@ export { Footer } from "./Footer";
 export { MarkdownRenderer } from "./MarkdownRenderer";
 export { default as Icon } from "./Icons";
 export { ThemeToggle } from "./ThemeToggle";
+export { ShareDialog } from "./ShareDialog";
 export { BouncyLoader } from "./Loaders";
 export {
   CookieConsent,

@@ -141,6 +141,57 @@ class Helpers {
       this.storeUtmParams(utmParams);
     }
   }
+
+  /**
+   * Generates a share URL with UTM parameters
+   * @param baseUrl - The base URL to share (defaults to current page)
+   * @param platform - The sharing platform name (e.g., 'linkedin', 'twitter', 'facebook')
+   * @returns URL string with UTM parameters appended
+   */
+  generateShareUrl(baseUrl?: string, platform?: string): string {
+    if (typeof window === "undefined") {
+      return baseUrl || "";
+    }
+
+    const urlToShare = baseUrl || window.location.href;
+    const urlObj = new URL(urlToShare);
+
+    // Remove existing UTM parameters to avoid duplicates
+    const utmKeys = [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+    ];
+    utmKeys.forEach((key) => urlObj.searchParams.delete(key));
+
+    // Add new UTM parameters for sharing
+    if (platform) {
+      urlObj.searchParams.set("utm_source", platform);
+      urlObj.searchParams.set("utm_medium", "profile_share");
+    }
+
+    return urlObj.toString();
+  }
+
+  /**
+   * Copies text to clipboard
+   * @param text - The text to copy
+   * @returns Promise that resolves to true if successful, false otherwise
+   */
+  async copyToClipboard(text: string): Promise<boolean> {
+    if (typeof window === "undefined" || !navigator.clipboard) {
+      return false;
+    }
+
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      return false;
+    }
+  }
 }
 
 export default new Helpers();

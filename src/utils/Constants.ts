@@ -36,6 +36,7 @@ class Constants {
     SOCIAL_CLICK: "social_click",
     CTA_CLICK: "cta_click",
     THEME_TOGGLE: "theme_toggle",
+    SHARE_CLICK: "share_click",
   } as const;
 }
 
