@@ -12,7 +12,7 @@
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
         font-src 'self' https://fonts.gstatic.com;
         img-src 'self' data: https: blob:;
-        connect-src 'self' https://apis.google.com https://calendar.google.com https://www.google.com https://www.gstatic.com;
+        connect-src 'self' https://apis.google.com https://calendar.google.com https://www.google.com https://www.gstatic.com https://www.google-analytics.com https://region1.google-analytics.com;
         frame-src 'self' https://calendar.google.com https://www.google.com;
         object-src 'none';
         base-uri 'self';
@@ -43,12 +43,26 @@
     <!-- Additional meta tags -->
     <meta name="author" content="Karan Trehan" />
     <meta name="theme-color" content="#000000" />
-    <script type="module" crossorigin src="/assets/index-D16mq65F.js"></script>
+    <!-- Google Analytics 4 (GDPR Compliant - Default Consent Denied) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-47SPLJ8M8L"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      
+      // Set default consent to denied - no tracking until user consents
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied'
+      });
+      
+      gtag('js', new Date());
+      gtag('config', 'G-47SPLJ8M8L', { send_page_view: false });
+    </script>
+    <script type="module" crossorigin src="/assets/index-L_p5zByt.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/react-vendor-BLgxyiNd.js">
-    <link rel="modulepreload" crossorigin href="/assets/mantine-vendor-DoGLwIWF.js">
+    <link rel="modulepreload" crossorigin href="/assets/mantine-vendor-BSlMoXds.js">
+    <link rel="modulepreload" crossorigin href="/assets/tabler-icons-C_zAQNsP.js">
     <link rel="modulepreload" crossorigin href="/assets/router-vendor-CV9MOQ8s.js">
-    <link rel="modulepreload" crossorigin href="/assets/tabler-icons-wEss5YrF.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-BSuVolQj.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-Dk8fwYm7.css">
   </head>
 
   <body>
