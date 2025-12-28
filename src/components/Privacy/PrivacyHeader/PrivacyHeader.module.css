@@ -1,7 +1,4 @@
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
   background: light-dark(
     var(--mantine-color-white),
     var(--mantine-color-dark-7)

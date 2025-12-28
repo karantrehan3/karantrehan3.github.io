@@ -32,7 +32,6 @@ export function getConsentStatus(): ConsentStatus {
 
   try {
     const { status, version } = JSON.parse(stored);
-    // If version changed, re-ask for consent
     const consentVersion = config.get("ANALYTICS.CONSENT_VERSION");
     if (version !== consentVersion) {
       return Constants.CONSENT_STATUS_PENDING;
@@ -53,9 +52,9 @@ export function hasAnalyticsConsent(): boolean {
 function CookieConsentComponent(): ReactElement | null {
   const [visible, setVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [currentHash, setCurrentHash] = useState(window.location.hash);
 
   useEffect(() => {
-    // Check if consent has already been given
     const status = getConsentStatus();
     if (status === Constants.CONSENT_STATUS_PENDING) {
       // Check if banner should appear immediately (e.g., after resetting consent)
@@ -63,7 +62,6 @@ function CookieConsentComponent(): ReactElement | null {
         Constants.SHOW_COOKIE_BANNER_FLAG
       );
       if (showImmediately === "true") {
-        // Remove the flag and show banner immediately
         localStorage.removeItem(Constants.SHOW_COOKIE_BANNER_FLAG);
         setVisible(true);
       } else {
@@ -75,13 +73,21 @@ function CookieConsentComponent(): ReactElement | null {
         return () => clearTimeout(timer);
       }
     } else if (status === Constants.CONSENT_STATUS_GRANTED) {
-      // Initialize analytics if already consented
       analytics.initialize();
     }
   }, []);
 
+  // Listen for hash changes to update privacy page detection
+  useEffect(() => {
+    const handleHashChange = (): void => {
+      setCurrentHash(window.location.hash);
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
   const handleClose = useCallback((status: ConsentStatus) => {
-    // Save consent status
     const consentVersion = config.get("ANALYTICS.CONSENT_VERSION");
     localStorage.setItem(
       Constants.CONSENT_KEY,
@@ -91,16 +97,13 @@ function CookieConsentComponent(): ReactElement | null {
       })
     );
 
-    // Dispatch custom event to notify other components
     window.dispatchEvent(new Event("consentChanged"));
 
-    // Animate out
     setIsClosing(true);
     setTimeout(() => {
       setVisible(false);
       setIsClosing(false);
 
-      // Initialize analytics if accepted
       if (status === Constants.CONSENT_STATUS_GRANTED) {
         analytics.initialize();
         analytics.trackPageView();
@@ -116,13 +119,16 @@ function CookieConsentComponent(): ReactElement | null {
     handleClose(Constants.CONSENT_STATUS_GRANTED);
   }, [handleClose]);
 
-  // Memoize config values to avoid repeated lookups
   const cookieConsentConfig = useMemo(
     () => config.get("ANALYTICS.COOKIE_CONSENT"),
     []
   );
 
-  // Memoize banner className - must be called before early return to follow Rules of Hooks
+  const isOnPrivacyPage = useMemo(
+    () => currentHash.includes("#/privacy"),
+    [currentHash]
+  );
+
   const bannerClassName = useMemo(
     () =>
       `${classes.banner} ${isClosing ? classes["banner--closing"] : ""}`.trim(),
@@ -144,10 +150,15 @@ function CookieConsentComponent(): ReactElement | null {
             {cookieConsentConfig.TITLE}
           </Text>
           <Text size="xs" c="dimmed">
-            {cookieConsentConfig.DESCRIPTION}{" "}
-            <Anchor href="#/privacy" size="xs">
-              {cookieConsentConfig.LEARN_MORE_TEXT}
-            </Anchor>
+            {cookieConsentConfig.DESCRIPTION}
+            {!isOnPrivacyPage && (
+              <>
+                {" "}
+                <Anchor href="#/privacy" size="xs">
+                  {cookieConsentConfig.LEARN_MORE_TEXT}
+                </Anchor>
+              </>
+            )}
           </Text>
         </div>
         <Group gap="xs" className={classes.banner__actions}>

@@ -1,7 +1,7 @@
 import { memo, ReactElement, useCallback } from "react";
 import { Button } from "@mantine/core";
 
-import Icon from "@/components/Common/Icons";
+import { Icon } from "@/components";
 
 import classes from "./ScrollToTopButton.module.css";
 

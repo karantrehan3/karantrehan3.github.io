@@ -1,102 +1,62 @@
-import { memo, ReactElement, useCallback, useMemo } from "react";
+import { memo, ReactElement, useCallback, useMemo, useState } from "react";
 import { Anchor, Box, Button, Text, Title } from "@mantine/core";
 
-import { ConsentStatus } from "@/components/Common/CookieConsent";
-import Icon from "@/components/Common/Icons";
-import { MarkdownRenderer } from "@/components/Common/MarkdownRenderer";
+import { ConsentStatus, Icon, MarkdownRenderer } from "@/components";
 import Constants from "@/utils/Constants";
 
 import { PrivacySection } from "../types";
 import classes from "./UnifiedSection.module.css";
 
-interface ConsentStatusLabels {
-  GRANTED: string;
-  DENIED: string;
-  PENDING: string;
-}
-
 interface UnifiedSectionProps {
   section: PrivacySection;
   getSectionId: (title: string) => string;
   onSectionClick: (id: string) => void;
-  replacePlaceholders?: (text: string) => string;
   consentStatus?: ConsentStatus;
-  consentStatusLabels?: ConsentStatusLabels;
   buttonHandlers?: Record<string, () => void>;
-  ownerEmail?: string;
 }
 
 function UnifiedSectionComponent({
   section,
   getSectionId,
   onSectionClick,
-  replacePlaceholders,
   consentStatus,
-  consentStatusLabels,
   buttonHandlers,
-  ownerEmail,
 }: UnifiedSectionProps): ReactElement {
   const sectionId = getSectionId(section.title);
   const titleId = `${sectionId}-title`;
 
   const getStatusLabel = useCallback((): string => {
-    if (!consentStatus || !consentStatusLabels) {
+    if (!consentStatus) {
       return "";
     }
-    if (consentStatus === Constants.CONSENT_STATUS_GRANTED) {
-      return consentStatusLabels.GRANTED;
-    }
-    if (consentStatus === Constants.CONSENT_STATUS_DENIED) {
-      return consentStatusLabels.DENIED;
-    }
-    return consentStatusLabels.PENDING;
-  }, [consentStatus, consentStatusLabels]);
+    const labelKey =
+      Constants.CONSENT_STATUS_TO_LABEL_KEY[
+        consentStatus as keyof typeof Constants.CONSENT_STATUS_TO_LABEL_KEY
+      ];
+    return Constants.CONSENT_STATUS_LABELS[labelKey] || "";
+  }, [consentStatus]);
 
-  // Process content: replace placeholders and handle email links
-  const processedContent = useMemo(() => {
-    let content = section.content;
+  // Check if content contains {CURRENT_PREFERENCE} placeholder and split content
+  const currentPreferenceData = useMemo(() => {
+    const hasCurrentPreference =
+      section.content.includes("{CURRENT_PREFERENCE}") &&
+      consentStatus !== undefined;
 
-    // Replace standard placeholders
-    if (replacePlaceholders) {
-      content = replacePlaceholders(content);
-    }
-
-    // Handle email link detection for Contact section
-    if (ownerEmail && content.includes(ownerEmail)) {
-      // Replace email with markdown link format
-      const emailRegex = new RegExp(
-        ownerEmail.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
-        "g"
-      );
-      content = content.replace(
-        emailRegex,
-        `[${ownerEmail}](mailto:${ownerEmail})`
-      );
-    }
-
-    return content;
-  }, [section.content, replacePlaceholders, ownerEmail]);
-
-  // Check if content contains {CURRENT_PREFERENCE} placeholder
-  const hasCurrentPreference = useMemo(
-    () =>
-      processedContent.includes("{CURRENT_PREFERENCE}") &&
-      consentStatus !== undefined &&
-      consentStatusLabels !== undefined,
-    [processedContent, consentStatus, consentStatusLabels]
-  );
-
-  // Split content for {CURRENT_PREFERENCE} handling
-  const contentParts = useMemo(() => {
     if (!hasCurrentPreference) {
-      return { before: processedContent, after: "" };
+      return {
+        hasCurrentPreference: false,
+        before: section.content,
+        after: "",
+      };
     }
-    const parts = processedContent.split("{CURRENT_PREFERENCE}");
+
+    const parts = section.content.split("{CURRENT_PREFERENCE}");
     return {
+      hasCurrentPreference: true,
       before: parts[0] || "",
       after: parts[1] || "",
     };
-  }, [processedContent, hasCurrentPreference]);
+  }, [section.content, consentStatus]);
 
   const hasButton =
     section.buttonIcon && section.buttonText && section.buttonMethod;
@@ -108,12 +68,64 @@ function UnifiedSectionComponent({
     const handler = buttonHandlers[section.buttonMethod];
     if (handler) {
       handler();
-    } else {
-      console.warn(
-        `Button handler not found for method: ${section.buttonMethod}`
-      );
     }
   }, [section.buttonMethod, buttonHandlers]);
+
+  const [showToast, setShowToast] = useState(false);
+
+  const copyUrlToClipboard = useCallback(
+    async (sectionId: string): Promise<void> => {
+      try {
+        // Construct the URL with the section hash
+        const currentHash = window.location.hash;
+        let urlWithHash: string;
+
+        if (currentHash.includes("#/privacy")) {
+          urlWithHash = `${window.location.origin}${window.location.pathname}#/privacy#${sectionId}`;
+        } else if (currentHash.startsWith("#/")) {
+          urlWithHash = `${window.location.origin}${window.location.pathname}${currentHash}#${sectionId}`;
+        } else {
+          urlWithHash = `${window.location.origin}${window.location.pathname}#/privacy#${sectionId}`;
+        }
+
+        await navigator.clipboard.writeText(urlWithHash);
+        setShowToast(true);
+        setTimeout(() => setShowToast(false), 2000);
+      } catch (error) {
+        // Fallback for older browsers
+        // eslint-disable-next-line no-console
+        console.warn("Failed to copy to clipboard:", error);
+        try {
+          const textArea = document.createElement("textarea");
+          textArea.value = `${window.location.origin}${window.location.pathname}#/privacy#${sectionId}`;
+          textArea.style.position = "fixed";
+          textArea.style.opacity = "0";
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textArea);
+          setShowToast(true);
+          setTimeout(() => setShowToast(false), 2000);
+        } catch (fallbackError) {
+          // eslint-disable-next-line no-console
+          console.error("Fallback copy failed:", fallbackError);
+        }
+      }
+    },
+    []
+  );
+
+  const handleSectionHeaderClick = useCallback(
+    (e: React.MouseEvent): void => {
+      e.preventDefault();
+      onSectionClick(sectionId);
+      // Copy URL to clipboard after a short delay to ensure URL is updated
+      setTimeout(() => {
+        copyUrlToClipboard(sectionId);
+      }, 100);
+    },
+    [sectionId, onSectionClick, copyUrlToClipboard]
+  );
 
   return (
     <section
@@ -127,7 +139,12 @@ function UnifiedSectionComponent({
         id={titleId}
         className={classes["section-title"]}
       >
-        <Box component="span" className={classes["section-title__wrapper"]}>
+        <Box
+          component="span"
+          className={classes["section-title__wrapper"]}
+          onClick={handleSectionHeaderClick}
+          style={{ cursor: "pointer" }}
+        >
           {section.title}
           <Anchor
             href={`#${sectionId}`}
@@ -135,7 +152,8 @@ function UnifiedSectionComponent({
             aria-label={`Link to ${section.title}`}
             onClick={(e) => {
               e.preventDefault();
-              onSectionClick(sectionId);
+              e.stopPropagation();
+              handleSectionHeaderClick(e);
             }}
           >
             🔗
@@ -143,10 +161,13 @@ function UnifiedSectionComponent({
         </Box>
       </Title>
       <div className={classes.section__text}>
-        {hasCurrentPreference ? (
-          <div>
-            {contentParts.before && (
-              <MarkdownRenderer content={contentParts.before} />
+        {currentPreferenceData.hasCurrentPreference ? (
+          <Text component="div" className={classes["section__text-inline"]}>
+            {currentPreferenceData.before && (
+              <MarkdownRenderer
+                content={currentPreferenceData.before}
+                className={classes["markdown-inline"]}
+              />
             )}
             <Text
               component="span"
@@ -157,12 +178,15 @@ function UnifiedSectionComponent({
             >
               {getStatusLabel()}
             </Text>
-            {contentParts.after && (
-              <MarkdownRenderer content={contentParts.after} />
+            {currentPreferenceData.after && (
+              <MarkdownRenderer
+                content={currentPreferenceData.after}
+                className={classes["markdown-inline"]}
+              />
             )}
-          </div>
+          </Text>
         ) : (
-          <MarkdownRenderer content={processedContent} />
+          <MarkdownRenderer content={section.content} />
         )}
       </div>
       {hasButton && (
@@ -188,6 +212,13 @@ function UnifiedSectionComponent({
             </Text>
           )}
         </>
+      )}
+      {showToast && (
+        <Box className={classes.toast}>
+          <Text size="sm" fw={500}>
+            Link copied to clipboard!
+          </Text>
+        </Box>
       )}
     </section>
   );

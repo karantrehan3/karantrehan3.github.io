@@ -1,0 +1,1 @@
+export { PrivacyHeader } from "./PrivacyHeader";

@@ -19,7 +19,7 @@ import analytics from "@/utils/Analytics";
 import config from "@/utils/Config";
 import helpers from "@/utils/Helpers";
 
-import classes from "./Header.module.css";
+import classes from "./CommonHeader.module.css";
 
 interface Link {
   link: string;
@@ -39,7 +39,7 @@ const links: Link[] = [
   ...(config.get("HEADER.LINKS") || []),
 ];
 
-export function Header(): ReactElement {
+export function CommonHeader(): ReactElement {
   const [opened, { toggle, close }] = useDisclosure(false);
   const location = useLocation();
   const { colorScheme } = useMantineColorScheme({

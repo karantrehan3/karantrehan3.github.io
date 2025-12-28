@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 
+import { CommonHeader } from "@/components/Common/CommonHeader";
 import { Footer } from "@/components/Common/Footer";
-import { Header } from "@/components/Common/Header";
 
 import classes from "./PageLayout.module.css";
 
@@ -20,7 +20,7 @@ export const PageLayout: FC<PageLayoutProps> = ({
     <div className={classes.pageContainer}>
       {header ? (
         <>
-          <Header />
+          <CommonHeader />
           <div className={classes.content}>{children}</div>
         </>
       ) : (

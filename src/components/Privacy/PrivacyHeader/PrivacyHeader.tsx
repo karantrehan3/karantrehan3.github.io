@@ -1,22 +1,21 @@
 import { memo, ReactElement, useCallback } from "react";
 import { Box, Burger, Button, Container, Group, Text } from "@mantine/core";
 
-import Icon from "@/components/Common/Icons";
-import { ThemeToggle } from "@/components/Common/ThemeToggle";
+import { Icon, ThemeToggle } from "@/components";
 
-import classes from "./Header.module.css";
+import classes from "./PrivacyHeader.module.css";
 
-interface HeaderProps {
+interface PrivacyHeaderProps {
   backButtonText: string;
   tocOpened: boolean;
   onTocOpen: () => void;
 }
 
-function HeaderComponent({
+function PrivacyHeaderComponent({
   backButtonText,
   tocOpened,
   onTocOpen,
-}: HeaderProps): ReactElement {
+}: PrivacyHeaderProps): ReactElement {
   const handleBackClick = useCallback((): void => {
     window.location.hash = "/";
   }, []);
@@ -24,7 +23,6 @@ function HeaderComponent({
   return (
     <nav className={classes.header} aria-label="Privacy page navigation">
       <Container size="xxl" className={classes.header__container}>
-        {/* Desktop: Back button and Theme toggle */}
         <Group visibleFrom="lg" className={classes.header__desktop}>
           <Button
             className={classes["header__back-button"]}
@@ -51,7 +49,6 @@ function HeaderComponent({
           <ThemeToggle />
         </Group>
 
-        {/* Mobile and Tablet: Burger, Back button, Theme toggle */}
         <Group hiddenFrom="lg" className={classes.header__mobile}>
           <Burger
             opened={tocOpened}
@@ -89,4 +86,4 @@ function HeaderComponent({
   );
 }
 
-export const Header = memo(HeaderComponent);
+export const PrivacyHeader = memo(PrivacyHeaderComponent);

@@ -9,7 +9,6 @@ interface TocDrawerProps {
   opened: boolean;
   onClose: () => void;
   items: TableOfContentsItem[];
-  activeSection: string;
   onSectionClick: (id: string) => void;
 }
 
@@ -17,7 +16,6 @@ function TocDrawerComponent({
   opened,
   onClose,
   items,
-  activeSection,
   onSectionClick,
 }: TocDrawerProps): ReactElement {
   return (
@@ -29,11 +27,7 @@ function TocDrawerComponent({
       size="md"
       className={classes["toc-drawer"]}
     >
-      <TableOfContents
-        items={items}
-        activeSection={activeSection}
-        onSectionClick={onSectionClick}
-      />
+      <TableOfContents items={items} onSectionClick={onSectionClick} />
     </Drawer>
   );
 }

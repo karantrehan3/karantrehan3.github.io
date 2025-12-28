@@ -38,12 +38,6 @@
   border-radius: var(--mantine-radius-sm);
 }
 
-.table-of-contents__link--active {
-  background-color: var(--mantine-color-orange-6);
-  color: white;
-  font-weight: 500;
-}
-
 /* Mobile responsive */
 @media (max-width: 600px) {
   .table-of-contents li {

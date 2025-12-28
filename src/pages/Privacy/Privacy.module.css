@@ -1,10 +1,7 @@
 .privacy {
   min-height: 100vh;
   padding: 0;
-  background: light-dark(
-    var(--mantine-color-gray-2),
-    var(--mantine-color-body)
-  );
+  background: var(--mantine-color-body);
   position: relative;
 }
 
@@ -57,10 +54,16 @@
   border-radius: var(--mantine-radius-md);
   padding: 2rem;
   box-shadow: var(--mantine-shadow-sm);
+  border: 0.0625rem solid var(--mantine-color-default-border);
 }
 
 .privacy__divider {
-  opacity: 0.5;
+  opacity: 1;
+  border-top-width: 0.125rem;
+  border-top-color: light-dark(
+    var(--mantine-color-gray-5),
+    var(--mantine-color-dark-3)
+  );
 }
 
 /* Desktop view */

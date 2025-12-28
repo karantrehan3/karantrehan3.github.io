@@ -1,5 +1,3 @@
-// Shared type definitions for Privacy components
-
 export interface PrivacySection {
   title: string;
   content: string;

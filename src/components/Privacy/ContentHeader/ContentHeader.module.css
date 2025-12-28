@@ -1,8 +1,9 @@
 .content-header {
   margin-bottom: 2rem;
   padding-bottom: 1rem;
-  border-bottom: 0.0625rem solid
-    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  border-bottom: 0.125rem solid
+    light-dark(var(--mantine-color-gray-5), var(--mantine-color-dark-3));
+  opacity: 1;
 }
 
 .content-header__title {

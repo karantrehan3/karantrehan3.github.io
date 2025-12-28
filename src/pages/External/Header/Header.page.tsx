@@ -1,9 +1,9 @@
 import { FC } from "react";
 
-import HeaderComponent from "@/components/External/Header/Header";
+import { ExternalHeader } from "@/components/External/ExternalHeader";
 
 const Header: FC = () => {
-  return <HeaderComponent />;
+  return <ExternalHeader />;
 };
 
 export default Header;

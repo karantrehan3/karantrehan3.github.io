@@ -24,17 +24,17 @@ function ContentHeaderComponent({
       </Title>
       <Stack gap="xs" className={classes["content-header__dates"]}>
         {effectiveDate && (
-          <Text size="sm" c="dimmed" aria-label="Effective date">
+          <Text size="sm" aria-label="Effective date">
             Effective: {effectiveDate}
           </Text>
         )}
         {showLastUpdated && (
-          <Text size="sm" c="dimmed" aria-label="Last updated date">
+          <Text size="sm" aria-label="Last updated date">
             Last updated: {lastUpdated}
           </Text>
         )}
         {lastUpdated && !effectiveDate && (
-          <Text size="sm" c="dimmed" aria-label="Last updated date">
+          <Text size="sm" aria-label="Last updated date">
             Last updated: {lastUpdated}
           </Text>
         )}

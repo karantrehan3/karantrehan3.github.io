@@ -6,13 +6,11 @@ import classes from "./TableOfContents.module.css";
 
 interface TableOfContentsProps {
   items: TableOfContentsItem[];
-  activeSection: string;
   onSectionClick: (id: string) => void;
 }
 
 function TableOfContentsComponent({
   items,
-  activeSection,
   onSectionClick,
 }: TableOfContentsProps): ReactElement {
   return (
@@ -21,11 +19,7 @@ function TableOfContentsComponent({
         <List.Item key={item.id}>
           <Anchor
             href={`#${item.id}`}
-            className={`${classes["table-of-contents__link"]} ${
-              activeSection === item.id
-                ? classes["table-of-contents__link--active"]
-                : ""
-            }`}
+            className={classes["table-of-contents__link"]}
             onClick={(e) => {
               e.preventDefault();
               onSectionClick(item.id);

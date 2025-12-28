@@ -2,11 +2,11 @@ import { FC, useCallback } from "react";
 import { Button, Group, Tooltip } from "@mantine/core";
 
 import Icon from "@/components/Common/Icons";
-import Layout from "@/components/External/Layout/Layout";
+import { ExternalLayout } from "@/components/External/ExternalLayout";
 import config from "@/utils/Config";
 import helpers from "@/utils/Helpers";
 
-import classes from "./Header.module.css";
+import classes from "./ExternalHeader.module.css";
 
 interface ButtonConfig {
   name: string;
@@ -18,7 +18,7 @@ interface ButtonConfig {
   };
 }
 
-const Header: FC = () => {
+const ExternalHeader: FC = () => {
   const buttons: ButtonConfig[] = config.get("EXTERNAL.HEADER.BUTTONS");
 
   const handleButtonClick = useCallback(
@@ -31,6 +31,7 @@ const Header: FC = () => {
           helpers.openUrlOnTop(args);
           break;
         default:
+          // eslint-disable-next-line no-console
           console.warn(`Unknown method: ${method}`);
       }
     },
@@ -38,7 +39,7 @@ const Header: FC = () => {
   );
 
   return (
-    <Layout>
+    <ExternalLayout>
       <Group className={classes.iframe_container}>
         {buttons.map((button) => (
           <Tooltip key={button.name} label={button.tooltip} withArrow>
@@ -54,8 +55,9 @@ const Header: FC = () => {
           </Tooltip>
         ))}
       </Group>
-    </Layout>
+    </ExternalLayout>
   );
 };
 
-export default Header;
+export { ExternalHeader };
+export default ExternalHeader;

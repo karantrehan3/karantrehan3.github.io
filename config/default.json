@@ -638,39 +638,38 @@
       "SCROLL_TOP_THRESHOLD": 300,
       "HASH_NAVIGATION_TIMEOUT": 100
     },
-    "CONSENT_STATUS_LABELS": {
-      "GRANTED": "Accepted",
-      "DENIED": "Declined",
-      "PENDING": "Not set"
-    },
     "SECTIONS": [
       {
         "title": "Introduction",
-        "content": "This Privacy Policy explains how {OWNER_NAME}'s portfolio website collects, uses, and protects your information when you visit this site."
+        "content": "This Privacy Policy explains how this portfolio website collects and uses information when you visit. This is a static website that does not collect personal data directly. We are committed to transparency about any data collection that occurs through third party services. We do not control how third party services process data collected through their technologies. Those services act as independent data controllers under their own privacy policies."
       },
       {
         "title": "Information We Collect",
-        "content": "This website uses Google Analytics 4 (GA4) to understand how visitors interact with the site. When you consent to analytics, we collect:\n\n- **Usage Data**: Pages visited, time spent on pages, navigation paths, and interactions with site elements\n- **Device Information**: Browser type, operating system, screen resolution, and device category\n- **Approximate Location**: Country and city level (IP addresses are anonymized)"
+        "content": "This website uses **Google Analytics 4 (GA4)** to understand how visitors interact with the site. **We only enable analytics after you provide explicit consent** by clicking \"Accept\" on the cookie banner.\n\nWhen you consent, Google Analytics collects anonymized information such as:\n\n- Pages visited and time spent on pages\n- Navigation paths and interactions with site elements\n- Browser type, operating system, and device category\n- Approximate location at country or city level, IP addresses are anonymized\n\n**Purpose**: This data helps us understand website usage patterns and improve the user experience. We do not use this data for marketing, advertising, or profiling."
       },
       {
         "title": "What We Don't Collect",
-        "content": "We do not collect any personally identifiable information (PII):\n\n- No names or email addresses\n- No login credentials\n- No payment information\n- No precise location data\n- No tracking across other websites (first-party only)"
+        "content": "This website does not collect any personally identifiable information:\n\n- No names, email addresses, or contact information\n- No login credentials or authentication data\n- No payment or financial information\n- No precise location data\n- No tracking across other websites, first party analytics only\n\nThis is a static portfolio website with no forms, user accounts, or data input fields."
       },
       {
-        "title": "Cookies",
-        "content": "This site uses cookies only after you provide consent:\n\n- **Analytics Cookies**: Set by Google Analytics to distinguish users and sessions. These cookies are only set if you click \"Accept\" on the cookie banner.\n- **Consent Cookie**: A first-party cookie that stores your consent preference so we don't ask you again."
-      },
-      {
-        "title": "Data Retention",
-        "content": "Analytics data is retained for 14 months in Google Analytics, after which it is automatically deleted. We do not export or store this data elsewhere."
+        "title": "Cookies and Tracking",
+        "content": "This site enables cookies only after you provide consent:\n\n### Analytics Cookies (Google Analytics 4)\n\nThese cookies are set and processed by Google only if you click \"Accept\" on the cookie banner:\n\n- **_ga**: Distinguishes users\n- **_ga_<MEASUREMENT_ID>**: Persists session state\n- **_gid**: Distinguishes users\n- **_gat**: Throttles request rate\n\n### Consent Cookie\n\n- **analytics-consent**: Stores your consent preference in your browser or local storage so we do not ask again\n\n### Managing Cookies\n\nYou can control cookies through:\n- The cookie banner\n- Browser settings\n- The \"Change Cookie Preferences\" button on this page\n\nDisabling cookies will stop analytics tracking but will not affect basic website functionality."
       },
       {
         "title": "Third-Party Services",
-        "content": "This site uses the following third-party services:\n\n- **Google Analytics 4**: For website analytics. Google Analytics may have its own GDPR compliance measures. Please refer to their [privacy policy](https://policies.google.com/privacy) for details.\n- **GitHub Pages**: For website hosting. GitHub may have its own GDPR compliance measures. Please refer to their [privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement) for details."
+        "content": "This website uses the following third party services:\n\n### Google Analytics 4\n\n- **Purpose**: Website analytics, enabled only with your consent\n- **Data**: Anonymized usage statistics\n- **Processing**: Data is collected and processed by Google as an independent data controller\n- **Privacy Policy**: [Google Privacy Policy](https://policies.google.com/privacy)\n- **Opt-Out**: You can decline cookies on this site or use the Google Analytics opt out browser add on\n\n### GitHub Pages\n\n- **Purpose**: Static website hosting\n- **Data**: GitHub may collect basic connection information required to deliver the website\n- **Privacy Statement**: [GitHub Privacy Statement](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement)\n- **Note**: We do not collect or process data through GitHub Pages\n\n### Google Calendar\n\n- **Purpose**: Embedded calendar for scheduling appointments\n- **Data**: When using the embedded calendar, you interact directly with Google\n- **Processing**: Google handles all data collection and processing for appointments\n- **Privacy Policy**: [Google Privacy Policy](https://policies.google.com/privacy)\n\nWe do not sell, rent, or trade data to third parties."
+      },
+      {
+        "title": "Data Retention",
+        "content": "Analytics data collected through Google Analytics is retained for **14 months**, after which it is automatically deleted by Google. We do not export or store this data elsewhere.\n\nYour cookie consent preference is stored in your browser until you clear browser data or reset preferences using the \"Change Cookie Preferences\" button."
+      },
+      {
+        "title": "Data Security",
+        "content": "We take reasonable steps to protect your information:\n\n- HTTPS encryption for all data transmission\n- Secure hosting via GitHub Pages\n- No personal data storage on our servers\n\nNo method of transmission over the internet is completely secure."
       },
       {
         "title": "Your Rights",
-        "content": "You have the right to:\n\n- **Decline tracking**: Click \"Decline\" on the cookie banner to opt out of analytics entirely\n- **Withdraw consent**: Clear your browser cookies to reset your consent preference\n- **Use browser controls**: Enable \"Do Not Track\" or use private browsing mode"
+        "content": "You have control over your data:\n\n- Opt out of analytics via the cookie banner\n- Withdraw consent using the \"Change Cookie Preferences\" button\n- Clear browser cookies at any time\n- Use browser privacy controls or private browsing\n- Use the Google Analytics opt out browser add on"
       },
       {
         "title": "Manage Cookie Preferences",
@@ -678,15 +677,15 @@
         "buttonIcon": "IconCookie",
         "buttonText": "Change Cookie Preferences",
         "buttonMethod": "resetConsent",
-        "subtitle": "Clicking this button will reset your cookie preferences and show the cookie consent banner again, allowing you to make a new choice."
+        "subtitle": "Clicking this button will reset your cookie preferences and show the cookie consent banner again. Analytics will remain disabled until new consent is provided."
       },
       {
         "title": "Changes to This Privacy Policy",
-        "content": "We may update this Privacy Policy from time to time. When we make changes, we will update the \"Last updated\" date at the top of this page. We encourage you to review this Privacy Policy periodically to stay informed about how we collect, use, and protect your information. Your continued use of this website after any changes to this Privacy Policy constitutes your acceptance of the updated policy."
+        "content": "We may update this Privacy Policy from time to time. When changes are made, the \"Last updated\" date will be revised. Continued use of the website indicates acceptance of the updated policy."
       },
       {
         "title": "Contact",
-        "content": "If you have any questions about this Privacy Policy, please contact me at {OWNER_EMAIL}."
+        "content": "If you have any questions about this Privacy Policy, please contact:\n\n**Karan Trehan**\nEmail: [karantrehan3@gmail.com](mailto:karantrehan3@gmail.com)\nWebsite: [https://karantrehan3.github.io](https://karantrehan3.github.io)"
       }
     ]
   }

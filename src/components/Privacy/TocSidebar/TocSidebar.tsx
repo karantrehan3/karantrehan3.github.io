@@ -7,13 +7,11 @@ import classes from "./TocSidebar.module.css";
 
 interface TocSidebarProps {
   items: TableOfContentsItem[];
-  activeSection: string;
   onSectionClick: (id: string) => void;
 }
 
 function TocSidebarComponent({
   items,
-  activeSection,
   onSectionClick,
 }: TocSidebarProps): ReactElement {
   return (
@@ -22,11 +20,7 @@ function TocSidebarComponent({
         <Title order={3} size="h4" className={classes.sidebar__title}>
           Table of Contents
         </Title>
-        <TableOfContents
-          items={items}
-          activeSection={activeSection}
-          onSectionClick={onSectionClick}
-        />
+        <TableOfContents items={items} onSectionClick={onSectionClick} />
       </nav>
     </aside>
   );
