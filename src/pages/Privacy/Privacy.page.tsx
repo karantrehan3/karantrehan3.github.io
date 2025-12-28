@@ -1,6 +1,14 @@
-import { ReactElement, useCallback, useEffect, useState } from "react";
+import {
+  memo,
+  ReactElement,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import {
   Anchor,
+  Box,
   Burger,
   Button,
   Container,
@@ -8,15 +16,18 @@ import {
   Drawer,
   Group,
   List,
+  Stack,
   Text,
   Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
-import { getConsentStatus } from "@/components/Common/CookieConsent";
+import {
+  ConsentStatus,
+  getConsentStatus,
+} from "@/components/Common/CookieConsent";
 import Icon from "@/components/Common/Icons";
 import { ThemeToggle } from "@/components/Common/ThemeToggle";
-import { useScrollSpy } from "@/hooks/useScrollSpy";
 import config from "@/utils/Config";
 import Constants from "@/utils/Constants";
 
@@ -39,72 +50,79 @@ interface SectionConfig {
   BUTTON_DESCRIPTION?: string;
 }
 
-export function PrivacyPage(): ReactElement {
+function PrivacyPageComponent(): ReactElement {
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [consentStatus, setConsentStatus] = useState<
-    "granted" | "denied" | "pending"
-  >(Constants.CONSENT_STATUS_PENDING);
+  const [consentStatus, setConsentStatus] = useState<ConsentStatus>(
+    Constants.CONSENT_STATUS_PENDING
+  );
   const [tocOpened, { open: openToc, close: closeToc }] = useDisclosure(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
-  // Get config values
-  const lastUpdated = config.get("PRIVACY.LAST_UPDATED");
-  const effectiveDate = config.get("PRIVACY.EFFECTIVE_DATE");
-  const pageTitle = config.get("PRIVACY.TITLE");
-  const backButton = config.get("PRIVACY.BACK_BUTTON");
-  const ownerName = config.get("META.TITLE");
-  const ownerEmail = config.get("SOCIALS.EMAIL.ID");
-  const scrollTopThreshold = config.get(
-    "PRIVACY.SCROLL.SCROLL_TOP_THRESHOLD"
-  ) as number;
-  const hashNavigationTimeout = config.get(
-    "PRIVACY.SCROLL.HASH_NAVIGATION_TIMEOUT"
-  ) as number;
-  const consentStatusLabels = config.get("PRIVACY.CONSENT_STATUS_LABELS") as {
-    GRANTED: string;
-    DENIED: string;
-    PENDING: string;
-  };
-  const sectionOrder = config.get("PRIVACY.SECTION_ORDER") as string[];
+  // Memoize config values to avoid repeated lookups
+  const configValues = useMemo(
+    () => ({
+      lastUpdated: config.get("PRIVACY.LAST_UPDATED"),
+      effectiveDate: config.get("PRIVACY.EFFECTIVE_DATE"),
+      pageTitle: config.get("PRIVACY.TITLE"),
+      backButton: config.get("PRIVACY.BACK_BUTTON"),
+      ownerName: config.get("META.TITLE"),
+      ownerEmail: config.get("SOCIALS.EMAIL.ID"),
+      scrollTopThreshold: config.get(
+        "PRIVACY.SCROLL.SCROLL_TOP_THRESHOLD"
+      ) as number,
+      hashNavigationTimeout: config.get(
+        "PRIVACY.SCROLL.HASH_NAVIGATION_TIMEOUT"
+      ) as number,
+      consentStatusLabels: config.get("PRIVACY.CONSENT_STATUS_LABELS") as {
+        GRANTED: string;
+        DENIED: string;
+        PENDING: string;
+      },
+      sectionOrder: config.get("PRIVACY.SECTION_ORDER") as string[],
+      sections: config.get("PRIVACY.SECTIONS") as Record<string, SectionConfig>,
+    }),
+    []
+  );
 
-  const handleBackClick = (): void => {
+  const handleBackClick = useCallback((): void => {
     window.location.hash = "/";
-  };
+  }, []);
 
-  const handleScrollToTop = (): void => {
+  const handleScrollToTop = useCallback((): void => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
-  const handleResetConsent = (): void => {
+  const handleResetConsent = useCallback((): void => {
     // Remove consent from localStorage to reset it
-    const consentKey = config.get("ANALYTICS.CONSENT_KEY");
-    localStorage.removeItem(consentKey);
+    localStorage.removeItem(Constants.CONSENT_KEY);
     // Set flag to show banner immediately after reload
-    localStorage.setItem("show-cookie-banner-immediately", "true");
+    localStorage.setItem(Constants.SHOW_COOKIE_BANNER_FLAG, "true");
     setConsentStatus(Constants.CONSENT_STATUS_PENDING);
+    // Clear section hash to prevent unwanted scroll on reload
+    // Preserve the base route (#/privacy) but remove any section hash
+    window.history.replaceState(null, "", "#/privacy");
     // Reload page to show cookie banner again
     window.location.reload();
-  };
+  }, []);
 
-  // Generate section IDs for anchor links
-  const getSectionId = (title: string): string => {
+  // Memoize section ID generator
+  const getSectionId = useCallback((title: string): string => {
     return title
       .toLowerCase()
       .replace(/\s+/g, "-")
       .replace(/[^a-z0-9-]/g, "");
-  };
+  }, []);
 
   // Handle scroll to section
   const handleScrollToSection = useCallback(
     (id: string): void => {
       const element = document.getElementById(id);
       if (element) {
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset;
+        // Set active section for highlighting
+        setActiveSection(id);
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
+        // Simple smooth scroll to section
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
 
         // Update URL hash properly - preserve #/privacy if present
         const currentHash = window.location.hash;
@@ -123,12 +141,12 @@ export function PrivacyPage(): ReactElement {
 
   useEffect(() => {
     const handleScroll = (): void => {
-      setShowScrollTop(window.scrollY > scrollTopThreshold);
+      setShowScrollTop(window.scrollY > configValues.scrollTopThreshold);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollTopThreshold]);
+  }, [configValues.scrollTopThreshold]);
 
   useEffect(() => {
     // Get current consent status
@@ -136,8 +154,7 @@ export function PrivacyPage(): ReactElement {
 
     // Listen for storage changes to update consent status
     const handleStorageChange = (e: StorageEvent): void => {
-      const consentKey = config.get("ANALYTICS.CONSENT_KEY");
-      if (e.key === consentKey) {
+      if (e.key === Constants.CONSENT_KEY) {
         setConsentStatus(getConsentStatus());
       }
     };
@@ -158,7 +175,7 @@ export function PrivacyPage(): ReactElement {
         if (sectionId) {
           setTimeout(() => {
             handleScrollToSection(sectionId);
-          }, hashNavigationTimeout);
+          }, configValues.hashNavigationTimeout);
         }
       }
     };
@@ -170,20 +187,17 @@ export function PrivacyPage(): ReactElement {
       window.removeEventListener("consentChanged", handleConsentChange);
       window.removeEventListener("hashchange", handleHashNavigation);
     };
-  }, [handleScrollToSection, hashNavigationTimeout]);
+  }, [handleScrollToSection, configValues.hashNavigationTimeout]);
 
-  // Helper to replace placeholders in text
-  const replacePlaceholders = (text: string): string => {
-    return text
-      .replace("{OWNER_NAME}", ownerName)
-      .replace("{OWNER_EMAIL}", ownerEmail);
-  };
-
-  // Get sections from config
-  const sections = config.get("PRIVACY.SECTIONS") as Record<
-    string,
-    SectionConfig
-  >;
+  // Memoize placeholder replacement function
+  const replacePlaceholders = useCallback(
+    (text: string): string => {
+      return text
+        .replace("{OWNER_NAME}", configValues.ownerName)
+        .replace("{OWNER_EMAIL}", configValues.ownerEmail);
+    },
+    [configValues.ownerName, configValues.ownerEmail]
+  );
 
   // Render a simple section with just content
   const renderSimpleSection = (section: SectionConfig): ReactElement => {
@@ -201,7 +215,10 @@ export function PrivacyPage(): ReactElement {
           id={titleId}
           className={classes["privacy__section-title"]}
         >
-          <span className={classes["privacy__section-title-wrapper"]}>
+          <Box
+            component="span"
+            className={classes["privacy__section-title-wrapper"]}
+          >
             {section.TITLE}
             <Anchor
               href={`#${sectionId}`}
@@ -214,7 +231,7 @@ export function PrivacyPage(): ReactElement {
             >
               🔗
             </Anchor>
-          </span>
+          </Box>
         </Title>
         <Text className={classes["privacy__section-text"]}>
           {replacePlaceholders(section.CONTENT || "")}
@@ -239,7 +256,10 @@ export function PrivacyPage(): ReactElement {
           id={titleId}
           className={classes["privacy__section-title"]}
         >
-          <span className={classes["privacy__section-title-wrapper"]}>
+          <Box
+            component="span"
+            className={classes["privacy__section-title-wrapper"]}
+          >
             {section.TITLE}
             <Anchor
               href={`#${sectionId}`}
@@ -252,7 +272,7 @@ export function PrivacyPage(): ReactElement {
             >
               🔗
             </Anchor>
-          </span>
+          </Box>
         </Title>
         <Text mb="sm" className={classes["privacy__section-text"]}>
           {section.INTRO}
@@ -286,7 +306,10 @@ export function PrivacyPage(): ReactElement {
           id={titleId}
           className={classes["privacy__section-title"]}
         >
-          <span className={classes["privacy__section-title-wrapper"]}>
+          <Box
+            component="span"
+            className={classes["privacy__section-title-wrapper"]}
+          >
             {section.TITLE}
             <Anchor
               href={`#${sectionId}`}
@@ -299,7 +322,7 @@ export function PrivacyPage(): ReactElement {
             >
               🔗
             </Anchor>
-          </span>
+          </Box>
         </Title>
         <Text mb="sm" className={classes["privacy__section-text"]}>
           {section.INTRO}
@@ -311,22 +334,27 @@ export function PrivacyPage(): ReactElement {
         >
           {(section.ITEMS as ListItemWithLabel[])?.map((item, index) => (
             <List.Item key={index}>
-              <strong>{item.LABEL}:</strong> {item.DESCRIPTION}
-              {item.LINK && (
-                <>
-                  {" "}
-                  (
-                  <Anchor
-                    href={item.LINK}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${item.LINK_TEXT} (opens in new tab)`}
-                  >
-                    {item.LINK_TEXT}
-                  </Anchor>
-                  )
-                </>
-              )}
+              <Text component="span">
+                <Text component="strong" fw={600} span>
+                  {item.LABEL}:
+                </Text>{" "}
+                {item.DESCRIPTION}
+                {item.LINK && (
+                  <>
+                    {" "}
+                    (
+                    <Anchor
+                      href={item.LINK}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${item.LINK_TEXT} (opens in new tab)`}
+                    >
+                      {item.LINK_TEXT}
+                    </Anchor>
+                    )
+                  </>
+                )}
+              </Text>
             </List.Item>
           ))}
         </List>
@@ -340,10 +368,10 @@ export function PrivacyPage(): ReactElement {
   ): ReactElement => {
     const currentStatus =
       consentStatus === Constants.CONSENT_STATUS_GRANTED
-        ? consentStatusLabels.GRANTED
+        ? configValues.consentStatusLabels.GRANTED
         : consentStatus === Constants.CONSENT_STATUS_DENIED
-          ? consentStatusLabels.DENIED
-          : consentStatusLabels.PENDING;
+          ? configValues.consentStatusLabels.DENIED
+          : configValues.consentStatusLabels.PENDING;
     const sectionId = getSectionId(section.TITLE);
     const titleId = `${sectionId}-title`;
 
@@ -359,7 +387,10 @@ export function PrivacyPage(): ReactElement {
           id={titleId}
           className={classes["privacy__section-title"]}
         >
-          <span className={classes["privacy__section-title-wrapper"]}>
+          <Box
+            component="span"
+            className={classes["privacy__section-title-wrapper"]}
+          >
             {section.TITLE}
             <Anchor
               href={`#${sectionId}`}
@@ -372,17 +403,19 @@ export function PrivacyPage(): ReactElement {
             >
               🔗
             </Anchor>
-          </span>
+          </Box>
         </Title>
         <Text mb="md" className={classes["privacy__section-text"]}>
           {section.INTRO} Your current preference is:{" "}
-          <strong
+          <Text
+            component="span"
+            fw={600}
             className={`${classes["privacy__consent-status"]} ${
               classes[`privacy__consent-status--${consentStatus}`]
             }`}
           >
             {currentStatus}
-          </strong>
+          </Text>
         </Text>
         <Button
           variant="outline"
@@ -408,7 +441,7 @@ export function PrivacyPage(): ReactElement {
   // Render contact section with email link
   const renderContactSection = (section: SectionConfig): ReactElement => {
     const content = replacePlaceholders(section.CONTENT || "");
-    const emailParts = content.split(ownerEmail);
+    const emailParts = content.split(configValues.ownerEmail);
     const sectionId = getSectionId(section.TITLE);
     const titleId = `${sectionId}-title`;
 
@@ -424,7 +457,10 @@ export function PrivacyPage(): ReactElement {
           id={titleId}
           className={classes["privacy__section-title"]}
         >
-          <span className={classes["privacy__section-title-wrapper"]}>
+          <Box
+            component="span"
+            className={classes["privacy__section-title-wrapper"]}
+          >
             {section.TITLE}
             <Anchor
               href={`#${sectionId}`}
@@ -437,15 +473,15 @@ export function PrivacyPage(): ReactElement {
             >
               🔗
             </Anchor>
-          </span>
+          </Box>
         </Title>
         <Text className={classes["privacy__section-text"]}>
           {emailParts[0]}
           <Anchor
-            href={`mailto:${ownerEmail}`}
-            aria-label={`Send email to ${ownerEmail}`}
+            href={`mailto:${configValues.ownerEmail}`}
+            aria-label={`Send email to ${configValues.ownerEmail}`}
           >
-            {ownerEmail}
+            {configValues.ownerEmail}
           </Anchor>
           {emailParts[1]}
         </Text>
@@ -453,28 +489,25 @@ export function PrivacyPage(): ReactElement {
     );
   };
 
-  // Generate table of contents from sections in the correct order
-  const tableOfContents = sectionOrder.map((key) => ({
-    title: sections[key].TITLE,
-    id: getSectionId(sections[key].TITLE),
-  }));
-
-  // Get section IDs for scroll spy
-  const sectionIds = tableOfContents.map((item) => item.id);
-
-  // Use scroll spy to track active section
-  const activeSection = useScrollSpy({
-    sectionIds,
-    offset: 100,
-    threshold: 0.1,
-  });
+  // Memoize table of contents generation
+  const tableOfContents = useMemo(
+    () =>
+      configValues.sectionOrder.map((key) => ({
+        title: configValues.sections[key].TITLE,
+        id: getSectionId(configValues.sections[key].TITLE),
+      })),
+    [configValues.sectionOrder, configValues.sections, getSectionId]
+  );
 
   return (
-    <div className={classes.privacy}>
+    <Box className={classes.privacy}>
       {/* Skip to main content link for accessibility */}
-      <a href="#privacy-main-content" className={classes.privacy__skipLink}>
+      <Anchor
+        href="#privacy-main-content"
+        className={classes.privacy__skipLink}
+      >
         Skip to main content
-      </a>
+      </Anchor>
 
       {/* Header with back button and theme toggle */}
       <nav
@@ -489,16 +522,22 @@ export function PrivacyPage(): ReactElement {
               variant="outline"
               color="orange"
               leftSection={
-                <span className={classes["privacy__backButton-icon"]}>
+                <Box
+                  component="span"
+                  className={classes["privacy__backButton-icon"]}
+                >
                   <Icon name="IconArrowLeft" size={16} />
-                </span>
+                </Box>
               }
               onClick={handleBackClick}
-              aria-label={backButton}
+              aria-label={configValues.backButton}
             >
-              <span className={classes["privacy__backButton-text"]}>
-                {backButton}
-              </span>
+              <Text
+                component="span"
+                className={classes["privacy__backButton-text"]}
+              >
+                {configValues.backButton}
+              </Text>
             </Button>
             <ThemeToggle />
           </Group>
@@ -517,23 +556,29 @@ export function PrivacyPage(): ReactElement {
               variant="outline"
               color="orange"
               leftSection={
-                <span className={classes["privacy__backButton-icon"]}>
+                <Box
+                  component="span"
+                  className={classes["privacy__backButton-icon"]}
+                >
                   <Icon name="IconArrowLeft" size={16} />
-                </span>
+                </Box>
               }
               onClick={handleBackClick}
-              aria-label={backButton}
+              aria-label={configValues.backButton}
             >
-              <span className={classes["privacy__backButton-text"]}>
-                {backButton}
-              </span>
+              <Text
+                component="span"
+                className={classes["privacy__backButton-text"]}
+              >
+                {configValues.backButton}
+              </Text>
             </Button>
             <ThemeToggle />
           </Group>
         </Container>
       </nav>
 
-      <div className={classes.privacy__contentWrapper}>
+      <Box className={classes.privacy__contentWrapper}>
         {/* Desktop Table of Contents Sidebar */}
         <aside
           className={classes.privacy__sidebar}
@@ -571,67 +616,72 @@ export function PrivacyPage(): ReactElement {
           <main id="privacy-main-content" className={classes.privacy__card}>
             <header className={classes.privacy__header}>
               <Title order={1} className={classes.privacy__title}>
-                {pageTitle}
+                {configValues.pageTitle}
               </Title>
-              <div className={classes.privacy__dates}>
-                {effectiveDate && (
+              <Stack gap="xs" className={classes.privacy__dates}>
+                {configValues.effectiveDate && (
                   <Text size="sm" c="dimmed" aria-label="Effective date">
-                    Effective: {effectiveDate}
+                    Effective: {configValues.effectiveDate}
                   </Text>
                 )}
-                {lastUpdated && effectiveDate !== lastUpdated && (
+                {configValues.lastUpdated &&
+                  configValues.effectiveDate !== configValues.lastUpdated && (
+                    <Text size="sm" c="dimmed" aria-label="Last updated date">
+                      Last updated: {configValues.lastUpdated}
+                    </Text>
+                  )}
+                {configValues.lastUpdated && !configValues.effectiveDate && (
                   <Text size="sm" c="dimmed" aria-label="Last updated date">
-                    Last updated: {lastUpdated}
+                    Last updated: {configValues.lastUpdated}
                   </Text>
                 )}
-                {lastUpdated && !effectiveDate && (
-                  <Text size="sm" c="dimmed" aria-label="Last updated date">
-                    Last updated: {lastUpdated}
-                  </Text>
-                )}
-              </div>
+              </Stack>
             </header>
 
-            {renderSimpleSection(sections.INTRODUCTION)}
+            {renderSimpleSection(configValues.sections.INTRODUCTION)}
 
             <Divider my="lg" className={classes.privacy__divider} />
 
-            {renderLabeledListSection(sections.INFORMATION_COLLECTED)}
+            {renderLabeledListSection(
+              configValues.sections.INFORMATION_COLLECTED
+            )}
 
             <Divider my="lg" className={classes.privacy__divider} />
 
-            {renderSimpleListSection(sections.NOT_COLLECTED)}
+            {renderSimpleListSection(configValues.sections.NOT_COLLECTED)}
 
             <Divider my="lg" className={classes.privacy__divider} />
 
-            {renderLabeledListSection(sections.COOKIES)}
+            {renderLabeledListSection(configValues.sections.COOKIES)}
 
             <Divider my="lg" className={classes.privacy__divider} />
 
-            {renderSimpleSection(sections.DATA_RETENTION)}
+            {renderSimpleSection(configValues.sections.DATA_RETENTION)}
 
             <Divider my="lg" className={classes.privacy__divider} />
 
-            {renderLabeledListSection(sections.THIRD_PARTY)}
+            {renderLabeledListSection(configValues.sections.THIRD_PARTY)}
 
             <Divider my="lg" className={classes.privacy__divider} />
 
-            {renderLabeledListSection(sections.YOUR_RIGHTS)}
+            {renderLabeledListSection(configValues.sections.YOUR_RIGHTS)}
 
             <Divider my="lg" className={classes.privacy__divider} />
 
-            {renderConsentManagementSection(sections.COOKIE_PREFERENCES)}
+            {renderConsentManagementSection(
+              configValues.sections.COOKIE_PREFERENCES
+            )}
 
             <Divider my="lg" className={classes.privacy__divider} />
 
-            {renderSimpleSection(sections.POLICY_CHANGES)}
+            {renderSimpleSection(configValues.sections.POLICY_CHANGES)}
 
             <Divider my="lg" className={classes.privacy__divider} />
 
-            {renderContactSection(sections.CONTACT)}
+            {renderContactSection(configValues.sections.CONTACT)}
           </main>
         </Container>
-      </div>
+      </Box>
 
       {/* Table of Contents Drawer */}
       <Drawer
@@ -672,6 +722,8 @@ export function PrivacyPage(): ReactElement {
           <Icon name="IconArrowUp" size={20} />
         </Button>
       )}
-    </div>
+    </Box>
   );
 }
+
+export const PrivacyPage = memo(PrivacyPageComponent);

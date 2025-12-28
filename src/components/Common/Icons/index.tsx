@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { memo } from "react";
 // Import only the icons you actually use based on the config and components
 import {
   IconApi,
@@ -41,6 +41,7 @@ import {
 } from "@tabler/icons-react";
 
 // Create a mapping of icon names to components
+// Using as const for better type inference
 const iconMap = {
   IconApi,
   IconArrowBack,
@@ -78,21 +79,24 @@ const iconMap = {
   IconTestPipe,
   IconTools,
   IconUser,
-};
+} as const;
 
 type CustomIconProps = {
   name: keyof typeof iconMap;
-  // other props
 } & IconProps;
 
-const Icon: FC<CustomIconProps> = (props) => {
-  const { name, ...rest } = props;
-  const IconComponent = iconMap[name];
-  if (!IconComponent) {
-    console.warn(`Icon ${name} not found`);
+function IconComponent({ name, ...rest }: CustomIconProps) {
+  const Icon = iconMap[name];
+  if (!Icon) {
+    if (process.env.NODE_ENV !== "production") {
+      console.warn(`Icon ${name} not found`);
+    }
     return null;
   }
-  return <IconComponent {...rest} />;
-};
+  return <Icon {...rest} />;
+}
+
+// Memoize the Icon component to prevent unnecessary re-renders
+const Icon = memo(IconComponent);
 
 export default Icon;

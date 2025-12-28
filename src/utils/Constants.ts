@@ -8,6 +8,12 @@ class Constants {
   static readonly CONSENT_STATUS_DENIED = "denied";
   static readonly CONSENT_STATUS_PENDING = "pending";
 
+  // Cookie Consent
+  static readonly CONSENT_KEY = "analytics-consent";
+  static readonly COOKIE_BANNER_DELAY = 1000;
+  static readonly CLOSE_ANIMATION_DURATION = 300;
+  static readonly SHOW_COOKIE_BANNER_FLAG = "show-cookie-banner-immediately";
+
   // GA4 Event Names
   static readonly GA4_EVENTS = {
     PAGE_VIEW: "page_view",
