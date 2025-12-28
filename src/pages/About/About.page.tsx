@@ -56,6 +56,7 @@ export default function AboutPage(): ReactElement {
         id="skills-section"
         title={config.get("ABOUT.SECTION_TITLES.SKILLS")}
         icon="IconTools"
+        defaultExpanded
       >
         <SkillsSection skills={skillsData} config={skillsConfig} />
       </CollapsibleSection>
@@ -65,6 +66,7 @@ export default function AboutPage(): ReactElement {
         id="education-section"
         title={config.get("ABOUT.SECTION_TITLES.EDUCATION")}
         icon="IconBrain"
+        defaultExpanded
       >
         <EducationSection
           degree={education.DEGREE}
