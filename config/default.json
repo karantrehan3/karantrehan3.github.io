@@ -619,6 +619,8 @@
   },
   "ANALYTICS": {
     "GA4_MEASUREMENT_ID": "G-47SPLJ8M8L",
+    "CONSENT_KEY": "analytics-consent",
+    "CONSENT_VERSION": "1",
     "COOKIE_CONSENT": {
       "TITLE": "Cookie Notice",
       "DESCRIPTION": "This site uses cookies for analytics to understand how visitors interact with the site.",
@@ -629,8 +631,30 @@
   },
   "PRIVACY": {
     "LAST_UPDATED": "December 28, 2025",
+    "EFFECTIVE_DATE": "December 28, 2025",
     "TITLE": "Privacy Policy",
     "BACK_BUTTON": "Back to Portfolio",
+    "SCROLL": {
+      "SCROLL_TOP_THRESHOLD": 300,
+      "HASH_NAVIGATION_TIMEOUT": 100
+    },
+    "CONSENT_STATUS_LABELS": {
+      "GRANTED": "Accepted",
+      "DENIED": "Declined",
+      "PENDING": "Not set"
+    },
+    "SECTION_ORDER": [
+      "INTRODUCTION",
+      "INFORMATION_COLLECTED",
+      "NOT_COLLECTED",
+      "COOKIES",
+      "DATA_RETENTION",
+      "THIRD_PARTY",
+      "YOUR_RIGHTS",
+      "COOKIE_PREFERENCES",
+      "POLICY_CHANGES",
+      "CONTACT"
+    ],
     "SECTIONS": {
       "INTRODUCTION": {
         "TITLE": "Introduction",
@@ -679,6 +703,12 @@
           }
         ]
       },
+      "COOKIE_PREFERENCES": {
+        "TITLE": "Manage Cookie Preferences",
+        "INTRO": "You can change your cookie consent preferences at any time.",
+        "BUTTON_TEXT": "Change Cookie Preferences",
+        "BUTTON_DESCRIPTION": "Clicking this button will reset your cookie preferences and show the cookie consent banner again, allowing you to make a new choice."
+      },
       "YOUR_RIGHTS": {
         "TITLE": "Your Rights",
         "INTRO": "You have the right to:",
@@ -707,17 +737,21 @@
         "ITEMS": [
           {
             "LABEL": "Google Analytics 4",
-            "DESCRIPTION": "For website analytics",
+            "DESCRIPTION": "For website analytics. Google Analytics may have its own GDPR compliance measures. Please refer to their privacy policy for details.",
             "LINK": "https://policies.google.com/privacy",
             "LINK_TEXT": "Google Privacy Policy"
           },
           {
             "LABEL": "GitHub Pages",
-            "DESCRIPTION": "For website hosting",
+            "DESCRIPTION": "For website hosting. GitHub may have its own GDPR compliance measures. Please refer to their privacy statement for details.",
             "LINK": "https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement",
             "LINK_TEXT": "GitHub Privacy Statement"
           }
         ]
+      },
+      "POLICY_CHANGES": {
+        "TITLE": "Changes to This Privacy Policy",
+        "CONTENT": "We may update this Privacy Policy from time to time. When we make changes, we will update the \"Last updated\" date at the top of this page. We encourage you to review this Privacy Policy periodically to stay informed about how we collect, use, and protect your information. Your continued use of this website after any changes to this Privacy Policy constitutes your acceptance of the updated policy."
       },
       "CONTACT": {
         "TITLE": "Contact",

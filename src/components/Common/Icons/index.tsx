@@ -5,6 +5,7 @@ import {
   IconArrowBack,
   IconArrowLeft,
   IconArrowRight,
+  IconArrowUp,
   // Skills icons
   IconBrain,
   IconBrandAws,
@@ -45,6 +46,7 @@ const iconMap = {
   IconArrowBack,
   IconArrowLeft,
   IconArrowRight,
+  IconArrowUp,
   // Skills icons
   IconBrain,
   IconBrandAws,

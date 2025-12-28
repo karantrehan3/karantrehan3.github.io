@@ -14,16 +14,23 @@ export type ConsentStatus = "granted" | "denied" | "pending";
  * Get the current consent status from localStorage
  */
 export function getConsentStatus(): ConsentStatus {
-  if (typeof window === "undefined") {return Constants.CONSENT_STATUS_PENDING;}
+  if (typeof window === "undefined") {
+    return Constants.CONSENT_STATUS_PENDING;
+  }
 
-  const stored = localStorage.getItem(Constants.ANALYTICS_CONSENT_KEY);
-  if (!stored) {return Constants.CONSENT_STATUS_PENDING;}
+  const consentKey = config.get("ANALYTICS.CONSENT_KEY");
+  const stored = localStorage.getItem(consentKey);
+  if (!stored) {
+    return Constants.CONSENT_STATUS_PENDING;
+  }
 
   try {
     const { status, version } = JSON.parse(stored);
     // If version changed, re-ask for consent
-    if (version !== Constants.ANALYTICS_CONSENT_VERSION)
-      {return Constants.CONSENT_STATUS_PENDING;}
+    const consentVersion = config.get("ANALYTICS.CONSENT_VERSION");
+    if (version !== consentVersion) {
+      return Constants.CONSENT_STATUS_PENDING;
+    }
     return status as ConsentStatus;
   } catch {
     return Constants.CONSENT_STATUS_PENDING;
@@ -45,9 +52,19 @@ export function CookieConsent(): ReactElement | null {
     // Check if consent has already been given
     const status = getConsentStatus();
     if (status === Constants.CONSENT_STATUS_PENDING) {
-      // Small delay for better UX
-      const timer = setTimeout(() => setVisible(true), 1000);
-      return () => clearTimeout(timer);
+      // Check if banner should appear immediately (e.g., after resetting consent)
+      const showImmediately = localStorage.getItem(
+        "show-cookie-banner-immediately"
+      );
+      if (showImmediately === "true") {
+        // Remove the flag and show banner immediately
+        localStorage.removeItem("show-cookie-banner-immediately");
+        setVisible(true);
+      } else {
+        // Small delay for better UX on initial page load
+        const timer = setTimeout(() => setVisible(true), 1000);
+        return () => clearTimeout(timer);
+      }
     } else if (status === Constants.CONSENT_STATUS_GRANTED) {
       // Initialize analytics if already consented
       analytics.initialize();
@@ -56,13 +73,18 @@ export function CookieConsent(): ReactElement | null {
 
   const handleClose = (status: ConsentStatus) => {
     // Save consent status
+    const consentKey = config.get("ANALYTICS.CONSENT_KEY");
+    const consentVersion = config.get("ANALYTICS.CONSENT_VERSION");
     localStorage.setItem(
-      Constants.ANALYTICS_CONSENT_KEY,
+      consentKey,
       JSON.stringify({
         status,
-        version: Constants.ANALYTICS_CONSENT_VERSION,
+        version: consentVersion,
       })
     );
+
+    // Dispatch custom event to notify other components
+    window.dispatchEvent(new Event("consentChanged"));
 
     // Animate out
     setIsClosing(true);
@@ -78,7 +100,9 @@ export function CookieConsent(): ReactElement | null {
     }, 300);
   };
 
-  if (!visible) {return null;}
+  if (!visible) {
+    return null;
+  }
 
   // Get text from config
   const cookieConsentConfig = config.get("ANALYTICS.COOKIE_CONSENT");

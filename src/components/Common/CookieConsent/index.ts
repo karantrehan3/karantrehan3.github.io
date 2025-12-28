@@ -1,1 +1,6 @@
-export { CookieConsent } from "./CookieConsent";
+export {
+  CookieConsent,
+  getConsentStatus,
+  hasAnalyticsConsent,
+} from "./CookieConsent";
+export type { ConsentStatus } from "./CookieConsent";

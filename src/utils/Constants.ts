@@ -1,12 +1,8 @@
 /**
  * Application-wide constants
- * Contains non-configurable constants like consent states, keys, versions, etc.
+ * Contains non-configurable constants like consent states, event names, etc.
  */
 class Constants {
-  // Analytics Consent
-  static readonly ANALYTICS_CONSENT_KEY = "analytics-consent";
-  static readonly ANALYTICS_CONSENT_VERSION = "1";
-
   // Consent Status Values
   static readonly CONSENT_STATUS_GRANTED = "granted";
   static readonly CONSENT_STATUS_DENIED = "denied";

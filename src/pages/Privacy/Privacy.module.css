@@ -1,55 +1,152 @@
 .privacy {
   min-height: 100vh;
-  padding: 2rem 1rem;
-  padding-top: 5rem; /* Account for fixed header */
+  padding: 0;
   background: light-dark(
     var(--mantine-color-gray-2),
     var(--mantine-color-body)
   );
+  position: relative;
+}
+
+.privacy__skipLink {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--mantine-color-orange-6);
+  color: white;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 0 0 0.25rem 0;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+
+.privacy__skipLink:focus {
+  top: 0;
+  outline: 0.125rem solid var(--mantine-color-orange-7);
+  outline-offset: 0.125rem;
+}
+
+.privacy__contentWrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  align-items: start;
+  justify-items: center;
+}
+
+@media (max-width: 600px) {
+  .privacy__contentWrapper {
+    padding-top: 1.5rem;
+  }
+}
+
+.privacy__sidebar {
+  position: sticky;
+  top: 2rem;
+  width: 19rem;
+  min-width: 19rem;
+  max-width: 19rem;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: transparent;
+  padding: 0;
+  display: none;
+}
+
+.privacy__sidebar::-webkit-scrollbar {
+  width: 0.375rem;
+}
+
+.privacy__sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.privacy__sidebar::-webkit-scrollbar-thumb {
+  background: var(--mantine-color-gray-5);
+  border-radius: 0.1875rem;
+}
+
+.privacy__sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--mantine-color-gray-6);
+}
+
+.privacy__sidebarNav {
+  position: sticky;
+  top: 0;
+  padding-right: 1.5rem;
+}
+
+.privacy__sidebarTitle {
+  margin-bottom: 1rem;
+  color: var(--mantine-color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.75rem;
+  border-bottom: 0.0625rem solid var(--mantine-color-default-border);
 }
 
 .privacy__container {
   max-width: 50rem;
+  width: 100%;
+  margin: 0 auto;
+  justify-self: center;
 }
 
 .privacy__back {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 1rem;
-  background: var(--mantine-color-body);
-  border-bottom: 0.0625rem solid var(--mantine-color-default-border);
-  box-shadow: light-dark(
-    0 0.125rem 0.5rem rgba(0, 0, 0, 0.05),
-    0 0.125rem 0.5rem rgba(0, 0, 0, 0.2)
-  );
+  height: rem(56px);
+  background-color: var(--mantine-color-body);
+  border-bottom: rem(1px) solid
+    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  margin-bottom: 0;
 }
 
 .privacy__back-container {
+  height: rem(56px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 50rem;
-  margin: 0 auto;
+}
+
+.privacy__back-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.privacy__back-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.privacy__burger {
+  z-index: 1;
 }
 
 .privacy__backButton {
-  background-color: transparent;
-  color: var(--mantine-color-orange-6);
-  border: 0.125rem solid var(--mantine-color-orange-6);
-  border-radius: 0.625rem;
-  font-weight: 600;
-  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
-.privacy__backButton:hover {
-  background-color: var(--mantine-color-orange-6);
-  color: white;
-  border-color: var(--mantine-color-orange-6);
-  transform: translateY(-0.125rem);
-  box-shadow: 0 0.375rem 1rem rgba(0, 0, 0, 0.2);
+.privacy__backButton-text {
+  display: inline;
+}
+
+.privacy__backButton-icon {
+  flex-shrink: 0;
 }
 
 .privacy__card {
@@ -65,6 +162,12 @@
   border-bottom: 0.0625rem solid var(--mantine-color-default-border);
 }
 
+.privacy__dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .privacy__title {
   margin-bottom: 0.5rem;
   color: var(--mantine-color-text);
@@ -77,6 +180,35 @@
 .privacy__section-title {
   margin-bottom: 0.75rem;
   color: var(--mantine-color-text);
+  position: relative;
+}
+
+.privacy__section-title-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.privacy__section-link {
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+  color: var(--mantine-color-orange-6);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.privacy__section-title:hover .privacy__section-link,
+.privacy__section-link:focus {
+  opacity: 1;
+}
+
+.privacy__section-link:hover {
+  color: var(--mantine-color-orange-7);
 }
 
 .privacy__section-text {
@@ -101,15 +233,148 @@
   opacity: 0.5;
 }
 
-/* Mobile responsive */
-@media (max-width: 600px) {
-  .privacy {
-    padding: 1rem 0.5rem;
-    padding-top: 4.5rem;
+.privacy__drawer {
+  z-index: 200;
+}
+
+/* Desktop view - show sidebar */
+@media (min-width: 1200px) {
+  .privacy__sidebar {
+    display: block !important;
+    justify-self: start;
   }
 
-  .privacy__back {
-    padding: 0.75rem 0.5rem;
+  .privacy__contentWrapper {
+    padding: 2rem 2rem;
+    grid-template-columns: 19rem 1fr;
+    justify-items: start;
+  }
+
+  .privacy__container {
+    margin: 0;
+    max-width: none;
+    width: 100%;
+    justify-self: start;
+  }
+}
+
+/* Tablet and below - hide sidebar, use drawer */
+@media (max-width: 1199px) {
+  .privacy__sidebar {
+    display: none;
+  }
+
+  .privacy__contentWrapper {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+}
+
+/* Tablet portrait - add gap between header and content */
+@media (min-width: 601px) and (max-width: 1199px) {
+  .privacy__contentWrapper {
+    padding-top: 1.5rem;
+  }
+}
+
+.privacy__tocList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.privacy__tocList li {
+  margin-bottom: 0.25rem;
+  padding-left: 0;
+}
+
+.privacy__tocLink {
+  display: block;
+  padding: 0.375rem 0.75rem;
+  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-1));
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-weight: 400;
+  font-size: 0.875rem;
+  border-radius: var(--mantine-radius-sm);
+  line-height: 1.5;
+}
+
+.privacy__tocLink:hover {
+  background-color: light-dark(
+    var(--mantine-color-gray-0),
+    var(--mantine-color-dark-6)
+  );
+  color: var(--mantine-color-orange-6);
+  text-decoration: none;
+}
+
+.privacy__tocLink:focus {
+  outline: 0.125rem solid var(--mantine-color-orange-6);
+  outline-offset: 0.125rem;
+  border-radius: var(--mantine-radius-sm);
+}
+
+.privacy__tocLink[data-active] {
+  background-color: var(--mantine-color-orange-6);
+  color: white;
+  font-weight: 500;
+}
+
+.privacy__scrollTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.25rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--mantine-color-orange-6);
+  color: white;
+  border: none;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.3s ease;
+}
+
+.privacy__scrollTop:hover {
+  background-color: var(--mantine-color-orange-7);
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.375rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.privacy__scrollTop:active {
+  transform: translateY(0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .privacy__back-container {
+    gap: 0.5rem;
+  }
+
+  .privacy__backButton {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .privacy__contentWrapper {
+    padding: 1.5rem 0.5rem 0 0.5rem;
   }
 
   .privacy__card {
@@ -119,4 +384,48 @@
   .privacy__header {
     margin-bottom: 1.5rem;
   }
+
+  .privacy__section-title {
+    font-size: 1.25rem;
+  }
+
+  .privacy__section-text {
+    font-size: 0.9375rem;
+  }
+
+  .privacy__tocButton {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .privacy__tocList li {
+    font-size: 0.875rem;
+  }
+
+  .privacy__section-link {
+    opacity: 1; /* Always visible on mobile for better UX */
+  }
+
+  .privacy__scrollTop {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+.privacy__consent-status {
+  display: inline-block;
+}
+
+.privacy__consent-status--granted {
+  color: var(--mantine-color-green-6);
+}
+
+.privacy__consent-status--denied {
+  color: var(--mantine-color-red-6);
+}
+
+.privacy__consent-status--pending {
+  color: inherit;
 }
