@@ -5,6 +5,7 @@ import { defineConfig } from "vite";
 import { analyzer } from "vite-bundle-analyzer";
 import tsconfigPaths from "vite-tsconfig-paths";
 
+import { analyticsPlugin } from "./vite/plugins/analytics.mjs";
 import { metaTagsPlugin } from "./vite/plugins/meta-tags.mjs";
 
 export default defineConfig(({ mode }) => ({
@@ -12,6 +13,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     tsconfigPaths(),
     metaTagsPlugin(),
+    analyticsPlugin(),
     visualizer(),
     mode === "analyze" && analyzer(),
   ].filter(Boolean),

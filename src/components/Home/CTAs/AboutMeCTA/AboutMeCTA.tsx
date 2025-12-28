@@ -2,13 +2,17 @@ import { ReactElement } from "react";
 import { Button, Tooltip } from "@mantine/core";
 
 import Icon from "@/components/Common/Icons";
+import analytics from "@/utils/Analytics";
 import config from "@/utils/Config";
 
 import classes from "./AboutMeCTA.module.css";
 
 export function AboutMeCTA(): ReactElement {
   const handleAboutClick = (): void => {
-    const section = document.querySelector("#about");
+    const ctaName = config.get("HOME.ACTIONS.LEARN_ABOUT_ME");
+    const destination = "#about";
+    analytics.trackCTAClick(ctaName, destination);
+    const section = document.querySelector(destination);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }

@@ -1,0 +1,122 @@
+.privacy {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  padding-top: 5rem; /* Account for fixed header */
+  background: light-dark(
+    var(--mantine-color-gray-2),
+    var(--mantine-color-body)
+  );
+}
+
+.privacy__container {
+  max-width: 50rem;
+}
+
+.privacy__back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1rem;
+  background: var(--mantine-color-body);
+  border-bottom: 0.0625rem solid var(--mantine-color-default-border);
+  box-shadow: light-dark(
+    0 0.125rem 0.5rem rgba(0, 0, 0, 0.05),
+    0 0.125rem 0.5rem rgba(0, 0, 0, 0.2)
+  );
+}
+
+.privacy__back-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.privacy__backButton {
+  background-color: transparent;
+  color: var(--mantine-color-orange-6);
+  border: 0.125rem solid var(--mantine-color-orange-6);
+  border-radius: 0.625rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.privacy__backButton:hover {
+  background-color: var(--mantine-color-orange-6);
+  color: white;
+  border-color: var(--mantine-color-orange-6);
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.375rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.privacy__card {
+  background: var(--mantine-color-default);
+  border-radius: var(--mantine-radius-md);
+  padding: 2rem;
+  box-shadow: var(--mantine-shadow-sm);
+}
+
+.privacy__header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 0.0625rem solid var(--mantine-color-default-border);
+}
+
+.privacy__title {
+  margin-bottom: 0.5rem;
+  color: var(--mantine-color-text);
+}
+
+.privacy__section {
+  margin-bottom: 0.5rem;
+}
+
+.privacy__section-title {
+  margin-bottom: 0.75rem;
+  color: var(--mantine-color-text);
+}
+
+.privacy__section-text {
+  line-height: 1.7;
+  color: light-dark(var(--mantine-color-dark-10), var(--mantine-color-dark-0));
+}
+
+.privacy__list {
+  margin-top: 0.5rem;
+}
+
+.privacy__list li {
+  line-height: 1.6;
+  color: light-dark(var(--mantine-color-dark-10), var(--mantine-color-dark-0));
+}
+
+.privacy__list strong {
+  color: light-dark(var(--mantine-color-dark-10), var(--mantine-color-dark-0));
+}
+
+.privacy__divider {
+  opacity: 0.5;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .privacy {
+    padding: 1rem 0.5rem;
+    padding-top: 4.5rem;
+  }
+
+  .privacy__back {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .privacy__card {
+    padding: 1.25rem;
+  }
+
+  .privacy__header {
+    margin-bottom: 1.5rem;
+  }
+}

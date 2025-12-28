@@ -2,21 +2,28 @@ import { ReactElement } from "react";
 import { Button, Stack } from "@mantine/core";
 
 import Icon from "@/components/Common/Icons";
+import analytics from "@/utils/Analytics";
 import config from "@/utils/Config";
 
 import classes from "./Socials.module.css";
 
 export function Socials(): ReactElement {
   const handleEmailClick = (): void => {
-    window.location.href = `mailto:${config.get("SOCIALS.EMAIL.ID")}?subject=${config.get("SOCIALS.EMAIL.SUBJECT")}`;
+    const emailId = config.get("SOCIALS.EMAIL.ID");
+    analytics.trackSocialClick("email", "mailto");
+    window.location.href = `mailto:${emailId}?subject=${config.get("SOCIALS.EMAIL.SUBJECT")}`;
   };
 
   const handleLinkedInClick = (): void => {
-    window.open(config.get("SOCIALS.LINKEDIN"), "_blank");
+    const linkedInUrl = config.get("SOCIALS.LINKEDIN");
+    analytics.trackSocialClick("linkedin", linkedInUrl);
+    window.open(linkedInUrl, "_blank");
   };
 
   const handleGithubClick = (): void => {
-    window.open(config.get("SOCIALS.GITHUB"), "_blank");
+    const githubUrl = config.get("SOCIALS.GITHUB");
+    analytics.trackSocialClick("github", githubUrl);
+    window.open(githubUrl, "_blank");
   };
 
   return (

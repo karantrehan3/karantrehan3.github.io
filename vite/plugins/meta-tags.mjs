@@ -1,25 +1,7 @@
 import { readFileSync } from "fs";
 import { resolve } from "path";
 
-/**
- * Calculates years of experience from a start date
- * @param startDate - Date string in DD-MM-YYYY format
- * @returns Number of years (rounded to 1 decimal)
- */
-function calculateYearsOfExperience(startDate) {
-  const [day, month, year] = startDate.split("-").map(Number);
-  const start = new Date(year, month - 1, day);
-  const current = new Date();
-
-  const totalMonths =
-    (current.getFullYear() - start.getFullYear()) * 12 +
-    current.getMonth() -
-    start.getMonth() -
-    (current.getDate() < start.getDate() ? 1 : 0);
-
-  const roundedYears = Math.round((totalMonths / 12) * 10) / 10;
-  return roundedYears;
-}
+import { calculateYearsOfExperience } from "../utils/date-helpers.mjs";
 
 /**
  * Vite plugin to inject meta tags into index.html at build time
@@ -89,21 +71,17 @@ export function metaTagsPlugin() {
     <meta name="theme-color" content="#000000" />
 `;
 
-        // Replace the comment or insert before </head>
+        // Replace the meta tags comment or insert before </head>
         if (
           html.includes("<!-- Note: Title and description are set dynamically")
         ) {
-          // Replace the comment with actual meta tags
-          html = html.replace(
+          return html.replace(
             /<!-- Note: Title and description are set dynamically from config\/default.json via App.tsx -->/,
             metaTags.trim()
           );
-        } else {
-          // Insert before </head> if comment not found
-          html = html.replace("</head>", `${metaTags.trim()}\n  </head>`);
         }
 
-        return html;
+        return html.replace("</head>", `${metaTags.trim()}\n  </head>`);
       } catch (error) {
         console.warn("Failed to inject meta tags:", error);
         return html;

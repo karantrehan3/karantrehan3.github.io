@@ -1,6 +1,8 @@
 import { ReactElement, useEffect, useState } from "react";
 import { MantineColorScheme, useMantineColorScheme } from "@mantine/core";
 
+import analytics from "@/utils/Analytics";
+
 import styles from "./ThemeToggle.module.css";
 
 export function ThemeToggle(): ReactElement {
@@ -25,6 +27,7 @@ export function ThemeToggle(): ReactElement {
 
   const handleToggle = () => {
     const newColorScheme = colorScheme === "dark" ? "light" : "dark";
+    analytics.trackThemeToggle(newColorScheme);
     setColorScheme(newColorScheme);
     setIsChecked(newColorScheme === "dark");
   };

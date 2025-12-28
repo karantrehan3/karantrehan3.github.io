@@ -7,3 +7,4 @@ export { MarkdownRenderer } from "./MarkdownRenderer";
 export { default as Icon } from "./Icons";
 export { ThemeToggle } from "./ThemeToggle";
 export { BouncyLoader } from "./Loaders";
+export { CookieConsent } from "./CookieConsent";

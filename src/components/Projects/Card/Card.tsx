@@ -11,6 +11,7 @@ import {
 import clsx from "clsx";
 
 import { MarkdownRenderer } from "@/components/Common/MarkdownRenderer";
+import analytics from "@/utils/Analytics";
 
 import classes from "./Card.module.css";
 
@@ -35,8 +36,13 @@ function CardComponent({
 }: CardProps): ReactElement {
   const [loading, setLoading] = useState<boolean>(true);
 
+  const handleCardClick = (): void => {
+    analytics.trackProjectClick(title, link);
+    window.open(link, "_self");
+  };
+
   return (
-    <OgCard className={classes.card} onClick={() => window.open(link, "_self")}>
+    <OgCard className={classes.card} onClick={handleCardClick}>
       <OgCard.Section className={classes.imageSection}>
         {loading && (
           <div className={classes.center}>

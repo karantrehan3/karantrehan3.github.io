@@ -15,7 +15,9 @@ import { useLocation } from "react-router-dom";
 import Icon from "@/components/Common/Icons";
 import { ThemeToggle } from "@/components/Common/ThemeToggle";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
+import analytics from "@/utils/Analytics";
 import config from "@/utils/Config";
+import helpers from "@/utils/Helpers";
 
 import classes from "./Header.module.css";
 
@@ -44,10 +46,8 @@ export function Header(): ReactElement {
     keepTransitions: true,
   });
 
-  // Get section IDs from navigation links (include main sections even if they have dropdowns)
-  const sectionIds = links
-    .filter((link) => !link.hidden)
-    .map((link) => link.link.replace("#", ""));
+  // Get section IDs from navigation links using helper function (DRY)
+  const sectionIds = helpers.getSectionIdsFromLinks(links);
 
   // Use scroll spy hook for automatic navigation highlighting
   const activeSection = useScrollSpy({
@@ -72,13 +72,28 @@ export function Header(): ReactElement {
     }
   }, [activeSection, location]);
 
-  const handleHeaderClick = (event: any, link: string): void => {
+  const handleHeaderClick = (event: any, link: string, label: string): void => {
     event.preventDefault();
-    const section = document.querySelector(link);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+
+    // Track navigation click
+    const isExternal = link.startsWith("http");
+    analytics.trackNavigationClick(link, label, isExternal);
+
+    if (!isExternal) {
+      const section = document.querySelector(link);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
     }
     close();
+  };
+
+  const handleLogoClick = (): void => {
+    analytics.trackNavigationClick("#home", "Logo");
+    const homeSection = document.querySelector("#home");
+    if (homeSection) {
+      homeSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const items = links
@@ -95,7 +110,9 @@ export function Header(): ReactElement {
             href={link.link}
             className={classes.link}
             data-active={active === link.link || undefined}
-            onClick={(event): void => handleHeaderClick(event, link.link)}
+            onClick={(event): void =>
+              handleHeaderClick(event, link.link, link.label)
+            }
           >
             {link.label}
           </a>
@@ -114,7 +131,9 @@ export function Header(): ReactElement {
               href={link.link}
               className={classes.link}
               data-active={active === link.link || undefined}
-              onClick={(event): void => handleHeaderClick(event, link.link)}
+              onClick={(event): void =>
+                handleHeaderClick(event, link.link, link.label)
+              }
             >
               <Center>
                 <span className={classes.linkLabel}>{link.label}</span>
@@ -134,6 +153,11 @@ export function Header(): ReactElement {
                     key={item.link}
                     onClick={(event) => {
                       event.preventDefault();
+                      analytics.trackNavigationClick(
+                        item.link,
+                        item.label,
+                        true
+                      );
                       window.open(item.link, "_self");
                       close();
                     }}
@@ -172,12 +196,7 @@ export function Header(): ReactElement {
                 `HEADER.LOGO_ALT.${colorScheme === "dark" ? "DARK" : "LIGHT"}`
               )}
               className={classes.logoImage}
-              onClick={() => {
-                const homeSection = document.querySelector("#home");
-                if (homeSection) {
-                  homeSection.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
+              onClick={handleLogoClick}
             />
           </Group>
 
@@ -205,12 +224,7 @@ export function Header(): ReactElement {
                 `HEADER.LOGO_ALT.${colorScheme === "dark" ? "DARK" : "LIGHT"}`
               )}
               className={classes.logoImage}
-              onClick={() => {
-                const homeSection = document.querySelector("#home");
-                if (homeSection) {
-                  homeSection.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
+              onClick={handleLogoClick}
             />
           </div>
           <div className={classes.mobileThemeToggle}>

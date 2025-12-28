@@ -1,9 +1,25 @@
 .footer {
   margin: 0 auto;
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.25rem;
 }
 
-.copyright {
+.footer__copyright {
   --text-fz: 0.875rem;
   color: light-dark(var(--mantine-color-dark-8), var(--mantine-color-dark-0));
+}
+
+.footer__separator {
+  --text-fz: 0.875rem;
+  color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-dark-3));
+}
+
+.footer__link {
+  --text-fz: 0.75rem;
+  color: light-dark(var(--mantine-color-dark-8), var(--mantine-color-dark-0));
+  text-decoration: none;
+}
+
+.footer__link:hover {
+  color: var(--mantine-color-orange-6);
+  text-decoration: underline;
 }

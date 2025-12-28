@@ -3,6 +3,7 @@ import { FC } from "react";
 import {
   IconApi,
   IconArrowBack,
+  IconArrowLeft,
   IconArrowRight,
   // Skills icons
   IconBrain,
@@ -25,6 +26,7 @@ import {
   IconChevronDown,
   IconCloud,
   IconCode,
+  IconCookie,
   IconDatabase,
   IconExternalLink,
   IconFolder,
@@ -41,6 +43,7 @@ import {
 const iconMap = {
   IconApi,
   IconArrowBack,
+  IconArrowLeft,
   IconArrowRight,
   // Skills icons
   IconBrain,
@@ -63,6 +66,7 @@ const iconMap = {
   IconChevronDown,
   IconCloud,
   IconCode,
+  IconCookie,
   IconDatabase,
   IconExternalLink,
   IconFolder,

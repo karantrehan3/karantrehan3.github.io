@@ -22,6 +22,9 @@ class Helpers {
    * @param startDate - Date string in DD-MM-YYYY format
    * @param formatted - If true, returns formatted string like "3.5+ years", otherwise returns number
    * @returns Number of years (rounded to 1 decimal) or formatted string
+   *
+   * Note: Core logic is shared with vite/utils/date-helpers.mjs for build-time use.
+   * If updating this function, ensure both are kept in sync.
    */
   calculateYearsOfExperience(
     startDate: string,
@@ -44,6 +47,19 @@ class Helpers {
     }
 
     return roundedYears;
+  }
+
+  /**
+   * Extracts section IDs from header navigation links
+   * @param links - Array of navigation link objects with 'link' property
+   * @returns Array of section IDs (without the '#' prefix)
+   */
+  getSectionIdsFromLinks(
+    links: Array<{ link: string; hidden?: boolean }>
+  ): string[] {
+    return links
+      .filter((link) => !link.hidden && link.link.startsWith("#"))
+      .map((link) => link.link.replace("#", ""));
   }
 }
 

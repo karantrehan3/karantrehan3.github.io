@@ -2,13 +2,17 @@ import { ReactElement } from "react";
 import { Button, Tooltip } from "@mantine/core";
 
 import Icon from "@/components/Common/Icons";
+import analytics from "@/utils/Analytics";
 import config from "@/utils/Config";
 
 import classes from "./ProjectsCTA.module.css";
 
 export function ProjectsCTA(): ReactElement {
   const handleProjectsClick = (): void => {
-    const section = document.querySelector("#projects");
+    const ctaName = config.get("HOME.ACTIONS.VIEW_PROJECTS");
+    const destination = "#projects";
+    analytics.trackCTAClick(ctaName, destination);
+    const section = document.querySelector(destination);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }

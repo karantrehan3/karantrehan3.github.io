@@ -9,9 +9,11 @@ export const BouncyLoader: MantineLoaderComponent = forwardRef<
   JSX.IntrinsicElements["div"]
 >(({ className, ...others }, ref) => (
   <Box
-    component="section"
-    className={cx(classes.dot, className)}
+    component="div"
+    className={cx(classes.loader, className)}
     {...others}
     ref={ref}
-  />
+  >
+    <div className={classes.loader__dot} />
+  </Box>
 ));
