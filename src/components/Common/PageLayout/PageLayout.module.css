@@ -1,7 +1,7 @@
 .pageContainer {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
 }
 
@@ -42,7 +42,5 @@
 
 .content {
   flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
   padding-top: 3.5rem; /* rem(56px) for fixed header */
 }
