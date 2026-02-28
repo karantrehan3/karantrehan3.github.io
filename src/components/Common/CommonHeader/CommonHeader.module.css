@@ -1,8 +1,21 @@
 .header {
   height: rem(56px);
-  background-color: var(--mantine-color-body);
-  border-bottom: rem(1px) solid
-    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgba(26, 27, 30, 0.6);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: rem(1px) solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+[data-mantine-color-scheme="light"] .header {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-bottom: rem(1px) solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.06);
 }
 
 .inner {
@@ -43,7 +56,8 @@
   align-items: center;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .right {
@@ -62,6 +76,7 @@
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
   font-size: var(--mantine-font-size-sm);
   font-weight: 500;
+  position: relative;
 
   @mixin hover {
     background-color: light-dark(
@@ -71,8 +86,22 @@
   }
 
   [data-mantine-color-scheme] &[data-active] {
-    background-color: var(--mantine-color-orange-filled);
-    color: var(--mantine-color-white);
+    background-color: light-dark(
+      rgba(255, 165, 0, 0.1),
+      rgba(255, 165, 0, 0.15)
+    );
+    color: var(--mantine-color-orange-6);
+  }
+
+  [data-mantine-color-scheme] &[data-active]::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: var(--mantine-color-orange-6);
+    border-radius: 1px;
   }
 }
 
@@ -123,7 +152,17 @@
 
   .drawer a {
     width: 100%;
-    text-align: center;
+    text-align: left;
     font-size: var(--mantine-font-size-lg);
+  }
+
+  /* Left-align menu items that use Center wrapper (e.g. Projects dropdown) */
+  .drawer a > div {
+    justify-content: flex-start;
+  }
+
+  /* Hide ::after underline in mobile drawer */
+  .drawer a[data-active]::after {
+    display: none;
   }
 }

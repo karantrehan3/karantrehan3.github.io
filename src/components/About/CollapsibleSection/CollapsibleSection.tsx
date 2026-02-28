@@ -1,4 +1,10 @@
-import { ReactElement, ReactNode, useEffect, useState } from "react";
+import {
+  KeyboardEvent,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import { ActionIcon, Collapse, Group, Paper, Title } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 import clsx from "clsx";
@@ -36,16 +42,12 @@ export function CollapsibleSection({
     enabled: enableScrollAutoExpand,
   });
 
-  // Auto-expand when section becomes visible for the first time
-  // Only auto-expand if user hasn't manually toggled in the last 3 seconds
-  // and if we haven't already auto-expanded this section
   useEffect(() => {
     if (enableScrollAutoExpand && isVisible && !hasAutoExpanded) {
       const timeSinceLastToggle = lastManualToggle
         ? Date.now() - lastManualToggle
         : Infinity;
 
-      // Only auto-expand if it's been more than 3 seconds since last manual toggle
       if (timeSinceLastToggle > 3000) {
         setIsExpanded(true);
         setHasAutoExpanded(true);
@@ -56,6 +58,13 @@ export function CollapsibleSection({
   const handleToggle = (): void => {
     setLastManualToggle(Date.now());
     setIsExpanded((prev) => !prev);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent): void => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      handleToggle();
+    }
   };
 
   return (
@@ -71,6 +80,10 @@ export function CollapsibleSection({
         p={customHeader ? "lg" : "xl"}
         radius="md"
         onClick={handleToggle}
+        role="button"
+        tabIndex={0}
+        aria-expanded={isExpanded}
+        onKeyDown={handleKeyDown}
       >
         <Group justify="space-between" className={classes.headerGroup}>
           {customHeader ? (
@@ -87,6 +100,7 @@ export function CollapsibleSection({
                   e.stopPropagation();
                   handleToggle();
                 }}
+                tabIndex={-1}
               >
                 <IconChevronDown size={20} />
               </ActionIcon>
@@ -106,6 +120,7 @@ export function CollapsibleSection({
                   [classes.expanded]: isExpanded,
                 })}
                 aria-label={isExpanded ? "Collapse section" : "Expand section"}
+                tabIndex={-1}
               >
                 <IconChevronDown size={20} />
               </ActionIcon>

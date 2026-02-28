@@ -46,8 +46,8 @@
 
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .companyContent {
-  background: var(--mantine-color-gray-2);
-  border: 0.0625rem solid var(--mantine-color-gray-2);
+  background: var(--mantine-color-gray-0);
+  border: 0.0625rem solid rgba(0, 0, 0, 0.06);
 }
 
 [data-mantine-color-scheme="light"] .projectsSection {

@@ -157,7 +157,7 @@
             {
               "TITLE": "Lead Software Engineer",
               "PERIOD": "December 2025 - Present",
-              "DESCRIPTION": "- Led and delivered the **Check-In Flow's** responsive UI for **JRNI's Staff-Portal**."
+              "DESCRIPTION": "- Contributing towards **Agentic AI** development automating **end-to-end development workflows**.\n- Built an orchestrated **meta-repository of Claude skills** that spawns **parallel agents** across real repositories for tasks like **code reviews**, **unit tests**, **i18n translations** and **UI testing** via **Playwright/Chrome MCP**.\n- Architected an extensive **deployment pipeline** across dev, staging and production using **S3**, **CloudFront Distributions**, **CloudFront Functions** and **CloudFront Key-Value Store** - supporting **Blue-Green deployments**, **vanity URLs** via **Lambda@Edge** + **DynamoDB**, and branch/tag-based environment routing through a single distribution.\n- Curated **PWA configurations** for both **Coord** and **Kiosk** applications.\n- Led and delivered the **Check-In Flow's** responsive UI for **JRNI's Coord Application**."
             },
             {
               "TITLE": "Senior Software Engineer",
@@ -176,11 +176,11 @@
             },
             {
               "NAME": "Kiosk",
-              "URL": "https://kiosk-development.jrni-mumbai.com/branches/demo/",
+              "URL": "https://kiosk-pwa.jrni.com",
               "ROLE": "Lead Developer",
               "LOGO": "/assets/work/projects/jrni-kiosk.webp",
               "LOGO_ALT": "Kiosk",
-              "DESCRIPTION": "A modernized **Progressive Web App (PWA)** check-in system for JRNI's **Staff-Portal** built with **ReactJs + TypeScript + Vite** architecture, featuring revamped QR-code and code-based check-in flows, major performance improvements, and a scalable component foundation with CI/CD integration."
+              "DESCRIPTION": "A modernized **Progressive Web App (PWA)** check-in system built with **ReactJs + TypeScript + Vite** architecture, featuring revamped QR-code and code-based check-in flows, major performance improvements, and a scalable component foundation with CI/CD integration."
             }
           ]
         },
@@ -276,6 +276,20 @@
         }
       },
       "GENERATIVE_AI": [
+        {
+          "name": "Claude Code",
+          "icon": "IconTerminal2",
+          "color": "#D97757",
+          "backgroundColor": "#D97757",
+          "textColor": "#FFFFFF"
+        },
+        {
+          "name": "Cursor AI",
+          "icon": "IconCursorText",
+          "color": "#000000",
+          "backgroundColor": "#000000",
+          "textColor": "#FFFFFF"
+        },
         {
           "name": "OpenAI",
           "icon": "IconBrandOpenai",
@@ -487,6 +501,27 @@
               "icon": "IconTools",
               "color": "#146EB4",
               "backgroundColor": "#146EB4",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "CloudFront Distributions",
+              "icon": "IconCloud",
+              "color": "#8C4FFF",
+              "backgroundColor": "#8C4FFF",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "CloudFront Functions",
+              "icon": "IconCode",
+              "color": "#8C4FFF",
+              "backgroundColor": "#8C4FFF",
+              "textColor": "#FFFFFF"
+            },
+            {
+              "name": "CloudFront KV Store",
+              "icon": "IconDatabase",
+              "color": "#8C4FFF",
+              "backgroundColor": "#8C4FFF",
               "textColor": "#FFFFFF"
             }
           ]

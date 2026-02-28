@@ -58,12 +58,11 @@
 
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .typingSection {
-  background: linear-gradient(
-    135deg,
-    var(--mantine-color-gray-0),
-    var(--mantine-color-gray-1)
-  );
-  border: 0.0625rem solid var(--mantine-color-gray-2);
+  background: var(--mantine-color-white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.07),
+    0 2px 4px -1px rgba(0, 0, 0, 0.04);
 }
 
 [data-mantine-color-scheme="light"] .typingText {

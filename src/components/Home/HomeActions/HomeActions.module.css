@@ -4,6 +4,27 @@
   align-items: center;
   gap: 1.5rem;
   margin-top: var(--mantine-spacing-s);
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 1.8s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    opacity: 1;
+    animation: none;
+  }
 }
 
 .text {

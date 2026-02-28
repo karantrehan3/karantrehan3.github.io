@@ -1,9 +1,9 @@
-/* Header Section - Same as About Me */
+/* Header Section */
 .headerSection {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -31,28 +31,12 @@
   opacity: 0.8;
 }
 
-/* Projects Grid */
-.cardsContainer {
+/* Responsive card grid */
+.cardGrid {
   display: grid;
-  gap: 1.25rem;
-  width: 100%;
-  max-width: 93.75rem;
-  margin: 0 auto;
-  padding: 1.25rem;
-  justify-content: center;
-  transition: all 0.6s ease-in-out;
-}
-
-/* Animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(1.875rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 1rem 0;
 }
 
 /* Light Theme Styles */
@@ -67,10 +51,10 @@
   background-clip: text;
 }
 
-/* Mobile Responsive for Header */
-@media (max-width: 768px) {
+/* Tablet: 2 columns */
+@media (max-width: 1024px) {
   .headerSection {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .mainTitle {
@@ -81,44 +65,23 @@
     font-size: 1rem;
     padding: 0 1rem;
   }
+
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 640px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
   .mainTitle {
     font-size: 2rem;
-  }
-}
-
-/* Desktop - Large screens */
-@media (min-width: 1200px) {
-  .cardsContainer {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* Desktop - Medium screens */
-@media (min-width: 769px) and (max-width: 1199px) {
-  .cardsContainer {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.75rem;
-    padding: 1.5rem;
-  }
-}
-
-/* Tablet */
-@media (min-width: 481px) and (max-width: 768px) {
-  .cardsContainer {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-    padding: 1rem;
-  }
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-  .cardsContainer {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 0.75rem;
   }
 }

@@ -30,6 +30,45 @@
   opacity: 1;
 }
 
+/* Gradient name — applied per-word so opacity transition works */
+.gradientName {
+  font: inherit;
+}
+
+.gradientName .word {
+  background: linear-gradient(
+    to right,
+    var(--mantine-color-yellow-5),
+    var(--mantine-color-red-5)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Word reveal animation */
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.wordVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .title {

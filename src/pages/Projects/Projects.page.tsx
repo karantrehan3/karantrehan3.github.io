@@ -35,10 +35,10 @@ export default function ProjectsPage(): ReactElement {
           </div>
         </div>
 
-        {/* Projects Grid */}
-        <div className={classes.cardsContainer}>
+        {/* Card Grid */}
+        <div className={classes.cardGrid}>
           {projectCards.map((info, index) => (
-            <Card {...info} key={index} />
+            <Card key={index} {...info} />
           ))}
         </div>
       </Stack>

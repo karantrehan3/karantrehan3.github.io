@@ -2,9 +2,47 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  position: relative;
+}
+
+/* Cursor spotlight */
+.pageContainer::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    600px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    rgba(255, 165, 0, 0.06),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pageContainer:hover::before {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .pageContainer::before {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pageContainer::before {
+    display: none;
+  }
 }
 
 .content {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 3.5rem; /* rem(56px) for fixed header */
 }

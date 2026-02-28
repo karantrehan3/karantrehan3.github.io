@@ -1,5 +1,5 @@
 import { memo, ReactElement, useState } from "react";
-import { Card, Group, Paper, Table, Text, Tooltip } from "@mantine/core";
+import { Card, Group, Paper, Text, Tooltip } from "@mantine/core";
 import clsx from "clsx";
 
 import Icon from "@/components/Common/Icons";
@@ -65,7 +65,7 @@ const CategoryName = memo(
   }
 );
 
-const SkillCard = memo(({ skill }: { skill: Skill }) => {
+const SkillChip = memo(({ skill }: { skill: Skill }) => {
   return (
     <Card
       key={skill.name}
@@ -98,7 +98,6 @@ const ParentSkillCard = memo(({ skill }: { skill: Skill }) => {
 
   return (
     <div className={classes.parentSkillWrapper}>
-      {/* Layered sub-skills underneath */}
       {firstTwoSubSkills.map((subSkill, index) => (
         <Card
           key={`${skill.name}-${subSkill.name}-${index}`}
@@ -108,8 +107,8 @@ const ParentSkillCard = memo(({ skill }: { skill: Skill }) => {
               ? "background"
               : "backgroundColor"]: subSkill.backgroundColor,
             color: subSkill.color,
-            zIndex: 1 - index, // Stack them with decreasing z-index
-            transform: `translate(${(index + 1) * 2}px, ${(index + 1) * 2}px)`, // Offset diagonally
+            zIndex: 1 - index,
+            transform: `translate(${(index + 1) * 2}px, ${(index + 1) * 2}px)`,
           }}
         >
           <div
@@ -129,7 +128,6 @@ const ParentSkillCard = memo(({ skill }: { skill: Skill }) => {
         </Card>
       ))}
 
-      {/* Main parent card on top */}
       <Card
         key={skill.name}
         className={clsx(classes.skillCard, classes.parentSkillCard)}
@@ -157,12 +155,12 @@ const ParentSkillCard = memo(({ skill }: { skill: Skill }) => {
   );
 });
 
-// Grouped Skills Component
+// Grouped Skills with expand on hover
 const GroupedSkills = memo(({ skills }: { skills: Skill[] }) => {
   const [expandedParent, setExpandedParent] = useState<string | null>(null);
 
   return (
-    <Group className={classes.technologiesGroup} wrap="wrap">
+    <div className={classes.skillChips}>
       {skills.map((skill) => {
         const hasSubSkills = skill.subSkills && skill.subSkills.length > 0;
 
@@ -170,8 +168,25 @@ const GroupedSkills = memo(({ skills }: { skills: Skill[] }) => {
           <div key={skill.name} className={classes.skillContainer}>
             <div
               className={classes.skillGroup}
+              role={hasSubSkills ? "button" : undefined}
+              tabIndex={hasSubSkills ? 0 : undefined}
               onMouseEnter={() => hasSubSkills && setExpandedParent(skill.name)}
               onMouseLeave={() => hasSubSkills && setExpandedParent(null)}
+              onClick={() => {
+                if (hasSubSkills) {
+                  setExpandedParent((prev) =>
+                    prev === skill.name ? null : skill.name
+                  );
+                }
+              }}
+              onKeyDown={(e) => {
+                if (hasSubSkills && (e.key === "Enter" || e.key === " ")) {
+                  e.preventDefault();
+                  setExpandedParent((prev) =>
+                    prev === skill.name ? null : skill.name
+                  );
+                }
+              }}
             >
               {hasSubSkills ? (
                 <Tooltip
@@ -183,11 +198,10 @@ const GroupedSkills = memo(({ skills }: { skills: Skill[] }) => {
                   </div>
                 </Tooltip>
               ) : (
-                <SkillCard skill={skill} />
+                <SkillChip skill={skill} />
               )}
             </div>
 
-            {/* Expanded Sub-Skills beneath parent */}
             {hasSubSkills && (
               <div
                 className={clsx(classes.expandedSubSkills, {
@@ -233,7 +247,7 @@ const GroupedSkills = memo(({ skills }: { skills: Skill[] }) => {
           </div>
         );
       })}
-    </Group>
+    </div>
   );
 });
 
@@ -243,33 +257,19 @@ export function SkillsSection({
 }: SkillsSectionProps): ReactElement {
   return (
     <Paper className={classes.skillsSection} p="xl" radius="md">
-      <Table className={classes.skillsTable}>
-        <Table.Thead>
-          <Table.Tr>
-            <Table.Th className={classes.categoryColumn}>Category</Table.Th>
-            <Table.Th className={classes.technologiesColumn}>
-              Technologies
-            </Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>
-          {Object.entries(skills).map(([category, skillList]) => (
-            <Table.Tr key={category}>
-              <Table.Td className={classes.categoryColumn}>
-                <Group gap="sm">
-                  <CategoryIcon categoryName={category} config={config} />
-                  <Text fw={600} size="sm">
-                    <CategoryName categoryName={category} config={config} />
-                  </Text>
-                </Group>
-              </Table.Td>
-              <Table.Td className={classes.technologiesColumn}>
-                <GroupedSkills skills={skillList} />
-              </Table.Td>
-            </Table.Tr>
-          ))}
-        </Table.Tbody>
-      </Table>
+      <div className={classes.categoryGrid}>
+        {Object.entries(skills).map(([category, skillList]) => (
+          <div key={category} className={classes.categoryCard}>
+            <Group gap="sm" className={classes.categoryHeader}>
+              <CategoryIcon categoryName={category} config={config} />
+              <Text fw={600} size="sm">
+                <CategoryName categoryName={category} config={config} />
+              </Text>
+            </Group>
+            <GroupedSkills skills={skillList} />
+          </div>
+        ))}
+      </div>
     </Paper>
   );
 }

@@ -4,10 +4,12 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { Anchor, Box, Container, Divider } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import Lenis from "lenis";
 
 import {
   ConsentStatus,
@@ -32,6 +34,7 @@ function PrivacyPageComponent(): ReactElement {
     Constants.CONSENT_STATUS_PENDING
   );
   const [tocOpened, { open: openToc, close: closeToc }] = useDisclosure(false);
+  const lenisRef = useRef<Lenis | null>(null);
 
   const configValues = useMemo(
     () => ({
@@ -59,19 +62,24 @@ function PrivacyPageComponent(): ReactElement {
 
   const handleScrollToSection = useCallback(
     (id: string): void => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-
-        // Update URL hash properly - preserve #/privacy if present
-        const currentHash = window.location.hash;
-        if (currentHash.includes("#/privacy")) {
-          window.history.pushState(null, "", `#/privacy#${id}`);
-        } else if (currentHash.startsWith("#/")) {
-          window.history.pushState(null, "", `${currentHash}#${id}`);
-        } else {
-          window.history.pushState(null, "", `#${id}`);
+      // Use Lenis scrollTo to avoid flicker from conflicting scroll systems
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(`#${id}`, { offset: -20 });
+      } else {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
+      }
+
+      // Update URL hash properly - preserve #/privacy if present
+      const currentHash = window.location.hash;
+      if (currentHash.includes("#/privacy")) {
+        window.history.pushState(null, "", `#/privacy#${id}`);
+      } else if (currentHash.startsWith("#/")) {
+        window.history.pushState(null, "", `${currentHash}#${id}`);
+      } else {
+        window.history.pushState(null, "", `#${id}`);
       }
       closeToc();
     },
@@ -87,6 +95,33 @@ function PrivacyPageComponent(): ReactElement {
     // Clear section hash to prevent unwanted scroll on reload
     window.history.replaceState(null, "", "#/privacy");
     window.location.reload();
+  }, []);
+
+  // Window-level Lenis smooth scroll
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) {return;}
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - 2**(-10 * t)),
+      smoothWheel: true,
+    });
+
+    lenisRef.current = lenis;
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+      lenisRef.current = null;
+    };
   }, []);
 
   useEffect(() => {
@@ -200,7 +235,10 @@ function PrivacyPageComponent(): ReactElement {
         onSectionClick={handleScrollToSection}
       />
 
-      <ScrollToTopButton visible={showScrollTop} />
+      <ScrollToTopButton
+        visible={showScrollTop}
+        onScrollToTop={() => lenisRef.current?.scrollTo(0)}
+      />
     </Box>
   );
 }

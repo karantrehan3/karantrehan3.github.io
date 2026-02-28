@@ -1,68 +1,50 @@
 import fs from "fs";
-import { dirname, join } from "path";
+import { glob } from "fs/promises";
+import { dirname, join, relative } from "path";
 import { fileURLToPath } from "url";
-import imagemin from "imagemin";
-import imageminWebp from "imagemin-webp";
+import sharp from "sharp";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const rootDir = join(__dirname, "..");
 
 const optimizeImages = async () => {
   try {
     console.log("🖼️  Starting WebP conversion...");
 
-    // Get all image files recursively
-    const imageFiles = await imagemin(["public/assets/**/*.{jpg,jpeg,png}"], {
-      plugins: [], // No optimization, just get the file list
-    });
+    const pattern = join(rootDir, "public/assets/**/*.{jpg,jpeg,png}");
+    const imageFiles = [];
+    for await (const file of glob(pattern)) {
+      imageFiles.push(file);
+    }
 
     console.log(`Found ${imageFiles.length} images to check`);
 
     let convertedCount = 0;
     let skippedCount = 0;
 
-    // Convert each image to WebP while maintaining folder structure
-    for (const file of imageFiles) {
-      const relativePath = file.sourcePath.replace(process.cwd() + "/", "");
+    for (const filePath of imageFiles) {
+      const relativePath = relative(rootDir, filePath);
       const webpPath = relativePath.replace(/\.(jpg|jpeg|png)$/i, ".webp");
-      const webpFullPath = join(process.cwd(), webpPath);
+      const webpFullPath = join(rootDir, webpPath);
 
-      // Check if WebP version already exists
       if (fs.existsSync(webpFullPath)) {
         console.log(`⏭️  Skipped: ${relativePath} (WebP already exists)`);
         skippedCount++;
         continue;
       }
 
-      // Create directory if it doesn't exist
       const webpDir = dirname(webpFullPath);
       if (!fs.existsSync(webpDir)) {
         fs.mkdirSync(webpDir, { recursive: true });
       }
 
-      // Convert to WebP
-      const webpFiles = await imagemin([file.sourcePath], {
-        destination: dirname(webpFullPath),
-        plugins: [
-          imageminWebp({
-            quality: 80,
-            method: 6,
-          }),
-        ],
-      });
+      await sharp(filePath)
+        .webp({ quality: 80, effort: 6 })
+        .toFile(webpFullPath);
 
-      // Rename the output file to match the original structure
-      if (webpFiles.length > 0) {
-        const originalName = webpFiles[0].destinationPath;
-        const newName = webpFullPath;
-
-        if (originalName !== newName) {
-          fs.renameSync(originalName, newName);
-        }
-
-        console.log(`✅ Converted: ${relativePath} → ${webpPath}`);
-        convertedCount++;
-      }
+      console.log(`✅ Converted: ${relativePath} → ${webpPath}`);
+      convertedCount++;
     }
 
     console.log("\n📊 WebP conversion complete!");

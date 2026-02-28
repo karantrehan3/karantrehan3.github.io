@@ -42,6 +42,10 @@
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
+  border: 3px solid var(--mantine-color-orange-5);
+  box-shadow:
+    0 0 1.5rem rgba(255, 165, 0, 0.2),
+    0 0 3rem rgba(255, 165, 0, 0.1);
 }
 
 .avatarContainer {

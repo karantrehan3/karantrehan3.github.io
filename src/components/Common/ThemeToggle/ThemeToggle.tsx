@@ -33,12 +33,17 @@ export function ThemeToggle(): ReactElement {
   };
 
   return (
-    <label className={styles.themeSwitch}>
+    <label
+      className={styles.themeSwitch}
+      aria-label={`Switch to ${isChecked ? "light" : "dark"} mode`}
+    >
       <input
         type="checkbox"
+        role="switch"
         className={styles.checkbox}
         checked={isChecked}
         onChange={handleToggle}
+        aria-checked={isChecked}
       />
       <div className={styles.container}>
         <div className={styles.clouds} />

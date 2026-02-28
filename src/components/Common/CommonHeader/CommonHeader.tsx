@@ -14,6 +14,7 @@ import { useLocation } from "react-router-dom";
 
 import Icon from "@/components/Common/Icons";
 import { ThemeToggle } from "@/components/Common/ThemeToggle";
+import { useSmoothScrollContext } from "@/hooks/SmoothScrollContext";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import analytics from "@/utils/Analytics";
 import config from "@/utils/Config";
@@ -45,6 +46,7 @@ export function CommonHeader(): ReactElement {
   const { colorScheme } = useMantineColorScheme({
     keepTransitions: true,
   });
+  const { scrollTo } = useSmoothScrollContext();
 
   // Get section IDs from navigation links using helper function (DRY)
   const sectionIds = helpers.getSectionIdsFromLinks(links);
@@ -52,7 +54,7 @@ export function CommonHeader(): ReactElement {
   // Use scroll spy hook for automatic navigation highlighting
   const activeSection = useScrollSpy({
     sectionIds,
-    offset: 80, // Reduced offset for better detection
+    offset: 80,
     threshold: 0.1,
   });
 
@@ -80,26 +82,19 @@ export function CommonHeader(): ReactElement {
     analytics.trackNavigationClick(link, label, isExternal);
 
     if (!isExternal) {
-      const section = document.querySelector(link);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
+      scrollTo(link, { offset: -60 });
     }
     close();
   };
 
   const handleLogoClick = (): void => {
     analytics.trackNavigationClick("#home", "Logo");
-    const homeSection = document.querySelector("#home");
-    if (homeSection) {
-      homeSection.scrollIntoView({ behavior: "smooth" });
-    }
+    scrollTo("#home", { offset: -60 });
   };
 
   const items = links
     .map((link) => {
       if (link.hidden) {
-        // Hide link if the page is made hidden
         return null;
       }
 
@@ -145,7 +140,6 @@ export function CommonHeader(): ReactElement {
             {link.links
               .map((item) => {
                 if (item.hidden) {
-                  // Hide sub-link if the item is made hidden
                   return null;
                 }
                 return (

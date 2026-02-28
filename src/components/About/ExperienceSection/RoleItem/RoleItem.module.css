@@ -69,7 +69,9 @@
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .roleItem {
   background: var(--mantine-color-white);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-left: 0.1875rem solid var(--mantine-color-orange-5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 [data-mantine-color-scheme="light"] .roleTitle {

@@ -1,4 +1,4 @@
-/* Page Container */
+/* Page Container — fill parent section and center content */
 .pageContainer {
   padding: 2rem 0;
 }
@@ -43,18 +43,6 @@
   align-items: center;
   flex-grow: 1;
   transition: all 0.5s ease;
-}
-
-/* Animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(1.875rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Light Theme Styles */

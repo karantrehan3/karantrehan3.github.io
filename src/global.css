@@ -7,6 +7,11 @@ body {
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Light mode warm background */
+[data-mantine-color-scheme="light"] body {
+  background-color: #fafafa;
+}
+
 /* Header transitions - minimal properties */
 header {
   transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -73,25 +78,48 @@ select {
   transition: none !important;
 }
 
+/* Focus-visible ring for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--mantine-color-orange-5);
+  outline-offset: 2px;
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 10000;
+  padding: 0.75rem 1.5rem;
+  background: var(--mantine-color-orange-6);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 0.5rem 0;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Ensure touch targets are at least 44px */
+button,
+[role="button"],
+input,
+select,
+textarea {
+  min-height: 2.75rem;
+}
+
 /* Optimize for reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-}
-
-/* GPU acceleration for smooth animations */
-.mantine-Text-root,
-.mantine-Title-root,
-.mantine-Stack-root,
-.mantine-Group-root,
-.mantine-Container-root {
-  will-change: auto;
-}
-
-/* Smooth image transitions */
-img,
-svg {
-  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: auto;
 }
