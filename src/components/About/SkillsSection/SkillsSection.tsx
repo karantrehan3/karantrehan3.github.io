@@ -1,5 +1,5 @@
 import { memo, ReactElement, useState } from "react";
-import { Card, Group, Paper, Table, Text, Tooltip } from "@mantine/core";
+import { Card, Group, Paper, Text, Tooltip } from "@mantine/core";
 import clsx from "clsx";
 
 import Icon from "@/components/Common/Icons";
@@ -243,33 +243,23 @@ export function SkillsSection({
 }: SkillsSectionProps): ReactElement {
   return (
     <Paper className={classes.skillsSection} p="xl" radius="md">
-      <Table className={classes.skillsTable}>
-        <Table.Thead>
-          <Table.Tr>
-            <Table.Th className={classes.categoryColumn}>Category</Table.Th>
-            <Table.Th className={classes.technologiesColumn}>
-              Technologies
-            </Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>
-          {Object.entries(skills).map(([category, skillList]) => (
-            <Table.Tr key={category}>
-              <Table.Td className={classes.categoryColumn}>
-                <Group gap="sm">
-                  <CategoryIcon categoryName={category} config={config} />
-                  <Text fw={600} size="sm">
-                    <CategoryName categoryName={category} config={config} />
-                  </Text>
-                </Group>
-              </Table.Td>
-              <Table.Td className={classes.technologiesColumn}>
-                <GroupedSkills skills={skillList} />
-              </Table.Td>
-            </Table.Tr>
-          ))}
-        </Table.Tbody>
-      </Table>
+      <div className={classes.categoriesGrid}>
+        {Object.entries(skills).map(([category, skillList]) => (
+          <div key={category} className={classes.categoryGroup}>
+            <Group gap="sm" className={classes.categoryHeader}>
+              <div className={classes.categoryIconBadge}>
+                <CategoryIcon categoryName={category} config={config} />
+              </div>
+              <Text fw={600} size="sm">
+                <CategoryName categoryName={category} config={config} />
+              </Text>
+            </Group>
+            <div className={classes.skillsGrid}>
+              <GroupedSkills skills={skillList} />
+            </div>
+          </div>
+        ))}
+      </div>
     </Paper>
   );
 }

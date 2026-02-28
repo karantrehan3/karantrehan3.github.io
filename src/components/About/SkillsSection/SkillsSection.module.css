@@ -9,40 +9,48 @@
   font-size: 1.5rem;
 }
 
-.skillsTable {
-  margin-top: 1rem;
-  table-layout: fixed;
-  width: 100%;
+/* Grid layout for categories */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 0.5rem;
 }
 
-.skillsTable th {
-  color: var(--mantine-color-white);
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 1rem 0.75rem;
-  border-bottom: 0.125rem solid var(--mantine-color-orange-5);
+.categoryGroup {
+  border: 0.0625rem solid var(--mantine-color-dark-4);
+  border-radius: var(--mantine-radius-md);
+  padding: 1.25rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.skillsTable td {
-  padding: 1rem 0.75rem;
-  vertical-align: top;
+.categoryGroup:hover {
+  border-color: var(--mantine-color-dark-3);
+}
+
+.categoryHeader {
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
   border-bottom: 0.0625rem solid var(--mantine-color-dark-4);
 }
 
-.skillsTable tr:hover {
+.categoryIconBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--mantine-radius-sm);
   background: var(--mantine-color-dark-5);
-  transition: background-color 0.2s ease;
+  color: var(--mantine-color-orange-5);
 }
 
-/* Column sizing */
-.categoryColumn {
-  width: 14.375rem;
-  min-width: 12.5rem;
-  max-width: 15.625rem;
-}
-
-.technologiesColumn {
-  width: auto;
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 /* Skill Cards */
@@ -210,9 +218,11 @@
 
 /* Light theme for expanded sub-skills */
 [data-mantine-color-scheme="light"] .expandedSubSkills {
-  background: var(--mantine-color-gray-0);
-  border: 0.0625rem solid var(--mantine-color-gray-2);
-  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+  background: white;
+  border: 0.0625rem solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 0.5rem 2rem rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .skillIcon {
@@ -235,19 +245,9 @@
 
 /* Tablet Responsive */
 @media (max-width: 1024px) {
-  .skillsTable {
-    table-layout: auto;
-  }
-
-  .categoryColumn {
-    width: auto;
-    min-width: 9.375rem;
-    max-width: none;
-  }
-
-  .skillsTable th,
-  .skillsTable td {
-    padding: 0.75rem 0.5rem;
+  .categoriesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .skillCard {
@@ -310,24 +310,13 @@
     margin-bottom: 1rem;
   }
 
-  .skillsTable {
-    table-layout: auto;
-    font-size: 0.875rem;
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
-  .categoryColumn {
-    width: auto;
-    min-width: 7.5rem;
-    max-width: none;
-  }
-
-  .skillsTable th,
-  .skillsTable td {
-    padding: 0.5rem 0.25rem;
-  }
-
-  .skillsTable th {
-    font-size: 0.875rem;
+  .categoryGroup {
+    padding: 1rem;
   }
 
   .skillCard {
@@ -393,39 +382,6 @@
   .layeredSubSkill {
     opacity: 0.5;
   }
-
-  /* Stack categories vertically on very small screens */
-  .skillsTable thead {
-    display: none;
-  }
-
-  .skillsTable tbody {
-    display: block;
-  }
-
-  .skillsTable tr {
-    display: block;
-    margin-bottom: 1.5rem;
-    border: 0.0625rem solid var(--mantine-color-dark-4);
-    border-radius: 0.5rem;
-    padding: 1rem;
-  }
-
-  .skillsTable td {
-    display: block;
-    border: none;
-    padding: 0.5rem 0;
-  }
-
-  .categoryColumn {
-    border-bottom: 0.0625rem solid var(--mantine-color-dark-4);
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem !important;
-  }
-
-  .technologiesColumn {
-    padding-top: 0.5rem !important;
-  }
 }
 
 /* Very Small Mobile */
@@ -443,10 +399,6 @@
 
   .skillName {
     font-size: 0.6rem;
-  }
-
-  .skillsTable tr {
-    padding: 0.75rem;
   }
 
   /* Sub-Skills Very Small Mobile Styles */
@@ -483,32 +435,34 @@
 
 /* Light Theme Styles */
 [data-mantine-color-scheme="light"] .skillsSection {
-  background: var(--mantine-color-gray-0);
-  border: 0.0625rem solid var(--mantine-color-gray-2);
-  box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.08);
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 [data-mantine-color-scheme="light"] .sectionTitle {
   color: var(--mantine-color-dark-9);
 }
 
-[data-mantine-color-scheme="light"] .skillsTable th {
-  color: var(--mantine-color-dark-9);
-  border-bottom-color: var(--mantine-color-orange-5);
+[data-mantine-color-scheme="light"] .categoryGroup {
+  border-color: rgba(0, 0, 0, 0.06);
+  background: white;
 }
 
-[data-mantine-color-scheme="light"] .skillsTable td {
-  border-bottom-color: var(--mantine-color-gray-2);
+[data-mantine-color-scheme="light"] .categoryGroup:hover {
+  border-color: var(--mantine-color-orange-3);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
-[data-mantine-color-scheme="light"] .skillsTable tr:hover {
-  background: var(--mantine-color-gray-2);
+[data-mantine-color-scheme="light"] .categoryHeader {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
 }
 
-[data-mantine-color-scheme="light"] .skillsTable tr {
-  border-color: var(--mantine-color-gray-2);
-}
-
-[data-mantine-color-scheme="light"] .categoryColumn {
-  border-bottom-color: var(--mantine-color-gray-2);
+[data-mantine-color-scheme="light"] .categoryIconBadge {
+  background: var(--mantine-color-orange-0);
+  color: var(--mantine-color-orange-6);
 }

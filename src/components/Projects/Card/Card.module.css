@@ -3,19 +3,41 @@
   box-shadow:
     0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.12),
     0 0.0625rem 0.125rem rgba(0, 0, 0, 0.24);
-  border-radius: 0.375rem;
-  border: 0.0625rem solid light-dark(var(--mantine-color-dark-10), none);
+  border-radius: 0.75rem;
+  border: 0.0625rem solid light-dark(rgba(0, 0, 0, 0.06), transparent);
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0.25rem 0.5rem
-    light-dark(var(--mantine-color-dark-1), var(--mantine-color-dark-2));
+  transform: translateY(-0.375rem);
+  border-color: light-dark(
+    var(--mantine-color-orange-3),
+    var(--mantine-color-orange-7)
+  );
+  box-shadow:
+    0 0.5rem 1.5rem rgba(0, 0, 0, 0.15),
+    0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* Light mode card */
+[data-mantine-color-scheme="light"] .card {
+  background: white;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+[data-mantine-color-scheme="light"] .card:hover {
+  box-shadow:
+    0 0.5rem 1.5rem rgba(0, 0, 0, 0.08),
+    0 0.25rem 0.5rem rgba(0, 0, 0, 0.06);
 }
 
 .cardContent {
@@ -32,6 +54,7 @@
 .imageSection {
   position: relative;
   overflow: hidden;
+  border-radius: 0.75rem 0.75rem 0 0;
 }
 
 .overlay {
@@ -104,7 +127,7 @@
   margin-top: auto;
   padding-top: 1rem;
   border-top: 0.0625rem solid
-    light-dark(var(--mantine-color-dark-3), var(--mantine-color-dark-4));
+    light-dark(rgba(0, 0, 0, 0.06), var(--mantine-color-dark-4));
 }
 
 .techStackTitle {

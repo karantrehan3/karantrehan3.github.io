@@ -1,4 +1,10 @@
-import { ReactElement, ReactNode, useEffect, useState } from "react";
+import {
+  KeyboardEvent,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import { ActionIcon, Collapse, Group, Paper, Title } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons-react";
 import clsx from "clsx";
@@ -58,6 +64,16 @@ export function CollapsibleSection({
     setIsExpanded((prev) => !prev);
   };
 
+  const handleKeyDown = (event: KeyboardEvent): void => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleToggle();
+    }
+  };
+
+  const headerId = `${id}-header`;
+  const contentId = `${id}-content`;
+
   return (
     <div
       ref={sectionRef}
@@ -71,6 +87,12 @@ export function CollapsibleSection({
         p={customHeader ? "lg" : "xl"}
         radius="md"
         onClick={handleToggle}
+        onKeyDown={handleKeyDown}
+        role="button"
+        tabIndex={0}
+        aria-expanded={isExpanded}
+        aria-controls={contentId}
+        id={headerId}
       >
         <Group justify="space-between" className={classes.headerGroup}>
           {customHeader ? (
@@ -87,6 +109,7 @@ export function CollapsibleSection({
                   e.stopPropagation();
                   handleToggle();
                 }}
+                tabIndex={-1}
               >
                 <IconChevronDown size={20} />
               </ActionIcon>
@@ -106,6 +129,7 @@ export function CollapsibleSection({
                   [classes.expanded]: isExpanded,
                 })}
                 aria-label={isExpanded ? "Collapse section" : "Expand section"}
+                tabIndex={-1}
               >
                 <IconChevronDown size={20} />
               </ActionIcon>
@@ -114,7 +138,14 @@ export function CollapsibleSection({
         </Group>
       </Paper>
       <Collapse in={isExpanded} transitionDuration={400}>
-        <div className={classes.sectionContent}>{children}</div>
+        <div
+          className={classes.sectionContent}
+          id={contentId}
+          role="region"
+          aria-labelledby={headerId}
+        >
+          {children}
+        </div>
       </Collapse>
     </div>
   );

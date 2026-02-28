@@ -1,47 +1,82 @@
 .content {
-    display: flex;
-    flex-grow: 1;
-    height: 100%; /* Fill available space in flex container */
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .left {
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 1%;
-    margin-right: -1%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1%;
+  margin-right: -1%;
+  opacity: 0;
+  transform: translateX(-2rem);
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .right {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-right: 1%;
-    padding: 2rem 0;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1%;
+  padding: 2rem 0;
+  opacity: 0;
+  transform: translateX(2rem);
+  transition:
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.15s,
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+}
+
+/* Animate in when data-loaded is set */
+[data-loaded] .left,
+[data-loaded] .right {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 @media (max-width: 1024px) {
-    .content {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        padding: 1rem;
-    }
+  .content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 1rem;
+  }
 
-    .left {
-        width: 100%;
-        margin: 0;
-        padding: 1rem 0;
-    }
+  .left {
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+    transform: translateY(-1.5rem);
+  }
 
-    .right {
-        width: 100%;
-        margin: 0;
-        padding: 1rem 0;
-        text-align: center;
-    }
+  .right {
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+    text-align: center;
+    transform: translateY(1.5rem);
+  }
+
+  [data-loaded] .left,
+  [data-loaded] .right {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .left,
+  .right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

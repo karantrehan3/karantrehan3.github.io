@@ -1,8 +1,23 @@
 .header {
   height: rem(56px);
-  background-color: var(--mantine-color-body);
-  border-bottom: rem(1px) solid
-    light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
+  background: rgba(26, 27, 30, 0.6);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: rem(1px) solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+[data-mantine-color-scheme="light"] .header {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: rem(1px) solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .inner {
@@ -43,7 +58,8 @@
   align-items: center;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .right {
@@ -71,8 +87,23 @@
   }
 
   [data-mantine-color-scheme] &[data-active] {
-    background-color: var(--mantine-color-orange-filled);
-    color: var(--mantine-color-white);
+    background-color: light-dark(
+      rgba(255, 123, 0, 0.1),
+      rgba(255, 123, 0, 0.12)
+    );
+    color: var(--mantine-color-orange-6);
+    position: relative;
+  }
+
+  [data-mantine-color-scheme] &[data-active]::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: var(--mantine-color-orange-6);
+    border-radius: 1px;
   }
 }
 
@@ -112,6 +143,30 @@
 
 .mobileThemeToggle {
   z-index: 1;
+}
+
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.drawerNav a {
+  width: 100%;
+  text-align: left;
+  font-size: var(--mantine-font-size-lg);
+  padding: rem(10px) rem(12px);
+}
+
+/* Force left alignment for links with Center wrapper (e.g. Projects dropdown) */
+.drawerNav a > div {
+  justify-content: flex-start;
+}
+
+/* Hide the desktop underline indicator inside the drawer */
+.drawerNav a[data-active]::after {
+  display: none;
 }
 
 @media (max-width: 768px) {

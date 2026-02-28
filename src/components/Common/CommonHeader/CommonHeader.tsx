@@ -200,9 +200,11 @@ export function CommonHeader(): ReactElement {
             />
           </Group>
 
-          <Group gap={5} visibleFrom="xs" className={classes.center}>
-            {items}
-          </Group>
+          <nav aria-label="Main navigation">
+            <Group gap={5} visibleFrom="xs" className={classes.center}>
+              {items}
+            </Group>
+          </nav>
           <Group visibleFrom="xs" className={classes.right}>
             <ThemeToggle />
           </Group>
@@ -214,6 +216,10 @@ export function CommonHeader(): ReactElement {
             onClick={toggle}
             size="sm"
             className={classes.mobileBurger}
+            aria-label={
+              opened ? "Close navigation menu" : "Open navigation menu"
+            }
+            aria-expanded={opened}
           />
           <div className={classes.mobileLogo}>
             <Image
@@ -232,8 +238,18 @@ export function CommonHeader(): ReactElement {
           </div>
         </Group>
 
-        <Drawer opened={opened} onClose={close} hiddenFrom="xs" padding="md">
-          <Group className={classes.drawer}>{items}</Group>
+        <Drawer
+          opened={opened}
+          onClose={close}
+          hiddenFrom="xs"
+          padding="md"
+          size="75%"
+          position="left"
+          transitionProps={{ transition: "slide-right" }}
+        >
+          <nav aria-label="Mobile navigation" className={classes.drawerNav}>
+            {items}
+          </nav>
         </Drawer>
       </Container>
     </header>

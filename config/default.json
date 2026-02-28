@@ -176,7 +176,7 @@
             },
             {
               "NAME": "Kiosk",
-              "URL": "https://kiosk-development.jrni-mumbai.com/branches/demo/",
+              "URL": "https://kiosk-pwa.jrni.com",
               "ROLE": "Lead Developer",
               "LOGO": "/assets/work/projects/jrni-kiosk.webp",
               "LOGO_ALT": "Kiosk",

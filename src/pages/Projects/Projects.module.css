@@ -92,7 +92,7 @@
 /* Desktop - Large screens */
 @media (min-width: 1200px) {
   .cardsContainer {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

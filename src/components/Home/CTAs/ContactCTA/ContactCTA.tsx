@@ -29,7 +29,6 @@ export function ContactCTA(): ReactElement {
         className={classes.tertiaryButton}
         onClick={handleContactClick}
         leftSection={<Icon name="IconMail" size={16} />}
-        variant="light"
       >
         {config.get("HOME.ACTIONS.CONTACT_ME")}
       </Button>
