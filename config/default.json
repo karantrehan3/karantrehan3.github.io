@@ -611,6 +611,14 @@
 
     "CARDS": [
       {
+        "imageSource": "/assets/projects/6.webp",
+        "imageAlt": "snapit app icon",
+        "title": "snapit",
+        "link": "https://github.com/karantrehan3/snapit",
+        "description": "**snapit** is a local-only screenshot and screen-recording tool for QA, built with Electron. It does Lightshot-style region capture with on-image annotation (shapes, arrows, pen, undo/redo), one-key screen recording to native MP4 with region and audio options, and lives in the macOS menu bar behind global hotkeys — all without anything leaving your machine.",
+        "techStack": ["Electron", "TypeScript", "React", "Konva"]
+      },
+      {
         "imageSource": "/assets/projects/5.webp",
         "imageAlt": "Cause List Checker project screenshot",
         "title": "Cause List Checker",
