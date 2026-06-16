@@ -71,6 +71,12 @@
         "label": "Projects",
         "links": [
           {
+            "link": "https://github.com/karantrehan3/snapit",
+            "label": "snapit",
+            "iconSource": "/assets/icons/snapit.webp",
+            "iconAlt": "snapit icon"
+          },
+          {
             "link": "https://karantrehan3.github.io/cause-list-checker/",
             "label": "Cause List Checker",
             "iconSource": "/assets/icons/law.webp",
