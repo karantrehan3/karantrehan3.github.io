@@ -71,10 +71,10 @@
         "label": "Projects",
         "links": [
           {
-            "link": "https://github.com/karantrehan3/snapit",
-            "label": "snapit",
+            "link": "https://karantrehan3.github.io/snapit/",
+            "label": "Snap It",
             "iconSource": "/assets/icons/snapit.webp",
-            "iconAlt": "snapit icon"
+            "iconAlt": "Snap It icon"
           },
           {
             "link": "https://karantrehan3.github.io/cause-list-checker/",
@@ -618,10 +618,10 @@
     "CARDS": [
       {
         "imageSource": "/assets/projects/6.webp",
-        "imageAlt": "snapit app icon",
-        "title": "snapit",
-        "link": "https://github.com/karantrehan3/snapit",
-        "description": "**snapit** is a local-only screenshot and screen-recording tool for QA, built with Electron. It does Lightshot-style region capture with on-image annotation (shapes, arrows, pen, undo/redo), one-key screen recording to native MP4 with region and audio options, and lives in the macOS menu bar behind global hotkeys — all without anything leaving your machine.",
+        "imageAlt": "Snap It app icon",
+        "title": "Snap It",
+        "link": "https://karantrehan3.github.io/snapit/",
+        "description": "**Snap It** is a local-only screenshot and screen-recording tool for QA, built with Electron. It does Lightshot-style region capture with on-image annotation (shapes, arrows, pen, undo/redo), one-key screen recording to native MP4 with region and audio options, and lives in the macOS menu bar behind global hotkeys — all without anything leaving your machine.",
         "techStack": ["Electron", "TypeScript", "React", "Konva"]
       },
       {
