@@ -71,6 +71,12 @@
         "label": "Projects",
         "links": [
           {
+            "link": "https://karantrehan3.github.io/kiln/?ref=portfolio",
+            "label": "Kiln",
+            "iconSource": "/assets/icons/kiln.webp",
+            "iconAlt": "Kiln icon"
+          },
+          {
             "link": "https://karantrehan3.github.io/snapit/?ref=portfolio",
             "label": "Snap It",
             "iconSource": "/assets/icons/snapit.webp",
@@ -616,6 +622,14 @@
     },
 
     "CARDS": [
+      {
+        "imageSource": "/assets/projects/7.webp",
+        "imageAlt": "Kiln project logo",
+        "title": "Kiln",
+        "link": "https://karantrehan3.github.io/kiln/?ref=portfolio",
+        "description": "**Kiln** is a full-stack file and text processing toolkit with 28 tools across three categories. Built with a React 19 frontend and a FastAPI backend, it features a visual browser UI with drag-to-reorder, live previews, before/after comparisons, and inline PDF rendering. Handles PDF operations (unlock, merge, split, compress, watermark, and more), image processing (resize, crop, convert, adjust), and text utilities (hash, encode, diff, regex tester, JSON formatting). Every tool is also exposed as a REST API endpoint with Swagger docs.",
+        "techStack": ["React", "TypeScript", "FastAPI", "Python", "Docker"]
+      },
       {
         "imageSource": "/assets/projects/6.webp",
         "imageAlt": "Snap It app icon",
