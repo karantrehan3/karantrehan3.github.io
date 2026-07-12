@@ -12,6 +12,7 @@ interface ProjectCardInfo {
   title: string;
   description: string;
   link: string;
+  links?: { title: string; link: string; newTab?: boolean }[];
   techStack?: string[];
   inProgress?: boolean;
 }
