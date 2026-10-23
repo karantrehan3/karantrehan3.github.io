@@ -6,6 +6,7 @@ import { analyzer } from "vite-bundle-analyzer";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 import { analyticsPlugin } from "./vite/plugins/analytics.mjs";
+import { buildInfoPlugin } from "./vite/plugins/build-info.mjs";
 import { metaTagsPlugin } from "./vite/plugins/meta-tags.mjs";
 
 export default defineConfig(({ mode }) => ({
@@ -14,6 +15,10 @@ export default defineConfig(({ mode }) => ({
     tsconfigPaths(),
     metaTagsPlugin(),
     analyticsPlugin(),
+    buildInfoPlugin({
+      repo: "karantrehan3/karantrehan3.github.io",
+      deployBranch: "master",
+    }),
     visualizer(),
     mode === "analyze" && analyzer(),
   ].filter(Boolean),
