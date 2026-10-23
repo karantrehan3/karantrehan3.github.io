@@ -102,11 +102,13 @@ function PrivacyPageComponent(): ReactElement {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (prefersReducedMotion) {return;}
+    if (prefersReducedMotion) {
+      return;
+    }
 
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t: number) => Math.min(1, 1.001 - 2**(-10 * t)),
+      easing: (t: number) => Math.min(1, 1.001 - 2 ** (-10 * t)),
       smoothWheel: true,
     });
 
@@ -150,9 +152,10 @@ function PrivacyPageComponent(): ReactElement {
     window.addEventListener("consentChanged", handleConsentChange);
 
     const handleHashNavigation = (): void => {
-      const hash = window.location.hash;
-      if (hash && hash.includes("#")) {
-        const sectionId = hash.split("#").pop();
+      // Only "#/privacy#section" carries a section; "#/privacy" or "#/" is just the route
+      const segments = window.location.hash.split("#");
+      if (segments.length > 2) {
+        const sectionId = segments.pop();
         if (sectionId) {
           setTimeout(() => {
             handleScrollToSection(sectionId);
