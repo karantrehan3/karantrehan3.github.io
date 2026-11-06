@@ -116,6 +116,7 @@
 
 .img {
   width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: contain;
 }
 
@@ -150,7 +151,8 @@
   font-size: 0.875rem;
   margin-bottom: 0.75rem;
   color: light-dark(var(--mantine-color-dark-10), var(--mantine-color-dark-0));
-  text-align: justify;
+  text-align: left;
+  line-height: 1.6;
 }
 
 .techStackSection {
@@ -241,4 +243,54 @@
   box-shadow:
     0 10px 25px -5px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Landscape on tablet/desktop: square image left, full details right */
+@media (min-width: 641px) {
+  .card {
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Image as an inset rounded tile on the card surface, so light
+     artwork doesn't read as a slab glued to a dark card. */
+  .imageSection {
+    flex: 0 0 38%;
+    align-self: flex-start;
+    margin: 0;
+    padding: 1.25rem 0 1.25rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+
+  .imageSection .img {
+    border-radius: 0.75rem;
+    box-shadow:
+      0 0 0 1px light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.08)),
+      0 8px 24px -8px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Hover overlay follows the tile, not the whole panel */
+  .overlay {
+    inset: 1.25rem 0 1.25rem 1.25rem;
+    border-radius: 0.75rem;
+  }
+
+  .cardContent {
+    min-width: 0;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .group {
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
 }

@@ -1,3 +1,10 @@
+/* Flex child of the section: without min-width 0 it grows to the
+   carousel track's full scroll width and the page scrolls sideways. */
+.page {
+  min-width: 0;
+  width: 100%;
+}
+
 /* Header Section */
 .headerSection {
   display: flex;
@@ -31,12 +38,162 @@
   opacity: 0.8;
 }
 
-/* Responsive card grid */
-.cardGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  padding: 1rem 0;
+/* Centre-focus carousel: the snapped card sits in the middle at full
+   size; neighbours shrink and fade so the focused project stands out. */
+.carousel {
+  /* Landscape cards: wide enough for the full description beside a
+     square image, narrow enough that neighbours still peek in. */
+  --slide: min(64cqi, 54rem);
+  --gap: 1.5rem;
+  --side-scale: 0.86;
+  --side-opacity: 0.4;
+
+  position: relative;
+  container-type: inline-size;
+}
+
+.track {
+  position: relative;
+  display: flex;
+
+  /* Each card keeps its own height; stretching to the tallest card left
+     big empty blocks in projects with short descriptions. */
+  align-items: center;
+  gap: var(--gap);
+
+  /* Room on both ends so the first and last cards can sit centred */
+  /* Vertical padding leaves room for the focused card's glow, which the
+     scroll container would otherwise clip into a hard line. */
+  padding: 1rem calc((100cqi - var(--slide)) / 2) 3.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+
+  /* Fade the outer edges into the page */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--mantine-color-orange-6);
+  outline-offset: 4px;
+  border-radius: 1rem;
+}
+
+.slide {
+  flex: 0 0 var(--slide);
+  scroll-snap-align: center;
+  transform: scale(var(--side-scale));
+  opacity: var(--side-opacity);
+  filter: saturate(0.4);
+  cursor: pointer;
+  transition:
+    transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 350ms ease,
+    filter 350ms ease;
+}
+
+.slide:hover {
+  opacity: calc(var(--side-opacity) + 0.2);
+}
+
+.slideActive,
+.slideActive:hover {
+  transform: scale(1);
+  opacity: 1;
+  filter: none;
+  cursor: auto;
+  z-index: 1;
+}
+
+/* Glow ring on the focused card */
+.slideActive > * {
+  box-shadow:
+    0 0 0 2px var(--mantine-color-orange-5),
+    0 20px 45px -12px rgba(230, 100, 20, 0.35) !important;
+}
+
+/* Side cards: no hover lift/overlay; a click just brings them to centre */
+.slide:not(.slideActive) > * {
+  pointer-events: none;
+}
+
+.controls {
+  margin-top: -2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* The button is the (larger) hit area; ::before draws the dot. Global
+   button styles set min-height: 44px, so reset it here. */
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  height: 1.75rem;
+  padding: 0 0.125rem;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.dot::before {
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 1rem;
+  background: light-dark(
+    var(--mantine-color-gray-4),
+    var(--mantine-color-dark-3)
+  );
+  transition:
+    width 300ms ease,
+    background-color 300ms ease;
+}
+
+/* Doubled class: postcss-preset-mantine compiles light-dark() above into
+   [data-mantine-color-scheme] selectors that would otherwise win. */
+.dot.dotActive::before {
+  width: 1.75rem;
+  background: var(--mantine-color-orange-6);
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--mantine-color-orange-6);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    scroll-behavior: auto;
+  }
+
+  .slide,
+  .dot::before {
+    transition: none;
+  }
 }
 
 /* Light Theme Styles */
@@ -66,17 +223,24 @@
     padding: 0 1rem;
   }
 
-  .cardGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+  .carousel {
+    --slide: 80cqi;
   }
 }
 
 /* Mobile: 1 column */
 @media (max-width: 640px) {
-  .cardGrid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  /* Peek of neighbours keeps swiping discoverable */
+  .carousel {
+    --slide: 85cqi;
+    --gap: 0.75rem;
+    --side-scale: 0.92;
+  }
+
+  /* Tall stacked cards: top-align so short ones don't float mid-strip */
+  .track {
+    align-items: flex-start;
+    mask-image: none;
   }
 }
 

@@ -9,6 +9,12 @@
     transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* The projects carousel is shorter than a screen; a full-height section
+   would leave a large empty band, so let it size to its content. */
+.section[id="projects"] {
+  min-height: auto;
+}
+
 .hidden {
   opacity: 0;
   transform: translateY(2rem);
