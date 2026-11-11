@@ -20,6 +20,8 @@ interface ProjectCardInfo {
   imageAlt?: string;
   title: string;
   description: string;
+  tagline?: string;
+  highlights?: string[];
   link: string;
   links?: { title: string; link: string; newTab?: boolean }[];
   techStack?: string[];
@@ -95,7 +97,7 @@ export default function ProjectsPage(): ReactElement {
 
   return (
     <Container size="xl" py="xl" className={classes.page}>
-      <Stack gap="xl">
+      <Stack gap="xl" className={classes.stack}>
         {/* Section Header */}
         <div className={classes.headerSection}>
           <div className={classes.header}>

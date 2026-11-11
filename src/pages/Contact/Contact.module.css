@@ -1,6 +1,10 @@
 /* Page Container — fill parent section and center content */
 .pageContainer {
   padding: 2rem 0;
+
+  /* Heading at the top; .container (flex-grow) centres in the rest */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header Section - Same as About Me */
@@ -94,7 +98,7 @@
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 0.625rem;
   }
 

@@ -1,7 +1,7 @@
 import { memo, ReactElement, useCallback } from "react";
 import { Box, Burger, Button, Container, Group, Text } from "@mantine/core";
 
-import { Icon, ThemeToggle } from "@/components";
+import { Icon, ThemeToggle } from "@/components/Common";
 
 import classes from "./PrivacyHeader.module.css";
 

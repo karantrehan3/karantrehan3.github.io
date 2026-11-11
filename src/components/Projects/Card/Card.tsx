@@ -1,6 +1,5 @@
 import { memo, ReactElement, useState } from "react";
 import {
-  Badge,
   Container,
   Group,
   Image,
@@ -14,6 +13,7 @@ import { MarkdownRenderer } from "@/components/Common/MarkdownRenderer";
 import analytics from "@/utils/Analytics";
 
 import classes from "./Card.module.css";
+import { TechBadge } from "./TechBadge";
 
 interface CardLink {
   title: string;
@@ -26,6 +26,9 @@ interface CardProps {
   imageAlt?: string;
   title: string;
   description: string;
+  /** One-line summary; with `highlights`, replaces the long description. */
+  tagline?: string;
+  highlights?: string[];
   link: string;
   links?: CardLink[];
   techStack?: string[];
@@ -37,6 +40,8 @@ function CardComponent({
   imageAlt,
   title,
   description,
+  tagline,
+  highlights = [],
   link,
   links,
   techStack = [],
@@ -46,7 +51,9 @@ function CardComponent({
   const hasMultipleLinks = links && links.length > 0;
 
   const handleCardClick = (): void => {
-    if (hasMultipleLinks) {return;}
+    if (hasMultipleLinks) {
+      return;
+    }
     analytics.trackProjectClick(title, link);
     window.open(link, "_self");
   };
@@ -128,23 +135,30 @@ function CardComponent({
             <Text className={classes.title}>{title}</Text>
           </Group>
 
-          <div className={classes.description}>
-            <MarkdownRenderer content={description} />
-          </div>
+          {tagline ? (
+            <>
+              <Text className={classes.tagline}>{tagline}</Text>
+              {highlights.length > 0 && (
+                <ul className={classes.highlights}>
+                  {highlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              )}
+            </>
+          ) : (
+            <div className={classes.description}>
+              <MarkdownRenderer content={description} />
+            </div>
+          )}
         </div>
 
         {techStack.length > 0 && (
           <div className={classes.techStackSection}>
             <Text className={classes.techStackTitle}>Tech Stack:</Text>
             <div className={classes.techStackBadges}>
-              {techStack.map((tech, index) => (
-                <Badge
-                  key={index}
-                  className={classes.techBadge}
-                  variant="light"
-                >
-                  {tech}
-                </Badge>
+              {techStack.map((tech) => (
+                <TechBadge key={tech} name={tech} />
               ))}
             </div>
           </div>
