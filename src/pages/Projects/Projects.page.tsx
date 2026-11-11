@@ -7,7 +7,6 @@ import {
   useState,
 } from "react";
 import { ActionIcon, Container, Stack, Text, Title } from "@mantine/core";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import clsx from "clsx";
 
 import { Card } from "@/components/Projects";
@@ -28,7 +27,26 @@ interface ProjectCardInfo {
   inProgress?: boolean;
 }
 
-/** Index of the slide whose centre is nearest the track's centre. */
+// Inline rather than @tabler/icons-react: that package is bundled into an
+// eagerly loaded chunk, and these arrows are only needed here.
+function Chevron({ direction }: { direction: "left" | "right" }): ReactElement {
+  return (
+    <svg
+      width={18}
+      height={18}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d={direction === "left" ? "M15 6l-6 6l6 6" : "M9 6l6 6l-6 6"} />
+    </svg>
+  );
+}
+
 function findCenteredIndex(track: HTMLDivElement): number {
   const trackCenter = track.scrollLeft + track.clientWidth / 2;
   const slides = Array.from(track.children) as HTMLElement[];
@@ -110,7 +128,6 @@ export default function ProjectsPage(): ReactElement {
           </div>
         </div>
 
-        {/* Centre-focus carousel */}
         <section
           className={classes.carousel}
           aria-roledescription="carousel"
@@ -143,7 +160,7 @@ export default function ProjectsPage(): ReactElement {
               disabled={activeIndex === 0}
               onClick={() => goTo(activeIndex - 1)}
             >
-              <IconChevronLeft size={18} />
+              <Chevron direction="left" />
             </ActionIcon>
 
             <div className={classes.dots}>
@@ -169,7 +186,7 @@ export default function ProjectsPage(): ReactElement {
               disabled={activeIndex === lastIndex}
               onClick={() => goTo(activeIndex + 1)}
             >
-              <IconChevronRight size={18} />
+              <Chevron direction="right" />
             </ActionIcon>
           </div>
         </section>

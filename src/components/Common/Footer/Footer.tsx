@@ -10,8 +10,8 @@ export function Footer(): ReactElement {
   const [dialogOpened, setDialogOpened] = useState(false);
   const footerRef = useRef<HTMLElement>(null);
 
-  // Publish the pinned footer's live height so the page can pad for it and
-  // sections can size to the space between the header and the footer.
+  // Sections and page padding size around the footer via --footer-height;
+  // measured live because the footer's height changes as it wraps.
   useEffect(() => {
     const footer = footerRef.current;
     const root = document.documentElement;

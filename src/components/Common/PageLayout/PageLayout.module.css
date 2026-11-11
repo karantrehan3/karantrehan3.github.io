@@ -4,7 +4,6 @@
   min-height: 100vh;
   position: relative;
 
-  /* Room for the fixed footer so the page's end isn't hidden behind it */
   padding-bottom: var(--footer-height, 2.75rem);
 }
 

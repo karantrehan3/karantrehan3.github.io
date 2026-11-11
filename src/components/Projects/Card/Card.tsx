@@ -26,7 +26,7 @@ interface CardProps {
   imageAlt?: string;
   title: string;
   description: string;
-  /** One-line summary; with `highlights`, replaces the long description. */
+  /** When set, replaces `description` (shown with `highlights`). */
   tagline?: string;
   highlights?: string[];
   link: string;
@@ -92,6 +92,10 @@ function CardComponent({
           className={clsx(classes.img, {
             [classes.hidden]: loading,
           })}
+          width={400}
+          height={400}
+          loading="lazy"
+          decoding="async"
           onLoad={() => setLoading(false)}
           onError={() => setLoading(false)}
         />

@@ -1,5 +1,4 @@
-/* Flex child of the section: without min-width 0 it grows to the
-   carousel track's full scroll width and the page scrolls sideways. */
+/* Flex child: without min-width 0 it grows to the track's scroll width */
 .page {
   min-width: 0;
   width: 100%;
@@ -7,7 +6,6 @@
   flex-direction: column;
 }
 
-/* Heading stays at the top; the carousel centres in the remaining height */
 .stack {
   flex-grow: 1;
 }
@@ -49,11 +47,7 @@
   opacity: 0.8;
 }
 
-/* Centre-focus carousel: the snapped card sits in the middle at full
-   size; neighbours shrink and fade so the focused project stands out. */
 .carousel {
-  /* Landscape cards: wide enough for the full description beside a
-     square image, narrow enough that neighbours still peek in. */
   --slide: min(64cqi, 54rem);
   --gap: 1.5rem;
   --side-scale: 0.86;
@@ -67,14 +61,12 @@
   position: relative;
   display: flex;
 
-  /* Each card keeps its own height; stretching to the tallest card left
-     big empty blocks in projects with short descriptions. */
+  /* Not stretch: short cards would gain empty blocks */
   align-items: center;
   gap: var(--gap);
 
-  /* Room on both ends so the first and last cards can sit centred */
-  /* Vertical padding leaves room for the focused card's glow, which the
-     scroll container would otherwise clip into a hard line. */
+  /* Side padding lets the first and last cards centre */
+  /* Bottom padding keeps the scroll container from clipping the glow */
   padding: 1rem calc((100cqi - var(--slide)) / 2) 3.5rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -82,7 +74,6 @@
   overscroll-behavior-x: contain;
   scrollbar-width: none;
 
-  /* Fade the outer edges into the page */
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -128,14 +119,13 @@
   z-index: 1;
 }
 
-/* Glow ring on the focused card */
 .slideActive > * {
   box-shadow:
     0 0 0 2px var(--mantine-color-orange-5),
     0 20px 45px -12px rgba(230, 100, 20, 0.35) !important;
 }
 
-/* Side cards: no hover lift/overlay; a click just brings them to centre */
+/* Side cards only receive the click that centres them */
 .slide:not(.slideActive) > * {
   pointer-events: none;
 }
@@ -154,8 +144,7 @@
   gap: 0.25rem;
 }
 
-/* The button is the (larger) hit area; ::before draws the dot. Global
-   button styles set min-height: 44px, so reset it here. */
+/* Global button min-height: 44px would stretch the dot; ::before draws it */
 .dot {
   display: flex;
   align-items: center;
@@ -184,8 +173,8 @@
     background-color 300ms ease;
 }
 
-/* Doubled class: postcss-preset-mantine compiles light-dark() above into
-   [data-mantine-color-scheme] selectors that would otherwise win. */
+/* Doubled class: postcss-preset-mantine turns light-dark() into
+   higher-specificity [data-mantine-color-scheme] selectors */
 .dot.dotActive::before {
   width: 1.75rem;
   background: var(--mantine-color-orange-6);
@@ -241,17 +230,21 @@
 
 /* Mobile: 1 column */
 @media (max-width: 640px) {
-  /* Peek of neighbours keeps swiping discoverable */
   .carousel {
     --slide: 85cqi;
     --gap: 0.75rem;
     --side-scale: 0.92;
   }
 
-  /* Tall stacked cards: top-align so short ones don't float mid-strip */
   .track {
     align-items: flex-start;
     mask-image: none;
+
+    padding-bottom: 2rem;
+  }
+
+  .controls {
+    margin-top: -1rem;
   }
 }
 

@@ -2,7 +2,6 @@
 .pageContainer {
   padding: 2rem 0;
 
-  /* Heading at the top; .container (flex-grow) centres in the rest */
   display: flex;
   flex-direction: column;
 }

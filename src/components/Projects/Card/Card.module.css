@@ -116,15 +116,18 @@
 
 .img {
   width: 100%;
+  height: auto;
   aspect-ratio: 1 / 1;
   object-fit: contain;
 }
 
 .center {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
 }
 
 .loader {
@@ -132,7 +135,8 @@
 }
 
 .hidden {
-  display: none;
+  /* Not display:none: the browser never fetches a hidden lazy image */
+  opacity: 0;
 }
 
 .group {
@@ -177,7 +181,6 @@
 }
 
 .techBadge {
-  /* Neutral chip so the brand-coloured logo carries the colour */
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
@@ -201,7 +204,6 @@
   flex-shrink: 0;
 }
 
-/* One-line summary under the title */
 .tagline {
   font-size: 0.9375rem;
   font-weight: 600;
@@ -281,7 +283,6 @@
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Landscape on tablet/desktop: square image left, full details right */
 @media (min-width: 641px) {
   .card {
     flex-direction: row;
@@ -290,8 +291,6 @@
     overflow: hidden;
   }
 
-  /* Image as an inset rounded tile on the card surface, so light
-     artwork doesn't read as a slab glued to a dark card. */
   .imageSection {
     flex: 0 0 38%;
     align-self: flex-start;
@@ -310,7 +309,6 @@
       0 8px 24px -8px rgba(0, 0, 0, 0.35);
   }
 
-  /* Hover overlay follows the tile, not the whole panel */
   .overlay {
     inset: 1.25rem 0 1.25rem 1.25rem;
     border-radius: 0.75rem;
@@ -324,5 +322,113 @@
   .group {
     justify-content: flex-start;
     margin-top: 0;
+  }
+}
+
+/* Phones: thumbnail beside the title. display: contents on the wrappers
+   lets image, title and text share one grid without changing markup. */
+@media (max-width: 640px) {
+  .card {
+    display: grid;
+    grid-template-columns: 4rem minmax(0, 1fr);
+    grid-template-areas:
+      "img title"
+      "tag tag";
+    align-items: center;
+    column-gap: 0.875rem;
+    padding: 1rem;
+  }
+
+  .cardContent,
+  .cardBody {
+    display: contents;
+  }
+
+  .imageSection {
+    grid-area: img;
+    align-self: start;
+    width: 4rem;
+    margin: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: light-dark(
+      var(--mantine-color-gray-1),
+      var(--mantine-color-dark-7)
+    );
+  }
+
+  .imageSection .img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  /* Tap overlay holds multi-link buttons; too cramped in the thumbnail, so
+     the card becomes its containing block. */
+  .imageSection {
+    position: static;
+  }
+
+  .overlay {
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .group {
+    grid-area: title;
+    margin: 0;
+  }
+
+  .title {
+    font-size: 1.125rem;
+    line-height: 1.25;
+  }
+
+  .tagline {
+    grid-area: tag;
+    margin: 0.75rem 0 0;
+    font-size: 0.875rem;
+  }
+
+  .highlights,
+  .description,
+  .techStackSection {
+    grid-column: 1 / -1;
+  }
+
+  .highlights {
+    margin: 0.625rem 0 0.375rem;
+    font-size: 0.8125rem;
+  }
+
+  .highlights li + li {
+    margin-top: 0.2rem;
+  }
+
+  .description {
+    margin-top: 0.75rem;
+  }
+
+  .techStackSection {
+    padding-top: 0.75rem;
+  }
+
+  .techStackTitle {
+    display: none;
+  }
+
+  .techStackBadges {
+    gap: 0.375rem;
+  }
+
+  .techBadge {
+    padding: 0.1875rem 0.5rem 0.1875rem 0.375rem;
+    font-size: 0.75rem;
+  }
+
+  .techIcon {
+    width: 0.875rem;
+    height: 0.875rem;
   }
 }
