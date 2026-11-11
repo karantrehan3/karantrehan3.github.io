@@ -1,4 +1,4 @@
-import{r as t}from"./mantine-vendor-Z6gXiVC4.js";/**
+import{r as t}from"./mantine-vendor-C7QsDf31.js";/**
  * @license @tabler/icons-react v3.37.1 - MIT
  *
  * This source code is licensed under the MIT license.

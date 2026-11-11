@@ -1,4 +1,4 @@
-import{r as v,R as en,a as tn}from"./mantine-vendor-Z6gXiVC4.js";/**
+import{r as v,R as en,a as tn}from"./mantine-vendor-C7QsDf31.js";/**
  * react-router v7.18.4
  *
  * Copyright (c) Remix Software Inc.
