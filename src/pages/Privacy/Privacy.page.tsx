@@ -11,10 +11,9 @@ import { Anchor, Box, Container, Divider } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Lenis from "lenis";
 
+import { ConsentStatus, getConsentStatus } from "@/components/Common";
 import {
-  ConsentStatus,
   ContentHeader,
-  getConsentStatus,
   PrivacyHeader,
   PrivacySection,
   ScrollToTopButton,
@@ -22,7 +21,7 @@ import {
   TocDrawer,
   TocSidebar,
   UnifiedSection,
-} from "@/components";
+} from "@/components/Privacy";
 import config from "@/utils/Config";
 import Constants from "@/utils/Constants";
 

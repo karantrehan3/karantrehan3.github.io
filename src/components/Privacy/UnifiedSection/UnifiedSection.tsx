@@ -1,7 +1,7 @@
 import { memo, ReactElement, useCallback, useMemo, useState } from "react";
 import { Anchor, Box, Button, Text, Title } from "@mantine/core";
 
-import { ConsentStatus, Icon, MarkdownRenderer } from "@/components";
+import { ConsentStatus, Icon, MarkdownRenderer } from "@/components/Common";
 import Constants from "@/utils/Constants";
 import helpers from "@/utils/Helpers";
 

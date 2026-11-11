@@ -1,3 +1,19 @@
+/* Flex child: without min-width 0 it grows to the track's scroll width */
+.page {
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.stack {
+  flex-grow: 1;
+}
+
+.stack > .carousel {
+  margin-block: auto;
+}
+
 /* Header Section */
 .headerSection {
   display: flex;
@@ -31,12 +47,153 @@
   opacity: 0.8;
 }
 
-/* Responsive card grid */
-.cardGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  padding: 1rem 0;
+.carousel {
+  --slide: min(64cqi, 54rem);
+  --gap: 1.5rem;
+  --side-scale: 0.86;
+  --side-opacity: 0.4;
+
+  position: relative;
+  container-type: inline-size;
+}
+
+.track {
+  position: relative;
+  display: flex;
+
+  /* Not stretch: short cards would gain empty blocks */
+  align-items: center;
+  gap: var(--gap);
+
+  /* Side padding lets the first and last cards centre */
+  /* Bottom padding keeps the scroll container from clipping the glow */
+  padding: 1rem calc((100cqi - var(--slide)) / 2) 3.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--mantine-color-orange-6);
+  outline-offset: 4px;
+  border-radius: 1rem;
+}
+
+.slide {
+  flex: 0 0 var(--slide);
+  scroll-snap-align: center;
+  transform: scale(var(--side-scale));
+  opacity: var(--side-opacity);
+  filter: saturate(0.4);
+  cursor: pointer;
+  transition:
+    transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 350ms ease,
+    filter 350ms ease;
+}
+
+.slide:hover {
+  opacity: calc(var(--side-opacity) + 0.2);
+}
+
+.slideActive,
+.slideActive:hover {
+  transform: scale(1);
+  opacity: 1;
+  filter: none;
+  cursor: auto;
+  z-index: 1;
+}
+
+.slideActive > * {
+  box-shadow:
+    0 0 0 2px var(--mantine-color-orange-5),
+    0 20px 45px -12px rgba(230, 100, 20, 0.35) !important;
+}
+
+/* Side cards only receive the click that centres them */
+.slide:not(.slideActive) > * {
+  pointer-events: none;
+}
+
+.controls {
+  margin-top: -2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Global button min-height: 44px would stretch the dot; ::before draws it */
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  height: 1.75rem;
+  padding: 0 0.125rem;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.dot::before {
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 1rem;
+  background: light-dark(
+    var(--mantine-color-gray-4),
+    var(--mantine-color-dark-3)
+  );
+  transition:
+    width 300ms ease,
+    background-color 300ms ease;
+}
+
+/* Doubled class: postcss-preset-mantine turns light-dark() into
+   higher-specificity [data-mantine-color-scheme] selectors */
+.dot.dotActive::before {
+  width: 1.75rem;
+  background: var(--mantine-color-orange-6);
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--mantine-color-orange-6);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    scroll-behavior: auto;
+  }
+
+  .slide,
+  .dot::before {
+    transition: none;
+  }
 }
 
 /* Light Theme Styles */
@@ -66,17 +223,28 @@
     padding: 0 1rem;
   }
 
-  .cardGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+  .carousel {
+    --slide: 80cqi;
   }
 }
 
 /* Mobile: 1 column */
 @media (max-width: 640px) {
-  .cardGrid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .carousel {
+    --slide: 85cqi;
+    --gap: 0.75rem;
+    --side-scale: 0.92;
+  }
+
+  .track {
+    align-items: flex-start;
+    mask-image: none;
+
+    padding-bottom: 2rem;
+  }
+
+  .controls {
+    margin-top: -1rem;
   }
 }
 
